@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
     
     <!-- FontAwesome JS-->
-    <script src="assets/fontawesome/js/all.min.js"></script>
+    <script defer src="assets/fontawesome/js/all.min.js"></script>
     
     <!-- Plugins CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.2/styles/atom-one-dark.min.css">
@@ -23,6 +23,24 @@
 
     <!-- Theme CSS -->  
     <link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
+
+    <style>
+        /* Tambahkan style kustom jika diperlukan untuk halaman detail modul */
+        .screenshot-container {
+            margin: 1.5em 0;
+            text-align: center;
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .screenshot-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
 
 </head> 
 
@@ -123,7 +141,7 @@
                                 </ul>
                             </li>
                             <div class="screenshot-container text-center my-3">
-                                <img class="img-fluid rounded shadow" src="assets/images/users_list_user.png" alt="Halaman Daftar Pengguna">
+                                <img class="img-fluid rounded shadow" src="https://placehold.co/800x450/E0E0E0/333333?text=Halaman+Daftar+Pengguna" alt="Halaman Daftar Pengguna">
                                 <small class="text-muted d-block mt-2">Gambar: Contoh halaman daftar pengguna.</small>
                             </div>
                         </ol>

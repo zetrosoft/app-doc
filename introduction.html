@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id"> 
+<head>
+    <title>Dokumentasi ERP Siumang - Introduction</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="description" content="Pengantar ERP Siumang dan Panduan Dokumentasi">
+    <meta name="author" content="ERP Siumang Team">    
+    <link rel="shortcut icon" href="assets/images/logo-siumang@0.1x.png"> 
+    
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome JS-->
+    <script src="assets/fontawesome/js/all.min.js"></script>
+    
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.2/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="assets/plugins/simplelightbox/simple-lightbox.min.css">
+    <!-- Bootstrap Icons CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
+
+    <style>
+        .screenshot-container {
+            margin: 1.5em 0;
+            text-align: center;
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .screenshot-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .docs-sidebar .nav-item.section-title .theme-icon-holder {
+            font-size: 1.2rem; /* Ukuran ikon untuk judul bagian sidebar */
+        }
+        .docs-sidebar .nav-link .theme-icon-holder {
+            font-size: 1rem; /* Ukuran ikon untuk item navigasi sidebar */
+            margin-right: 0.5rem;
+        }
+        .docs-sidebar .nav-link.active {
+            color: #20c997; /* Warna aktif untuk navigasi sidebar */
+            font-weight: bold;
+        }
+        .docs-sidebar .nav-link:hover {
+            color: #007bff; /* Warna hover untuk navigasi sidebar */
+        }
+    </style>
+
+</head> 
+
+<body class="docs-page">    
+    <header class="header fixed-top">	    
+        <div class="branding docs-branding">
+            <div class="container-fluid position-relative py-2">
+                <div class="docs-logo-wrapper">
+					<button id="docs-sidebar-toggler" class="docs-sidebar-toggler docs-sidebar-visible me-2 d-xl-none" type="button">
+	                    <span></span>
+	                    <span></span>
+	                    <span></span>
+	                </button>
+	                <div class="site-logo">
+                        <a class="navbar-brand" href="index.html">
+                            <img class="logo-icon me-2" src="assets/images/logo-siumang@0.33x.svg" alt="logo Siumang" style="width: 32px; height: 32px;">
+                            <span class="logo-text">ERP<span class="text-alt">Siumang</span></span>
+                        </a>
+                    </div>    
+                </div><!--//docs-logo-wrapper-->
+	            <div class="docs-top-utilities d-flex justify-content-end align-items-center">
+	                <div class="top-search-box d-none d-lg-flex">
+		                <form class="search-form">
+				            <input type="text" placeholder="Cari dokumentasi..." name="search" class="form-control search-input">
+				            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+				        </form>
+	                </div>
+	            </div><!--//docs-top-utilities-->
+            </div><!--//container-->
+        </div><!--//branding-->
+    </header><!--//header-->
+    
+    
+    <div class="docs-wrapper">
+	    <div id="docs-sidebar" class="docs-sidebar">
+		    <div class="top-search-box d-lg-none p-3">
+                <form class="search-form">
+		            <input type="text" placeholder="Cari dokumentasi..." name="search" class="form-control search-input">
+		            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+		        </form>
+            </div>
+		    <nav id="docs-nav" class="docs-nav navbar">
+			    <ul class="section-items list-unstyled nav flex-column pb-3">
+                    <li class="nav-item section-title"><a class="nav-link scrollto" href="#admin-sistem"><span class="theme-icon-holder me-2"><i class="bi bi-ui-checks-grid"></i></span>Admin Sistem</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto active" href="introduction.html">Introduction</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="setting.html">Setting</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="users.html">Users</a></li>
+                    
+                    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#pengguna-sistem"><span class="theme-icon-holder me-2"><i class="bi bi-person-workspace"></i></span>Pengguna Sistem</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="akuntansi.html">Akuntansi</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="purchasing.html">Purchasing</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="inventory-management.html">Inventory Management</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="sales-marketing.html">Sales & Marketing</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="crm.html">CRM</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="hris.html">HRIS</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="production.html">Production</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="quality-control.html">Quality Control</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="rnd.html">RnD</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="creative-management.html">Creative Management</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="website.html">Website</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="dashboard-management.html">Dashboard Management</a></li>
+			    </ul>
+
+		    </nav><!--//docs-nav-->
+	    </div><!--//docs-sidebar-->
+	    <div class="docs-content">
+		    <div class="container">
+			    <article class="docs-article" id="introduction-module">
+				    <header class="docs-header">
+					    <h1 class="docs-heading">Pengantar ERP Siumang: Membangun Masa Depan Bisnis Anda</h1>
+					    <section class="docs-intro">
+						    <p>Selamat datang di dokumentasi ERP Siumang, sebuah platform yang dirancang untuk merevolusi cara Anda mengelola bisnis di era digital. Di tengah lanskap bisnis yang terus berubah, ERP Siumang hadir sebagai solusi terintegrasi yang tidak hanya mengotomatisasi proses, tetapi juga menghubungkan setiap aspek operasional Anda, memberdayakan tim, dan mendorong pertumbuhan berkelanjutan. Kami percaya bahwa teknologi terbaik adalah yang berpusat pada manusia, dan ERP Siumang adalah wujud dari filosofi tersebut.</p>
+                            <div class="screenshot-container text-center my-4">
+                                <img class="img-fluid rounded shadow" src="assets/images/erp_siumang_overview.png" alt="Overview ERP Siumang">
+                                <small class="text-muted d-block mt-2">Gambar: Tampilan umum antarmuka ERP Siumang.</small>
+                            </div>
+						</section><!--//docs-intro-->
+				    </header>
+				    
+                    <section class="docs-section" id="for-developers">
+						<h2 class="section-heading"><i class="fas fa-code me-2"></i> Untuk Para Developer: Membangun di Atas Fondasi yang Kuat</h2>
+						<p>Bagi Anda para developer, ERP Siumang bukan sekadar perangkat lunak, melainkan sebuah kanvas digital yang siap Anda kustomisasi dan perluas. Kami memahami bahwa setiap bisnis memiliki kebutuhan unik, oleh karena itu, arsitektur ERP Siumang dirancang dengan modularitas dan fleksibilitas sebagai inti. Anda akan menemukan:</p>
+                        <ul>
+                            <li><b>API yang Terbuka dan Terdokumentasi:</b> Integrasikan ERP Siumang dengan sistem eksternal, aplikasi mobile, atau platform IoT lainnya dengan mudah. Dokumentasi API kami yang komprehensif akan memandu setiap langkah Anda.</li>
+                            <li><b>Ekstensibilitas Tinggi:</b> Kembangkan fitur baru, sesuaikan alur kerja, atau bangun modul tambahan menggunakan framework yang kokoh dan didukung komunitas. ERP Siumang memungkinkan Anda untuk berinovasi tanpa batas.</li>
+                            <li><b>Lingkungan Pengembangan yang Ramah:</b> Dengan struktur kode yang bersih dan praktik terbaik, proses debugging dan pengembangan akan menjadi lebih efisien, memungkinkan Anda fokus pada solusi kreatif.</li>
+                            <li><b>Keamanan Data Terjamin:</b> Pahami lapisan keamanan yang diterapkan, dari otentikasi hingga otorisasi berbasis peran, memastikan data sensitif bisnis tetap terlindungi di setiap interaksi.</li>
+                        </ul>
+                        <p>Kami mengundang Anda untuk menjelajahi potensi tak terbatas ERP Siumang dan berkolaborasi dalam menciptakan solusi yang benar-benar transformatif.</p>
+					</section><!--//section-->
+					
+					<section class="docs-section" id="for-administrators">
+						<h2 class="section-heading"><i class="fas fa-shield-alt me-2"></i> Untuk Para Administrator: Kendali Penuh di Tangan Anda</h2>
+						<p>Sebagai administrator sistem, Anda adalah arsitek di balik efisiensi ERP Siumang. Modul-modul administratif dirancang untuk memberikan Anda kendali penuh dan visibilitas atas seluruh operasional. Di sini Anda akan belajar bagaimana:</p>
+                        <ul>
+                            <li><b>Mengelola Pengguna dan Peran:</b> Tetapkan hak akses yang granular, buat peran kustom, dan pastikan setiap anggota tim memiliki izin yang tepat, menjaga keamanan data dan mencegah penyalahgunaan.</li>
+                            <li><b>Mengkonfigurasi Sistem:</b> Sesuaikan pengaturan global, parameter modul, dan alur kerja bisnis agar sesuai dengan kebijakan dan prosedur perusahaan Anda. Fleksibilitas ini memungkinkan ERP Siumang beradaptasi dengan dinamika bisnis Anda.</li>
+                            <li><b>Memantau Kinerja dan Keamanan:</b> Akses log aktivitas, laporan audit, dan dasbor kinerja untuk memantau penggunaan sistem, mengidentifikasi potensi masalah, dan memastikan kepatuhan.</li>
+                            <li><b>Melakukan Pemeliharaan Sistem:</b> Pahami praktik terbaik untuk backup data, pembaruan sistem, dan optimasi kinerja agar ERP Siumang selalu berjalan lancar dan stabil.</li>
+                        </ul>
+                        <p>Dengan ERP Siumang, Anda memiliki kekuatan untuk membentuk lingkungan kerja digital yang aman, efisien, dan produktif.</p>
+					</section><!--//section-->
+
+                    <section class="docs-section" id="for-end-users">
+						<h2 class="section-heading"><i class="fas fa-user-check me-2"></i> Untuk Para Pengguna Akhir: Produktivitas Tanpa Batas</h2>
+						<p>ERP Siumang dirancang dengan fokus pada pengalaman pengguna, memastikan setiap interaksi intuitif dan efisien. Sebagai pengguna akhir, Anda akan merasakan bagaimana ERP Siumang menyederhanakan tugas harian dan meningkatkan produktivitas Anda. Pelajari cara:</p>
+                        <ul>
+                            <li><b>Menavigasi Antarmuka yang Ramah Pengguna:</b> Temukan modul yang Anda butuhkan dengan cepat, akses informasi relevan, dan selesaikan tugas dengan beberapa klik.</li>
+                            <li><b>Mengelola Operasi Bisnis Sehari-hari:</b> Dari pencatatan transaksi keuangan, pengelolaan pesanan, hingga pelacakan inventaris, setiap modul dirancang untuk memudahkan pekerjaan Anda.</li>
+                            <li><b>Berinteraksi dan Berkolaborasi:</b> Fitur kolaborasi terintegrasi memungkinkan Anda bekerja sama dengan tim secara mulus, berbagi informasi, dan mempercepat pengambilan keputusan.</li>
+                            <li><b>Mengakses Informasi Real-time:</b> Dapatkan wawasan instan tentang kinerja bisnis Anda melalui dasbor dan laporan yang mudah diakses, memungkinkan Anda membuat keputusan yang lebih cerdas dan responsif.</li>
+                        </ul>
+                        <p>ERP Siumang adalah mitra digital Anda, memberdayakan Anda untuk fokus pada hal yang paling penting: mengembangkan bisnis dan mencapai tujuan Anda.</p>
+					</section><!--//section-->
+			    
+			    <footer class="footer">
+				    <div class="container text-center py-5">
+			            <small class="copyright">Designed with <span class="sr-only">love</span><i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="theme-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
+				    </div>
+			    </footer>
+		    </div> 
+	    </div>
+    </div><!--//docs-wrapper-->
+   
+       
+    <!-- Javascript -->          
+    <script src="assets/plugins/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
+    
+    
+    <!-- Page Specific JS -->
+    <script src="assets/plugins/smoothscroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
+    <script src="assets/js/highlight-custom.js"></script> 
+    <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>      
+    <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script> 
+    <script src="assets/js/docs.js"></script> 
+
+</body>
+</html>

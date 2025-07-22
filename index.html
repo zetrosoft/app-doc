@@ -1,24 +1,84 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="id">
 <head>
-    <title>CoderDocs - Bootstrap Documentation Template For Software Projects</title>
+    <title>Dokumentasi ERP Siumang</title>
     
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Bootstrap Documentation Template For Software Developers">
-    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
-    <link rel="shortcut icon" href="favicon.ico"> 
+    <meta name="description" content="Dokumentasi Sistem ERP Siumang untuk Pengguna dan Administrator">
+    <meta name="author" content="ERP Siumang Team">    
+    <link rel="shortcut icon" href="assets/images/logo-siumang@0.1x.png"> 
     
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
     
     <!-- FontAwesome JS-->
-    <script defer src="assets/fontawesome/js/all.min.js"></script>
+    <script src="assets/fontawesome/js/all.min.js"></script> <!-- 'defer' attribute re-added -->
+
+    <!-- Bootstrap 5 CSS dari CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <!-- Bootstrap Icons CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Theme CSS -->  
     <link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
+
+    <style>
+        /* Penyesuaian untuk tinggi kartu seragam dan warna judul */
+        .content-card {
+            height: 240px; /* Tinggi kartu seragam */
+            display: flex;
+            flex-direction: column;
+        }
+        .content-card .card-body {
+            flex-grow: 1; /* Memastikan body kartu mengisi ruang yang tersedia */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Untuk distribusi konten vertikal */
+        }
+        .content-card .card-title {
+            color: #007bff; /* Warna biru untuk judul kartu */
+            font-size: 1.5rem; /* Ukuran font judul */
+            font-weight: 700;
+        }
+        .content-card .card-icon-holder {
+            font-size: 2.5rem; /* Ukuran ikon medium */
+            color: #20c997; /* Warna ikon */
+            margin-bottom: 0.5rem;
+        }
+        .content-card .card-text {
+            font-size: 0.95rem;
+            color: #6c757d;
+        }
+        /* Styling untuk judul grup */
+        .group-heading {
+            font-size: 2rem; /* Ukuran yang sedikit lebih besar */
+            font-weight: 700; /* Lebih tebal */
+            color: #343a40; /* Warna teks gelap */
+            text-align: left; /* Rata kiri */
+            margin-bottom: 0.5rem; /* Kurangi margin bawah untuk caption */
+            display: flex;
+            align-items: center;
+        }
+        .group-heading i {
+            margin-right: 1rem; /* Jarak antara ikon dan teks */
+            font-size: 1.8rem; /* Ukuran ikon grup */
+            color: #007bff; /* Warna ikon grup */
+        }
+        .group-caption {
+            font-size: 1rem;
+            color: #6c757d;
+            margin-bottom: 1.5rem; /* Margin bawah setelah caption */
+            text-align: left;
+        }
+        /* Penyesuaian ukuran logo di navbar */
+        .site-logo .logo-icon {
+            width: 32px;
+            height: 32px;
+        }
+    </style>
 
 </head> 
 
@@ -28,17 +88,17 @@
         <div class="branding docs-branding">
             <div class="container-fluid position-relative py-2">
                 <div class="docs-logo-wrapper">
-	                <div class="site-logo"><a class="navbar-brand" href="index.html"><img class="logo-icon me-2" src="assets/images/coderdocs-logo.svg" alt="logo"><span class="logo-text">Coder<span class="text-alt">Docs</span></span></a></div>    
+	                <div class="site-logo">
+                        <a class="navbar-brand" href="index.html">
+                            <img class="logo-icon me-2" src="assets/images/logo-siumang@0.33x.svg" alt="logo Siumang">
+                            <span class="logo-text">ERP<span class="text-alt">Siumang</span></span>
+                        </a>
+                    </div>    
                 </div><!--//docs-logo-wrapper-->
 	            <div class="docs-top-utilities d-flex justify-content-end align-items-center">
 	
-					<ul class="social-list list-inline mx-md-3 mx-lg-5 mb-0 d-none d-lg-flex">
-						<li class="list-inline-item"><a href="#"><i class="fa-brands fa-github fa-fw"></i></a></li>
-			            <li class="list-inline-item"><a href="#"><i class="fa-brands fa-x-twitter fa-fw"></i></a></li>
-		                <li class="list-inline-item"><a href="#"><i class="fa-brands fa-slack fa-fw"></i></a></li>
-		                <li class="list-inline-item"><a href="#"><i class="fa-brands fa-product-hunt fa-fw"></i></a></li>
-		            </ul><!--//social-list-->
-		            <a href="https://themes.3rdwavemedia.com/bootstrap-templates/startup/coderdocs-free-bootstrap-5-documentation-template-for-software-projects/" class="btn btn-primary d-none d-lg-flex">Download</a>
+					<!-- Social media icons removed -->
+		            <!-- Tombol Unduh Manual dihapus sesuai permintaan -->
 	            </div><!--//docs-top-utilities-->
             </div><!--//container-->
         </div><!--//branding-->
@@ -49,164 +109,379 @@
 	    <div class="theme-bg-shapes-right"></div>
 	    <div class="theme-bg-shapes-left"></div>
 	    <div class="container">
-		    <h1 class="page-heading single-col-max mx-auto">Documentation</h1>
-		    <div class="page-intro single-col-max mx-auto">Everything you need to get your software documentation online.</div>
-		    <div class="main-search-box pt-3 d-block mx-auto">
-                 <form class="search-form w-100">
-		            <input type="text" placeholder="Search the docs..." name="search" class="form-control search-input">
-		            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
-		        </form>
-             </div>
+		    <h1 class="page-heading single-col-max mx-auto">Dokumentasi ERP Siumang</h1>
+		    <div class="page-intro single-col-max mx-auto">Selamat datang di panduan lengkap ERP Siumang. Di sini Anda akan menemukan semua informasi yang dibutuhkan untuk mengoperasikan sistem kami dengan efisien, mulai dari konfigurasi awal hingga penggunaan modul-modul operasional sehari-hari.</div>
+		    <!-- Main search box removed -->
 	    </div>
     </div><!--//page-header-->
    <div class="page-content">
 	    <div class="container">
 		    <div class="docs-overview py-5">
+                <!-- Grup Admin Sistem -->
+                <h2 class="group-heading"><i class="bi bi-ui-checks-grid"></i> Admin Sistem</h2>
+                <p class="group-caption">Modul-modul ini dirancang khusus untuk administrator sistem yang bertanggung jawab atas pengelolaan dan pemeliharaan ERP Siumang. Pelajari cara <b>mengatur konfigurasi dasar, mengelola pengguna dan hak akses, serta memahami struktur inti sistem</b> untuk memastikan ERP Siumang berjalan optimal dan aman sesuai kebutuhan bisnis Anda.</p>
 			    <div class="row justify-content-center">
+				    
+                    <!-- Kartu Modul Introduction -->
+                    <div class="col-12 col-lg-4 py-3">
+                        <div class="card shadow-sm content-card">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">
+                                    <span class="theme-icon-holder card-icon-holder me-2">
+                                        <i class="fas fa-book"></i>
+                                    </span><!--//card-icon-holder-->
+                                    <span class="card-title-text">Introduction</span>
+                                </h5>
+                                <div class="card-text">
+                                    Bagian ini adalah gerbang utama Anda menuju dokumentasi lengkap ERP Siumang. Di sini, Anda akan menemukan panduan awal, navigasi, dan struktur umum yang membantu Anda memulai perjalanan eksplorasi sistem kami dengan lancar. Pelajari cara terbaik untuk memanfaatkan sumber daya dokumentasi ini agar setiap fitur dapat Anda pahami dengan mudah dan cepat.
+                                </div>
+                                <a class="card-link-mask" href="introduction.html"></a>
+                            </div><!--//card-body-->
+                        </div><!--//card-->
+                    </div><!--//col-->
+
+                    <!-- Kartu Modul Setting -->
 				    <div class="col-12 col-lg-4 py-3">
-					    <div class="card shadow-sm">
+					    <div class="card shadow-sm content-card">
 						    <div class="card-body">
 							    <h5 class="card-title mb-3">
 								    <span class="theme-icon-holder card-icon-holder me-2">
-								        <i class="fas fa-map-signs"></i>
+								        <i class="fas fa-cogs"></i>
 							        </span><!--//card-icon-holder-->
-							        <span class="card-title-text">Introduction</span>
+							        <span class="card-title-text">Setting</span>
 							    </h5>
 							    <div class="card-text">
-								    Section overview goes here. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+								    Modul Setting merupakan pusat kendali untuk seluruh konfigurasi sistem ERP Siumang. Dari sini, administrator dapat:
+                                    <ul>
+                                        <li><b>Mengatur parameter perusahaan.</b></li>
+                                        <li><b>Menyesuaikan preferensi umum.</b></li>
+                                        <li><b>Mengatur kebijakan operasional.</b></li>
+                                        <li><b>Mengelola mata uang dan format penomoran dokumen.</b></li>
+                                    </ul>
+                                    Memastikan sistem berjalan sesuai kebutuhan spesifik bisnis Anda.
 							    </div>
-							    <a class="card-link-mask" href="docs-page.html#section-1"></a>
+							    <a class="card-link-mask" href="setting.html"></a>
 						    </div><!--//card-body-->
 					    </div><!--//card-->
 				    </div><!--//col-->
+
+                    <!-- Kartu Modul Users -->
 				    <div class="col-12 col-lg-4 py-3">
-					    <div class="card shadow-sm">
+					    <div class="card shadow-sm content-card">
 						    <div class="card-body">
 							    <h5 class="card-title mb-3">
 								    <span class="theme-icon-holder card-icon-holder me-2">
-								        <i class="fas fa-arrow-down"></i>
+								        <i class="fas fa-user-cog"></i>
 							        </span><!--//card-icon-holder-->
-							        <span class="card-title-text">Installation</span>
+							        <span class="card-title-text">Users</span>
 							    </h5>
 							    <div class="card-text">
-								    Section overview goes here. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+								    Modul Users memberikan kendali penuh atas manajemen pengguna dan hak akses dalam ERP Siumang. Administrator dapat:
+                                    <ul>
+                                        <li><b>Membuat, mengedit, dan menonaktifkan akun pengguna.</b></li>
+                                        <li><b>Menetapkan peran dan izin spesifik.</b></li>
+                                        <li><b>Menjaga keamanan dan integritas data.</b></li>
+                                    </ul>
+                                    Memastikan setiap individu memiliki akses yang sesuai dengan tanggung jawabnya.						    
+								</div>
+							    <a class="card-link-mask" href="users.html"></a>
+						    </div><!--//card-body-->
+					    </div><!--//card-->
+				    </div><!--//col-->
+
+			    </div><!--//row-->
+
+                <!-- Grup Pengguna Sistem -->
+                <h2 class="group-heading mt-5"><i class="bi bi-person-workspace"></i> Pengguna Sistem</h2>
+                <p class="group-caption">Modul-modul ini ditujukan untuk pengguna akhir dalam menjalankan operasi bisnis sehari-hari di ERP Siumang. Temukan panduan langkah demi langkah untuk <b>mengelola keuangan, mengoptimalkan penjualan, melacak inventaris, dan mengelola sumber daya manusia</b> dengan mudah dan efisien, membantu Anda mencapai produktivitas maksimal.</p>
+                <div class="row justify-content-center">
+
+                    <!-- Kartu Modul Akuntansi -->
+				    <div class="col-12 col-lg-4 py-3">
+					    <div class="card shadow-sm content-card">
+						    <div class="card-body">
+							    <h5 class="card-title mb-3">
+								    <span class="theme-icon-holder card-icon-holder me-2">
+								        <i class="fas fa-calculator"></i>
+							        </span><!--//card-icon-holder-->
+							        <span class="card-title-text">Akuntansi</span>
+							    </h5>
+							    <div class="card-text">
+								    Modul Akuntansi adalah tulang punggung pengelolaan finansial perusahaan Anda. Dengan modul ini, Anda dapat:
+                                    <ul>
+                                        <li><b>Mencatat transaksi keuangan.</b></li>
+                                        <li><b>Mengelola buku besar.</b></li>
+                                        <li><b>Menghasilkan laporan finansial akurat (neraca, laba rugi).</b></li>
+                                    </ul>
+                                    Dirancang untuk memastikan kepatuhan akuntansi dan memberikan wawasan mendalam tentang kesehatan keuangan bisnis.
 							    </div>
-							    <a class="card-link-mask" href="docs-page.html#section-2"></a>
+							    <a class="card-link-mask" href="akuntansi.html"></a>
 						    </div><!--//card-body-->
 					    </div><!--//card-->
 				    </div><!--//col-->
+
+                    <!-- Kartu Modul Purchasing -->
 				    <div class="col-12 col-lg-4 py-3">
-					    <div class="card shadow-sm">
+					    <div class="card shadow-sm content-card">
 						    <div class="card-body">
 							    <h5 class="card-title mb-3">
 								    <span class="theme-icon-holder card-icon-holder me-2">
-								        <i class="fas fa-box fa-fw"></i>
+								        <i class="fas fa-shopping-cart"></i>
 							        </span><!--//card-icon-holder-->
-							        <span class="card-title-text">APIs</span>
+							        <span class="card-title-text">Purchasing</span>
 							    </h5>
 							    <div class="card-text">
-								    Section overview goes here. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.						    
-								</div>
-							    <a class="card-link-mask" href="docs-page.html#section-3"></a>
+								    Modul Purchasing menyederhanakan seluruh proses pengadaan barang dan jasa. Mulai dari:
+                                    <ul>
+                                        <li><b>Pembuatan permintaan pembelian.</b></li>
+                                        <li><b>Pengelolaan pesanan pembelian.</b></li>
+                                        <li><b>Pencatatan penerimaan barang dan faktur pemasok.</b></li>
+                                    </ul>
+                                    Membantu Anda mengoptimalkan rantai pasok dengan melacak status pesanan dan mengelola hubungan pemasok secara efisien.
+							    </div>
+							    <a class="card-link-mask" href="purchasing.html"></a>
 						    </div><!--//card-body-->
 					    </div><!--//card-->
 				    </div><!--//col-->
+
+                    <!-- Kartu Modul Inventory Management -->
 				    <div class="col-12 col-lg-4 py-3">
-					    <div class="card shadow-sm">
+					    <div class="card shadow-sm content-card">
 						    <div class="card-body">
 							    <h5 class="card-title mb-3">
 								    <span class="theme-icon-holder card-icon-holder me-2">
-								        <i class="fas fa-cogs fa-fw"></i>
+								        <i class="fas fa-warehouse"></i>
 							        </span><!--//card-icon-holder-->
-							        <span class="card-title-text">Integrations</span>
+							        <span class="card-title-text">Inventory Management</span>
 							    </h5>
 							    <div class="card-text">
-								    Section overview goes here. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.						    
+								    Modul Inventory Management adalah kunci untuk mengelola stok barang Anda secara efisien. Anda dapat:
+                                    <ul>
+                                        <li><b>Melacak kuantitas stok di berbagai gudang.</b></li>
+                                        <li><b>Mencatat pergerakan barang masuk dan keluar.</b></li>
+                                        <li><b>Melakukan penyesuaian inventaris.</b></li>
+                                    </ul>
+                                    Fitur ini membantu mengurangi biaya penyimpanan dan mencegah kekurangan stok, memastikan ketersediaan produk yang optimal.						    
 								</div>
-							    <a class="card-link-mask" href="docs-page.html#section-4"></a>
+							    <a class="card-link-mask" href="inventory-management.html"></a>
 						    </div><!--//card-body-->
 					    </div><!--//card-->
 				    </div><!--//col-->
+
+                    <!-- Kartu Modul Sales & Marketing -->
 				    <div class="col-12 col-lg-4 py-3">
-					    <div class="card shadow-sm">
+					    <div class="card shadow-sm content-card">
 						    <div class="card-body">
 							    <h5 class="card-title mb-3">
 								    <span class="theme-icon-holder card-icon-holder me-2">
-								        <i class="fas fa-tools"></i>
+								        <i class="fas fa-chart-line"></i>
 							        </span><!--//card-icon-holder-->
-							        <span class="card-title-text">Utilities</span>
+							        <span class="card-title-text">Sales & Marketing</span>
 							    </h5>
 							    <div class="card-text">
-								    Section overview goes here. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.						    
+								    Modul Sales & Marketing dirancang untuk mengoptimalkan siklus penjualan dan strategi pemasaran Anda. Kelola:
+                                    <ul>
+                                        <li><b>Prospek, penawaran, dan pesanan penjualan.</b></li>
+                                        <li><b>Faktur pelanggan.</b></li>
+                                        <li><b>Kinerja penjualan dan kampanye pemasaran.</b></li>
+                                    </ul>
+                                    Untuk meningkatkan konversi dan memperkuat hubungan dengan pelanggan.						    
 								</div>
-							    <a class="card-link-mask" href="docs-page.html#section-5"></a>
+							    <a class="card-link-mask" href="sales-marketing.html"></a>
 						    </div><!--//card-body-->
 					    </div><!--//card-->
 				    </div><!--//col-->
+
+                    <!-- Kartu Modul CRM -->
 				    <div class="col-12 col-lg-4 py-3">
-					    <div class="card shadow-sm">
+					    <div class="card shadow-sm content-card">
 						    <div class="card-body">
 							    <h5 class="card-title mb-3">
 								    <span class="theme-icon-holder card-icon-holder me-2">
-								        <i class="fas fa-laptop-code"></i>
+								        <i class="fas fa-handshake"></i>
 							        </span><!--//card-icon-holder-->
-							        <span class="card-title-text">Web</span>
+							        <span class="card-title-text">CRM</span>
 							    </h5>
 							    <div class="card-text">
-								    Section overview goes here. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.						    
+								    Modul CRM (Customer Relationship Management) membantu Anda membangun dan memelihara hubungan yang kuat dengan pelanggan. Dari:
+                                    <ul>
+                                        <li><b>Pencatatan interaksi pelanggan.</b></li>
+                                        <li><b>Pengelolaan peluang penjualan.</b></li>
+                                        <li><b>Penanganan keluhan.</b></li>
+                                    </ul>
+                                    Modul ini memastikan setiap pelanggan merasa dihargai dan meningkatkan kepuasan serta loyalitas pelanggan.						    
 								</div>
-							    <a class="card-link-mask" href="docs-page.html#section-6"></a>
+							    <a class="card-link-mask" href="crm.html"></a>
 						    </div><!--//card-body-->
 					    </div><!--//card-->
 				    </div><!--//col-->
+
+                    <!-- Kartu Modul HRIS -->
 				    <div class="col-12 col-lg-4 py-3">
-					    <div class="card shadow-sm">
+					    <div class="card shadow-sm content-card">
 						    <div class="card-body">
 							    <h5 class="card-title mb-3">
 								    <span class="theme-icon-holder card-icon-holder me-2">
-								        <i class="fas fa-tablet-alt"></i>
+								        <i class="fas fa-user-friends"></i>
 							        </span><!--//card-icon-holder-->
-							        <span class="card-title-text">Mobile</span>
+							        <span class="card-title-text">HRIS</span>
 							    </h5>
 							    <div class="card-text">
-								    Section overview goes here. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.						    
+								    Modul HRIS (Human Resource Information System) adalah solusi komprehensif untuk manajemen sumber daya manusia. Kelola:
+                                    <ul>
+                                        <li><b>Data karyawan dan penggajian.</b></li>
+                                        <li><b>Kehadiran, cuti, dan rekrutmen.</b></li>
+                                        <li><b>Siklus hidup karyawan.</b></li>
+                                    </ul>
+                                    Sederhanakan proses administrasi HR dan tingkatkan efisiensi operasional departemen Anda.						    
 								</div>
-							    <a class="card-link-mask" href="docs-page.html#section-7"></a>
+							    <a class="card-link-mask" href="hris.html"></a>
 						    </div><!--//card-body-->
 					    </div><!--//card-->
 				    </div><!--//col-->
+
+                    <!-- Kartu Modul Production -->
 				    <div class="col-12 col-lg-4 py-3">
-					    <div class="card shadow-sm">
+					    <div class="card shadow-sm content-card">
 						    <div class="card-body">
 							    <h5 class="card-title mb-3">
 								    <span class="theme-icon-holder card-icon-holder me-2">
-								        <i class="fas fa-book-reader"></i>
+								        <i class="fas fa-industry"></i>
 							        </span><!--//card-icon-holder-->
-							        <span class="card-title-text">Resources</span>
+							        <span class="card-title-text">Production</span>
 							    </h5>
 							    <div class="card-text">
-								    Section overview goes here. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.						    
+								    Modul Production memungkinkan Anda merencanakan, melacak, dan mengelola semua operasi manufaktur. Dari:
+                                    <ul>
+                                        <li><b>Pembuatan Bill of Materials (BOM).</b></li>
+                                        <li><b>Perencanaan produksi.</b></li>
+                                        <li><b>Pelacakan kemajuan pekerjaan.</b></li>
+                                    </ul>
+                                    Modul ini membantu Anda mengoptimalkan alur kerja pabrik dan memastikan produksi berjalan lancar serta efisien.						    
 								</div>
-							    <a class="card-link-mask" href="docs-page.html#section-8"></a>
+							    <a class="card-link-mask" href="production.html"></a>
 						    </div><!--//card-body-->
 					    </div><!--//card-->
 				    </div><!--//col-->
+
+                    <!-- Kartu Modul Quality Control -->
 				    <div class="col-12 col-lg-4 py-3">
-					    <div class="card shadow-sm">
+					    <div class="card shadow-sm content-card">
 						    <div class="card-body">
 							    <h5 class="card-title mb-3">
 								    <span class="theme-icon-holder card-icon-holder me-2">
-								        <i class="fas fa-lightbulb"></i>
+								        <i class="fas fa-check-double"></i>
 							        </span><!--//card-icon-holder-->
-							        <span class="card-title-text">FAQs</span>
+							        <span class="card-title-text">Quality Control</span>
 							    </h5>
 							    <div class="card-text">
-								    Section overview goes here. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.						    
+								    Modul Quality Control memastikan produk dan proses Anda memenuhi standar kualitas yang ditetapkan. Lakukan:
+                                    <ul>
+                                        <li><b>Inspeksi kualitas pada setiap tahap produksi.</b></li>
+                                        <li><b>Pencatatan hasil pengujian.</b></li>
+                                        <li><b>Pengelolaan tindakan korektif.</b></li>
+                                    </ul>
+                                    Identifikasi potensi masalah lebih awal dan pastikan konsistensi kualitas untuk kepuasan pelanggan yang maksimal.						    
 								</div>
-							    <a class="card-link-mask" href="docs-page.html#section-9"></a>
+							    <a class="card-link-mask" href="quality-control.html"></a>
 						    </div><!--//card-body-->
 					    </div><!--//card-->
 				    </div><!--//col-->
+
+                    <!-- Kartu Modul RnD -->
+                    <div class="col-12 col-lg-4 py-3">
+                        <div class="card shadow-sm content-card">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">
+                                    <span class="theme-icon-holder card-icon-holder me-2">
+                                        <i class="fas fa-flask"></i>
+                                    </span><!--//card-icon-holder-->
+                                    <span class="card-title-text">RnD</span>
+                                </h5>
+                                <div class="card-text">
+                                    Modul RnD (Research and Development) mendukung proses inovasi dan pengembangan produk atau layanan baru. Kelola:
+                                    <ul>
+                                        <li><b>Proyek penelitian.</b></li>
+                                        <li><b>Pelacakan tahapan pengembangan.</b></li>
+                                        <li><b>Dokumentasi hasil eksperimen.</b></li>
+                                    </ul>
+                                    Fitur ini membantu mempercepat siklus inovasi dan memastikan ide-ide baru dapat diwujudkan secara terstruktur.
+                                </div>
+                                <a class="card-link-mask" href="rnd.html"></a>
+                            </div><!--//card-body-->
+                        </div><!--//card-->
+                    </div><!--//col-->
+
+                    <!-- Kartu Modul Creative Management -->
+                    <div class="col-12 col-lg-4 py-3">
+                        <div class="card shadow-sm content-card">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">
+                                    <span class="theme-icon-holder card-icon-holder me-2">
+                                        <i class="fas fa-paint-brush"></i>
+                                    </span><!--//card-icon-holder-->
+                                    <span class="card-title-text">Creative Management</span>
+                                </h5>
+                                <div class="card-text">
+                                    Modul Creative Management membantu Anda mengelola aset kreatif dan konten digital. Rencanakan dan kelola:
+                                    <ul>
+                                        <li><b>Kampanye kreatif.</b></li>
+                                        <li><b>Aset media.</b></li>
+                                        <li><b>Publikasi konten web.</b></li>
+                                    </ul>
+                                    Ini adalah alat penting untuk menjaga konsistensi merek dan efektivitas komunikasi visual perusahaan Anda.
+                                </div>
+                                <a class="card-link-mask" href="creative-management.html"></a>
+                            </div><!--//card-body-->
+                        </div><!--//card-->
+                    </div><!--//col-->
+
+                    <!-- Kartu Modul Website -->
+                    <div class="col-12 col-lg-4 py-3">
+                        <div class="card shadow-sm content-card">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">
+                                    <span class="theme-icon-holder card-icon-holder me-2">
+                                        <i class="fas fa-globe"></i>
+                                    </span><!--//card-icon-holder-->
+                                    <span class="card-title-text">Website</span>
+                                </h4>
+                                <div class="card-text">
+                                    Modul Website memungkinkan Anda membangun dan mengelola situs web perusahaan yang terintegrasi langsung dengan ERP Siumang. Publikasikan:
+                                    <ul>
+                                        <li><b>Konten dan halaman produk.</b></li>
+                                        <li><b>Interaksi dengan pelanggan.</b></li>
+                                    </ul>
+                                    Melalui platform yang terpusat. Fitur ini mempermudah pengelolaan kehadiran online Anda.
+                                </div>
+                                <a class="card-link-mask" href="website.html"></a>
+                            </div><!--//card-body-->
+                        </div><!--//card-->
+                    </div><!--//col-->
+
+                    <!-- Kartu Modul Dashboard Management -->
+                    <div class="col-12 col-lg-4 py-3">
+                        <div class="card shadow-sm content-card">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">
+                                    <span class="theme-icon-holder card-icon-holder me-2">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                    </span><!--//card-icon-holder-->
+                                    <span class="card-title-text">Dashboard Management</span>
+                                </h5>
+                                <div class="card-text">
+                                    Modul Dashboard Management menyediakan dasbor analitik yang dapat disesuaikan untuk memberikan wawasan bisnis yang mendalam. Visualisasikan:
+                                    <ul>
+                                        <li><b>Data kunci dari berbagai modul.</b></li>
+                                        <li><b>Grafik dan metrik yang mudah dipahami.</b></li>
+                                    </ul>
+                                    Pantau kinerja bisnis secara real-time dan buat keputusan strategis berdasarkan data yang akurat.
+                                </div>
+                                <a class="card-link-mask" href="dashboard-management.html"></a>
+                            </div><!--//card-body-->
+                        </div><!--//card-->
+                    </div><!--//col-->
+
 			    </div><!--//row-->
 		    </div><!--//container-->
 		</div><!--//container-->
@@ -216,11 +491,9 @@
 	    <div class="theme-bg-shapes-right"></div>
 	    <div class="theme-bg-shapes-left"></div>
 	    <div class="container">
-		    <h3 class="mb-2 text-white mb-3">Launch Your Software Project Like A Pro</h3>
-		    <div class="section-intro text-white mb-3 single-col-max mx-auto">Want to launch your software project and start getting traction from your target users? Check out our premium <a class="text-white" href="https://themes.3rdwavemedia.com/bootstrap-templates/startup/coderpro-bootstrap-5-startup-template-for-software-projects/">Bootstrap 5 startup template CoderPro</a>! It has everything you need to promote your product.</div>
-		    <div class="pt-3 text-center">
-			    <a class="btn btn-light" href="https://themes.3rdwavemedia.com/bootstrap-templates/startup/coderpro-bootstrap-5-startup-template-for-software-projects/">Get CoderPro<i class="fas fa-arrow-alt-circle-right ml-2"></i></a>
-		    </div>
+		    <h3 class="mb-2 text-white mb-3">Mulai Gunakan ERP Siumang Sekarang!</h3>
+		    <div class="section-intro text-white mb-3 single-col-max mx-auto">Siap untuk mengoptimalkan operasi bisnis Anda? Jelajahi modul-modul kami dan temukan bagaimana ERP Siumang dapat membantu Anda.</div>
+		    <!-- "Mulai Dokumentasi" button removed -->
 	    </div>
     </section><!--//cta-section-->
 
@@ -228,14 +501,7 @@
 
 	    <div class="footer-bottom text-center py-5">
 		    
-		    <ul class="social-list list-unstyled pb-4 mb-0">
-			    <li class="list-inline-item"><a href="#"><i class="fa-brands fa-github fa-fw"></i></a></li> 
-	            <li class="list-inline-item"><a href="#"><i class="fa-brands fa-x-twitter fa-fw"></i></a></li>
-	            <li class="list-inline-item"><a href="#"><i class="fa-brands fa-slack fa-fw"></i></a></li>
-	            <li class="list-inline-item"><a href="#"><i class="fa-brands fa-product-hunt fa-fw"></i></a></li>
-	            <li class="list-inline-item"><a href="#"><i class="fa-brands fa-facebook-f fa-fw"></i></a></li>
-	            <li class="list-inline-item"><a href="#"><i class="fa-brands fa-instagram fa-fw"></i></a></li>
-	        </ul><!--//social-list-->
+		    <!-- Social media icons removed -->
 	        
 	        <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
             <small class="copyright">Designed with <span class="sr-only">love</span><i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="theme-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
@@ -249,14 +515,37 @@
     <script src="assets/plugins/popper.min.js"></script>
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
     
-    <!-- Page Specific JS -->
-    <script src="assets/plugins/smoothscroll.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
-    <script src="assets/js/highlight-custom.js"></script> 
-    <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>      
-    <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script> 
-    <script src="assets/js/docs.js"></script> 
+    <!-- Custom script for 404 redirection -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cardLinks = document.querySelectorAll('.card-link-mask');
+
+            cardLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault(); // Mencegah navigasi default
+
+                    const targetFile = this.getAttribute('href'); // Ambil href dari tautan
+
+                    // Lakukan permintaan fetch untuk memeriksa keberadaan file
+                    fetch(targetFile, { method: 'GET' }) 
+                        .then(response => {
+                            if (response.ok) {
+                                // Jika file ditemukan (status 200 OK), navigasi ke sana
+                                window.location.href = targetFile;
+                            } else {
+                                // Jika file tidak ditemukan (status 404 atau lainnya), navigasi ke 404.html
+                                window.location.href = '404.html';
+                            }
+                        })
+                        .catch(error => {
+                            // Tangani kesalahan jaringan atau lainnya
+                            console.error('Error checking file existence:', error);
+                            window.location.href = '404.html'; // Alihkan ke 404 jika ada error
+                        });
+                });
+            });
+        });
+    </script>
 
 </body>
-</html> 
-
+</html>
