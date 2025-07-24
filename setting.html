@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="id"> 
+<head>
+    <title>Dokumentasi ERP Siumang - Modul Setting</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="description" content="Dokumentasi Modul Setting ERP Siumang: Pengaturan Sistem, Preferensi, dan Kebijakan Operasional">
+    <meta name="author" content="ERP Siumang Team">    
+    <link rel="shortcut icon" href="assets/images/logo-siumang@0.1x.png"> 
+    
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome JS-->
+    <script src="assets/fontawesome/js/all.min.js"></script>
+    
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.2/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="assets/plugins/simplelightbox/simple-lightbox.min.css">
+    <!-- Bootstrap Icons CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
+
+    <style>
+        /* Penyesuaian umum untuk konsistensi */
+        .screenshot-container {
+            margin: 1.5em 0;
+            text-align: center;
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 0.375rem;
+            padding: 10px;
+        }
+        .screenshot-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.375rem;
+            box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+        }
+        /* Penyesuaian sidebar agar Bootstrap collapsible berfungsi */
+        .docs-sidebar .nav-item.section-title .theme-icon-holder {
+            font-size: 1.2rem;
+        }
+        .docs-sidebar .nav-link .theme-icon-holder {
+            font-size: 1rem;
+            margin-right: 0.5rem;
+        }
+        .docs-sidebar .nav-link.active {
+            color: #20c997;
+            font-weight: bold;
+        }
+        .docs-sidebar .nav-link:hover {
+            color: #007bff;
+        }
+        /* Style for nested sidebar links */
+        .docs-sidebar .nav-item .nav {
+            padding-left: 1.5rem;
+            border-left: 1px solid #e0e0e0;
+            margin-left: 0.5rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .docs-sidebar .nav-item .nav-link {
+            font-size: 0.9rem;
+            padding-top: 0.3rem;
+            padding-bottom: 0.3rem;
+        }
+        /* Styles for collapsible items */
+        .docs-sidebar .nav-link[data-bs-toggle="collapse"] {
+            position: relative;
+            padding-right: 2rem;
+        }
+        .docs-sidebar .nav-link[data-bs-toggle="collapse"]::after {
+            content: "\f078"; /* Chevron-down icon (Font Awesome) */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.2s ease-in-out;
+        }
+        .docs-sidebar .nav-link[data-bs-toggle="collapse"][aria-expanded="true"]::after {
+            content: "\f077"; /* Chevron-up icon (Font Awesome) */
+            transform: translateY(-50%) rotate(0deg); /* Ensure it's upright */
+        }
+    </style>
+
+</head> 
+
+<body class="docs-page">    
+    <header class="header fixed-top">	    
+        <div class="branding docs-branding">
+            <div class="container-fluid position-relative py-2">
+                <div class="docs-logo-wrapper">
+					<button id="docs-sidebar-toggler" class="docs-sidebar-toggler docs-sidebar-visible me-2 d-xl-none" type="button">
+	                    <span></span>
+	                    <span></span>
+	                    <span></span>
+	                </button>
+	                <div class="site-logo">
+                        <a class="navbar-brand" href="index.html">
+                            <img class="logo-icon me-2" src="assets/images/logo-siumang@0.33x.svg" alt="logo Siumang" style="width: 32px; height: 32px;">
+                            <span class="logo-text">ERP<span class="text-alt">Siumang</span></span>
+                        </a>
+                    </div>    
+                </div><!--//docs-logo-wrapper-->
+	            <div class="docs-top-utilities d-flex justify-content-end align-items-center">
+	                <div class="top-search-box d-none d-lg-flex">
+		                <form class="search-form">
+				            <input type="text" placeholder="Cari dokumentasi..." name="search" class="form-control search-input">
+				            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+				        </form>
+	                </div>
+	            </div><!--//docs-top-utilities-->
+            </div><!--//container-->
+        </div><!--//branding-->
+    </header><!--//header-->
+    
+    
+    <div class="docs-wrapper">
+	    <div id="docs-sidebar" class="docs-sidebar">
+		    <div class="top-search-box d-lg-none p-3">
+                <form class="search-form">
+		            <input type="text" placeholder="Cari dokumentasi..." name="search" class="form-control search-input">
+		            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+		        </form>
+            </div>
+		    <nav id="docs-nav" class="docs-nav navbar">
+			    <ul class="section-items list-unstyled nav flex-column pb-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><span class="theme-icon-holder me-2"><i class="fas fa-home"></i></span>Home</a>
+                    </li>
+				    <li class="nav-item">
+                        <a class="nav-link active scrollto collapsed" data-bs-toggle="collapse" href="#collapseSettings" aria-expanded="true" aria-controls="collapseSettings">
+                            <span class="theme-icon-holder me-2"><i class="fas fa-cog"></i></span>Modul Setting
+                        </a>
+                        <ul id="collapseSettings" class="nav flex-column collapse show">
+                            <li class="nav-item"><a class="nav-link scrollto" href="#overview-setting">Gambaran Umum</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#accounts-settings">Accounts Settings</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#inventory-settings">Inventory Settings</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#sales-settings">Sales Settings</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#purchase-settings">Purchase Settings</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#production-settings">Production Settings</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#crm-settings">CRM Settings</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#rnd-projects-settings">RnD Projects Settings</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#help-desk-settings">Help Desk Settings</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#system-settings">System Settings</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#domain-settings">Domain Settings</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#global-defaults">Global Defaults</a></li>
+                        </ul>
+                    </li>
+                    <!-- Tambahkan menu utama lainnya jika diperlukan, contoh: -->
+                    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="introduction.html"><span class="theme-icon-holder me-2"><i class="fas fa-book"></i></span>Pengantar ERP</a></li>
+                    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="users.html"><span class="theme-icon-holder me-2"><i class="fas fa-user-cog"></i></span>Modul Users</a></li>
+                    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="akuntansi.html"><span class="theme-icon-holder me-2"><i class="fas fa-calculator"></i></span>Akuntansi</a></li>
+                    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="purchasing.html"><span class="theme-icon-holder me-2"><i class="fas fa-shopping-cart"></i></span>Purchasing</a></li>
+                    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="inventory-management.html"><span class="theme-icon-holder me-2"><i class="fas fa-warehouse"></i></span>Inventory Management</a></li>
+                    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="sales-marketing.html"><span class="theme-icon-holder me-2"><i class="fas fa-chart-line"></i></span>Sales & Marketing</a></li>
+                    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="crm.html"><span class="theme-icon-holder me-2"><i class="fas fa-handshake"></i></span>CRM</a></li>
+                    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="hris.html"><span class="theme-icon-holder me-2"><i class="fas fa-user-friends"></i></span>HRIS</a></li>
+                    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="production.html"><span class="theme-icon-holder me-2"><i class="fas fa-industry"></i></span>Production</a></li>
+                    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="quality-control.html"><span class="theme-icon-holder me-2"><i class="fas fa-check-double"></i></span>Quality Control</a></li>
+                    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="rnd.html"><span class="theme-icon-holder me-2"><i class="fas fa-flask"></i></span>RnD</a></li>
+                    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="creative-management.html"><span class="theme-icon-holder me-2"><i class="fas fa-paint-brush"></i></span>Creative Management</a></li>
+                    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="website.html"><span class="theme-icon-holder me-2"><i class="fas fa-globe"></i></span>Website</a></li>
+                    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="dashboard-management.html"><span class="theme-icon-holder me-2"><i class="fas fa-tachometer-alt"></i></span>Dashboard Management</a></li>
+			    </ul>
+
+		    </nav><!--//docs-nav-->
+	    </div><!--//docs-sidebar-->
+	    <div class="docs-content">
+		    <div class="container">
+			    <article class="docs-article" id="module-settings">
+				    <header class="docs-header">
+					    <h1 class="docs-heading">Modul Setting (Pengaturan)</h1>
+					    <section class="docs-intro" id="overview-setting">
+						    <p>Modul Setting atau Preferensi merupakan pusat kendali untuk seluruh konfigurasi sistem ERP Siumang. Dari sini, administrator dapat:
+                                <ul>
+                                    <li><b>Mengatur parameter perusahaan.</b></li>
+                                    <li><b>Menyesuaikan preferensi umum.</b></li>
+                                    <li><b>Mengatur kebijakan operasional.</b></li>
+                                    <li><b>Mengelola mata uang dan format penomoran dokumen.</b></li>
+                                </ul>
+                                Dengan modul ini, Anda dapat memastikan sistem berjalan sesuai kebutuhan spesifik bisnis Anda, mengoptimalkan alur kerja, dan menjaga konsistensi data di seluruh departemen.</p>
+                            <div class="screenshot-container text-center my-4">
+                                <img class="img-fluid rounded shadow" src="assets/images/settings_overview.png" alt="Tampilan Umum Modul Setting">
+                                <small class="text-muted d-block mt-2">Gambar: Tampilan umum halaman Modul Setting.</small>
+                            </div>
+						</section><!--//docs-intro-->
+				    </header>
+				    
+                    <section class="docs-section" id="accounts-settings">
+						<h2 class="section-heading"><i class="fas fa-calculator me-2"></i> Accounts Settings (Pengaturan Akuntansi)</h2>
+						<p>Pengaturan Akuntansi adalah inti dari pengelolaan finansial di ERP Siumang. Bagian ini memungkinkan Anda untuk mengonfigurasi parameter fundamental yang memengaruhi bagaimana transaksi keuangan dicatat, diproses, dan dilaporkan di seluruh sistem.</p>
+                        <p><strong>Fungsi dan Kegunaan:</strong> Konfigurasi yang tepat di sini sangat krusial untuk menjaga akurasi data keuangan, mematuhi standar akuntansi, dan mendukung pengambilan keputusan bisnis yang solid. Ini mencakup pengaturan mata uang, tahun fiskal, dan akun default untuk berbagai transaksi.</p>
+                        <p><strong>Cara Input:</strong> Anda dapat mengatur mata uang default perusahaan, mengaktifkan atau menonaktifkan fitur multi-mata uang, menentukan akun laba ditahan, dan mengonfigurasi akun default untuk penjualan, pembelian, dan biaya. Field-field ini biasanya berupa dropdown pilihan atau input teks numerik.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/accounts_settings.png" alt="Pengaturan Akuntansi">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan Akuntansi.</small>
+                        </div>
+                    </section><!--//section-->
+
+                    <section class="docs-section" id="inventory-settings">
+                        <h2 class="section-heading"><i class="fas fa-boxes me-2"></i> Inventory Settings (Pengaturan Inventaris)</h2>
+                        <p>Pengaturan Inventaris mengelola perilaku stok, gudang, dan pergerakan barang. Ini vital untuk menjaga akurasi data inventaris dan mengoptimalkan manajemen rantai pasok.</p>
+                        <p><strong>Fungsi dan Kegunaan:</strong> Mengontrol bagaimana sistem melacak kuantitas barang, lokasi penyimpanan, dan metode penilaian stok. Pengaturan ini memengaruhi ketersediaan produk, biaya persediaan, dan efisiensi operasional gudang.</p>
+                        <p><strong>Cara Input:</strong> Anda dapat menentukan metode penilaian stok (misal: FIFO, LIFO, Weighted Average), mengaktifkan fitur Serial Number atau Batch Number, mengatur gudang default, dan mengonfigurasi aturan untuk transfer stok dan penyesuaian inventaris. Field yang tersedia meliputi pilihan metode, kotak centang aktivasi fitur, dan input untuk gudang default.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/inventory_settings.png" alt="Pengaturan Inventaris">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan Inventaris.</small>
+                        </div>
+                    </section><!--//section-->
+
+                    <section class="docs-section" id="sales-settings">
+                        <h2 class="section-heading"><i class="fas fa-handshake me-2"></i> Sales Settings (Pengaturan Penjualan)</h2>
+                        <p>Pengaturan Penjualan mengonfigurasi parameter untuk semua aktivitas penjualan, mulai dari penawaran hingga faktur. Ini memastikan proses penjualan yang efisien dan sesuai dengan kebijakan perusahaan.</p>
+                        <p><strong>Fungsi dan Kegunaan:</strong> Mendefinisikan aturan harga, diskon, pajak penjualan, dan alur kerja dokumen penjualan. Pengaturan ini membantu otomatisasi proses, mengurangi kesalahan, dan meningkatkan kepuasan pelanggan.</p>
+                        <p><strong>Cara Input:</strong> Anda dapat mengatur seri penomoran untuk dokumen penjualan (misal: Sales Order, Sales Invoice), menentukan daftar harga default, mengonfigurasi syarat pembayaran standar, dan mengaktifkan validasi tertentu untuk pesanan atau faktur. Field-field ini seringkali berupa input teks untuk seri, dropdown untuk daftar harga, dan kotak centang untuk validasi.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/sales_settings.png" alt="Pengaturan Penjualan">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan Penjualan.</small>
+                        </div>
+                    </section><!--//section-->
+
+                    <section class="docs-section" id="purchase-settings">
+                        <h2 class="section-heading"><i class="fas fa-shopping-cart me-2"></i> Purchase Settings (Pengaturan Pembelian)</h2>
+                        <p>Pengaturan Pembelian mengelola semua aspek terkait pengadaan barang dan jasa, dari permintaan hingga penerimaan dan faktur pembelian. Ini memastikan proses pembelian yang terkontrol dan efisien.</p>
+                        <p><strong>Fungsi dan Kegunaan:</strong> Mendefinisikan aturan untuk permintaan pembelian, pesanan pembelian, dan penerimaan barang. Pengaturan ini membantu mengelola hubungan dengan pemasok, mengontrol biaya, dan memastikan pasokan yang tepat waktu.</p>
+                        <p><strong>Cara Input:</strong> Anda dapat mengatur seri penomoran untuk dokumen pembelian (misal: Purchase Order, Purchase Receipt), menentukan syarat pembayaran default untuk pemasok, dan mengonfigurasi validasi untuk pesanan pembelian atau penerimaan barang. Input yang umum adalah teks untuk seri penomoran, dropdown untuk syarat pembayaran, dan kotak centang untuk aktivasi fitur.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/purchase_settings.png" alt="Pengaturan Pembelian">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan Pembelian.</small>
+                        </div>
+                    </section><!--//section-->
+
+                    <section class="docs-section" id="production-settings">
+                        <h2 class="section-heading"><i class="fas fa-industry me-2"></i> Production Settings (Pengaturan Produksi)</h2>
+                        <p>Pengaturan Produksi mengonfigurasi parameter terkait proses manufaktur dan perakitan. Ini penting untuk mengelola Bill of Materials (BOM), Work Order, dan jadwal produksi secara efektif.</p>
+                        <p><strong>Fungsi dan Kegunaan:</strong> Mengontrol bagaimana sistem menangani proses produksi, konsumsi material, dan output produk jadi. Pengaturan ini membantu perencanaan produksi, pelacakan biaya manufaktur, dan efisiensi operasional pabrik.</p>
+                        <p><strong>Cara Input:</strong> Anda dapat menentukan gudang default untuk material mentah dan produk jadi, mengatur seri penomoran untuk Work Order, dan mengonfigurasi aturan untuk backflush material atau alokasi biaya produksi. Field yang tersedia meliputi dropdown untuk gudang, input teks untuk seri, dan kotak centang untuk fitur otomatisasi.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/production_settings.png" alt="Pengaturan Produksi">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan Produksi.</small>
+                        </div>
+                    </section><!--//section-->
+
+                    <section class="docs-section" id="crm-settings">
+                        <h2 class="section-heading"><i class="fas fa-headset me-2"></i> CRM Settings (Pengaturan CRM)</h2>
+                        <p>Pengaturan CRM (Customer Relationship Management) mengelola konfigurasi terkait interaksi dengan pelanggan, prospek, dan manajemen peluang penjualan. Ini mendukung tim penjualan dan pemasaran.</p>
+                        <p><strong>Fungsi dan Kegunaan:</strong> Mendefinisikan tahapan siklus penjualan, kategori prospek, dan jenis aktivitas CRM. Pengaturan ini membantu melacak interaksi pelanggan, mengelola pipeline penjualan, dan meningkatkan retensi pelanggan.</p>
+                        <p><strong>Cara Input:</strong> Anda dapat mengatur seri penomoran untuk Lead atau Opportunity, menentukan tahapan default dalam siklus penjualan, dan mengonfigurasi integrasi dengan alat komunikasi eksternal jika diperlukan. Field yang umum adalah input teks untuk seri, dropdown untuk tahapan, dan kotak centang untuk aktivasi integrasi.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/crm_settings.png" alt="Pengaturan CRM">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan CRM.</small>
+                        </div>
+                    </section><!--//section-->
+
+                    <section class="docs-section" id="rnd-projects-settings">
+                        <h2 class="section-heading"><i class="fas fa-flask me-2"></i> RnD Projects Settings (Pengaturan Proyek RnD)</h2>
+                        <p>Pengaturan Proyek RnD (Research and Development) mengelola konfigurasi untuk proyek penelitian dan pengembangan. Ini membantu melacak kemajuan, biaya, dan sumber daya yang dialokasikan untuk inovasi.</p>
+                        <p><strong>Fungsi dan Kegunaan:</strong> Mendefinisikan kategori proyek RnD, tahapan proyek, dan alokasi anggaran. Pengaturan ini mendukung manajemen portofolio proyek, pelacakan pengeluaran, dan evaluasi keberhasilan proyek inovasi.</p>
+                        <p><strong>Cara Input:</strong> Anda dapat mengatur seri penomoran untuk Proyek RnD, menentukan tahapan default dalam siklus proyek, dan mengonfigurasi bagaimana biaya proyek dialokasikan. Input yang umum adalah teks untuk seri, dropdown untuk tahapan, dan pilihan untuk metode alokasi biaya.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/rnd_projects_settings.png" alt="Pengaturan Proyek RnD">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan Proyek RnD.</small>
+                        </div>
+                    </section><!--//section-->
+
+                    <section class="docs-section" id="help-desk-settings">
+                        <h2 class="section-heading"><i class="fas fa-life-ring me-2"></i> Help Desk Settings (Pengaturan Help Desk)</h2>
+                        <p>Pengaturan Help Desk mengelola konfigurasi untuk modul dukungan pelanggan dan tiket bantuan. Ini penting untuk memastikan layanan pelanggan yang responsif dan terorganisir.</p>
+                        <p><strong>Fungsi dan Kegunaan:</strong> Mendefinisikan kategori tiket, prioritas, dan alur kerja penanganan tiket. Pengaturan ini membantu tim dukungan melacak masalah pelanggan, mengelola SLA (Service Level Agreement), dan meningkatkan efisiensi penyelesaian masalah.</p>
+                        <p><strong>Cara Input:</strong> Anda dapat mengatur seri penomoran untuk tiket bantuan, menentukan email masuk untuk pembuatan tiket otomatis, dan mengonfigurasi aturan penetapan agen dukungan. Field yang umum adalah input teks untuk seri, dropdown untuk kategori/prioritas, dan pengaturan email.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/help_desk_settings.png" alt="Pengaturan Help Desk">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan Help Desk.</small>
+                        </div>
+                    </section><!--//section-->
+
+                    <section class="docs-section" id="system-settings">
+						<h2 class="section-heading"><i class="fas fa-desktop me-2"></i> System Settings (Pengaturan Sistem)</h2>
+						<p>Pengaturan Sistem adalah kumpulan konfigurasi umum yang memengaruhi cara kerja ERP Siumang secara global. Ini mencakup pengaturan bahasa, zona waktu, format tanggal dan waktu, serta perilaku cache.</p>
+                        <p><strong>Fungsi dan Kegunaan:</strong> Mengatur preferensi dasar sistem untuk semua pengguna, memastikan konsistensi tampilan dan fungsionalitas. Pengaturan ini juga memengaruhi kinerja dan lokalisasi sistem.</p>
+                        <p><strong>Cara Input:</strong> Anda dapat memilih bahasa default antarmuka, mengatur zona waktu server, menentukan format tanggal dan waktu yang digunakan di seluruh sistem, dan mengonfigurasi opsi caching untuk meningkatkan kecepatan. Field-field ini biasanya berupa dropdown pilihan atau kotak centang.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/system_settings.png" alt="Pengaturan Sistem">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan Sistem.</small>
+                        </div>
+                    </section><!--//section-->
+
+                    <section class="docs-section" id="domain-settings">
+                        <h2 class="section-heading"><i class="fas fa-globe me-2"></i> Domain Settings (Pengaturan Domain)</h2>
+                        <p>Pengaturan Domain memungkinkan Anda untuk mengaktifkan atau menonaktifkan domain bisnis tertentu dalam instalasi ERP Siumang Anda. Domain mencakup area seperti Manufaktur, Pendidikan, atau Layanan Kesehatan, yang masing-masing memiliki fitur dan DocType spesifik.</p>
+                        <p><strong>Fungsi dan Kegunaan:</strong> Menyesuaikan sistem agar hanya menampilkan modul dan fitur yang relevan dengan jenis bisnis Anda, mengurangi kompleksitas antarmuka dan meningkatkan relevansi fungsionalitas.</p>
+                        <p><strong>Cara Input:</strong> Anda dapat mencentang atau menghilangkan centang pada kotak di samping nama domain untuk mengaktifkan atau menonaktifkannya. Setelah perubahan, sistem mungkin memerlukan pembaruan untuk menerapkan konfigurasi domain baru.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/domain_settings.png" alt="Pengaturan Domain">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan Domain.</small>
+                        </div>
+                    </section><!--//section-->
+
+                    <section class="docs-section" id="global-defaults">
+                        <h2 class="section-heading"><i class="fas fa-sliders-h me-2"></i> Global Defaults (Standar Global)</h2>
+                        <p>Global Defaults adalah pengaturan nilai standar yang akan diterapkan di seluruh sistem jika tidak ada konfigurasi spesifik yang ditentukan di tempat lain. Ini mencakup pengaturan untuk Company, mata uang, dan gudang default.</p>
+                        <p><strong>Fungsi dan Kegunaan:</strong> Menyederhanakan proses input data dengan mengisi otomatis field-field umum, serta memastikan konsistensi data di seluruh transaksi dan dokumen.</p>
+                        <p><strong>Cara Input:</strong> Anda dapat memilih Perusahaan default untuk instalasi multi-perusahaan, menentukan mata uang default jika multi-mata uang diaktifkan, dan mengatur gudang default yang akan digunakan saat membuat transaksi stok atau penjualan/pembelian. Field-field ini umumnya berupa dropdown pilihan.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/global_defaults.png" alt="Standar Global">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan Standar Global.</small>
+                        </div>
+                    </section><!--//section-->
+			    </article><!--//docs-article-->
+			    
+			    <footer class="footer">
+				    <div class="container text-center py-5">
+			            <small class="copyright">Designed with <span class="sr-only">love</span><i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="theme-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
+				    </div>
+			    </footer>
+		    </div> 
+	    </div>
+    </div><!--//docs-wrapper-->
+   
+       
+    <!-- Javascript -->          
+    <script src="assets/plugins/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
+    
+    
+    <!-- Page Specific JS -->
+    <script src="assets/plugins/smoothscroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
+    <script src="assets/js/highlight-custom.js"></script> 
+    <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>      
+    <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script> 
+    <script src="assets/js/docs.js"></script> 
+
+</body>
+</html>

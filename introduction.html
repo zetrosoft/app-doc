@@ -55,6 +55,37 @@
         .docs-sidebar .nav-link:hover {
             color: #007bff; /* Warna hover untuk navigasi sidebar */
         }
+        /* Style for nested sidebar links */
+        .docs-sidebar .nav-item .nav {
+            padding-left: 1.5rem; /* Indent for sub-sections */
+            border-left: 1px solid #e0e0e0; /* Visual line for sub-sections */
+            margin-left: 0.5rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .docs-sidebar .nav-item .nav-link {
+            font-size: 0.9rem; /* Smaller font for sub-sections */
+            padding-top: 0.3rem;
+            padding-bottom: 0.3rem;
+        }
+        /* Styles for collapsible items */
+        .docs-sidebar .nav-link[data-bs-toggle="collapse"] {
+            position: relative;
+            padding-right: 2rem; /* Space for caret */
+        }
+        .docs-sidebar .nav-link[data-bs-toggle="collapse"]::after {
+            content: "\f078"; /* Chevron-down icon */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.2s ease-in-out;
+        }
+        .docs-sidebar .nav-link[data-bs-toggle="collapse"].collapsed::after {
+            transform: translateY(-50%) rotate(-90deg); /* Rotate for collapsed state */
+        }
     </style>
 
 </head> 
@@ -99,24 +130,95 @@
             </div>
 		    <nav id="docs-nav" class="docs-nav navbar">
 			    <ul class="section-items list-unstyled nav flex-column pb-3">
-                    <li class="nav-item section-title"><a class="nav-link scrollto" href="#pengantar-admin"><span class="theme-icon-holder me-2"><i class="bi bi-ui-checks-grid"></i></span>Admin Sistem</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto active" href="introduction.html">Introduction</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto" href="setting.html">Setting</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto" href="users.html">Users</a></li>
-                    
+                    <li class="nav-item section-title"><a class="nav-link scrollto" href="#pengantar-admin-main"><span class="theme-icon-holder me-2"><i class="bi bi-ui-checks-grid"></i></span>Admin Sistem</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto active" href="#introduction-module">Pengantar ERP Siumang</a></li>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link scrollto collapsed" data-bs-toggle="collapse" href="#collapsePengantarAdmin" aria-expanded="false">
+                                    1. Pengantar ERP Siumang untuk Administrator
+                                </a>
+                                <ul id="collapsePengantarAdmin" class="nav flex-column collapse">
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#arsitektur-dasar">1.1. Arsitektur Dasar ERP Siumang dan Frappe Framework</a></li>
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#navigasi-admin">1.2. Navigasi Antarmuka Admin</a></li>
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#konsep-peran-pengguna">1.3. Konsep Peran (Role) dan Pengguna (User)</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link scrollto collapsed" data-bs-toggle="collapse" href="#collapseKonfigurasiSistem" aria-expanded="false">
+                                    2. Konfigurasi Sistem Utama
+                                </a>
+                                <ul id="collapseKonfigurasiSistem" class="nav flex-column collapse">
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#pengaturan-perusahaan">2.1. Pengaturan Perusahaan (Company Setup)</a></li>
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#pengaturan-email">2.2. Pengaturan Email dan Notifikasi</a></li>
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#pengaturan-cetakan">2.3. Pengaturan Cetakan (Print Settings)</a></li>
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#pengaturan-dokumen">2.4. Pengaturan Dokumen (Document Settings)</a></li>
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#pengaturan-keamanan">2.5. Pengaturan Keamanan</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link scrollto collapsed" data-bs-toggle="collapse" href="#collapseManajemenIzin" aria-expanded="false">
+                                    3. Manajemen Izin dan Hak Akses (Permission Management)
+                                </a>
+                                <ul id="collapseManajemenIzin" class="nav flex-column collapse">
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#konsep-perm-level">3.1. Konsep Perm Level (Level Izin)</a></li>
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#mengelola-izin-permission-manager">3.2. Mengelola Izin via Permission Manager</a></li>
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#menyesuaikan-perm-level-field">3.3. Menyesuaikan Perm Level Field melalui Customize Form</a></li>
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#aturan-berbagi-dokumen">3.4. Aturan Berbagi Dokumen (Share)</a></li>
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#manajemen-batasan-data">3.5. Manajemen Batasan Data (Role-based Permissions)</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link scrollto collapsed" data-bs-toggle="collapse" href="#collapseKustomisasiPengembangan" aria-expanded="false">
+                                    4. Kustomisasi dan Pengembangan
+                                </a>
+                                <ul id="collapseKustomisasiPengembangan" class="nav flex-column collapse">
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#kustomisasi-formulir">4.1. Kustomisasi Formulir (Customize Form)</a></li>
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#script-klien">4.2. Script Klien (Client Script)</a></li>
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#script-server">4.3. Script Server (Server Script)</a></li>
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#laporan-kustom">4.4. Laporan Kustom (Custom Reports)</a></li>
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#alur-kerja-kustom">4.5. Alur Kerja (Workflow) Kustom</a></li>
+                                </ul>
+                            </li>
+                            <!-- <li class="nav-item">
+                                <a class="nav-link scrollto collapsed" data-bs-toggle="collapse" href="#collapsePemeliharaanTroubleshooting" aria-expanded="false">
+                                    5. Pemeliharaan dan Troubleshooting
+                                </a>
+                                <ul id="collapsePemeliharaanTroubleshooting" class="nav flex-column collapse">
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#backup-restore">5.1. Backup dan Restore Data</a></li>
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#pembaruan-sistem">5.2. Pembaruan Sistem (System Updates)</a></li>
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#pemantauan-kinerja">5.3. Pemantauan Kinerja</a></li>
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#pemecahan-masalah-umum">5.4. Pemecahan Masalah Umum (Common Troubleshooting)</a></li>
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#log-sistem-debugging">5.5. Log Sistem dan Debugging</a></li>
+                                </ul>
+                            </li> -->
+                            <li class="nav-item">
+                                <a class="nav-link scrollto collapsed" data-bs-toggle="collapse" href="#collapseLampiran" aria-expanded="false">
+                                    Lampiran
+                                </a>
+                                <ul id="collapseLampiran" class="nav flex-column collapse">
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#glosarium">Glosarium Administrator Sistem</a></li>
+                                    <!-- <li class="nav-item"><a class="nav-link scrollto" href="#struktur-folder">Struktur Folder & File Penting</a></li> -->
+                                    <li class="nav-item"><a class="nav-link scrollto" href="#faq-admin">FAQ Administrator</a></li>
+                                    <!-- <li class="nav-item"><a class="nav-link scrollto" href="#sumber-daya-tambahan">Sumber Daya Tambahan</a></li> -->
+                                </ul>
+                            </li>
+                        </ul>
+                    <li class="nav-item"><a class="nav-link" href="settings.html">App Setting</a></li>
+                    <li class="nav-item"><a class="nav-link" href="users.html">Modul User</a></li>
+
                     <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#pengguna-sistem-nav"><span class="theme-icon-holder me-2"><i class="bi bi-person-workspace"></i></span>Pengguna Sistem</a></li>
-                    <li class="nav-item"><a class="nav-link scrollto" href="akuntansi.html">Akuntansi</a></li>
-                    <li class="nav-item"><a class="nav-link scrollto" href="purchasing.html">Purchasing</a></li>
-                    <li class="nav-item"><a class="nav-link scrollto" href="inventory-management.html">Inventory Management</a></li>
-                    <li class="nav-item"><a class="nav-link scrollto" href="sales-marketing.html">Sales & Marketing</a></li>
-                    <li class="nav-item"><a class="nav-link scrollto" href="crm.html">CRM</a></li>
-                    <li class="nav-item"><a class="nav-link scrollto" href="hris.html">HRIS</a></li>
-                    <li class="nav-item"><a class="nav-link scrollto" href="production.html">Production</a></li>
-                    <li class="nav-item"><a class="nav-link scrollto" href="quality-control.html">Quality Control</a></li>
-                    <li class="nav-item"><a class="nav-link scrollto" href="rnd.html">RnD</a></li>
-                    <li class="nav-item"><a class="nav-link scrollto" href="creative-management.html">Creative Management</a></li>
-                    <li class="nav-item"><a class="nav-link scrollto" href="website.html">Website</a></li>
-                    <li class="nav-item"><a class="nav-link scrollto" href="dashboard-management.html">Dashboard Management</a></li>
+                    <li class="nav-item"><a class="nav-link" href="akuntansi.html">Akuntansi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="purchasing.html">Purchasing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="inventory-management.html">Inventory Management</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sales-marketing.html">Sales & Marketing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="crm.html">CRM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="hris.html">HRIS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="production.html">Production</a></li>
+                    <li class="nav-item"><a class="nav-link" href="quality-control.html">Quality Control</a></li>
+                    <li class="nav-item"><a class="nav-link" href="rnd.html">RnD</a></li>
+                    <li class="nav-item"><a class="nav-link" href="creative-management.html">Creative Management</a></li>
+                    <li class="nav-item"><a class="nav-link" href="website.html">Website</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard-management.html">Dashboard Management</a></li>
 			    </ul>
 
 		    </nav><!--//docs-nav-->
@@ -139,7 +241,7 @@
                         <h2 class="section-heading"><i class="fas fa-user-shield me-2"></i> 1. Pengantar ERP Siumang untuk Administrator</h2>
                         <p>Bagian ini menyediakan dasar pemahaman ERP Siumang dari perspektif administrator. Anda akan diperkenalkan pada arsitektur inti sistem dan bagaimana peran Anda sebagai administrator sangat krusial dalam menjaga efisiensi dan keamanan operasional.</p>
 
-                        <h3 class="mt-4"><i class="fas fa-building me-2"></i> 1.1. Arsitektur Dasar ERP Siumang dan Frappe Framework</h3>
+                        <h3 class="mt-4" id="arsitektur-dasar"><i class="fas fa-building me-2"></i> 1.1. Arsitektur Dasar ERP Siumang dan Frappe Framework</h3>
                         <p>ERP Siumang dibangun di atas Frappe Framework, sebuah fondasi yang kuat dan fleksibel. Memahami arsitektur dasar ini akan membantu Anda mengelola dan menyesuaikan sistem dengan lebih efektif. Komponen inti yang akan kita bahas meliputi:</p>
                         <ul>
                             <li><b>DocType:</b> Ini adalah "cetak biru" dari setiap jenis data atau dokumen dalam sistem (misalnya, Invoice, Pelanggan, Produk). DocType mendefinisikan struktur data, perilaku, dan aturan validasi.</li>
@@ -153,7 +255,7 @@
                             <small class="text-muted d-block mt-2">Gambar: Diagram Arsitektur Dasar ERP Siumang dan Frappe Framework.</small>
                         </div>
 
-                        <h3 class="mt-4"><i class="fas fa-compass me-2"></i> 1.2. Navigasi Antarmuka Admin</h3>
+                        <h3 class="mt-4" id="navigasi-admin"><i class="fas fa-compass me-2"></i> 1.2. Navigasi Antarmuka Admin</h3>
                         <p>Antarmuka administrator ERP Siumang dirancang untuk efisiensi. Memahami cara menavigasinya akan mempercepat pekerjaan Anda dalam mengelola sistem:</p>
                         <ul>
                             <li><b>Awesome Bar:</b> Ini adalah bilah pencarian universal di bagian atas, yang memungkinkan akses cepat ke pengaturan, laporan, DocType, dan fungsi lainnya hanya dengan mengetikkan nama. Ini adalah alat yang sangat ampuh untuk administrator.</li>
@@ -165,7 +267,7 @@
                             <small class="text-muted d-block mt-2">Gambar: Tampilan Navigasi Antarmuka Administrator.</small>
                         </div>
 
-                        <h3 class="mt-4"><i class="fas fa-users-line me-2"></i> 1.3. Konsep Peran (Role) dan Pengguna (User)</h3>
+                        <h3 class="mt-4" id="konsep-peran-pengguna"><i class="fas fa-users-line me-2"></i> 1.3. Konsep Peran (Role) dan Pengguna (User)</h3>
                         <p>Manajemen peran dan pengguna adalah aspek fundamental keamanan dan fungsionalitas ERP Siumang. Bagian ini akan menjelaskan:</p>
                         <ul>
                             <li><b>Perbedaan antara Peran dan Pengguna:</b> Pahami bagaimana peran (misalnya, 'Administrator', 'Sales User', 'Accountant') mendefinisikan sekumpulan izin, sementara pengguna adalah individu yang diberi peran tersebut.</li>
@@ -182,7 +284,7 @@
                         <h2 class="section-heading"><i class="fas fa-wrench me-2"></i> 2. Konfigurasi Sistem Utama</h2>
                         <p>Bagian ini membahas pengaturan awal dan konfigurasi esensial untuk fungsionalitas sistem ERP Siumang. Konfigurasi yang tepat di sini akan menjadi dasar bagi operasional yang lancar dan efisien di seluruh modul.</p>
 
-                        <h3 class="mt-4"><i class="fas fa-building me-2"></i> 2.1. Pengaturan Perusahaan (Company Setup)</h3>
+                        <h3 class="mt-4" id="pengaturan-perusahaan"><i class="fas fa-building me-2"></i> 2.1. Pengaturan Perusahaan (Company Setup)</h3>
                         <p>Langkah pertama dalam menyiapkan ERP Siumang adalah mengonfigurasi informasi dasar perusahaan Anda. Ini termasuk:</p>
                         <ul>
                             <li><b>Informasi dasar perusahaan:</b> Nama, alamat, dan detail kontak.</li>
@@ -195,7 +297,7 @@
                             <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan Perusahaan.</small>
                         </div>
 
-                        <h3 class="mt-4"><i class="fas fa-envelope me-2"></i> 2.2. Pengaturan Email dan Notifikasi</h3>
+                        <h3 class="mt-4" id="pengaturan-email"><i class="fas fa-envelope me-2"></i> 2.2. Pengaturan Email dan Notifikasi</h3>
                         <p>Komunikasi adalah kunci dalam setiap sistem ERP. Bagian ini akan memandu Anda dalam mengonfigurasi email dan notifikasi:</p>
                         <ul>
                             <li><b>Konfigurasi Email Account dan Email Domain:</b> Menyiapkan akun email yang akan digunakan sistem untuk mengirim dan menerima email.</li>
@@ -206,7 +308,7 @@
                             <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan Email dan Notifikasi.</small>
                         </div>
 
-                        <h3 class="mt-4"><i class="fas fa-print me-2"></i> 2.3. Pengaturan Cetakan (Print Settings)</h3>
+                        <h3 class="mt-4" id="pengaturan-cetakan"><i class="fas fa-print me-2"></i> 2.3. Pengaturan Cetakan (Print Settings)</h3>
                         <p>Mengelola format cetakan dokumen adalah penting untuk branding dan kepatuhan. Anda akan belajar tentang:</p>
                         <ul>
                             <li><b>Manajemen Print Format kustom:</b> Mendesain tata letak cetakan untuk dokumen seperti faktur, pesanan pembelian, dll.</li>
@@ -217,7 +319,7 @@
                             <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan Cetakan.</small>
                         </div>
 
-                        <h3 class="mt-4"><i class="fas fa-file-alt me-2"></i> 2.4. Pengaturan Dokumen (Document Settings)</h3>
+                        <h3 class="mt-4" id="pengaturan-dokumen"><i class="fas fa-file-alt me-2"></i> 2.4. Pengaturan Dokumen (Document Settings)</h3>
                         <p>Pengaturan dokumen memengaruhi bagaimana dokumen dibuat dan dikelola dalam sistem:</p>
                         <ul>
                             <li><b>Penomoran otomatis (Naming Series):</b> Mengatur pola penomoran unik untuk setiap jenis dokumen (misalnya, INV-YYYY-MM-0001 untuk faktur).</li>
@@ -228,7 +330,7 @@
                             <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan Dokumen.</small>
                         </div>
 
-                        <h3 class="mt-4"><i class="fas fa-lock me-2"></i> 2.5. Pengaturan Keamanan</h3>
+                        <h3 class="mt-4" id="pengaturan-keamanan"><i class="fas fa-lock me-2"></i> 2.5. Pengaturan Keamanan</h3>
                         <p>Keamanan adalah prioritas utama. Bagian ini mencakup konfigurasi untuk melindungi sistem Anda:</p>
                         <ul>
                             <li><b>Kebijakan kata sandi:</b> Menetapkan aturan kompleksitas dan masa berlaku kata sandi.</li>
@@ -245,130 +347,767 @@
                         <h2 class="section-heading"><i class="fas fa-user-lock me-2"></i> 3. Manajemen Izin dan Hak Akses (Permission Management)</h2>
                         <p>Bagian krusial ini menjelaskan secara rinci cara mengontrol akses data dan fungsi di ERP Siumang. Manajemen izin yang tepat sangat penting untuk menjaga integritas data dan memastikan setiap pengguna hanya memiliki akses ke informasi yang relevan dengan perannya.</p>
 
-                        <h3 class="mt-4"><i class="fas fa-level-up-alt me-2"></i> 3.1. Konsep Perm Level (Level Izin)</h3>
-                        <p>Perm Level adalah fondasi dari sistem izin granular di ERP Siumang. Memahami konsep ini akan memungkinkan Anda mengonfigurasi izin dengan presisi:</p>
+                        <h3 class="mt-4" id="konsep-perm-level"><i class="fas fa-level-up-alt me-2"></i> 3.1. Konsep Perm Level (Level Izin)</h3>
+                        <p>Perm Level adalah salah satu fitur paling fundamental dan powerful dalam sistem izin granular ERP Siumang. Ini adalah fondasi yang memungkinkan administrator untuk mengontrol akses tidak hanya pada level dokumen secara keseluruhan, tetapi juga pada bagian-bagian spesifik atau bahkan field individual di dalam sebuah dokumen. Memahami konsep ini secara mendalam sangat krusial untuk mengonfigurasi keamanan data dan alur kerja yang presisi dalam sistem Anda.</p>
+
+                        <h4><i class="fas fa-bullseye me-2"></i> Mengapa Perm Level Penting untuk Kontrol Granular?</h4>
+                        <p>Dalam lingkungan bisnis yang kompleks, tidak semua informasi dalam satu dokumen harus dapat diakses atau diubah oleh semua orang. Misalnya, seorang staf penjualan mungkin perlu melihat detail pesanan penjualan, tetapi tidak seharusnya bisa mengubah harga diskon yang telah disetujui manajer. Di sinilah Perm Level berperan penting:</p>
                         <ul>
-                            <li><b>Penjelasan mengapa Perm Level penting untuk kontrol granular:</b> Bagaimana Perm Level memungkinkan Anda menetapkan izin yang berbeda untuk bagian-bagian tertentu dari sebuah dokumen atau field.</li>
-                            <li><b>Perbedaan antara Perm Level 0 dan level lainnya:</b> Perm Level 0 biasanya berlaku untuk izin dasar dokumen, sementara level yang lebih tinggi digunakan untuk mengamankan field atau bagian tertentu dalam dokumen.</li>
+                            <li><b>Keamanan Data yang Tepat Sasaran:</b> Dengan Perm Level, Anda dapat melindungi data sensitif seperti informasi gaji karyawan, harga jual rahasia, atau detail persetujuan finansial, bahkan ketika dokumen induknya (misalnya, formulir karyawan atau pesanan penjualan) dapat diakses secara umum.</li>
+                            <li><b>Pemisahan Tugas (Segregation of Duties):</b> Ini memungkinkan Anda untuk menegakkan prinsip pemisahan tugas, di mana tidak ada satu individu pun yang memiliki kontrol penuh atas seluruh proses. Contohnya, satu orang bisa membuat faktur, tetapi orang lain dengan Perm Level yang lebih tinggi yang dapat menyetujuinya.</li>
+                            <li><b>Penyederhanaan Antarmuka Pengguna:</b> Dengan menyembunyikan atau membuat field tertentu menjadi <i>read-only</i> berdasarkan Perm Level pengguna, Anda dapat menyederhanakan antarmuka pengguna, mengurangi kebingungan, dan meminimalkan kesalahan input.</li>
+                            <li><b>Mendukung Alur Kerja Kompleks:</b> Perm Level terintegrasi erat dengan alur kerja (Workflow), memungkinkan transisi status dokumen hanya jika pengguna memiliki Perm Level yang sesuai untuk melakukan tindakan tersebut (misalnya, hanya manajer dengan Perm Level tertentu yang dapat "Submit" atau "Approve" sebuah dokumen).</li>
                         </ul>
                         <div class="screenshot-container text-center my-4">
                             <img class="img-fluid rounded shadow" src="assets/images/perm_level_concept.png" alt="Konsep Perm Level">
-                            <small class="text-muted d-block mt-2">Gambar: Ilustrasi Konsep Perm Level.</small>
+                            <small class="text-muted d-block mt-2">Gambar: Ilustrasi Konsep Perm Level dalam dokumen.</small>
                         </div>
 
-                        <h3 class="mt-4"><i class="fas fa-user-shield me-2"></i> 3.2. Mengelola Izin via Permission Manager</h3>
-                        <p>Permission Manager adalah alat utama Anda untuk menetapkan hak akses berbasis peran:</p>
+                        <h4><i class="fas fa-layer-group me-2"></i> Perbedaan antara Perm Level 0 dan Level Lainnya</h4>
+                        <p>Setiap field dalam DocType memiliki properti 'Perm Level' yang dapat diatur. Secara default, sebagian besar field berada pada Perm Level 0. Berikut adalah penjelasannya:</p>
                         <ul>
-                            <li><b>Memilih DocType dan Peran:</b> Cara memilih jenis dokumen (misalnya, 'Sales Order') dan peran (misalnya, 'Sales User') yang ingin Anda konfigurasikan.</li>
-                            <li><b>Menetapkan hak akses:</b> Penjelasan detail tentang berbagai hak akses yang dapat diberikan (Baca, Tulis, Buat, Hapus, Kirim, Batalkan, Amandemen, Laporan, Cetak, Email, Impor, Ekspor) dan dampaknya.</li>
-                            <li><b>Pengaruh Perm Level pada hak akses:</b> Bagaimana Perm Level yang berbeda dapat membatasi atau memperluas hak akses pada field atau bagian dokumen.</li>
+                            <li><b>Perm Level 0 (Akses Dasar Dokumen):</b>
+                                <p>Ini adalah level izin paling dasar dan berlaku untuk seluruh dokumen. Ketika Anda memberikan izin 'Baca' atau 'Tulis' pada Perm Level 0 untuk sebuah peran, pengguna dengan peran tersebut akan dapat membaca atau menulis seluruh dokumen, kecuali ada aturan Perm Level yang lebih tinggi yang membatasi field tertentu.</p>
+                                <p>Contoh: Jika 'Sales User' memiliki izin 'Baca' pada Perm Level 0 untuk DocType 'Sales Order', mereka dapat melihat semua field dalam Sales Order tersebut, kecuali ada field yang diatur pada Perm Level yang lebih tinggi.</p>
+                            </li>
+                            <li><b>Perm Level 1, 2, 3... (Akses untuk Field/Bagian Spesifik):</b>
+                                <p>Level izin yang lebih tinggi (1 hingga 9) digunakan untuk mengamankan field atau bagian tertentu dalam sebuah dokumen. Jika sebuah field diatur pada Perm Level X (misalnya, Perm Level 1), maka pengguna harus memiliki izin yang sesuai untuk Perm Level X tersebut agar dapat mengakses field tersebut.</p>
+                                <p>Contoh Kasus Penggunaan:</p>
+                                <ul>
+                                    <li><b>Field Gaji Karyawan:</b> Field 'Gaji Pokok' dalam DocType 'Employee' dapat diatur ke Perm Level 1. Kemudian, hanya peran 'HR Manager' yang diberikan izin 'Baca' dan 'Tulis' pada Perm Level 1, sementara peran 'Employee' hanya diberikan izin 'Baca' pada Perm Level 0. Ini berarti karyawan dapat melihat profil mereka, tetapi tidak dapat melihat atau mengubah gaji mereka sendiri, dan hanya HR Manager yang dapat melakukannya.</li>
+                                    <li><b>Field Harga Diskon:</b> Dalam 'Sales Order', field 'Diskon' bisa diatur ke Perm Level 2. Hanya 'Sales Manager' yang memiliki izin 'Tulis' pada Perm Level 2, sementara 'Sales User' hanya memiliki izin 'Baca' pada Perm Level 2 (atau tidak sama sekali). Ini memastikan hanya manajer yang dapat mengubah diskon besar.</li>
+                                    <li><b>Status Persetujuan:</b> Field 'Status' dalam alur kerja (misalnya, 'Disetujui Oleh') dapat diatur ke Perm Level 3, sehingga hanya direktur atau manajer senior yang memiliki izin pada Perm Level 3 yang dapat mengubah status tersebut.</li>
+                                </ul>
+                                <p>Dengan demikian, Perm Level memungkinkan Anda untuk membuat lapisan keamanan yang berlapis, memberikan kontrol yang sangat detail atas data sensitif dan proses bisnis Anda.</p>
+                            </li>
                         </ul>
+
+                        <h3 class="mt-4" id="mengelola-izin-permission-manager"><i class="fas fa-user-shield me-2"></i> 3.2. Mengelola Izin via Permission Manager</h3>
+                        <p>Permission Manager adalah <b>alat utama</b> Anda untuk menetapkan, memodifikasi, dan mengelola hak akses berbasis peran (role-based permissions) di ERP Siumang. Alat ini menyediakan antarmuka yang intuitif untuk mendefinisikan izin spesifik pada setiap DocType untuk setiap peran yang ada. Memahami cara kerjanya adalah kunci untuk mengimplementasikan model keamanan yang kuat dan efisien.</p>
+
+                        <h4><i class="fas fa-list-ol me-2"></i> Langkah-langkah Menggunakan Permission Manager</h4>
+                        <p>Anda dapat mengakses Permission Manager dari Awesome Bar dengan mengetik "Permission Manager". Setelah terbuka, prosesnya sangatlah terstruktur:</p>
+                        <ol>
+                            <li><b>Pilih DocType:</b> Pada bilah dropdown pertama, Anda harus memilih DocType (jenis dokumen) yang ingin Anda atur izinnya. Misalnya, pilih "Sales Order" atau "Employee".</li>
+                            <li><b>Pilih Peran (Role):</b> Pada bilah dropdown kedua, Anda akan memilih peran (misalnya, "Sales User", "HR Manager", "Akuntan") yang akan Anda konfigurasi izinnya.</li>
+                        </ol>
+                        <p>Setelah memilih kedua elemen ini, tabel izin akan muncul, menampilkan daftar Perm Level (Level Izin) dan jenis hak akses yang bisa Anda atur.</p>
+
+                        <h4><i class="fas fa-check-square me-2"></i> Jenis-jenis Hak Akses yang Dapat Diberikan</h4>
+                        <p>Di Permission Manager, Anda akan menemukan serangkaian kotak centang yang mewakili berbagai hak akses. Anda dapat mencentang atau menghilangkan centang pada kotak ini untuk setiap Perm Level dan peran. Berikut adalah penjelasan dari setiap hak akses:</p>
+                        <ul>
+                            <li><b>Baca (Read):</b> Mengizinkan pengguna untuk melihat dokumen. Tanpa izin ini, pengguna tidak akan bisa membuka dokumen sama sekali.</li>
+                            <li><b>Tulis (Write):</b> Mengizinkan pengguna untuk membuat perubahan pada dokumen yang sudah ada.</li>
+                            <li><b>Buat (Create):</b> Mengizinkan pengguna untuk membuat dokumen baru dari awal.</li>
+                            <li><b>Hapus (Delete):</b> Mengizinkan pengguna untuk menghapus dokumen. Hak akses ini harus diberikan dengan hati-hati.</li>
+                            <li><b>Kirim (Submit):</b> Mengizinkan pengguna untuk "mengirimkan" dokumen. Dalam alur kerja, ini biasanya mengunci dokumen dari perubahan lebih lanjut.</li>
+                            <li><b>Batalkan (Cancel):</b> Mengizinkan pengguna untuk membatalkan dokumen yang telah dikirim. Ini juga merupakan izin yang sangat sensitif.</li>
+                            <li><b>Amandemen (Amend):</b> Mengizinkan pengguna untuk membuat amandemen atau revisi dari dokumen yang sudah dikirim.</li>
+                            <li><b>Laporan (Report):</b> Mengizinkan pengguna untuk melihat laporan terkait DocType tersebut.</li>
+                            <li><b>Cetak (Print):</b> Mengizinkan pengguna untuk mencetak dokumen.</li>
+                            <li><b>Email:</b> Mengizinkan pengguna untuk mengirimkan dokumen melalui email langsung dari sistem.</li>
+                            <li><b>Impor (Import):</b> Mengizinkan pengguna untuk mengimpor data ke dalam sistem untuk DocType tersebut.</li>
+                            <li><b>Ekspor (Export):</b> Mengizinkan pengguna untuk mengekspor data dari sistem untuk DocType tersebut.</li>
+                        </ul>
+
+                        <h4><i class="fas fa-cogs me-2"></i> Pengaruh Perm Level pada Hak Akses</h4>
+                        <p>Seperti yang telah dijelaskan di poin 3.1, Perm Level bekerja sebagai lapisan tambahan untuk kontrol granular. Di Permission Manager, Anda dapat melihat tabel izin yang dibagi berdasarkan Perm Level. Setiap baris tabel mewakili satu Perm Level (0, 1, 2, dst.).</p>
+                        <p>Ketika Anda mencentang izin 'Tulis' pada baris 'Perm Level 0' untuk peran 'Sales User', itu berarti peran tersebut dapat mengubah <b>semua field</b> dalam dokumen 'Sales Order' yang berada di Perm Level 0. Namun, jika ada field seperti 'Diskon' yang diatur ke 'Perm Level 1', peran 'Sales User' <b>tidak akan dapat mengubah</b> field tersebut, kecuali Anda juga memberikan izin 'Tulis' pada baris 'Perm Level 1' di Permission Manager.</p>
+                        <p>Dengan cara ini, Permission Manager memungkinkan Anda untuk menerapkan kebijakan hak akses yang sangat rinci, memastikan setiap pengguna memiliki akses yang tepat sesuai dengan tanggung jawab mereka tanpa membahayakan integritas dan keamanan data secara keseluruhan.</p>
                         <div class="screenshot-container text-center my-4">
-                            <img class="img-fluid rounded shadow" src="assets/images/permission_manager.png" alt="Mengelola Izin via Permission Manager">
-                            <small class="text-muted d-block mt-2">Gambar: Tampilan Permission Manager.</small>
+                            <img class="img-fluid rounded shadow" src="assets/images/permission_manager.png" alt="Tampilan Permission Manager">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan antarmuka Permission Manager untuk mengelola izin.</small>
                         </div>
 
-                        <h3 class="mt-4"><i class="fas fa-edit me-2"></i> 3.3. Menyesuaikan Perm Level Field melalui Customize Form</h3>
-                        <p>Untuk kontrol yang lebih halus, Anda dapat menyesuaikan Perm Level pada field spesifik:</p>
-                        <ul>
-                            <li><b>Mengatur Perm Level untuk field spesifik:</b> Langkah-langkah untuk mengubah Perm Level pada field tertentu dalam DocType.</li>
-                            <li><b>Contoh kasus penggunaan:</b> Membuat field <i>read-only</i> atau menyembunyikan field untuk peran tertentu, meningkatkan keamanan dan relevansi data bagi pengguna.</li>
-                        </ul>
-                        <div class="screenshot-container text-center my-4">
-                            <img class="img-fluid rounded shadow" src="assets/images/customize_form_perm_level.png" alt="Menyesuaikan Perm Level Field melalui Customize Form">
-                            <small class="text-muted d-block mt-2">Gambar: Tampilan Customize Form untuk Perm Level Field.</small>
-                        </div>
+                        <h3 class="mt-4" id="menyesuaikan-perm-level-field"><i class="fas fa-edit me-2"></i> 3.3. Menyesuaikan Perm Level Field melalui Customize Form</h3>
+                        <p>Selain mengatur izin secara umum melalui Permission Manager, ERP Siumang juga memungkinkan Anda untuk melakukan kontrol yang lebih halus pada level field (kolom data) spesifik dalam sebuah formulir. Ini dilakukan melalui fitur <b>Customize Form</b>. Dengan fitur ini, Anda dapat menetapkan Perm Level yang berbeda untuk setiap field, memungkinkan Anda untuk menyembunyikan, membuat hanya-baca (read-only), atau mengizinkan pengeditan field tertentu hanya untuk peran dengan izin yang lebih tinggi.</p>
 
-                        <h3 class="mt-4"><i class="fas fa-share-alt me-2"></i> 3.4. Aturan Berbagi Dokumen (Share)</h3>
-                        <p>Selain izin berbasis peran, ERP Siumang juga memungkinkan berbagi dokumen secara individual:</p>
+                        <h4><i class="fas fa-wrench me-2"></i> Mengapa Menyesuaikan Perm Level Field itu Penting?</h4>
                         <ul>
-                            <li><b>Berbagi dokumen secara individu:</b> Cara membagikan dokumen tertentu kepada pengguna atau peran yang tidak memiliki akses standar.</li>
-                            <li><b>Mengelola izin berbagi:</b> Menetapkan izin (baca, tulis, dll.) untuk dokumen yang dibagikan.</li>
+                            <li><b>Kontrol Data Sensitif:</b> Melindungi informasi krusial seperti gaji, harga diskon khusus, atau data rahasia lainnya agar hanya dapat diakses atau diubah oleh personel yang berwenang.</li>
+                            <li><b>Penyederhanaan UI/UX:</b> Dengan menyembunyikan field yang tidak relevan untuk peran tertentu, antarmuka pengguna menjadi lebih bersih dan mudah digunakan, mengurangi kebingungan bagi pengguna akhir.</li>
+                            <li><b>Mencegah Kesalahan Input:</b> Membuat field menjadi <i>read-only</i> untuk peran tertentu dapat mencegah perubahan yang tidak disengaja atau tidak sah pada data penting.</li>
+                            <li><b>Mendukung Alur Kerja Kompleks:</b> Dalam alur kerja yang melibatkan beberapa tahapan persetujuan, Anda dapat memastikan bahwa field tertentu hanya dapat diisi atau diubah pada tahapan yang relevan oleh peran yang tepat.</li>
                         </ul>
+
+                        <h4><i class="fas fa-tasks me-2"></i> Langkah-langkah Menyesuaikan Perm Level Field (Contoh: Field Gaji Karyawan)</h4>
+                        <p>Mari kita ambil contoh kasus di mana Anda ingin memastikan bahwa field "Gaji Pokok" pada DocType "Employee" hanya dapat dilihat oleh peran "HR Manager" dan tidak oleh karyawan biasa.</p>
+                        <ol>
+                            <li><b>Akses Customize Form:</b>
+                                <ul>
+                                    <li>Buka Awesome Bar (bilah pencarian di atas).</li>
+                                    <li>Ketik "Customize Form" dan pilih opsi yang muncul.</li>
+                                </ul>
+                            </li>
+                            <li><b>Pilih DocType:</b>
+                                <ul>
+                                    <li>Pada dropdown "Enter Form Type", pilih DocType yang ingin Anda kustomisasi. Dalam contoh ini, ketik dan pilih <b>"Employee"</b>.</li>
+                                    <li>Formulir kustomisasi untuk DocType Employee akan terbuka, menampilkan daftar semua field yang ada.</li>
+                                </ul>
+                            </li>
+                            <li><b>Temukan dan Edit Field Target:</b>
+                                <ul>
+                                    <li>Cari field "Gaji Pokok" (atau nama field yang relevan untuk gaji di instalasi Anda, mungkin "Basic Salary" atau sejenisnya) dalam daftar.</li>
+                                    <li>Klik pada baris field "Gaji Pokok" untuk membukanya dan melihat propertinya.</li>
+                                </ul>
+                            </li>
+                            <li><b>Atur Properti Perm Level:</b>
+                                <ul>
+                                    <li>Di properti field "Gaji Pokok", Anda akan melihat opsi "Perm Level".</li>
+                                    <li>Ubah nilai "Perm Level" dari 0 (default) menjadi <b>1</b> (atau angka lain yang lebih tinggi, misalnya 2, 3, dst. sesuai kebutuhan Anda).</li>
+                                    <li>Anda juga dapat mencentang opsi seperti "Read Only" atau "Hidden" jika Anda ingin field tersebut selalu hanya-baca atau tersembunyi untuk peran tertentu yang tidak memiliki izin pada Perm Level ini.</li>
+                                </ul>
+                            </li>
+                            <li><b>Simpan Perubahan:</b>
+                                <ul>
+                                    <li>Setelah mengatur "Perm Level" field, klik tombol <b>"Update"</b> atau <b>"Simpan"</b> di bagian atas formulir Customize Form.</li>
+                                    <li>Sistem akan menyimpan perubahan pada struktur DocType.</li>
+                                </ul>
+                            </li>
+                            <li><b>Konfigurasi Izin di Permission Manager:</b>
+                                <ul>
+                                    <li>Sekarang, kembali ke <b>Permission Manager</b> (ketik "Permission Manager" di Awesome Bar).</li>
+                                    <li>Pilih DocType <b>"Employee"</b> dan Peran <b>"HR Manager"</b>.</li>
+                                    <li>Pastikan peran "HR Manager" memiliki izin <b>"Baca"</b> dan <b>"Tulis"</b> (atau izin lain yang diperlukan) pada <b>Perm Level 1</b>.</li>
+                                    <li>Untuk peran "Employee" (karyawan biasa), pastikan mereka <b>TIDAK</b> memiliki izin "Baca" atau "Tulis" pada Perm Level 1. Mereka hanya perlu izin pada Perm Level 0 untuk melihat profil mereka sendiri (kecuali field gaji).</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        <p>Dengan langkah-langkah ini, field "Gaji Pokok" kini akan diatur pada Perm Level 1. Ini berarti hanya peran yang secara eksplisit diberikan izin pada Perm Level 1 (seperti "HR Manager") yang dapat melihat atau mengubahnya. Peran lain yang hanya memiliki akses pada Perm Level 0 tidak akan dapat melihat atau berinteraksi dengan field tersebut.</p>
+
+                        <!-- <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/customize_form_perm_level_example.png" alt="Ilustrasi Penerapan Perm Level pada Formulir">
+                            <small class="text-muted d-block mt-2">Gambar: Ilustrasi penerapan Perm Level pada formulir dokumen.</small>
+                        </div> -->
+
+                        <h3 class="mt-4" id="aturan-berbagi-dokumen"><i class="fas fa-share-alt me-2"></i> 3.4. Aturan Berbagi Dokumen (Share)</h3>
+                        <p>Selain sistem izin berbasis peran yang komprehensif, ERP Siumang juga menawarkan fleksibilitas untuk <b>berbagi dokumen secara individual</b>. Fitur ini sangat berguna ketika Anda perlu memberikan akses sementara atau spesifik kepada pengguna atau peran tertentu yang tidak memiliki izin standar untuk melihat atau mengedit dokumen tersebut melalui Permission Manager. Ini adalah solusi ideal untuk kolaborasi ad-hoc atau ketika informasi perlu dibagikan di luar struktur peran yang telah ditetapkan.</p>
+
+                        <h4><i class="fas fa-user-plus me-2"></i> Berbagi Dokumen Secara Individu: Langkah-langkah Praktis</h4>
+                        <p>Memberikan akses ke sebuah dokumen kepada individu atau peran tertentu adalah proses yang lugas dan dapat dilakukan langsung dari dokumen yang ingin Anda bagikan. Berikut adalah langkah-langkahnya:</p>
+                        <ol>
+                            <li><b>Buka Dokumen yang Ingin Dibagikan:</b> Navigasikan ke dokumen spesifik yang ingin Anda bagikan (misalnya, sebuah Pesanan Penjualan, Faktur, atau Proyek).</li>
+                            <li><b>Akses Opsi Berbagi (Share):</b> Di bagian atas atau di menu "Menu" pada dokumen yang terbuka, Anda akan menemukan tombol atau ikon "Share" (biasanya terletak di bagian atas atau di menu "Menu" pada dokumen), lalu klik ikon ini untuk membuka dialog berbagi.</li>
+                            <li><b>Pilih Pengguna atau Peran Penerima:</b> Dalam dialog berbagi yang muncul, Anda akan melihat kolom input di mana Anda dapat mencari dan memilih pengguna atau peran yang ingin Anda berikan akses.
+                                <ul>
+                                    <li>Anda bisa mengetik nama pengguna (misalnya, "John Doe") atau nama peran (misalnya, "Auditor Eksternal").</li>
+                                    <li>ERP Siumang akan menampilkan saran saat Anda mengetik. Pilih entitas yang relevan dari daftar. Anda bisa menambahkan satu atau beberapa pengguna/peran sekaligus.</li>
+                                </ul>
+                            </li>
+                            <li><b>Tentukan Izin Berbagi:</b> Setelah memilih penerima, Anda akan melihat serangkaian kotak centang di samping nama mereka. Ini adalah izin spesifik yang dapat Anda berikan hanya untuk dokumen ini:</li>
+                                <ul>
+                                    <li><b>Baca (Read):</b> Penerima dapat melihat semua detail dokumen, tetapi tidak dapat membuat perubahan apa pun. Ini adalah izin yang paling umum untuk berbagi informasi atau untuk tujuan audit.</li>
+                                    <li><b>Tulis (Write):</b> Penerima dapat melihat dan mengedit dokumen. Hak ini harus diberikan dengan hati-hati, terutama untuk dokumen yang sensitif atau setelah dokumen "disubmit".</li>
+                                    <li><b>Hapus (Delete):</b> Penerima dapat menghapus dokumen. Izin ini sangat kuat dan jarang diberikan melalui fitur berbagi individual.</li>
+                                    <li><b>Kirim (Submit):</b> Jika dokumen memiliki alur kerja pengiriman (misalnya, Pesanan Penjualan yang perlu disubmit untuk diproses), penerima dapat "mengirimkan" dokumen.</li>
+                                    <li><b>Cetak (Print), Email, dll.:</b> Bergantung pada jenis dokumen, Anda mungkin juga dapat memberikan izin untuk mencetak dokumen atau mengirimkannya melalui email langsung dari sistem.</li>
+                                </ul>
+                            <li><b>Simpan Pengaturan Berbagi:</b> Setelah Anda mengatur semua izin yang diinginkan untuk setiap penerima, klik tombol "Share" atau "Simpan" di dialog. Dokumen tersebut kini akan dapat diakses oleh pengguna atau peran yang Anda tentukan dengan izin yang telah Anda atur.</li>
+                        </ol>
+
+                        <h4><i class="fas fa-history me-2"></i> Mengelola dan Mencabut Izin Berbagi</h4>
+                        <p>Anda dapat dengan mudah mengelola atau mencabut izin berbagi kapan saja. Kembali ke dokumen yang relevan, akses dialog "Share" lagi. Di sana, Anda akan melihat daftar semua pengguna atau peran yang saat ini memiliki akses berbagi ke dokumen tersebut. Anda bisa mengubah izin mereka atau menghapus mereka dari daftar untuk mencabut akses sepenuhnya.</p>
+
+                        <p>Fitur berbagi dokumen secara individual ini melengkapi sistem izin berbasis peran yang lebih statis, memberikan administrator dan pengguna kemampuan untuk mengelola akses data dengan fleksibilitas yang tinggi, baik untuk kebutuhan kolaborasi jangka pendek maupun untuk skenario akses yang sangat spesifik yang tidak tercakup oleh peran standar.</p>
                         <div class="screenshot-container text-center my-4">
                             <img class="img-fluid rounded shadow" src="assets/images/document_share_rules.png" alt="Aturan Berbagi Dokumen">
-                            <small class="text-muted d-block mt-2">Gambar: Tampilan Aturan Berbagi Dokumen.</small>
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan dialog berbagi dokumen di ERP Siumang.</small>
                         </div>
 
-                        <h3 class="mt-4"><i class="fas fa-filter me-2"></i> 3.5. Manajemen Batasan Data (Role-based Permissions)</h3>
-                        <p>Untuk skenario bisnis yang kompleks, Anda dapat menerapkan batasan data berdasarkan peran:</p>
+                        <h3 class="mt-4" id="manajemen-batasan-data"><i class="fas fa-filter me-2"></i> 3.5. Manajemen Batasan Data (Role-based Permissions)</h3>
+                        <p>Dalam skenario bisnis yang semakin kompleks, tidak cukup hanya mengontrol siapa yang dapat melihat atau mengedit jenis dokumen tertentu. Seringkali, Anda perlu membatasi data yang dapat diakses oleh pengguna berdasarkan kriteria spesifik, seperti wilayah geografis, departemen, atau cabang perusahaan. Di sinilah fitur <b>Manajemen Batasan Data berbasis Peran (Role-based Permissions)</b> di ERP Siumang menjadi sangat krusial. Fitur ini memungkinkan Anda untuk menerapkan filter data otomatis berdasarkan peran pengguna, memastikan bahwa setiap individu hanya melihat data yang relevan dengan lingkup tanggung jawab mereka.</p>
+
+                        <h4><i class="fas fa-shield-alt me-2"></i> Mengapa Batasan Data Berbasis Peran Penting?</h4>
                         <ul>
-                            <li><b>Mengatur batasan data berdasarkan peran:</b> Contohnya, 'Sales User' hanya dapat melihat faktur di wilayahnya, atau 'HR Manager' hanya dapat melihat data karyawan di departemennya.</li>
-                            <li>Ini memastikan bahwa pengguna hanya dapat mengakses data yang relevan dengan lingkup tanggung jawab mereka, meningkatkan keamanan dan privasi data.</li>
+                            <li><b>Peningkatan Keamanan Data:</b> Mencegah akses tidak sah ke data sensitif yang seharusnya tidak terlihat oleh peran tertentu, bahkan jika mereka memiliki izin dasar untuk DocType tersebut.</li>
+                            <li><b>Peningkatan Privasi:</b> Memastikan informasi pribadi atau rahasia perusahaan hanya dapat diakses oleh pihak yang berwenang.</li>
+                            <li><b>Relevansi Informasi:</b> Pengguna hanya disajikan dengan data yang relevan dengan pekerjaan mereka, mengurangi kekacauan informasi dan meningkatkan fokus.</li>
+                            <li><b>Kepatuhan Regulasi:</b> Membantu perusahaan mematuhi regulasi privasi data dan standar industri yang ketat.</li>
+                            <li><b>Efisiensi Operasional:</b> Pengguna dapat bekerja lebih efisien karena mereka tidak perlu menyaring data yang tidak relevan.</li>
                         </ul>
-                        <div class="screenshot-container text-center my-4">
-                            <img class="img-fluid rounded shadow" src="assets/images/role_based_permissions.png" alt="Manajemen Batasan Data">
-                            <small class="text-muted d-block mt-2">Gambar: Tampilan Manajemen Batasan Data Berbasis Peran.</small>
-                        </div>
+
+                        <h4><i class="fas fa-cogs me-2"></i> Cara Kerja Batasan Data Berbasis Peran (Konseptual)</h4>
+                        <p>Konfigurasi batasan data ini umumnya dilakukan melalui pengaturan izin peran yang lebih lanjut di ERP Siumang. Anda akan mendefinisikan kondisi atau filter yang akan diterapkan secara otomatis saat pengguna dengan peran tertentu mencoba mengakses data. Misalnya, Anda dapat mengatur bahwa:</p>
+                        <ul>
+                            <li>Jika peran = 'Sales User', maka hanya tampilkan dokumen 'Sales Order' di mana 'Wilayah Penjualan' = 'Wilayah Pengguna'.</li>
+                            <li>Jika peran = 'HR Manager', maka hanya tampilkan dokumen 'Employee' di mana 'Departemen' = 'Departemen Pengguna'.</li>
+                        </ul>
+                        <p>Sistem akan secara otomatis menerapkan filter ini di latar belakang, sehingga pengguna tidak perlu lagi memfilter secara manual. Ini berlaku untuk tampilan daftar (list view), laporan, dan bahkan saat mencari dokumen.</p>
+
+                        <h4><i class="fas fa-lightbulb me-2"></i> Contoh Penerapan Batasan Data</h4>
+                        <p>Mari kita lihat beberapa skenario praktis:</p>
+                        <ol>
+                            <li><b>Pembatasan Wilayah untuk Pengguna Penjualan:</b>
+                                <ul>
+                                    <li><b>Skenario:</b> Perusahaan Anda memiliki tim penjualan yang dibagi berdasarkan wilayah (misalnya, Jawa Barat, Jawa Tengah, Jawa Timur). Setiap 'Sales User' hanya boleh melihat faktur penjualan dan pesanan penjualan dari wilayah mereka sendiri.</li>
+                                    <li><b>Penerapan (Langkah-langkah Konseptual):</b>
+                                        <ol>
+                                            <li><b>Pastikan Data Master Wilayah Ada:</b> Pastikan Anda memiliki daftar wilayah yang terdefinisi dengan baik di ERP Siumang (misalnya, DocType 'Wilayah' atau 'Territory').</li>
+                                            <li><b>Hubungkan Pengguna ke Wilayah:</b> Pastikan setiap pengguna 'Sales User' memiliki field yang mengaitkan mereka dengan wilayah spesifiknya (misalnya, di profil pengguna, ada field 'Wilayah Default' yang diisi dengan 'Jawa Barat' untuk Pengguna A, 'Jawa Tengah' untuk Pengguna B, dst.).</li>
+                                            <li><b>Identifikasi Field Kriteria pada Dokumen:</b> Pastikan dokumen yang ingin dibatasi (misalnya, 'Sales Order', 'Sales Invoice') memiliki field yang mencatat wilayah terkait (misalnya, field 'wilayah_penjualan' atau 'territory' pada Sales Order).</li>
+                                            <li><b>Konfigurasi Izin Berbasis Peran (Role Permission for DocType):</b>
+                                                <ul>
+                                                    <li>Akses <b>Permission Manager</b> (ketik di Awesome Bar).</li>
+                                                    <li>Pilih <b>DocType</b> yang ingin Anda batasi (misalnya, 'Sales Order').</li>
+                                                    <li>Pilih <b>Peran</b> yang relevan (misalnya, 'Sales User').</li>
+                                                    <li>Cari bagian untuk "User Permissions" atau "Apply User Permissions" (nama bisa bervariasi tergantung versi dan kustomisasi).</li>
+                                                    <li>Tambahkan baris baru dan tentukan:
+                                                        <ul>
+                                                            <li><b>Dokumen Izin (Permitted Document Type):</b> Pilih 'Wilayah'.</li>
+                                                            <li><b>Field Kriteria (Applicable Field):</b> Pilih field pada 'Sales Order' yang akan dicocokkan dengan wilayah pengguna (misalnya, 'wilayah_penjualan' atau 'territory').</li>
+                                                            <li><b>Level Izin (Perm Level):</b> Biasanya Perm Level 0, agar batasan berlaku untuk seluruh dokumen.</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>Simpan pengaturan.</li>
+                                                </ul>
+                                            </li>
+                                            <li><b>Hasil:</b> Setelah konfigurasi ini, ketika 'Sales User' masuk dan melihat daftar 'Sales Order', sistem secara otomatis akan memfilter dan hanya menampilkan Sales Order yang 'Wilayah Penjualan'-nya cocok dengan wilayah yang ditugaskan pada profil pengguna tersebut.</li>
+                                        </ol>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><b>Pembatasan Departemen untuk Manajer HR:</b>
+                                <ul>
+                                    <li><b>Skenario:</b> Seorang 'HR Manager' hanya bertanggung jawab atas karyawan di departemen 'Produksi'. Anda ingin dia hanya dapat melihat dan mengelola data karyawan dari departemen 'Produksi' saja.</li>
+                                    <li><b>Penerapan:</b> Konfigurasikan peran 'HR Manager' agar hanya dapat melihat dokumen 'Employee' di mana kolom 'Departemen' karyawan tersebut adalah 'Produksi'. Ini mencegah mereka mengakses data karyawan dari departemen lain seperti 'Pemasaran' atau 'Keuangan'.</li>
+                                </ul>
+                            </li>
+                            <li><b>Pembatasan Perusahaan untuk Akuntan Multi-Perusahaan:</b>
+                                <ul>
+                                    <li><b>Skenario:</b> Jika Anda menjalankan ERP Siumang untuk beberapa entitas perusahaan dalam satu instalasi, seorang 'Akuntan' mungkin hanya perlu melihat data keuangan untuk 'PT. Maju Bersama' dan bukan 'CV. Jaya Abadi'.</li>
+                                    <li><b>Penerapan:</b> Anda dapat mengatur batasan data pada peran 'Akuntan' sehingga semua transaksi keuangan (Jurnal Entri, Faktur, Pembayaran) yang mereka lihat secara otomatis difilter berdasarkan 'Perusahaan' yang ditugaskan kepada mereka.</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        <p>Manajemen Batasan Data adalah alat yang sangat kuat untuk memastikan bahwa data yang tepat berada di tangan yang tepat, meningkatkan keamanan, privasi, dan relevansi informasi bagi setiap pengguna dalam sistem ERP Siumang Anda.</p>
+                        <!-- <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/role_based_permissions.png" alt="Manajemen Batasan Data Berbasis Peran">
+                            <small class="text-muted d-block mt-2">Gambar: Ilustrasi konsep Manajemen Batasan Data Berbasis Peran.</small>
+                        </div> -->
                     </section><!--//section-->
 
                     <section class="docs-section" id="kustomisasi-pengembangan">
                         <h2 class="section-heading"><i class="fas fa-tools me-2"></i> 4. Kustomisasi dan Pengembangan</h2>
-                        <p>Bagian ini membahas bagaimana administrator dapat menyesuaikan ERP Siumang tanpa mengubah kode inti, memungkinkan fleksibilitas dan adaptasi terhadap kebutuhan bisnis yang berkembang. Ini adalah inti dari kemampuan ERP Siumang untuk menjadi solusi yang benar-benar sesuai dengan perusahaan Anda.</p>
+                        <p>Bagian ini membahas bagaimana administrator dan developer dapat menyesuaikan serta memperluas fungsionalitas ERP Siumang agar sesuai dengan kebutuhan bisnis yang unik dan terus berkembang. Dengan alat kustomisasi yang disediakan, Anda dapat mengubah perilaku sistem tanpa menyentuh kode inti, menjaga kemudahan pembaruan dan pemeliharaan.</p>
 
-                        <h3 class="mt-4"><i class="fas fa-cogs me-2"></i> 4.1. Kustomisasi Formulir (Customize Form)</h3>
-                        <p>Alat Customize Form adalah fitur yang sangat powerful untuk menyesuaikan tampilan dan perilaku formulir di ERP Siumang:</p>
-                        <ul>
-                            <li><b>Menambah/mengubah/menyembunyikan field:</b> Sesuaikan field yang terlihat atau disembunyikan pada formulir sesuai kebutuhan pengguna.</li>
-                            <li><b>Mengatur tata letak form (Section Break, Column Break):</b> Atur ulang tata letak formulir untuk meningkatkan ergonomi dan kemudahan penggunaan.</li>
-                            <li><b>Membuat Child Table baru:</b> Tambahkan tabel anak untuk mengelola data terkait dalam satu dokumen utama.</li>
-                            <li><b>Mengelola DocType Property:</b> Konfigurasi properti dasar dari DocType, seperti apakah itu dapat dibagikan, dicetak, dll.</li>
-                        </ul>
-                        <div class="screenshot-container text-center my-4">
-                            <img class="img-fluid rounded shadow" src="assets/images/customize_form.png" alt="Kustomisasi Formulir">
-                            <small class="text-muted d-block mt-2">Gambar: Tampilan Customize Form.</small>
-                        </div>
+                        <h3 class="mt-4" id="kustomisasi-formulir"><i class="fas fa-cogs me-2"></i> 4.1. Kustomisasi Formulir (Customize Form)</h3>
+                        <p>Fitur <b>Customize Form</b> adalah salah satu alat paling sering digunakan oleh administrator untuk menyesuaikan tampilan dan perilaku formulir di ERP Siumang. Ini memungkinkan Anda untuk mengubah struktur dokumen (DocType) dan bagaimana data ditampilkan atau diinput oleh pengguna, tanpa perlu menulis kode.</p>
 
-                        <h3 class="mt-4"><i class="fas fa-terminal me-2"></i> 4.2. Script Klien (Client Script)</h3>
-                        <p>Client Script memungkinkan Anda menambahkan logika kustom yang berjalan di sisi browser, meningkatkan interaktivitas formulir:</p>
+                        <h4><i class="fas fa-lightbulb me-2"></i> Mengapa Customize Form Penting?</h4>
                         <ul>
-                            <li><b>Pengantar JavaScript untuk otomatisasi di sisi klien:</b> Pelajari dasar-dasar penulisan skrip JavaScript dalam konteks ERP Siumang.</li>
-                            <li><b>Contoh penggunaan:</b> Validasi form kustom secara real-time, perubahan tampilan dinamis berdasarkan input pengguna, atau otomatisasi kecil pada antarmuka pengguna.</li>
+                            <li><b>Adaptasi Bisnis:</b> Menyesuaikan formulir agar sesuai dengan alur kerja dan data spesifik perusahaan Anda.</li>
+                            <li><b>Peningkatan Efisiensi:</b> Menyederhanakan formulir dengan menyembunyikan field yang tidak relevan, atau menambahkan field baru untuk data penting.</li>
+                            <li><b>Konsistensi Data:</b> Menetapkan nilai default atau aturan validasi sederhana untuk memastikan input data yang konsisten.</li>
                         </ul>
-                        <div class="screenshot-container text-center my-4">
-                            <img class="img-fluid rounded shadow" src="assets/images/client_script.png" alt="Script Klien">
-                            <small class="text-muted d-block mt-2">Gambar: Tampilan Client Script Editor.</small>
-                        </div>
 
-                        <h3 class="mt-4"><i class="fas fa-server me-2"></i> 4.3. Script Server (Server Script)</h3>
-                        <p>Server Script memungkinkan Anda menambahkan logika kustom yang berjalan di sisi server, memberikan kontrol yang lebih dalam atas data dan proses bisnis:</p>
-                        <ul>
-                            <li><b>Pengantar Python untuk otomatisasi di sisi server:</b> Pahami bagaimana Anda dapat menulis skrip Python untuk berinteraksi dengan database dan logika bisnis.</li>
-                            <li><b>Contoh penggunaan:</b> Validasi data kompleks sebelum disimpan, otomatisasi proses bisnis yang melibatkan beberapa dokumen, atau integrasi dengan layanan eksternal.</li>
-                        </ul>
-                        <div class="screenshot-container text-center my-4">
-                            <img class="img-fluid rounded shadow" src="assets/images/server_script.png" alt="Script Server">
-                            <small class="text-muted d-block mt-2">Gambar: Tampilan Server Script Editor.</small>
-                        </div>
-
-                        <h3 class="mt-4"><i class="fas fa-chart-bar me-2"></i> 4.4. Laporan Kustom (Custom Reports)</h3>
-                        <p>Buat laporan yang sesuai dengan kebutuhan analisis bisnis Anda, melampaui laporan standar sistem:</p>
-                        <ul>
-                            <li><b>Membuat laporan baru menggunakan Report Builder:</b> Alat visual untuk membuat laporan sederhana dengan memilih kolom dan filter.</li>
-                            <li><b>Menulis Script Report untuk laporan yang lebih kompleks:</b> Gunakan Python untuk membuat laporan dengan logika bisnis yang kompleks, perhitungan kustom, atau agregasi data yang spesifik.</li>
-                        </ul>
-                        <div class="screenshot-container text-center my-4">
-                            <img class="img-fluid rounded shadow" src="assets/images/custom_reports.png" alt="Laporan Kustom">
-                            <small class="text-muted d-block mt-2">Gambar: Tampilan Custom Reports.</small>
-                        </div>
-
-                        <h3 class="mt-4"><i class="fas fa-project-diagram me-2"></i> 4.5. Alur Kerja (Workflow) Kustom</h3>
-                        <p>Otomatiskan dan standarisasi proses persetujuan dokumen dengan alur kerja kustom:</p>
-                        <ul>
-                            <li><b>Mendesain dan mengimplementasikan alur persetujuan dokumen:</b> Buat langkah-langkah persetujuan untuk dokumen seperti pesanan penjualan, faktur, atau permintaan cuti.</li>
-                            <li><b>Kondisi dan transisi status:</b> Atur kondisi yang harus dipenuhi untuk transisi antar status dan tentukan siapa yang memiliki wewenang untuk menyetujui.</li>
-                        </ul>
-                        <div class="screenshot-container text-center my-4">
-                            <img class="img-fluid rounded shadow" src="assets/images/custom_workflow.png" alt="Alur Kerja Kustom">
-                            <small class="text-muted d-block mt-2">Gambar: Tampilan Custom Workflow Designer.</small>
-                        </div>
+                        <h4><i class="fas fa-tasks me-2"></i> Langkah-langkah Menggunakan Customize Form (Contoh: Menambah Field Baru)</h4>
+                        <p>Misalnya, Anda ingin menambahkan field baru bernama "Nomor Referensi Eksternal" ke DocType "Sales Order" untuk melacak referensi dari sistem lain.</p>
+                        <ol>
+                            <li><b>Akses Customize Form:</b>
+                                <ul>
+                                    <li>Buka <b>Awesome Bar</b> (bilah pencarian di atas antarmuka ERP Siumang).</li>
+                                    <li>Ketik "Customize Form" dan pilih opsi yang muncul.</li>
+                                </ul>
+                                <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/customize_form_access.png" alt="Akses Customize Form">
+                                    <small class="text-muted d-block mt-2">Gambar: Cara mengakses Customize Form melalui Awesome Bar.</small>
+                                </div>
+                            </li>
+                            <li><b>Pilih DocType:</b>
+                                <ul>
+                                    <li>Pada dropdown "Enter Form Type", ketik dan pilih <b>"Sales Order"</b>.</li>
+                                    <li>Formulir kustomisasi untuk Sales Order akan terbuka, menampilkan daftar semua field yang ada dalam dokumen tersebut.</li>
+                                </ul>
+                                <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/customize_form_select_doctype.png" alt="Pilih DocType di Customize Form">
+                                    <small class="text-muted d-block mt-2">Gambar: Memilih DocType 'Sales Order' di Customize Form.</small>
+                                </div>
+                            </li>
+                            <li><b>Tambahkan Field Baru:</b>
+                                <ul>
+                                    <li>Gulir ke bagian bawah daftar field atau cari di mana Anda ingin menambahkan field baru.</li>
+                                    <li>Klik tombol <b>"Add Row"</b> atau ikon plus (<b>+</b>) untuk menambahkan baris field baru.</li>
+                                    <li>Isi detail field baru:
+                                        <ul>
+                                            <li><b>Label:</b> Masukkan "Nomor Referensi Eksternal".</li>
+                                            <li><b>Fieldname:</b> Ini akan terisi otomatis (misalnya, `nomor_referensi_eksternal`). Ini adalah nama teknis field.</li>
+                                            <li><b>Type:</b> Pilih tipe data yang sesuai, misalnya "Data" (untuk teks pendek), "Text" (untuk teks panjang), "Int" (untuk angka bulat), "Currency" (untuk mata uang), "Date", "Link" (untuk menghubungkan ke dokumen lain), dll. Untuk contoh ini, pilih <b>"Data"</b>.</li>
+                                            <li><b>Options:</b> (Opsional) Jika tipe adalah "Select" atau "Link", Anda akan mengisi pilihan di sini.</li>
+                                            <li><b>Default Value:</b> (Opsional) Nilai default yang akan terisi otomatis saat membuat dokumen baru.</li>
+                                            <li><b>Mandatory:</b> (Opsional) Centang jika field ini wajib diisi.</li>
+                                            <li><b>Read Only:</b> (Opsional) Centang jika field ini hanya bisa dibaca, tidak bisa diedit.</li>
+                                            <li><b>Hidden:</b> (Opsional) Centang jika field ini ingin disembunyikan dari tampilan form.</li>
+                                            <li><b>Perm Level:</b> (Opsional) Atur Perm Level jika field ini memiliki batasan akses khusus (lihat 3.3).</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <!-- <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/customize_form_add_field.png" alt="Menambah Field Baru di Customize Form">
+                                    <small class="text-muted d-block mt-2">Gambar: Menambahkan field 'Nomor Referensi Eksternal' dengan tipe 'Data'.</small>
+                                </div> -->
+                            </li>
+                            <li><b>Atur Tata Letak (Opsional):</b>
+                                <ul>
+                                    <li>Anda bisa menggunakan "Section Break" untuk membagi formulir menjadi bagian-bagian logis, dan "Column Break" untuk menempatkan field berdampingan dalam satu baris. Cukup tambahkan `Section Break` atau `Column Break` sebagai tipe field.</li>
+                                    <li>Seret dan lepas (drag and drop) baris field untuk mengubah urutan atau posisinya di formulir.</li>
+                                </ul>
+                                <!-- <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/customize_form_layout.png" alt="Mengatur Tata Letak Formulir">
+                                    <small class="text-muted d-block mt-2">Gambar: Mengatur tata letak formulir dengan Section Break dan Column Break.</small>
+                                </div> -->
+                            </li>
+                            <li><b>Simpan Perubahan:</b>
+                                <ul>
+                                    <li>Setelah semua kustomisasi selesai, klik tombol <b>"Update"</b> atau <b>"Simpan"</b> di bagian atas halaman Customize Form.</li>
+                                    <li>Sistem akan memproses perubahan, dan field baru Anda akan terlihat di formulir Sales Order.</li>
+                                </ul>
+                                <!-- <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/customize_form_save.png" alt="Simpan Perubahan di Customize Form">
+                                    <small class="text-muted d-block mt-2">Gambar: Tombol 'Update' untuk menyimpan kustomisasi formulir.</small>
+                                </div> -->
+                            </li>
+                        </ol>
+                        <p>Selain menambah field, Anda juga dapat <b>mengubah properti field yang sudah ada</b> (misalnya, mengubah label, tipe, atau membuatnya wajib), <b>menyembunyikan field</b> yang tidak diperlukan, atau bahkan <b>membuat tabel anak (Child Table) baru</b> untuk mengelola daftar item atau detail berulang dalam satu dokumen utama. Fitur ini sangat fleksibel untuk menyesuaikan ERP Siumang tanpa perlu coding.</p>
                     </section><!--//section-->
 
+                    <section class="docs-section" id="script-klien">
+                        <h2 class="section-heading"><i class="fas fa-terminal me-2"></i> 4.2. Script Klien (Client Script)</h2>
+                        <p><b>Script Klien (Client Script)</b> adalah kode JavaScript yang berjalan di sisi browser pengguna. Ini digunakan untuk menambahkan logika kustom yang dinamis pada formulir, meningkatkan interaktivitas, dan memberikan validasi real-time sebelum data dikirim ke server. Client Script sangat berguna untuk pengalaman pengguna yang lebih baik dan untuk mengotomatisasi tindakan kecil di antarmuka.</p>
+
+                        <h4><i class="fas fa-lightbulb me-2"></i> Mengapa Client Script Penting?</h4>
+                        <ul>
+                            <li><b>Validasi Instan:</b> Memberikan umpan balik langsung kepada pengguna saat mereka mengisi formulir, mencegah kesalahan input data.</li>
+                            <li><b>Interaktivitas Dinamis:</b> Mengubah tampilan atau perilaku formulir secara otomatis berdasarkan input pengguna (misalnya, menyembunyikan/menampilkan field, mengubah nilai field lain).</li>
+                            <li><b>Peningkatan UX:</b> Membuat formulir lebih responsif dan intuitif, mengurangi langkah-langkah manual bagi pengguna.</li>
+                        </ul>
+
+                        <h4><i class="fas fa-tasks me-2"></i> Langkah-langkah Membuat Client Script (Contoh: Validasi Diskon)</h4>
+                        <p>Misalnya, Anda ingin memastikan bahwa field "Diskon" pada Sales Order tidak boleh melebihi 20%.</p>
+                        <ol>
+                            <li><b>Akses Client Script:</b>
+                                <ul>
+                                    <li>Buka <b>Awesome Bar</b>.</li>
+                                    <li>Ketik "Client Script" dan pilih opsi yang muncul.</li>
+                                </ul>
+                                <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/client_script_access.png" alt="Akses Client Script">
+                                    <small class="text-muted d-block mt-2">Gambar: Cara mengakses Client Script melalui Awesome Bar.</small>
+                                </div>
+                            </li>
+                            <li><b>Buat Script Baru:</b>
+                                <ul>
+                                    <li>Klik tombol <b>"+ Add Client Script"</b> atau <b>"Baru"</b>.</li>
+                                </ul>
+                                <!-- <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/client_script_new.png" alt="Buat Client Script Baru">
+                                    <small class="text-muted d-block mt-2">Gambar: Tombol untuk membuat Client Script baru.</small>
+                                </div> -->
+                            </li>
+                            <li><b>Isi Detail Script:</b>
+                                <ul>
+                                    <li><b>DocType:</b> Pilih <b>"Sales Order"</b>.</li>
+                                    <li><b>Script:</b> Masukkan kode JavaScript Anda di area teks.</li>
+                                </ul>
+                                <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/client_script_editor.png" alt="Editor Client Script">
+                                    <small class="text-muted d-block mt-2">Gambar: Editor Client Script dengan DocType yang dipilih.</small>
+                                </div>
+                            </li>
+                            <li><b>Contoh Kode Script (Validasi Diskon):</b>
+                                <pre><code class="language-javascript">
+frappe.ui.form.on('Sales Order', {
+    // Fungsi ini akan berjalan setiap kali nilai field 'diskon' berubah
+    discount_amount: function(frm) {
+        // Ambil nilai diskon dari field
+        let discount = frm.doc.discount_amount;
+        
+        // Periksa apakah diskon melebihi 20% dari total
+        // Asumsi 'grand_total' adalah field yang menyimpan total sebelum diskon
+        let grand_total = frm.doc.grand_total; 
+        
+        if (grand_total && discount > (grand_total * 0.20)) {
+            // Tampilkan pesan peringatan kepada pengguna
+            frappe.msgprint(__('Diskon tidak boleh melebihi 20% dari total!'));
+            // Reset nilai diskon ke 20% dari total atau nilai lain yang valid
+            frm.set_value('discount_amount', grand_total * 0.20);
+        }
+    },
+    // Fungsi ini akan berjalan sebelum dokumen disimpan
+    before_save: function(frm) {
+        let discount = frm.doc.discount_amount;
+        let grand_total = frm.doc.grand_total;
+        
+        if (grand_total && discount > (grand_total * 0.20)) {
+            // Tampilkan pesan kesalahan dan cegah penyimpanan
+            frappe.throw(__('Validasi Gagal: Diskon tidak boleh melebihi 20% dari total!'));
+        }
+    }
+});
+                                </code></pre>
+                                <p class="text-muted mt-2"><i><b>Catatan:</b> Ganti `discount_amount` dan `grand_total` dengan `fieldname` yang sesuai di DocType Sales Order Anda.</i></p>
+                            </li>
+                            <li><b>Simpan Script:</b>
+                                <ul>
+                                    <li>Setelah memasukkan kode, klik tombol <b>"Save"</b> atau <b>"Simpan"</b>.</li>
+                                </ul>
+                                <!-- <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/client_script_save.png" alt="Simpan Client Script">
+                                    <small class="text-muted d-block mt-2">Gambar: Tombol 'Save' untuk menyimpan Client Script.</small>
+                                </div> -->
+                            </li>
+                        </ol>
+                        <p>Sekarang, setiap kali pengguna mengubah nilai diskon di Sales Order, script ini akan memvalidasinya secara real-time dan mencegah penyimpanan jika aturan dilanggar.</p>
+                    </section><!--//section-->
+
+                    <section class="docs-section" id="script-server">
+                        <h2 class="section-heading"><i class="fas fa-server me-2"></i> 4.3. Script Server (Server Script)</h2>
+                        <p>Berbeda dengan Client Script, <b>Script Server (Server Script)</b> adalah kode Python yang berjalan di sisi server. Ini memberikan kontrol yang lebih dalam atas logika bisnis, interaksi database, dan integrasi dengan layanan eksternal. Server Script sangat ideal untuk validasi data kompleks, otomatisasi proses yang melibatkan beberapa dokumen, atau tindakan yang memerlukan akses ke sumber daya server.</p>
+
+                        <h4><i class="fas fa-lightbulb me-2"></i> Mengapa Server Script Penting?</h4>
+                        <ul>
+                            <li><b>Logika Bisnis Kompleks:</b> Menerapkan aturan bisnis yang rumit yang tidak dapat ditangani oleh Client Script atau validasi standar.</li>
+                            <li><b>Keamanan Data:</b> Memastikan integritas data di sisi server, terlepas dari validasi di sisi klien.</li>
+                            <li><b>Otomatisasi Lintas Modul:</b> Mengotomatisasi tindakan yang memengaruhi beberapa dokumen atau modul sekaligus (misalnya, membuat entri jurnal otomatis setelah submit dokumen).</li>
+                            <li><b>Integrasi:</b> Berinteraksi dengan API eksternal atau sistem lain.</li>
+                        </ul>
+
+                        <h4><i class="fas fa-tasks me-2"></i> Langkah-langkah Membuat Server Script (Contoh: Update Stok Otomatis)</h4>
+                        <p>Misalnya, Anda ingin secara otomatis mengurangi stok item di gudang setiap kali sebuah "Delivery Note" (Dokumen Pengiriman) disubmit.</p>
+                        <ol>
+                            <li><b>Akses Server Script:</b>
+                                <ul>
+                                    <li>Buka <b>Awesome Bar</b>.</li>
+                                    <li>Ketik "Server Script" dan pilih opsi yang muncul.</li>
+                                </ul>
+                                <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/server_script_access.png" alt="Akses Server Script">
+                                    <small class="text-muted d-block mt-2">Gambar: Cara mengakses Server Script melalui Awesome Bar.</small>
+                                </div>
+                            </li>
+                            <li><b>Buat Script Baru:</b>
+                                <ul>
+                                    <li>Klik tombol <b>"+ Add Server Script"</b> atau <b>"Baru"</b>.</li>
+                                </ul>
+                                <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/server_script_new.png" alt="Buat Server Script Baru">
+                                    <small class="text-muted d-block mt-2">Gambar: Tombol untuk membuat Server Script baru.</small>
+                                </div>
+                            </li>
+                            <li><b>Isi Detail Script:</b>
+                                <ul>
+                                    <li><b>DocType:</b> Pilih <b>"Delivery Note"</b>.</li>
+                                    <li><b>Method:</b> Pilih <b>"on_submit"</b> (script akan berjalan saat Delivery Note disubmit).</li>
+                                    <li><b>Script:</b> Masukkan kode Python Anda di area teks.</li>
+                                </ul>
+                                <!-- <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/server_script_editor.png" alt="Editor Server Script">
+                                    <small class="text-muted d-block mt-2">Gambar: Editor Server Script dengan DocType dan Method yang dipilih.</small>
+                                </div> -->
+                            </li>
+                            <li><b>Contoh Kode Script (Update Stok Otomatis):</b>
+                                <pre><code class="language-python">
+# Script Server untuk Delivery Note (on_submit)
+# Mengurangi stok item secara otomatis di gudang setelah Delivery Note disubmit
+
+def execute():
+    # Akses dokumen Delivery Note yang sedang diproses
+    delivery_note = frappe.get_doc("Delivery Note", doc.name)
+
+    # Iterasi melalui setiap item dalam Delivery Note
+    for item_row in delivery_note.items:
+        item_code = item_row.item_code
+        qty = item_row.qty
+        warehouse = item_row.warehouse
+
+        # Buat Stock Entry untuk mengurangi stok (Material Issue)
+        try:
+            stock_entry = frappe.new_doc("Stock Entry")
+            stock_entry.stock_entry_type = "Material Issue"
+            stock_entry.purpose = "Material Issue" # Atau tujuan lain yang relevan
+            stock_entry.set_warehouse = warehouse
+
+            # Tambahkan item ke Stock Entry
+            stock_entry.append("items", {
+                "item_code": item_code,
+                "qty": qty,
+                "s_warehouse": warehouse # Gudang sumber (stok akan dikurangi dari sini)
+            })
+
+            stock_entry.insert() # Simpan Stock Entry
+            stock_entry.submit() # Submit Stock Entry untuk memengaruhi stok
+
+            frappe.log_error("Stock Updated", f"Stok {item_code} dikurangi sebanyak {qty} dari {warehouse}")
+
+        except Exception as e:
+            frappe.log_error("Stock Update Failed", f"Gagal mengurangi stok untuk {item_code}: {e}")
+            # Anda bisa memilih untuk membatalkan submit Delivery Note di sini
+            # frappe.throw(f"Gagal memperbarui stok: {e}")
+
+                                </code></pre>
+                                <p class="text-muted mt-2"><i><b>Catatan:</b> Kode ini adalah contoh konseptual. Implementasi sebenarnya mungkin memerlukan penanganan batch/serial number, validasi tambahan, dan penyesuaian sesuai struktur data Anda.</i></p>
+                            </li>
+                            <li><b>Simpan Script:</b>
+                                <ul>
+                                    <li>Setelah memasukkan kode, klik tombol <b>"Save"</b> atau <b>"Simpan"</b>.</li>
+                                </ul>
+                                <!-- <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/server_script_save.png" alt="Simpan Server Script">
+                                    <small class="text-muted d-block mt-2">Gambar: Tombol 'Save' untuk menyimpan Server Script.</small>
+                                </div> -->
+                            </li>
+                        </ol>
+                        <p>Dengan script ini, setiap kali Delivery Note disubmit, sistem akan secara otomatis membuat dan submit Stock Entry untuk mengurangi stok item yang dikirim dari gudang yang relevan.</p>
+                    </section><!--//section-->
+
+                    <section class="docs-section" id="laporan-kustom">
+                        <h2 class="section-heading"><i class="fas fa-chart-bar me-2"></i> 4.4. Laporan Kustom (Custom Reports)</h2>
+                        <p>ERP Siumang menyediakan berbagai laporan standar, namun seringkali bisnis memerlukan wawasan yang lebih spesifik. Fitur <b>Laporan Kustom (Custom Reports)</b> memungkinkan Anda untuk membuat laporan baru yang disesuaikan dengan kebutuhan analisis data Anda, baik melalui antarmuka visual sederhana maupun dengan kode Python untuk kompleksitas yang lebih tinggi.</p>
+
+                        <h4><i class="fas fa-lightbulb me-2"></i> Mengapa Laporan Kustom Penting?</h4>
+                        <ul>
+                            <li><b>Wawasan Spesifik:</b> Mendapatkan data yang tepat sesuai dengan metrik kinerja atau persyaratan pelaporan unik perusahaan.</li>
+                            <li><b>Pengambilan Keputusan Lebih Baik:</b> Menyajikan data dalam format yang mudah dicerna untuk mendukung keputusan strategis.</li>
+                            <li><b>Fleksibilitas:</b> Menggabungkan data dari berbagai DocType atau menerapkan logika perhitungan khusus.</li>
+                        </ul>
+
+                        <h4><i class="fas fa-tasks me-2"></i> Membuat Laporan Kustom Menggunakan Report Builder</h4>
+                        <p><b>Report Builder</b> adalah alat visual yang memungkinkan Anda membuat laporan sederhana dengan cepat tanpa coding. Ini ideal untuk laporan yang hanya memerlukan pemilihan kolom, filter dasar, dan pengurutan.</p>
+                        <ol>
+                            <li><b>Akses Report Builder:</b>
+                                <ul>
+                                    <li>Buka <b>Awesome Bar</b>.</li>
+                                    <li>Ketik nama DocType yang ingin Anda laporkan (misalnya, "Sales Order"), lalu pilih opsi "Report" atau "Laporan" yang muncul di bawahnya. Atau, ketik "Report Builder" langsung.</li>
+                                </ul>
+                                <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/report_builder_access.png" alt="Akses Report Builder">
+                                    <small class="text-muted d-block mt-2">Gambar: Cara mengakses Report Builder untuk DocType tertentu.</small>
+                                </div>
+                            </li>
+                            <li><b>Pilih Kolom:</b>
+                                <ul>
+                                    <li>Di panel kiri, centang field yang ingin Anda tampilkan sebagai kolom di laporan Anda (misalnya, "Nama Pelanggan", "Tanggal Pesanan", "Total Bersih").</li>
+                                </ul>
+                                <!-- <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/report_builder_select_columns.png" alt="Pilih Kolom di Report Builder">
+                                    <small class="text-muted d-block mt-2">Gambar: Memilih kolom yang akan ditampilkan dalam laporan.</small>
+                                </div> -->
+                            </li>
+                            <li><b>Terapkan Filter (Opsional):</b>
+                                <ul>
+                                    <li>Klik "Add Filter" untuk menambahkan kondisi penyaringan data (misalnya, "Status" = "Submitted", "Tanggal Pesanan" antara X dan Y).</li>
+                                </ul>
+                                <!-- <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/report_builder_add_filter.png" alt="Tambah Filter di Report Builder">
+                                    <small class="text-muted d-block mt-2">Gambar: Menambahkan filter untuk menyaring data laporan.</small>
+                                </div> -->
+                            </li>
+                            <li><b>Simpan Laporan:</b>
+                                <ul>
+                                    <li>Setelah laporan sesuai, klik tombol "Save" atau "Simpan" di kanan atas.</li>
+                                    <li>Berikan nama untuk laporan kustom Anda (misalnya, "Laporan Pesanan Penjualan Aktif").</li>
+                                </ul>
+                                <!-- <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/report_builder_save_report.png" alt="Simpan Laporan Kustom">
+                                    <small class="text-muted d-block mt-2">Gambar: Dialog untuk menyimpan laporan kustom.</small>
+                                </div> -->
+                            </li>
+                        </ol>
+
+                        <h4><i class="fas fa-code me-2"></i> Menulis Script Report untuk Laporan yang Lebih Kompleks</h4>
+                        <p>Untuk laporan yang memerlukan logika bisnis yang kompleks, perhitungan kustom, atau agregasi data tingkat lanjut yang tidak dapat ditangani oleh Report Builder, Anda dapat menulis <b>Script Report</b> menggunakan Python.</p>
+                        <ol>
+                            <li><b>Buat Script Report Baru:</b>
+                                <ul>
+                                    <li>Buka <b>Awesome Bar</b>.</li>
+                                    <li>Ketik "Report" dan klik "New Report" atau "Laporan Baru".</li>
+                                </ul>
+                                <!-- <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/new_script_report_access.png" alt="Buat Script Report Baru">
+                                    <small class="text-muted d-block mt-2">Gambar: Cara membuat Script Report baru.</small>
+                                </div> -->
+                            </li>
+                            <li><b>Isi Detail Laporan:</b>
+                                <ul>
+                                    <li><b>Report Name:</b> Beri nama laporan Anda (misalnya, "Laporan Profitabilitas Produk").</li>
+                                    <li><b>Report Type:</b> Pilih <b>"Script Report"</b>.</li>
+                                    <li><b>Module:</b> Pilih modul tempat laporan ini berada (misalnya, "Selling").</li>
+                                </ul>
+                                <!-- <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/script_report_details.png" alt="Detail Script Report">
+                                    <small class="text-muted d-block mt-2">Gambar: Mengisi detail untuk Script Report baru.</small>
+                                </div> -->
+                            </li>
+                            <li><b>Tulis Kode Python:</b>
+                                <ul>
+                                    <li>Setelah menyimpan detail laporan, Anda akan diarahkan ke editor kode. Di sinilah Anda menulis logika Python untuk mengambil dan memproses data.</li>
+                                </ul>
+                                <pre><code class="language-python">
+# Contoh Script Report Python
+# Laporan yang menghitung profitabilitas setiap item terjual
+
+from frappe import _
+
+def execute(filters=None):
+    columns = [
+        {"fieldname": "item_code", "label": _("Kode Item"), "fieldtype": "Link", "options": "Item", "width": 150},
+        {"fieldname": "item_name", "label": _("Nama Item"), "fieldtype": "Data", "width": 200},
+        {"fieldname": "total_qty", "label": _("Total Qty Terjual"), "fieldtype": "Float", "width": 120},
+        {"fieldname": "total_sales_amount", "label": _("Total Penjualan"), "fieldtype": "Currency", "width": 150},
+        {"fieldname": "total_cost_amount", "label": _("Total Biaya"), "fieldtype": "Currency", "width": 150},
+        {"fieldname": "profit", "label": _("Profit"), "fieldtype": "Currency", "width": 120},
+        {"fieldname": "profit_margin", "label": _("Margin Profit (%)"), "fieldtype": "Percent", "width": 120},
+    ]
+
+    data = []
+    
+    # Contoh query untuk mengambil data penjualan dan biaya
+    # Ini adalah contoh sederhana, query sebenarnya bisa lebih kompleks
+    sales_data = frappe.db.sql("""
+        SELECT 
+            item_code, 
+            SUM(qty) as total_qty, 
+            SUM(amount) as total_sales_amount
+        FROM `tabSales Invoice Item`
+        WHERE parenttype = 'Sales Invoice' AND docstatus = 1
+        GROUP BY item_code
+    """, as_dict=1)
+
+    for row in sales_data:
+        # Asumsi biaya per item bisa diambil dari Item Price atau rata-rata biaya
+        # Untuk kesederhanaan, kita asumsikan biaya_per_unit sudah ada
+        item_doc = frappe.get_doc("Item", row.item_code)
+        cost_per_unit = item_doc.standard_rate if item_doc.standard_rate else 0 # Contoh saja
+
+        total_cost_amount = row.total_qty * cost_per_unit
+        profit = row.total_sales_amount - total_cost_amount
+        profit_margin = (profit / row.total_sales_amount * 100) if row.total_sales_amount else 0
+
+        data.append({
+            "item_code": row.item_code,
+            "item_name": item_doc.item_name,
+            "total_qty": row.total_qty,
+            "total_sales_amount": row.total_sales_amount,
+            "total_cost_amount": total_cost_amount,
+            "profit": profit,
+            "profit_margin": profit_margin
+        })
+    
+    return columns, data
+                                </code></pre>
+                                <p class="text-muted mt-2"><i><b>Catatan:</b> Kode Python ini akan mengambil data, melakukan perhitungan, dan mengembalikan kolom serta baris data untuk ditampilkan di laporan.</i></p>
+                            </li>
+                            <li><b>Simpan Script:</b>
+                                <ul>
+                                    <li>Setelah selesai menulis kode, klik tombol <b>"Save"</b> atau <b>"Simpan"</b>.</li>
+                                </ul>
+                                <!-- <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/script_report_save.png" alt="Simpan Script Report">
+                                    <small class="text-muted d-block mt-2">Gambar: Tombol 'Save' untuk menyimpan Script Report.</small>
+                                </div> -->
+                            </li>
+                        </ol>
+                        <p>Laporan ini kini dapat diakses dari modul yang Anda tentukan atau melalui Awesome Bar, memberikan wawasan yang mendalam sesuai dengan logika kustom Anda.</p>
+                    </section><!--//section-->
+
+                    <section class="docs-section" id="alur-kerja-kustom">
+                        <h2 class="section-heading"><i class="fas fa-project-diagram me-2"></i> 4.5. Alur Kerja (Workflow)</h2>
+                        <p><b>Alur Kerja (Workflow)</b> di ERP Siumang memungkinkan Anda untuk mendefinisikan dan mengotomatisasi serangkaian tahapan dan persetujuan untuk dokumen-dokumen tertentu. Ini sangat penting untuk memastikan proses bisnis berjalan sesuai standar perusahaan, meningkatkan akuntabilitas, dan mempercepat siklus persetujuan.</p>
+
+                        <h4><i class="fas fa-lightbulb me-2"></i> Mengapa Workflow Kustom Penting?</h4>
+                        <ul>
+                            <li><b>Standardisasi Proses:</b> Memastikan setiap dokumen melewati tahapan yang sama dan persetujuan yang diperlukan.</li>
+                            <li><b>Akuntabilitas:</b> Melacak siapa yang melakukan apa dan kapan, dengan jejak audit yang jelas.</li>
+                            <li><b>Efisiensi:</b> Mengurangi ketergantungan pada komunikasi manual dan mempercepat proses persetujuan.</li>
+                            <li><b>Kepatuhan:</b> Membantu memenuhi persyaratan regulasi internal atau eksternal.</li>
+                        </ul>
+
+                        <h4><i class="fas fa-tasks me-2"></i> Langkah-langkah Mendesain dan Mengimplementasikan Alur Kerja (Contoh: Persetujuan Cuti Karyawan)</h4>
+                        <p>Misalnya, Anda ingin membuat alur kerja untuk "Permohonan Cuti" karyawan, di mana setiap permohonan harus disetujui oleh Manajer Departemen sebelum disetujui oleh HR.</p>
+                        <ol>
+                            <li><b>Akses Workflow:</b>
+                                <ul>
+                                    <li>Buka <b>Awesome Bar</b>.</li>
+                                    <li>Ketik "Workflow" dan pilih opsi yang muncul.</li>
+                                </ul>
+                                <!-- <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/workflow_access.png" alt="Akses Workflow">
+                                    <small class="text-muted d-block mt-2">Gambar: Cara mengakses Workflow melalui Awesome Bar.</small>
+                                </div> -->
+                            </li>
+                            <li><b>Buat Workflow Baru:</b>
+                                <ul>
+                                    <li>Klik tombol <b>"+ Add Workflow"</b> atau <b>"Baru"</b>.</li>
+                                </ul>
+                                <!-- <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/workflow_new.png" alt="Buat Workflow Baru">
+                                    <small class="text-muted d-block mt-2">Gambar: Tombol untuk membuat Workflow baru.</small>
+                                </div> -->
+                            </li>
+                            <li><b>Isi Detail Workflow:</b>
+                                <ul>
+                                    <li><b>Workflow Name:</b> Beri nama (misalnya, "Persetujuan Cuti").</li>
+                                    <li><b>Document Type:</b> Pilih <b>"Leave Application"</b> (Permohonan Cuti).</li>
+                                    <li><b>Is Active:</b> Centang untuk mengaktifkan workflow.</li>
+                                </ul>
+                                <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/workflow_details.png" alt="Detail Workflow">
+                                    <small class="text-muted d-block mt-2">Gambar: Mengisi detail untuk Workflow baru.</small>
+                                </div>
+                            </li>
+                            <li><b>Definisikan Status (States):</b>
+                                <ul>
+                                    <li>Di bagian "States", tambahkan status-status yang akan dilalui dokumen:
+                                        <ul>
+                                            <li>"Draft" (status awal)</li>
+                                            <li>"Menunggu Persetujuan Manajer"</li>
+                                            <li>"Menunggu Persetujuan HR"</li>
+                                            <li>"Disetujui"</li>
+                                            <li>"Ditolak"</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/workflow_states.png" alt="Definisi Status Workflow">
+                                    <small class="text-muted d-block mt-2">Gambar: Mendefinisikan status-status dalam alur kerja.</small>
+                                </div>
+                            </li>
+                            <li><b>Definisikan Transisi (Transitions):</b>
+                                <ul>
+                                    <li>Di bagian "Transitions", tentukan bagaimana dokumen berpindah dari satu status ke status lain:
+                                        <ul>
+                                            <li><b>State (From):</b> "Draft"</li>
+                                            <li><b>State (To):</b> "Menunggu Persetujuan Manajer"</li>
+                                            <li><b>Action:</b> "Kirim untuk Persetujuan Manajer"</li>
+                                            <li><b>Allowed Roles:</b> "Employee" (Karyawan yang mengajukan cuti)</li>
+                                            <li><b>Condition:</b> (Opsional, misalnya, `doc.leave_type == "Cuti Tahunan"`)</li>
+                                        </ul>
+                                    </li>
+                                    <li>Ulangi untuk transisi lainnya (misalnya, dari "Menunggu Persetujuan Manajer" ke "Menunggu Persetujuan HR" dengan "Allowed Roles": "Manager", dst.).</li>
+                                    <li>Anda juga dapat menambahkan "Update Field" untuk secara otomatis mengubah nilai field tertentu saat transisi terjadi (misalnya, mengubah field "Approved By" menjadi nama manajer).</li>
+                                </ul>
+                                <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/workflow_transitions.png" alt="Definisi Transisi Workflow">
+                                    <small class="text-muted d-block mt-2">Gambar: Mendefinisikan transisi antar status dalam alur kerja.</small>
+                                </div>
+                            </li>
+                            <li><b>Simpan Workflow:</b>
+                                <ul>
+                                    <li>Setelah semua status dan transisi didefinisikan, klik tombol <b>"Save"</b> atau <b>"Simpan"</b>.</li>
+                                </ul>
+                                <!-- <div class="screenshot-container text-center my-4">
+                                    <img class="img-fluid rounded shadow" src="assets/images/workflow_save.png" alt="Simpan Workflow">
+                                    <small class="text-muted d-block mt-2">Gambar: Tombol 'Save' untuk menyimpan Workflow.</small>
+                                </div> -->
+                            </li>
+                        </ol>
+                        <p>Dengan alur kerja ini, setiap Permohonan Cuti akan mengikuti proses persetujuan yang telah Anda definisikan, memastikan setiap langkah disetujui oleh pihak yang berwenang sebelum mencapai status akhir.</p>
+                    </section><!--//section-->
+                    <!--
                     <section class="docs-section" id="pemeliharaan-troubleshooting">
                         <h2 class="section-heading"><i class="fas fa-medkit me-2"></i> 5. Pemeliharaan dan Troubleshooting</h2>
                         <p>Bagian ini memberikan panduan esensial untuk menjaga sistem ERP Siumang tetap sehat, stabil, dan mengatasi masalah umum yang mungkin timbul. Pemahaman yang baik tentang pemeliharaan akan meminimalkan downtime dan memastikan kelancaran operasional.</p>
 
-                        <h3 class="mt-4"><i class="fas fa-database me-2"></i> 5.1. Backup dan Restore Data</h3>
+                        <h3 class="mt-4" id="backup-restore"><i class="fas fa-database me-2"></i> 5.1. Backup dan Restore Data</h3>
                         <p>Keamanan data adalah yang terpenting. Pelajari cara melindungi data Anda:</p>
                         <ul>
                             <li><b>Proses backup manual dan otomatis:</b> Langkah-langkah untuk membuat salinan cadangan data secara berkala.</li>
@@ -380,7 +1119,7 @@
                             <small class="text-muted d-block mt-2">Gambar: Tampilan Opsi Backup dan Restore Data.</small>
                         </div>
 
-                        <h3 class="mt-4"><i class="fas fa-sync-alt me-2"></i> 5.2. Pembaruan Sistem (System Updates)</h3>
+                        <h3 class="mt-4" id="pembaruan-sistem"><i class="fas fa-sync-alt me-2"></i> 5.2. Pembaruan Sistem (System Updates)</h3>
                         <p>Menjaga sistem tetap terbarui adalah kunci untuk keamanan dan fitur terbaru:</p>
                         <ul>
                             <li><b>Proses <code>bench update</code> dan <code>bench migrate</code>:</b> Perintah CLI untuk memperbarui kerangka kerja Frappe dan aplikasi ERP Siumang.</li>
@@ -391,7 +1130,7 @@
                             <small class="text-muted d-block mt-2">Gambar: Ilustrasi Proses Pembaruan Sistem.</small>
                         </div>
 
-                        <h3 class="mt-4"><i class="fas fa-chart-line me-2"></i> 5.3. Pemantauan Kinerja</h3>
+                        <h3 class="mt-4" id="pemantauan-kinerja"><i class="fas fa-chart-line me-2"></i> 5.3. Pemantauan Kinerja</h3>
                         <p>Pantau kesehatan sistem Anda untuk mengidentifikasi dan mengatasi masalah sebelum menjadi kritis:</p>
                         <ul>
                             <li><b>Melihat Error Log dan Scheduler Log:</b> Memeriksa log sistem untuk menemukan kesalahan atau masalah pada tugas terjadwal.</li>
@@ -403,7 +1142,7 @@
                             <small class="text-muted d-block mt-2">Gambar: Tampilan Pemantauan Kinerja Sistem.</small>
                         </div>
 
-                        <h3 class="mt-4"><i class="fas fa-bug me-2"></i> 5.4. Pemecahan Masalah Umum (Common Troubleshooting)</h3>
+                        <h3 class="mt-4" id="pemecahan-masalah-umum"><i class="fas fa-bug me-2"></i> 5.4. Pemecahan Masalah Umum (Common Troubleshooting)</h3>
                         <p>Panduan cepat untuk mengatasi masalah yang sering ditemui pengguna dan administrator:</p>
                         <ul>
                             <li><b>Masalah login:</b> Solusi untuk masalah akses pengguna.</li>
@@ -416,7 +1155,7 @@
                             <small class="text-muted d-block mt-2">Gambar: Tampilan Pemecahan Masalah Umum.</small>
                         </div>
 
-                        <h3 class="mt-4"><i class="fas fa-clipboard-list me-2"></i> 5.5. Log Sistem dan Debugging</h3>
+                        <h3 class="mt-4" id="log-sistem-debugging"><i class="fas fa-clipboard-list me-2"></i> 5.5. Log Sistem dan Debugging</h3>
                         <p>Untuk masalah yang lebih kompleks, pemahaman log sistem dan mode debugging sangat membantu:</p>
                         <ul>
                             <li><b>Memahami berbagai jenis log:</b> Log kesalahan, log scheduler, log audit, dll.</li>
@@ -426,24 +1165,165 @@
                             <img class="img-fluid rounded shadow" src="assets/images/system_logs_debugging.png" alt="Log Sistem dan Debugging">
                             <small class="text-muted d-block mt-2">Gambar: Tampilan Log Sistem dan Opsi Debugging.</small>
                         </div>
-                    </section><!--//section-->
+                    </section>--><!--//section-->
 
                     <section class="docs-section" id="lampiran">
                         <h2 class="section-heading"><i class="fas fa-paperclip me-2"></i> Lampiran</h2>
-                        <p>Bagian lampiran menyediakan sumber daya tambahan yang berguna untuk administrator dan developer.</p>
+                        <p>Bagian lampiran ini dirancang sebagai kompendium sumber daya esensial yang akan sangat membantu para administrator dalam mengelola dan memahami sistem ERP Siumang. Dari definisi istilah teknis hingga jawaban atas pertanyaan umum, setiap sub-bagian bertujuan untuk memberikan dukungan yang komprehensif.</p>
 
-                        <h3 class="mt-4"><i class="fas fa-book-open me-2"></i> Glosarium Administrator Sistem</h3>
-                        <p>Daftar istilah teknis spesifik yang digunakan dalam konteks ERP Siumang dan Frappe Framework, membantu Anda memahami terminologi dengan lebih baik.</p>
+                        <h3 class="mt-4" id="glosarium"><i class="fas fa-book-open me-2"></i> Glosarium Administrator Sistem</h3>
+                        <p><b>Glosarium Administrator Sistem</b> adalah daftar istilah teknis kunci yang sering Anda temui saat mengelola ERP Siumang dan Frappe Framework. Kami menyajikan definisi yang mudah dipahami agar Anda cepat familiar dengan setiap konsep.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                            <div class="bg-blue-50 p-4 rounded-lg shadow-sm border border-blue-100">
+                                <h4 class="font-bold text-blue-800 mb-1">DocType</h4>
+                                <p class="text-sm text-blue-700">Ini adalah "cetak biru" atau kerangka dasar untuk setiap jenis data atau dokumen dalam sistem, seperti Faktur Penjualan atau Data Karyawan. DocType menentukan informasi apa saja yang bisa disimpan dan bagaimana dokumen tersebut berperilaku.</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg shadow-sm border border-green-100">
+                                <h4 class="font-bold text-green-800 mb-1">Perm Level (Level Izin)</h4>
+                                <p class="text-sm text-green-700">Tingkat izin yang sangat detail untuk mengontrol siapa yang bisa melihat atau mengubah bagian-bagian tertentu dari sebuah dokumen, bahkan sampai ke kolom data spesifik. Ini penting untuk keamanan dan pembatasan akses data sensitif.</p>
+                            </div>
+                            <div class="bg-yellow-50 p-4 rounded-lg shadow-sm border border-yellow-100">
+                                <h4 class="font-bold text-yellow-800 mb-1">Awesome Bar</h4>
+                                <p class="text-sm text-yellow-700">Bilah pencarian universal di bagian atas antarmuka ERP Siumang yang memungkinkan Anda mencari dan mengakses modul, dokumen, laporan, atau pengaturan apa pun dengan cepat hanya dengan mengetikkan namanya.</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg shadow-sm border border-purple-100">
+                                <h4 class="font-bold text-purple-800 mb-1">Bench</h4>
+                                <p class="text-sm text-purple-700">Alat baris perintah (command-line tool) yang digunakan untuk mengelola instalasi Frappe/ERP Siumang Anda. Ini dipakai untuk pembaruan sistem, backup, dan tugas administratif lainnya.</p>
+                            </div>
+                            <div class="bg-red-50 p-4 rounded-lg shadow-sm border border-red-100">
+                                <h4 class="font-bold text-red-800 mb-1">App</h4>
+                                <p class="text-sm text-red-700">Dalam konteks Frappe, "App" adalah modul atau aplikasi yang dibangun di atas Frappe Framework, seperti ERPNext itu sendiri atau aplikasi kustom yang Anda buat.</p>
+                            </div>
+                            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm border border-indigo-100">
+                                <h4 class="font-bold text-indigo-800 mb-1">Site</h4>
+                                <p class="text-sm text-indigo-700">Setiap instalasi ERP Siumang yang Anda jalankan disebut "Site". Satu server bisa memiliki beberapa "Site" yang berjalan secara independen.</p>
+                            </div>
+                            <div class="bg-teal-50 p-4 rounded-lg shadow-sm border border-teal-100">
+                                <h4 class="font-bold text-teal-800 mb-1">Workflow (Alur Kerja)</h4>
+                                <p class="text-sm text-teal-700">Rangkaian tahapan dan persetujuan yang harus dilalui sebuah dokumen. Ini mengotomatisasi proses bisnis dan memastikan dokumen disetujui oleh pihak yang berwenang.</p>
+                            </div>
+                            <div class="bg-orange-50 p-4 rounded-lg shadow-sm border border-orange-100">
+                                <h4 class="font-bold text-orange-800 mb-1">Report Builder</h4>
+                                <p class="text-sm text-orange-700">Alat bawaan di ERP Siumang yang memungkinkan Anda membuat laporan kustom dengan mudah tanpa perlu menulis kode. Anda bisa memilih kolom, menerapkan filter, dan mengurutkan data.</p>
+                            </div>
+                            <div class="bg-pink-50 p-4 rounded-lg shadow-sm border border-pink-100">
+                                <h4 class="font-bold text-pink-800 mb-1">Client Script</h4>
+                                <p class="text-sm text-pink-700">Kode JavaScript yang berjalan di browser pengguna. Digunakan untuk menambahkan logika dinamis pada formulir, seperti validasi data secara langsung atau mengubah tampilan formulir berdasarkan input pengguna.</p>
+                            </div>
+                            <div class="bg-lime-50 p-4 rounded-lg shadow-sm border border-lime-100">
+                                <h4 class="font-bold text-lime-800 mb-1">Server Script</h4>
+                                <p class="text-sm text-lime-700">Kode Python yang berjalan di server. Digunakan untuk logika bisnis yang lebih kompleks, interaksi database, atau otomatisasi yang terjadi di belakang layar, seperti memperbarui stok secara otomatis.</p>
+                            </div>
+                        </div>
 
-                        <h3 class="mt-4"><i class="fas fa-folder-open me-2"></i> Struktur Folder & File Penting</h3>
-                        <p>Penjelasan struktur direktori aplikasi ERP Siumang dan file konfigurasi kunci yang sering diakses oleh administrator dan developer.</p>
+                        <h3 class="mt-4" id="faq-admin"><i class="fas fa-question-circle me-2"></i> FAQ Administrator</h3>
+                        <p>Bagian <b>FAQ Administrator</b> adalah kumpulan pertanyaan yang sering diajukan (Frequently Asked Questions) oleh para administrator sistem, beserta solusi dan panduan singkat untuk mengatasinya. Ini adalah sumber daya pertama yang harus Anda kunjungi saat menghadapi masalah umum atau memiliki pertanyaan dasar tentang pengoperasian sistem. FAQ ini mencakup berbagai topik, mulai dari masalah akses pengguna, kinerja sistem, hingga pertanyaan terkait pembaruan dan backup, dilengkapi dengan langkah-langkah pemecahan masalah yang cepat dan efektif.</p>
+                        
+                        <div class="accordion" id="faqAccordion">
+                            <!-- FAQ Item 1 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Q: Mengapa pengguna tidak bisa login?
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        <p><b>A:</b> Periksa beberapa hal:</p>
+                                        <ol class="list-decimal list-inside ml-4 mt-2">
+                                            <li>Pastikan nama pengguna dan kata sandi benar (perhatikan huruf besar/kecil).</li>
+                                            <li>Cek apakah akun pengguna tersebut aktif di pengaturan pengguna.</li>
+                                            <li>Pastikan tidak ada batasan login (misal, terlalu banyak upaya login gagal).</li>
+                                            <li>Jika masalah berlanjut, coba reset kata sandi pengguna.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
 
-                        <h3 class="mt-4"><i class="fas fa-question-circle me-2"></i> FAQ Administrator</h3>
-                        <p>Kumpulan pertanyaan yang sering diajukan (FAQ) oleh administrator beserta solusinya, mencakup berbagai skenario umum.</p>
+                            <!-- FAQ Item 2 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Q: Formulir tidak bisa disimpan, apa penyebabnya?
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        <p><b>A:</b> Ini bisa disebabkan oleh beberapa faktor:</p>
+                                        <ol class="list-decimal list-inside ml-4 mt-2">
+                                            <li>Ada kolom wajib yang belum diisi.</li>
+                                            <li>Ada validasi kustom (Client Script atau Server Script) yang mencegah penyimpanan karena kondisi tidak terpenuhi.</li>
+                                            <li>Masalah izin (pengguna tidak memiliki hak 'Tulis' untuk dokumen tersebut atau field tertentu). Periksa pesan kesalahan yang muncul di layar untuk petunjuk lebih lanjut.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
 
-                        <h3 class="mt-4"><i class="fas fa-link me-2"></i> Sumber Daya Tambahan</h3>
-                        <p>Tautan ke dokumentasi Frappe/ERP Siumang resmi, forum komunitas, dan sumber belajar lainnya untuk eksplorasi lebih lanjut dan dukungan.</p>
+                            <!-- FAQ Item 3 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Q: Laporan tidak tampil atau data tidak akurat.
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        <p><b>A:</b> Pastikan filter laporan sudah benar (tanggal, status, dll.). Periksa apakah ada batasan data berbasis peran yang diterapkan pada pengguna tersebut. Jika laporan kustom, periksa Script Report untuk kesalahan sintaks atau logika. Terkadang, me-refresh cache sistem (`bench clear-cache`) dapat membantu.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 4 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFour">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                        Q: Izin yang saya atur tidak berfungsi seperti yang diharapkan.
+                                    </button>
+                                </h2>
+                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        <p><b>A:</b> Verifikasi pengaturan izin di Permission Manager untuk DocType dan Peran yang relevan. Pastikan Perm Level pada field di Customize Form sudah sesuai dengan izin yang diberikan di Permission Manager. Ingat bahwa izin yang lebih ketat akan selalu diutamakan.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 5 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFive">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                        Q: Bagaimana cara melakukan backup data secara manual?
+                                    </button>
+                                </h2>
+                                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        <p><b>A:</b> Anda dapat melakukan backup manual melalui antarmuka pengguna di bagian Tools > Backup. Atau, jika Anda memiliki akses server, gunakan perintah `bench backup` di terminal. Pastikan untuk menyimpan file backup di lokasi yang aman di luar server utama.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 6 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingSix">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                        Q: Sistem terasa lambat, bagaimana cara mengoptimalkannya?
+                                    </button>
+                                </h2>
+                                <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        <p><b>A:</b> Optimalisasi kinerja bisa melibatkan beberapa langkah:</p>
+                                        <ol class="list-decimal list-inside ml-4 mt-2">
+                                            <li>Pastikan server memiliki sumber daya yang cukup (RAM, CPU).</li>
+                                            <li>Periksa log sistem untuk error yang berulang.</li>
+                                            <li>Optimalkan query database jika ada laporan atau proses yang sangat lambat.</li>
+                                            <li>Pastikan background jobs berjalan dengan efisien dan tidak ada yang macet. Konsultasikan dengan ahli teknis jika masalah berlanjut.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </section><!--//section-->
+
 			    
 			    <footer class="footer">
 				    <div class="container text-center py-5">

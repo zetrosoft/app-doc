@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="id"> 
+<head>
+    <title>Dokumentasi ERP Siumang - Modul Settings</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="description" content="Dokumentasi Modul Settings ERP Siumang">
+    <meta name="author" content="ERP Siumang Team">    
+    <link rel="shortcut icon" href="assets/images/logo-siumang@0.1x.png"> 
+    
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome JS-->
+    <script src="assets/fontawesome/js/all.min.js"></script>
+    
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.2/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="assets/plugins/simplelightbox/simple-lightbox.min.css">
+    <!-- Bootstrap Icons CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
+
+    <style>
+        /* Menggunakan kelas Bootstrap untuk styling */
+        .screenshot-container {
+            margin: 1.5em 0;
+            text-align: center;
+            background-color: #f9f9f9; /* Bootstrap's light background */
+            border: 1px solid #e0e0e0; /* Bootstrap's border color */
+            border-radius: 0.375rem; /* Bootstrap's default border-radius */
+            padding: 10px;
+        }
+        .screenshot-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.375rem; /* Bootstrap's default border-radius */
+            box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075); /* Bootstrap's shadow */
+        }
+        /* Penyesuaian sidebar agar Bootstrap collapsible berfungsi */
+        .docs-sidebar .nav-item.section-title .theme-icon-holder {
+            font-size: 1.2rem; /* Ukuran ikon untuk judul bagian sidebar */
+        }
+        .docs-sidebar .nav-link .theme-icon-holder {
+            font-size: 1rem; /* Ukuran ikon untuk item navigasi sidebar */
+            margin-right: 0.5rem;
+        }
+        .docs-sidebar .nav-link.active {
+            color: #20c997; /* Warna aktif untuk navigasi sidebar */
+            font-weight: bold;
+        }
+        .docs-sidebar .nav-link:hover {
+            color: #007bff; /* Warna hover untuk navigasi sidebar */
+        }
+        /* Style for nested sidebar links */
+        .docs-sidebar .nav-item .nav {
+            padding-left: 1.5rem; /* Indent for sub-sections */
+            border-left: 1px solid #e0e0e0; /* Visual line for sub-sections */
+            margin-left: 0.5rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .docs-sidebar .nav-item .nav-link {
+            font-size: 0.9rem; /* Smaller font for sub-sections */
+            padding-top: 0.3rem;
+            padding-bottom: 0.3rem;
+        }
+        /* Styles for collapsible items */
+        .docs-sidebar .nav-link[data-bs-toggle="collapse"] {
+            position: relative;
+            padding-right: 2rem; /* Space for caret */
+        }
+        .docs-sidebar .nav-link[data-bs-toggle="collapse"]::after {
+            content: "\f078"; /* Chevron-down icon (Font Awesome) */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%); /* Default to down arrow */
+            transition: transform 0.2s ease-in-out;
+        }
+        .docs-sidebar .nav-link[data-bs-toggle="collapse"][aria-expanded="true"]::after {
+            content: "\f077"; /* Chevron-up icon (Font Awesome) */
+            transform: translateY(-50%); /* No rotation needed for up arrow */
+        }
+    </style>
+
+</head> 
+
+<body class="docs-page">    
+    <header class="header fixed-top">	    
+        <div class="branding docs-branding">
+            <div class="container-fluid position-relative py-2">
+                <div class="docs-logo-wrapper">
+					<button id="docs-sidebar-toggler" class="docs-sidebar-toggler docs-sidebar-visible me-2 d-xl-none" type="button">
+	                    <span></span>
+	                    <span></span>
+	                    <span></span>
+	                </button>
+	                <div class="site-logo">
+                        <a class="navbar-brand" href="index.html">
+                            <img class="logo-icon me-2" src="assets/images/logo-siumang@0.33x.svg" alt="logo Siumang" style="width: 32px; height: 32px;">
+                            <span class="logo-text">ERP<span class="text-alt">Siumang</span></span>
+                        </a>
+                    </div>    
+                </div><!--//docs-logo-wrapper-->
+	            <div class="docs-top-utilities d-flex justify-content-end align-items-center">
+	                <div class="top-search-box d-none d-lg-flex">
+		                <form class="search-form">
+				            <input type="text" placeholder="Cari dokumentasi..." name="search" class="form-control search-input">
+				            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+				        </form>
+	                </div>
+	            </div><!--//docs-top-utilities-->
+            </div><!--//container-->
+        </div><!--//branding-->
+    </header><!--//header-->
+    
+    
+    <div class="docs-wrapper">
+	    <div id="docs-sidebar" class="docs-sidebar">
+		    <div class="top-search-box d-lg-none p-3">
+                <form class="search-form">
+		            <input type="text" placeholder="Cari dokumentasi..." name="search" class="form-control search-input">
+		            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+		        </form>
+            </div>
+		    <nav id="docs-nav" class="docs-nav navbar">
+			    <ul class="section-items list-unstyled nav flex-column pb-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><span class="theme-icon-holder me-2"><i class="fas fa-home"></i></span>Home</a>
+                    </li>
+				    <li class="nav-item">
+                        <a class="nav-link active scrollto collapsed" data-bs-toggle="collapse" href="#collapseSettings" aria-expanded="true" aria-controls="collapseSettings">
+                            <span class="theme-icon-holder me-2"><i class="fas fa-cog"></i></span>Modul Setting
+                        </a>
+                        
+                        <ul id="collapseSettings" class="nav flex-column collapse show">
+                            <li class="nav-item"><a class="nav-link scrollto" href="#overview-setting">Gambaran Umum</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#system-settings">System Settings</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#domain-settings">Domain Settings</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#global-defaults">Global Defaults</a></li>
+                            <li><hr></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#accounts-settings">Accounts Settings</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#inventory-settings">Inventory Settings</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#sales-settings">Sales Settings</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#purchase-settings">Purchase Settings</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#production-settings">Production Settings</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#crm-settings">CRM Settings</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#rnd-projects-settings">RnD Projects Settings</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#help-desk-settings">Help Desk Settings</a></li>
+                        </ul>
+                    </li>
+			    </ul>
+
+		    </nav><!--//docs-nav-->
+	    </div><!--//docs-sidebar-->
+	    <div class="docs-content">
+		    <div class="container">
+			    <article class="docs-article" id="module-settings">
+				    <article class="docs-article" id="module-settings-detail">
+				    <header class="docs-header">
+					    <h1 class="docs-heading"> Modul Setting (Pengaturan)</h1>
+					    <section class="docs-intro" id="overview-setting">
+						    <p>Modul Setting atau Preferensi merupakan pusat kendali untuk seluruh konfigurasi sistem ERP Siumang. Dari sini, administrator memiliki kemampuan penuh untuk menyesuaikan sistem agar selaras dengan operasional dan kebijakan bisnis spesifik perusahaan Anda. Modul ini adalah fondasi untuk memastikan ERP Siumang bekerja secara optimal, efisien, dan konsisten di seluruh departemen.</p>
+                            <p>Memahami setiap bagian dari modul ini akan memberdayakan Anda untuk mengelola sistem dengan lebih efektif, mengoptimalkan alur kerja, dan menjaga integritas data.</p>
+                            <div class="screenshot-container text-center my-4">
+                                <img class="img-fluid rounded shadow" src="assets/images/settings_overview.png" alt="">
+                                <small class="text-muted d-block mt-2">Gambar: Tampilan umum halaman Modul Setting.</small>
+                            </div>
+						</section><!--//docs-intro-->
+				    </header>
+				    
+                    <section class="docs-section" id="company-parameters">
+						 <header class="docs-header">
+					    <h2 class="docs-heading">Pengaturan Perusahaan (Company Settings)</h2>
+					    <section class="docs-intro">
+						    <p>Bagian Pengaturan Perusahaan adalah tempat Anda mendefinisikan identitas dan parameter operasional utama perusahaan Anda dalam sistem ERP Siumang. Konfigurasi di sini sangat penting karena memengaruhi bagaimana sistem merepresentasikan entitas bisnis Anda dalam semua transaksi, laporan, dan dokumen resmi.</p>
+                            <p>Memastikan semua detail perusahaan diisi dengan akurat akan menjamin integritas data dan kepatuhan terhadap regulasi yang berlaku.</p>
+                            <div class="screenshot-container text-center my-4">
+                                <img class="img-fluid rounded shadow" src="assets/images/company_settings.png" alt="">
+                                <small class="text-muted d-block mt-2">Gambar: Tampilan formulir Pengaturan Perusahaan Baru.</small>
+                            </div>
+						</section><!--//docs-intro-->
+				    </section>
+				    <!-- company tab Detail -->
+                    <section class="docs-section" id="company-details">
+						<h3 class="mt-4"><i class="fas fa-info-circle me-3"></i> Detail Perusahaan</h3>
+						<p>Bagian ini mencakup informasi dasar dan wajib yang mendefinisikan perusahaan Anda.</p>
+                        <ul class="list-unstyled">
+                            <li><strong>Company <span class="text-danger">*</span>:</strong>
+                                <p><strong>Fungsi:</strong> Ini adalah nama resmi perusahaan Anda yang akan muncul di semua dokumen, laporan, dan antarmuka sistem. Ini adalah field wajib.</p>
+                                <p><strong>Cara Input:</strong> Masukkan nama lengkap perusahaan Anda (misal: "PT Siumang Teknologi Indonesia").</p>
+                            </li>
+                            <li><strong>Abbr <span class="text-danger">*</span>:</strong>
+                                <p><strong>Fungsi:</strong> Singkatan dari nama perusahaan. Digunakan untuk identifikasi singkat dalam sistem, terutama di mana ruang terbatas. Ini juga field wajib.</p>
+                                <p><strong>Cara Input:</strong> Masukkan singkatan yang relevan (misal: "STI" untuk PT Siumang Teknologi Indonesia).</p>
+                            </li>
+                            <li><strong>Default Currency <span class="text-danger">*</span>:</strong>
+                                <p><strong>Fungsi:</strong> Mata uang utama yang akan digunakan oleh perusahaan ini untuk semua transaksi keuangan dan pelaporan akuntansi. Ini adalah field wajib.</p>
+                                <p><strong>Cara Input:</strong> Pilih mata uang default dari daftar *dropdown* (misal: "IDR - Indonesian Rupiah" atau "USD - US Dollar").</p>
+                            </li>
+                            <li><strong>Country <span class="text-danger">*</span>:</strong>
+                                <p><strong>Fungsi:</strong> Negara tempat perusahaan ini beroperasi. Pengaturan ini memengaruhi format alamat, pajak, dan regulasi lokal yang relevan dalam sistem. Ini adalah field wajib.</p>
+                                <p><strong>Cara Input:</strong> Pilih negara dari daftar *dropdown* (misal: "Indonesia").</p>
+                            </li>
+                            <li><strong>Is Group:</strong>
+                                <p><strong>Fungsi:</strong> Jika dicentang, ini menandakan bahwa entitas ini adalah perusahaan induk atau grup perusahaan, bukan entitas operasional tunggal. Ini relevan untuk struktur multi-perusahaan.</p>
+                                <p><strong>Cara Input:</strong> Centang kotak ini jika perusahaan Anda adalah entitas grup.</p>
+                            </li>
+                            <li><strong>Default Holiday List:</strong>
+                                <p><strong>Fungsi:</strong> Daftar hari libur default yang akan diterapkan pada perusahaan ini. Ini memengaruhi perhitungan jadwal kerja, tenggat waktu, dan perencanaan sumber daya.</p>
+                                <p><strong>Cara Input:</strong> Pilih daftar hari libur yang relevan dari daftar *dropdown* yang telah dikonfigurasi sebelumnya.</p>
+                            </li>
+                            <li><strong>Use Company NITKU:</strong>
+                                <p><strong>Fungsi:</strong> Jika dicentang, perusahaan ini akan diperlakukan tidak memiliki cabang untuk tujuan pelaporan faktur pajak (NITKU - Nomor Identitas Tempat Kegiatan Usaha). Ini sering relevan untuk kepatuhan pajak di yurisdiksi tertentu.</p>
+                                <p><strong>Cara Input:</strong> Centang kotak ini jika sesuai dengan kebijakan pelaporan pajak perusahaan Anda.</p>
+                            </li>
+                        </ul>
+                    <!-- </section>
+
+                    <section class="docs-section" id="additional-parameters"> -->
+                        <h3 class="mt-4"><i class="fas fa-cogs me-3"></i> Parameter Tambahan</h3>
+                        <p>Bagian ini berisi field-field tambahan yang memberikan informasi lebih lanjut tentang perusahaan dan memengaruhi beberapa fungsionalitas sistem.</p>
+                        <ul class="list-unstyled">
+                            <li><strong>Default Letter Head:</strong>
+                                <p><strong>Fungsi:</strong> Kepala surat default yang akan digunakan saat mencetak dokumen resmi perusahaan (misal: faktur, surat penawaran). Ini memastikan branding yang konsisten.</p>
+                                <p><strong>Cara Input:</strong> Pilih template kepala surat yang telah dibuat di sistem.</p>
+                            </li>
+                            <li><strong>Tax ID:</strong>
+                                <p><strong>Fungsi:</strong> Nomor Identifikasi Pajak perusahaan (misal: NPWP di Indonesia). Penting untuk tujuan pelaporan pajak dan kepatuhan.</p>
+                                <p><strong>Cara Input:</strong> Masukkan nomor identifikasi pajak yang valid.</p>
+                            </li>
+                            <li><strong>Company's NITKU:</strong>
+                                <p><strong>Fungsi:</strong> Nomor Identitas Tempat Kegiatan Usaha perusahaan. Ini adalah identifikasi unik untuk lokasi bisnis, seringkali terkait dengan regulasi pajak atau perizinan.</p>
+                                <p><strong>Cara Input:</strong> Masukkan nomor NITKU perusahaan.</p>
+                            </li>
+                            <li><strong>Domain:</strong>
+                                <p><strong>Fungsi:</strong> Domain bisnis utama tempat perusahaan beroperasi (misal: Manufaktur, Retail, Jasa, Pendidikan). Pengaturan ini dapat memengaruhi modul dan fitur yang terlihat dalam sistem.</p>
+                                <p><strong>Cara Input:</strong> Pilih domain yang paling sesuai dengan jenis bisnis utama perusahaan Anda dari daftar *dropdown*.</p>
+                            </li>
+                            <li><strong>Date of Establishment:</strong>
+                                <p><strong>Fungsi:</strong> Tanggal pendirian resmi perusahaan. Ini adalah informasi historis penting untuk catatan perusahaan.</p>
+                                <p><strong>Cara Input:</strong> Pilih tanggal pendirian perusahaan menggunakan pemilih tanggal.</p>
+                            </li>
+                            <li><strong>Parent Company:</strong>
+                                <p><strong>Fungsi:</strong> Jika perusahaan ini adalah anak perusahaan, field ini digunakan untuk menautkannya ke perusahaan induk. Ini membangun struktur hierarkis untuk pelaporan konsolidasi.</p>
+                                <p><strong>Cara Input:</strong> Pilih perusahaan induk dari daftar *dropdown* jika berlaku.</p>
+                            </li>
+                        </ul>
+                    <!-- </section>
+
+                    <section class="docs-section" id="registration-details"> -->
+                        <h3 class="mt-4"><i class="fas fa-registered me-3"></i> Detail Registrasi</h3>
+                        <p>Bagian ini biasanya menyediakan ruang untuk detail registrasi tambahan yang mungkin diperlukan oleh regulasi lokal atau untuk keperluan internal.</p>
+                        <ul class="list-unstyled">
+                            <li><strong>Registration Details:</strong>
+                                <p><strong>Fungsi:</strong> Field teks bebas untuk memasukkan informasi registrasi tambahan yang tidak tercakup oleh field spesifik lainnya (misal: Nomor Akta Pendirian, informasi perizinan khusus).</p>
+                                <p><strong>Cara Input:</strong> Masukkan teks yang relevan di area teks yang disediakan.</p>
+                            </li>
+                        </ul>
+                    </section>
+                    <!-- tab account -->
+                    <section class="docs-section">
+					    <h3 class="mt-4">Tab Accounts (Pengaturan Akuntansi Perusahaan)</h3>
+					    <section class="docs-intro">
+						    <p>Tab <strong>Accounts</strong> dalam Pengaturan Perusahaan adalah bagian krusial di ERP Siumang yang memungkinkan Anda mengonfigurasi aspek-aspek fundamental akuntansi yang terkait langsung dengan entitas perusahaan Anda. Pengaturan di sini akan memengaruhi bagaimana transaksi keuangan diproses, dibulatkan, dan dilaporkan, serta bagaimana aset tetap dan pembayaran muka dikelola.</p>
+                            <p>Memahami setiap bagian dari tab ini akan memastikan bahwa pencatatan keuangan perusahaan Anda akurat, konsisten, dan sesuai dengan standar akuntansi yang berlaku.</p>
+                            <!-- <div class="screenshot-container text-center my-4">
+                                <img class="img-fluid rounded shadow" src="assets/images/image_caafaa.png" alt="">
+                                <small class="text-muted d-block mt-2">Gambar: Tampilan awal Tab Accounts.</small>
+                            </div> -->
+						</section><!--//docs-intro-->
+				    </section>
+				    
+                    <section class="docs-section" id="chart-of-accounts">
+						<h3 class="mt-4"><i class="fas fa-sitemap me-3"></i> Chart of Accounts (Bagan Akun)</h3>
+						<p>Bagian ini menentukan bagaimana Bagan Akun (Chart of Accounts) perusahaan Anda akan dibuat secara otomatis saat perusahaan baru ditambahkan ke sistem.</p>
+                        
+                        <h5>Create Chart Of Accounts Based On:</h5>
+                        <p><strong>Fungsi:</strong> Pilihan ini menentukan template atau struktur dasar yang akan digunakan untuk membuat Bagan Akun perusahaan Anda. Bagan Akun adalah daftar semua akun keuangan yang digunakan perusahaan untuk mengklasifikasikan transaksi (misal: Kas, Piutang Usaha, Pendapatan Penjualan, Biaya Gaji).</p>
+                        <p><strong>Cara Input:</strong> Pilih dari daftar *dropdown* yang tersedia. Umumnya, Anda akan memilih template yang paling sesuai dengan standar akuntansi atau industri Anda (misal: "Standard", "India", "USA").</p>
+                        <!-- <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/image_caafaa.png" alt="">
+                            <small class="text-muted d-block mt-2">Gambar: Pengaturan "Create Chart Of Accounts Based On".</small>
+                        </div> -->
+                    </section><!--//section-->
+
+                    <section class="docs-section" id="default-accounts">
+                        <h3 class="mt-4"><i class="fas fa-university me-3"></i> Default Accounts (Akun Default)</h3>
+                        <p>Bagian ini memungkinkan Anda untuk menetapkan akun-akun akuntansi default yang akan digunakan secara otomatis oleh sistem untuk jenis transaksi tertentu, terutama yang berkaitan dengan pembulatan nilai.</p>
+
+                        <h5>Round Off Account:</h5>
+                        <p><strong>Fungsi:</strong> Akun ini digunakan untuk mencatat selisih pembulatan (<em>rounding off</em>) yang terjadi dalam transaksi. Misalnya, jika total faktur adalah Rp 100.000,50 dan sistem dibulatkan menjadi Rp 100.001,00, selisih Rp 0,50 akan dicatat ke akun ini.</p>
+                        <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda (misal: "Biaya Pembulatan" atau "Pendapatan Pembulatan").</p>
+
+                        <h5>Round Off for Opening:</h5>
+                        <p><strong>Fungsi:</strong> Mirip dengan "Round Off Account", tetapi akun ini khusus digunakan untuk mencatat selisih pembulatan yang terjadi saat memasukkan saldo awal (<em>opening balances</em>) ke dalam sistem. Ini membantu menyeimbangkan entri saldo awal jika ada selisih kecil.</p>
+                        <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda (misal: "Pembulatan Saldo Awal").</p>
+
+                        <h5>Round Off Cost Center:</h5>
+                        <p><strong>Fungsi:</strong> Pusat biaya (<em>Cost Center</em>) yang akan dikaitkan dengan entri pembulatan. Ini memungkinkan Anda melacak biaya pembulatan pada departemen atau proyek tertentu.</p>
+                        <p><strong>Cara Input:</strong> Pilih pusat biaya yang relevan dari daftar yang tersedia.</p>
+                        <!-- <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/image_caafaa.png" alt="">
+                            <small class="text-muted d-block mt-2">Gambar: Pengaturan Akun Default.</small>
+                        </div> -->
+                    </section><!--//section-->
+
+                    <section class="docs-section" id="deferred-accounting">
+                        <h3 class="mt-4"><i class="fas fa-clock me-3"></i> Deferred Accounting (Akuntansi Ditangguhkan)</h3>
+                        <p>Bagian ini mengonfigurasi akun-akun yang digunakan untuk mencatat pendapatan atau biaya yang ditangguhkan (<em>deferred revenue/expense</em>). Akuntansi ditangguhkan digunakan untuk mengakui pendapatan atau biaya secara periodik selama masa manfaatnya, meskipun pembayaran sudah diterima atau dilakukan di muka.</p>
+
+                        <h5>Write Off Account:</h5>
+                        <p><strong>Fungsi:</strong> Akun ini digunakan untuk mencatat jumlah yang dihapus buku (<em>write-off</em>) dari pendapatan atau biaya ditangguhkan. Ini terjadi jika ada bagian dari pendapatan/biaya ditangguhkan yang tidak dapat lagi diakui atau dibebankan.</p>
+                        <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda (misal: "Kerugian Penghapusan Pendapatan Ditangguhkan").</p>
+
+                        <h5>Unrealized Exchange Gain/Loss Account:</h5>
+                        <p><strong>Fungsi:</strong> Akun ini digunakan untuk mencatat laba atau rugi selisih kurs yang belum direalisasi (<em>unrealized</em>) dari transaksi mata uang asing. Ini terjadi ketika ada fluktuasi nilai tukar antara tanggal transaksi dan tanggal pelaporan, tetapi transaksi belum diselesaikan (misal: faktur belum dibayar).</p>
+                        <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda (misal: "Laba/Rugi Selisih Kurs Belum Direalisasi").</p>
+
+                        <h5>Exchange Gain / Loss Account:</h5>
+                        <p><strong>Fungsi:</strong> Akun ini digunakan untuk mencatat laba atau rugi selisih kurs yang sudah direalisasi (<em>realized</em>) dari transaksi mata uang asing. Ini terjadi ketika transaksi mata uang asing diselesaikan, dan ada perbedaan nilai tukar antara tanggal transaksi asli dan tanggal penyelesaian pembayaran.</p>
+                        <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda (misal: "Laba/Rugi Selisih Kurs Direalisasi").</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/company_tabAccount-01.png" alt="">
+                            <small class="text-muted d-block mt-2">Gambar: Pengaturan Akuntansi Ditangguhkan.</small>
+                        </div>
+                    </section><!--//section-->
+
+                    <section class="docs-section" id="round-off">
+                        <h2 class="section-heading"><i class="fas fa-money-bill-wave me-2"></i> Round Off (Pembulatan)</h2>
+                        <p>Bagian ini berkaitan dengan pengaturan akun untuk laba atau rugi yang belum direalisasi, diskon pembayaran, dan template syarat pembayaran default.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/image_cab007.png" alt="">
+                            <small class="text-muted d-block mt-2">Gambar: Pengaturan Pembulatan.</small>
+                        </div>
+
+                        <h5>Unrealized Profit / Loss Account:</h5>
+                        <p><strong>Fungsi:</strong> Akun ini digunakan untuk mencatat laba atau rugi yang belum direalisasi dari penilaian ulang aset atau kewajiban yang dimiliki perusahaan. Ini sering terjadi pada investasi atau instrumen keuangan yang nilainya berfluktuasi tetapi belum dijual.</p>
+                        <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda (misal: "Laba/Rugi Belum Direalisasi").</p>
+
+                        <h5>Default Payment Discount Account:</h5>
+                        <p><strong>Fungsi:</strong> Akun ini digunakan untuk mencatat diskon yang diberikan atau diterima atas pembayaran lebih awal (misal: diskon 2/10 net 30). Ini adalah akun biaya jika Anda memberikan diskon, atau akun pendapatan jika Anda menerima diskon.</p>
+                        <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda (misal: "Diskon Penjualan" atau "Diskon Pembelian").</p>
+
+                        <h5>Default Payment Terms Template:</h5>
+                        <p><strong>Fungsi:</strong> Template syarat pembayaran default yang akan secara otomatis diterapkan pada transaksi penjualan atau pembelian baru. Ini mencakup detail seperti jangka waktu pembayaran, tanggal jatuh tempo, dan diskon pembayaran awal.</p>
+                        <p><strong>Cara Input:</strong> Pilih template syarat pembayaran yang telah Anda buat di sistem.</p>
+
+                        <h5>Default Finance Book:</h5>
+                        <p><strong>Fungsi:</strong> Buku keuangan default yang akan digunakan untuk mencatat transaksi akuntansi. Ini relevan jika Anda memiliki beberapa buku keuangan untuk tujuan pelaporan yang berbeda.</p>
+                        <p><strong>Cara Input:</strong> Pilih buku keuangan default dari daftar yang tersedia.</p>
+                    </section><!--//section-->
+
+                    <section class="docs-section" id="advance-payments">
+                        <h2 class="section-heading"><i class="fas fa-money-check-alt me-2"></i> Advance Payments (Pembayaran Muka)</h2>
+                        <p>Bagian ini mengonfigurasi bagaimana pembayaran muka (uang muka) akan dicatat dalam sistem, serta bagaimana rekonsiliasi pembayaran muka dilakukan.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/image_cab007.png" alt="">
+                            <small class="text-muted d-block mt-2">Gambar: Pengaturan Pembayaran Muka.</small>
+                        </div>
+
+                        <h5>Book Advance Payments in Separate Party Account:</h5>
+                        <p><strong>Fungsi:</strong> Jika dicentang, pembayaran muka yang diterima dari pelanggan atau dibayarkan kepada pemasok akan dicatat dalam akun pihak (<em>Party Account</em>) yang terpisah, bukan langsung ke akun aset atau kewajiban utama. Ini memberikan visibilitas yang lebih jelas terhadap saldo pembayaran muka.</p>
+                        <p><strong>Manfaat:</strong>
+                            <ol>
+                                <li>Pembayaran muka yang diterima akan dicatat di akun <strong>Kewajiban (Liability Account)</strong>, bukan di akun Aset. Ini karena uang muka yang diterima dari pelanggan adalah kewajiban hingga barang/jasa diserahkan.</li>
+                                <li>Pembayaran muka yang dibayarkan akan dicatat di akun <strong>Aset (Asset Account)</strong>, bukan di akun Kewajiban. Ini karena uang muka yang dibayarkan kepada pemasok adalah aset hingga barang/jasa diterima.</li>
+                            </ol>
+                            Ini memastikan pencatatan akuntansi yang lebih akurat sesuai dengan standar akuntansi untuk pembayaran muka.</p>
+                        <p><strong>Cara Input:</strong> Centang kotak ini untuk mengaktifkan fitur ini.</p>
+
+                        <h5>Reconciliation Takes Effect On:</h5>
+                        <p><strong>Fungsi:</strong> Pilihan ini menentukan bagaimana sistem akan merekonsiliasi pembayaran muka dengan faktur yang relevan. Ini penting untuk mengelola piutang dan hutang dengan benar.</p>
+                        <p><strong>Cara Input:</strong> Pilih dari daftar *dropdown*:
+                            <ul>
+                                <li><strong>Oldest Of Invoice Or Advance:</strong> Sistem akan mencoba merekonsiliasi pembayaran muka dengan faktur tertua atau pembayaran muka tertua yang belum dialokasikan.</li>
+                                <li>Pilihan lain mungkin tersedia tergantung pada versi sistem Anda, yang mungkin memprioritaskan faktur terbaru atau pembayaran muka terbaru.</li>
+                            </ul>
+                        </p>
+                    </section><!--//section-->
+
+                    <section class="docs-section" id="exchange-rate-revaluation-settings">
+                        <h2 class="section-heading"><i class="fas fa-exchange-alt me-2"></i> Exchange Rate Revaluation Settings (Pengaturan Revaluasi Nilai Tukar)</h2>
+                        <p>Bagian ini mengonfigurasi bagaimana sistem akan secara otomatis melakukan revaluasi nilai tukar mata uang asing untuk akun-akun tertentu, seperti akun bank atau akun piutang/hutang dalam mata uang asing. Revaluasi ini diperlukan untuk mencerminkan nilai wajar aset dan kewajiban dalam mata uang dasar perusahaan akibat fluktuasi nilai tukar.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/image_cab2eb.png" alt="">
+                            <small class="text-muted d-block mt-2">Gambar: Pengaturan Revaluasi Nilai Tukar.</small>
+                        </div>
+
+                        <h5>Auto Create Exchange Rate Revaluation:</h5>
+                        <p><strong>Fungsi:</strong> Jika dicentang, sistem akan secara otomatis membuat entri revaluasi nilai tukar pada frekuensi yang ditentukan. Ini mengotomatisasi proses penyesuaian nilai akun mata uang asing.</p>
+                        <p><strong>Cara Input:</strong> Centang kotak ini untuk mengaktifkan otomatisasi.</p>
+
+                        <h5>Frequency:</h5>
+                        <p><strong>Fungsi:</strong> Menentukan seberapa sering revaluasi nilai tukar otomatis akan dilakukan.</p>
+                        <p><strong>Cara Input:</strong> Pilih dari daftar *dropdown* (misal: "Daily" - Harian, "Weekly" - Mingguan, "Monthly" - Bulanan).</p>
+
+                        <h5>Submit ERR Journals?:</h5>
+                        <p><strong>Fungsi:</strong> Jika dicentang, entri jurnal yang dihasilkan dari revaluasi nilai tukar (ERR - Exchange Rate Revaluation) akan secara otomatis disubmit (dikirim) ke buku besar. Jika tidak dicentang, entri akan dibuat dalam status draf dan memerlukan persetujuan manual.</p>
+                        <p><strong>Cara Input:</strong> Centang kotak ini jika Anda ingin entri revaluasi langsung diposting.</p>
+                    </section><!--//section-->
+
+                    <section class="docs-section" id="budget-detail">
+                        <h2 class="section-heading"><i class="fas fa-money-check me-2"></i> Budget Detail (Detail Anggaran)</h2>
+                        <p>Bagian ini mengonfigurasi peran yang bertanggung jawab untuk menyetujui anggaran yang melebihi batas yang ditentukan (<em>exception budget approval</em>).</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/image_cab2eb.png" alt="">
+                            <small class="text-muted d-block mt-2">Gambar: Pengaturan Detail Anggaran.</small>
+                        </div>
+
+                        <h5>Exception Budget Approver Role:</h5>
+                        <p><strong>Fungsi:</strong> Menentukan peran pengguna yang memiliki wewenang untuk menyetujui anggaran yang melebihi batas yang telah ditetapkan. Ini adalah bagian dari kontrol anggaran dan manajemen pengeluaran.</p>
+                        <p><strong>Cara Input:</strong> Pilih peran yang sesuai dari daftar *dropdown* (misal: "Finance Manager", "CEO").</p>
+                    </section><!--//section-->
+
+                    <section class="docs-section" id="fixed-asset-defaults">
+                        <h2 class="section-heading"><i class="fas fa-building me-2"></i> Fixed Asset Defaults (Default Aset Tetap)</h2>
+                        <p>Bagian ini menetapkan akun-akun default dan parameter lain yang digunakan untuk mengelola aset tetap perusahaan, termasuk depresiasi dan disposisi aset.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/image_cab2eb.png" alt="">
+                            <small class="text-muted d-block mt-2">Gambar: Pengaturan Default Aset Tetap.</small>
+                        </div>
+
+                        <h5>Accumulated Depreciation Account:</h5>
+                        <p><strong>Fungsi:</strong> Akun ini digunakan untuk mencatat total akumulasi depresiasi dari semua aset tetap. Ini adalah akun kontra-aset yang mengurangi nilai buku aset.</p>
+                        <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda (misal: "Akumulasi Depresiasi").</p>
+
+                        <h5>Gain/Loss Account on Asset Disposal:</h5>
+                        <p><strong>Fungsi:</strong> Akun ini digunakan untuk mencatat laba atau rugi yang timbul dari penjualan atau penghapusan aset tetap. Jika harga jual lebih tinggi dari nilai buku, akan ada laba; jika lebih rendah, akan ada rugi.</p>
+                        <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda (misal: "Laba/Rugi Penjualan Aset").</p>
+
+                        <h5>Depreciation Expense Account:</h5>
+                        <p><strong>Fungsi:</strong> Akun ini digunakan untuk mencatat biaya depresiasi yang dibebankan secara periodik atas aset tetap. Ini adalah akun biaya yang mencerminkan penurunan nilai aset seiring waktu.</p>
+                        <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda (misal: "Biaya Depresiasi").</p>
+
+                        <h5>Asset Depreciation Cost Center:</h5>
+                        <p><strong>Fungsi:</strong> Pusat biaya yang akan dikaitkan dengan biaya depresiasi aset. Ini memungkinkan Anda melacak biaya depresiasi pada departemen atau proyek tertentu.</p>
+                        <p><strong>Cara Input:</strong> Pilih pusat biaya yang relevan dari daftar yang tersedia.</p>
+
+                        <h5>Series for Asset Depreciation Entry (Journal Entry):</h5>
+                        <p><strong>Fungsi:</strong> Seri penomoran otomatis yang akan digunakan untuk entri jurnal depresiasi aset. Ini memastikan setiap entri depresiasi memiliki nomor unik.</p>
+                        <p><strong>Cara Input:</strong> Pilih atau buat seri penomoran yang sesuai (misal: "DEP-").</p>
+
+                        <h5>Capital Work In Progress Account:</h5>
+                        <p><strong>Fungsi:</strong> Akun ini digunakan untuk mencatat biaya-biaya yang terkait dengan aset yang sedang dibangun atau dikembangkan (<em>Capital Work In Progress - CWIP</em>) sebelum aset tersebut siap digunakan dan didepresiasi.</p>
+                        <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda (misal: "Pekerjaan dalam Proses Kapital").</p>
+
+                        <h5>Expenses Included In Asset Valuation:</h5>
+                        <p><strong>Fungsi:</strong> Field teks bebas untuk mencantumkan jenis-jenis biaya yang harus dimasukkan dalam nilai perolehan aset (misal: biaya instalasi, biaya pengiriman). Ini memastikan nilai aset dicatat dengan benar.</p>
+                        <p><strong>Cara Input:</strong> Masukkan daftar jenis biaya yang relevan.</p>
+
+                        <h5>Asset Received But Not Billed:</h5>
+                        <p><strong>Fungsi:</strong> Akun ini digunakan untuk mencatat nilai aset yang telah diterima secara fisik tetapi faktur pembeliannya belum diterima atau diproses. Ini adalah akun kewajiban sementara.</p>
+                        <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda (misal: "Aset Diterima Belum Ditagih").</p>
+                    </section>
+
+				    <!-- tab invoice dan billing -->
+                    <section class="docs-section" id="accounts-settings">
+                    <h2 class="section-heading"><i class="fas fa-calculator me-2"></i> Accounts Settings (Pengaturan Akuntansi)</h2>
+                    <p>Pengaturan Akuntansi adalah inti dari pengelolaan finansial di ERP Siumang. Bagian ini memungkinkan Anda untuk mengonfigurasi parameter fundamental yang memengaruhi bagaimana transaksi keuangan dicatat, diproses, dan dilaporkan di seluruh sistem. Konfigurasi yang tepat di sini sangat krusial untuk menjaga akurasi data keuangan, mematuhi standar akuntansi, dan mendukung pengambilan keputusan bisnis yang solid.</p>
+                    <p>Anda akan menemukan berbagai tab yang mengelompokkan pengaturan berdasarkan fungsionalitasnya, seperti penagihan, batas kredit, penutupan akun, dan lain-lain.</p>
+                    <div class="screenshot-container text-center my-4">
+                        <img class="img-fluid rounded shadow" src="assets/images/accounts_settings_overview.png" alt="Tampilan Umum Pengaturan Akuntansi">
+                        <small class="text-muted d-block mt-2">Gambar: Tampilan umum halaman Pengaturan Akuntansi.</small>
+                    </div>
+
+                    <h3 class="mt-4" id="invoice-and-billing"><i class="fas fa-file-invoice-dollar me-2"></i> Invoice and Billing (Faktur dan Penagihan)</h3>
+                    <p>Tab ini adalah pusat kendali untuk semua aspek terkait faktur penjualan dan proses penagihan di ERP Siumang. Konfigurasi yang cermat di sini memastikan bahwa faktur Anda tidak hanya akurat dan profesional, tetapi juga terintegrasi sempurna dengan alur kerja bisnis Anda, mulai dari penomoran hingga penanganan pembatalan dan retur.</p>
+                    <p><strong>Fungsi dan Kegunaan:</strong> Mengatur perilaku faktur, seperti penomoran otomatis, kondisi pembayaran default, penanganan pembatalan, serta integrasi dengan modul lain seperti pajak dan pembayaran. Ini membantu mencegah kesalahan, memastikan konsistensi dalam dokumen penagihan, dan mempercepat siklus kas perusahaan.</p>
+                    
+                    <h5 class="mt-4"><i class="fas fa-undo-alt me-2"></i> Invoice Cancellation (Pembatalan Faktur)</h5>
+                    <p>Bagian ini mengelola bagaimana sistem menangani pembatalan faktur yang sudah dibuat dan dikirim (Submitted).</p>
+                    <ul>
+                        <li><strong>Unlink Payment on Cancellation of Invoice (Batalkan Tautan Pembayaran saat Pembatalan Faktur):</strong>
+                            <br><strong>Fungsi:</strong> Jika dicentang, ketika sebuah Faktur Penjualan dibatalkan, sistem akan secara otomatis membatalkan tautan pembayaran yang terkait dengan faktur tersebut (jika ada pembayaran yang sudah dicatat untuk faktur tersebut).
+                            <br><strong>Efek Akuntansi:</strong> Pembayaran yang sebelumnya terkait dengan faktur akan menjadi "unallocated" atau tidak teralokasi, dan mungkin perlu dialokasikan ulang ke faktur lain atau dikembalikan kepada pelanggan. Ini memastikan saldo piutang pelanggan kembali ke kondisi sebelum faktur dan pembayaran dicatat.</li>
+                        <li><strong>Unlink Advance Payment on Cancellation of Order (Batalkan Tautan Uang Muka saat Pembatalan Pesanan):</strong>
+                            <br><strong>Fungsi:</strong> Jika dicentang, ketika sebuah Pesanan Penjualan (Sales Order) yang memiliki uang muka dibatalkan, sistem akan membatalkan tautan uang muka tersebut.
+                            <br><strong>Efek Akuntansi:</strong> Uang muka yang sebelumnya terkait dengan pesanan akan kembali menjadi "unallocated" dan dapat digunakan untuk pesanan lain atau dikembalikan. Ini mencegah uang muka tetap terikat pada pesanan yang sudah dibatalkan.</li>
+                        <li><strong>Delete Accounting and Stock Ledger Entries on Deletion of Transaction (Hapus Entri Buku Besar Akuntansi dan Stok saat Penghapusan Transaksi):</strong>
+                            <br><strong>Fungsi:</strong> Jika dicentang, saat sebuah transaksi (misal: Faktur Penjualan, Penerimaan Barang) dihapus dari sistem, semua entri jurnal akuntansi dan entri buku besar stok yang dihasilkan oleh transaksi tersebut juga akan dihapus secara permanen.
+                            <br><strong>Efek Akuntansi:</strong> Ini akan sepenuhnya menghilangkan jejak transaksi dari buku besar akuntansi dan stok. Penggunaan opsi ini harus sangat hati-hati karena dapat menyebabkan ketidaksesuaian data jika tidak ditangani dengan benar, terutama pada transaksi yang sudah dikonsolidasi atau diaudit. Umumnya tidak disarankan untuk transaksi yang sudah diaudit.</li>
+                        <li><strong>Enable Immutable Ledger (Aktifkan Buku Besar Imutabel):</strong>
+                            <br><strong>Fungsi:</strong> Jika dicentang, entri pembatalan akan diposting pada tanggal pembatalan yang sebenarnya, dan laporan akan mempertimbangkan entri yang dibatalkan juga. Ini menciptakan jejak audit yang lebih kuat karena tidak ada entri yang benar-benar dihapus, melainkan dibatalkan dengan entri pembalik.
+                            <br><strong>Efek Akuntansi:</strong> Setiap pembatalan akan menghasilkan entri jurnal baru yang membalikkan efek dari entri asli. Ini berarti laporan keuangan akan menunjukkan baik transaksi asli maupun pembatalannya, memberikan transparansi penuh dan integritas data yang lebih tinggi, sangat penting untuk kepatuhan audit.</li>
+                    </ul>
+                    <div class="screenshot-container text-center my-4">
+                        <img class="img-fluid rounded shadow" src="assets/images/invoice_cancellation_settings.png" alt="Pengaturan Pembatalan Faktur">
+                        <small class="text-muted d-block mt-2">Gambar: Detail Pengaturan Pembatalan Faktur.</small>
+                    </div>
+
+                    <h5 class="mt-4"><i class="fas fa-file-invoice me-2"></i> Invoicing Features (Fitur Penagihan)</h5>
+                    <p>Bagian ini mengonfigurasi fitur-fitur yang memengaruhi proses pembuatan faktur secara umum.</p>
+                    <ul>
+                        <li><strong>Check Supplier Invoice Number Uniqueness (Periksa Keunikan Nomor Faktur Pemasok):</strong>
+                            <br><strong>Fungsi:</strong> Jika dicentang, ini memastikan setiap Faktur Pembelian memiliki nomor faktur pemasok yang unik dalam satu tahun fiskal tertentu. Ini mencegah pencatatan faktur ganda dari pemasok yang sama.
+                            <br><strong>Efek Akuntansi:</strong> Membantu menjaga integritas data piutang usaha dan mencegah pembayaran ganda kepada pemasok. Sistem akan memberikan peringatan atau memblokir jika nomor faktur yang sama dimasukkan kembali.</li>
+                        <li><strong>Enable Common Party Accounting (Aktifkan Akuntansi Pihak Umum):</strong>
+                            <br><strong>Fungsi:</strong> Mengaktifkan fitur akuntansi pihak umum, yang memungkinkan pengelolaan transaksi dengan pihak yang sama baik sebagai pelanggan maupun pemasok.
+                            <br><strong>Efek Akuntansi:</strong> Memungkinkan sistem untuk mengelola saldo gabungan (netting) untuk entitas yang berperan ganda sebagai pelanggan dan pemasok, menyederhanakan rekonsiliasi dan pelaporan.</li>
+                        <li><strong>Automatically Fetch Payment Terms From Order (Ambil Syarat Pembayaran Otomatis dari Pesanan):</strong>
+                            <br><strong>Fungsi:</strong> Jika dicentang, syarat pembayaran yang telah ditentukan dalam Pesanan Penjualan (Sales Order) atau Pesanan Pembelian (Purchase Order) akan secara otomatis diambil dan diterapkan ke faktur terkait.
+                            <br><strong>Efek Akuntansi:</strong> Memastikan konsistensi syarat pembayaran antara pesanan dan faktur, mengurangi kesalahan manual, dan mempercepat proses penagihan/pembayaran.</li>
+                        <li><strong>Allow Multi-currency Invoices Against Single Party Account (Izinkan Faktur Multi-mata Uang terhadap Akun Pihak Tunggal):</strong>
+                            <br><strong>Fungsi:</strong> Jika dicentang, ini memungkinkan pembuatan faktur dalam berbagai mata uang terhadap satu akun pihak (pelanggan/pemasok) yang mata uang utamanya adalah mata uang perusahaan.
+                            <br><strong>Efek Akuntansi:</strong> Memfasilitasi transaksi internasional dengan lebih fleksibel tanpa perlu membuat akun pihak terpisah untuk setiap mata uang. Sistem akan menangani konversi mata uang berdasarkan nilai tukar yang ditetapkan.</li>
+                    </ul>
+                    <div class="screenshot-container text-center my-4">
+                        <img class="img-fluid rounded shadow" src="assets/images/invoicing_features_settings.png" alt="Pengaturan Fitur Penagihan">
+                        <small class="text-muted d-block mt-2">Gambar: Detail Pengaturan Fitur Penagihan.</small>
+                    </div>
+
+                    <h5 class="mt-4"><i class="fas fa-book me-2"></i> Journals (Jurnal)</h5>
+                    <p>Bagian ini mengonfigurasi perilaku entri jurnal yang dihasilkan oleh faktur.</p>
+                    <ul>
+                        <li><strong>Merge Similar Account Heads (Gabungkan Kepala Akun Serupa):</strong>
+                            <br><strong>Fungsi:</strong> Jika dicentang, baris-baris dalam entri jurnal yang memiliki Kepala Akun (Account Head) yang sama akan digabungkan menjadi satu baris di Buku Besar (Ledger).
+                            <br><strong>Efek Akuntansi:</strong> Menyederhanakan tampilan Buku Besar dan laporan keuangan dengan mengurangi duplikasi baris untuk akun yang sama dalam satu transaksi, membuat laporan lebih ringkas dan mudah dibaca.</li>
+                    </ul>
+                    <!-- <div class="screenshot-container text-center my-4">
+                        <img class="img-fluid rounded shadow" src="assets/images/journals_settings.png" alt="Pengaturan Jurnal">
+                        <small class="text-muted d-block mt-2">Gambar: Detail Pengaturan Jurnal.</small>
+                    </div> -->
+                    <h5 class="mt-4" id="deferred-account-setting"><i class="fas fa-clock me-2"></i> Deferred Account Setting (Pengaturan Akun Tunda)</h5>
+                    <p>Bagian ini memungkinkan Anda mengonfigurasi bagaimana pendapatan dan biaya yang ditangguhkan (deferred) akan dicatat dan diakui secara periodik. Ini sangat penting untuk mematuhi prinsip akuntansi akrual.</p>
+                    <p><strong>Fungsi dan Kegunaan:</strong> Mengotomatisasi proses pengakuan pendapatan dan biaya yang terjadi di satu periode tetapi manfaat atau bebannya tersebar di beberapa periode. Misalnya, langganan tahunan yang dibayar di muka akan diakui sebagai pendapatan secara bulanan.</p>
+                    <p><strong>Field Penting:</strong></p>
+                    <ul>
+                        <li><strong>Book Deferred Entries Based On (Catat Entri Ditangguhkan Berdasarkan):</strong>
+                            <br><strong>Fungsi:</strong> Pilihan dropdown ini menentukan dasar perhitungan untuk pengakuan pendapatan atau biaya ditangguhkan. Pilihan yang umum adalah "Days" (Hari) atau "Months" (Bulan).
+                            <br><ul>
+                                <li>Jika "Days" dipilih, jumlah akan diprorata berdasarkan jumlah hari dalam periode pengakuan.</li>
+                                <li>Jika "Months" dipilih, jumlah tetap akan dicatat sebagai pendapatan atau biaya ditangguhkan untuk setiap bulan, terlepas dari jumlah hari dalam bulan tersebut. Ini akan diprorata jika pendapatan atau biaya ditangguhkan tidak dicatat untuk satu bulan penuh.</li>
+                            </ul>
+                            <br><strong>Efek Akuntansi:</strong> Mempengaruhi presisi pengakuan pendapatan dan biaya. Memilih "Days" memberikan akurasi yang lebih tinggi untuk pengakuan harian, sementara "Months" menyederhanakan perhitungan bulanan.</li>
+                        <li><strong>Automatically Process Deferred Accounting Entry (Proses Otomatis Entri Akuntansi Ditangguhkan):</strong>
+                            <br><strong>Fungsi:</strong> Jika dicentang, sistem akan secara otomatis membuat entri akuntansi yang diperlukan untuk mengakui pendapatan atau biaya ditangguhkan sesuai dengan jadwal yang ditentukan.
+                            <br><strong>Efek Akuntansi:</strong> Mengotomatisasi proses akuntansi akrual, mengurangi pekerjaan manual dan risiko kesalahan. Entri jurnal akan dibuat secara berkala untuk memindahkan nilai dari akun ditangguhkan ke akun pendapatan atau biaya yang relevan.</li>
+                        <li><strong>Book Deferred Entries Via Journal Entry (Catat Entri Ditangguhkan Melalui Entri Jurnal):</strong>
+                            <br><strong>Fungsi:</strong> Jika dicentang, entri ditangguhkan akan dicatat melalui Entri Jurnal standar. Jika tidak dicentang, entri Buku Besar (General Ledger) langsung akan dibuat untuk mencatat pendapatan atau biaya ditangguhkan.
+                            <br><strong>Efek Akuntansi:</strong> Mempengaruhi tingkat detail dan jejak audit. Mencatat melalui Entri Jurnal memberikan dokumen transaksi yang lebih formal dan terperinci, sementara entri GL langsung lebih ringkas tetapi mungkin kurang transparan dalam jejak audit. Umumnya, pencatatan melalui Entri Jurnal lebih disukai untuk transparansi.</li>
+                    </ul>
+                    <div class="screenshot-container text-center my-4">
+                        <img class="img-fluid rounded shadow" src="assets/images/deferred_account_settings_detail.png" alt="Pengaturan Akun Tunda Detail">
+                        <small class="text-muted d-block mt-2">Gambar: Detail Pengaturan Akun Tunda.</small>
+                    </div>
+                    <h5 class="mt-4"><i class="fas fa-percentage me-2"></i> Tax Settings (Pengaturan Pajak)</h5>
+                    <p>Bagian ini mengelola bagaimana pajak diterapkan pada faktur penjualan dan pembelian.</p>
+                    <ul>
+                        <li><strong>Determine Address Tax Category From (Tentukan Kategori Pajak Alamat Dari):</strong>
+                            <br><strong>Fungsi:</strong> Menentukan alamat mana (misal: Alamat Penagihan, Alamat Pengiriman) yang akan digunakan untuk menentukan kategori pajak dalam transaksi.
+                            <br><strong>Efek Akuntansi:</strong> Memastikan perhitungan pajak yang benar berdasarkan lokasi yang relevan, sesuai dengan peraturan pajak daerah atau nasional.</li>
+                        <li><strong>Automatically Add Taxes and Charges from Item Tax Template (Tambahkan Pajak dan Biaya Otomatis dari Template Pajak Item):</strong>
+                            <br><strong>Fungsi:</strong> Jika dicentang, sistem akan secara otomatis menerapkan pajak dan biaya dari template pajak yang terkait dengan item yang difakturkan.
+                            <br><strong>Efek Akuntansi:</strong> Mengotomatisasi perhitungan pajak, mengurangi kesalahan manual, dan memastikan kepatuhan pajak yang konsisten pada setiap item.</li>
+                        <li><strong>Automatically Add Taxes from Taxes and Charges Template (Tambahkan Pajak Otomatis dari Template Pajak dan Biaya):</strong>
+                            <br><strong>Fungsi:</strong> Jika tidak ada pajak yang diatur secara spesifik dan template Pajak dan Biaya dipilih, sistem akan secara otomatis menerapkan pajak dari template yang dipilih. Ini adalah opsi umum untuk menerapkan pajak pada seluruh transaksi.
+                            <br><strong>Efek Akuntansi:</strong> Memastikan pajak diterapkan secara konsisten pada seluruh faktur jika tidak ada aturan pajak spesifik item.</li>
+                        <li><strong>Book Tax Loss on Early Payment Discount (Catat Kerugian Pajak pada Diskon Pembayaran Awal):</strong>
+                            <br><strong>Fungsi:</strong> Jika dicentang, sistem akan memisahkan diskon pembayaran awal menjadi pendapatan dan kerugian pajak.
+                            <br><strong>Efek Akuntansi:</strong> Memungkinkan pelaporan yang lebih granular mengenai dampak pajak dari diskon pembayaran awal, penting untuk analisis profitabilitas dan kepatuhan pajak.</li>
+                        <li><strong>Round Tax Amount Row-wise (Bulatkan Jumlah Pajak per Baris):</strong>
+                            <br><strong>Fungsi:</strong> Jika dicentang, jumlah pajak akan dibulatkan pada tingkat baris (item) dalam faktur, bukan pada total faktur.
+                            <br><strong>Efek Akuntansi:</strong> Mempengaruhi bagaimana pembulatan pajak dicatat dalam jurnal. Pembulatan per baris dapat menghasilkan total pajak yang sedikit berbeda dibandingkan pembulatan total, tergantung pada kebijakan akuntansi perusahaan.</li>
+                    </ul>
+                    <div class="screenshot-container text-center my-4">
+                        <img class="img-fluid rounded shadow" src="assets/images/tax_settings.png" alt="Pengaturan Pajak">
+                        <small class="text-muted d-block mt-2">Gambar: Detail Pengaturan Pajak.</small>
+                    </div>
+
+                    <h5 class="mt-4"><i class="fas fa-print me-2"></i> Print Settings (Pengaturan Cetak)</h5>
+                    <p>Bagian ini mengonfigurasi opsi tampilan saat mencetak faktur atau dokumen terkait.</p>
+                    <ul>
+                        <li><strong>Show Inclusive Tax in Print (Tampilkan Pajak Inklusif dalam Cetakan):</strong>
+                            <br><strong>Fungsi:</strong> Jika dicentang, faktur yang dicetak akan menampilkan harga item sudah termasuk pajak.
+                            <br><strong>Efek Akuntansi:</strong> Tidak ada efek langsung pada pencatatan akuntansi, hanya pada presentasi visual faktur untuk pelanggan.</li>
+                        <li><strong>Show Taxes as Table in Print (Tampilkan Pajak sebagai Tabel dalam Cetakan):</strong>
+                            <br><strong>Fungsi:</strong> Jika dicentang, rincian pajak akan ditampilkan dalam format tabel terpisah pada faktur yang dicetak.
+                            <br><strong>Efek Akuntansi:</strong> Tidak ada efek langsung pada pencatatan akuntansi, hanya pada presentasi visual faktur.</li>
+                        <li><strong>Show Payment Schedule in Print (Tampilkan Jadwal Pembayaran dalam Cetakan):</strong>
+                            <br><strong>Fungsi:</strong> Jika dicentang, jadwal pembayaran (misal: angsuran) yang terkait dengan faktur akan ditampilkan pada cetakan faktur.
+                            <br><strong>Efek Akuntansi:</strong> Tidak ada efek langsung pada pencatatan akuntansi, hanya pada presentasi visual faktur.</li>
+                    </ul>
+                    <!-- <div class="screenshot-container text-center my-4">
+                        <img class="img-fluid rounded shadow" src="assets/images/account_setting_print_settings.png" alt="Pengaturan Cetak">
+                        <small class="text-muted d-block mt-2">Gambar: Detail Pengaturan Cetak.</small>
+                    </div> -->
+
+                    <h5 class="mt-4"><i class="fas fa-dollar-sign me-2"></i> Item Price Settings (Pengaturan Harga Item)</h5>
+                    <p>Bagian ini mengelola konsistensi harga item dalam transaksi internal.</p>
+                    <ul>
+                        <li><strong>Maintain Same Rate Throughout Internal Transaction (Pertahankan Harga yang Sama di Seluruh Transaksi Internal):</strong>
+                            <br><strong>Fungsi:</strong> Jika dicentang, harga item akan dipertahankan sama di seluruh transaksi internal yang melibatkan item tersebut (misal: dari Sales Order ke Sales Invoice). Ini mencegah perubahan harga yang tidak disengaja di antara tahapan transaksi.
+                            <br><strong>Efek Akuntansi:</strong> Memastikan konsistensi nilai transaksi yang dicatat dalam buku besar, terutama untuk pendapatan dan biaya penjualan.</li>
+                    </ul>
+                    <!-- <div class="screenshot-container text-center my-4">
+                        <img class="img-fluid rounded shadow" src="assets/images/item_price_settings.png" alt="Pengaturan Harga Item">
+                        <small class="text-muted d-block mt-2">Gambar: Detail Pengaturan Harga Item.</small>
+                    </div> -->
+
+                    <h5 class="mt-4"><i class="fas fa-exchange-alt me-2"></i> Currency Exchange Settings (Pengaturan Nilai Tukar Mata Uang)</h5>
+                    <p>Bagian ini mengonfigurasi bagaimana sistem menangani nilai tukar mata uang, terutama untuk transaksi multi-mata uang.</p>
+                    <ul>
+                        <li><strong>Allow Stale Exchange Rates (Izinkan Nilai Tukar Kadaluarsa):</strong>
+                            <br><strong>Fungsi:</strong> Jika dicentang, sistem akan mengizinkan penggunaan nilai tukar mata uang yang mungkin sudah tidak terbaru (kadaluarsa) saat melakukan transaksi multi-mata uang. Jika tidak dicentang, sistem akan meminta nilai tukar terbaru.
+                            <br><strong>Efek Akuntansi:</strong> Mempengaruhi akurasi konversi mata uang dan potensi laba/rugi selisih kurs. Mengizinkan nilai tukar kadaluarsa dapat mempercepat input data tetapi berisiko pada akurasi finansial.</li>
+                        <li><strong>Allow Implicit Pegged Currency Conversion (Izinkan Konversi Mata Uang Terpancang Implisit):</strong>
+                            <br><strong>Fungsi:</strong> Sistem akan melakukan konversi implisit menggunakan nilai tukar mata uang terpancang (pegged currency). Contoh: Alih-alih AED -> INR, sistem akan melakukan AED -> USD menggunakan nilai tukar terpancang AED terhadap USD.
+                            <br><strong>Efek Akuntansi:</strong> Mempengaruhi bagaimana laba atau rugi selisih kurs dihitung dan dicatat dalam buku besar. Ini relevan untuk perusahaan yang beroperasi dengan mata uang yang dipatok ke mata uang lain.</li>
+                        <li><strong>Posting Date Inheritance For Exchange Gain / Loss (Pewarisan Tanggal Posting untuk Laba/Rugi Selisih Kurs):</strong>
+                            <br><strong>Fungsi:</strong> Menentukan tanggal posting mana yang akan digunakan untuk mencatat laba atau rugi selisih kurs. Pilihan umumnya adalah "Payment" (Pembayaran), yang berarti laba/rugi dicatat pada tanggal pembayaran.
+                            <br><strong>Efek Akuntansi:</strong> Memengaruhi periode akuntansi di mana laba atau rugi selisih kurs diakui. Memilih "Payment" berarti laba/rugi diakui saat pembayaran aktual terjadi, yang merupakan praktik umum.</li>
+                    </ul>
+                    <div class="screenshot-container text-center my-4">
+                        <img class="img-fluid rounded shadow" src="assets/images/currency_exchange_settings.png" alt="Pengaturan Nilai Tukar Mata Uang">
+                        <small class="text-muted d-block mt-2">Gambar: Detail Pengaturan Nilai Tukar Mata Uang.</small>
+                    </div>
+
+                    <h5 class="mt-4"><i class="fas fa-handshake-alt-slash me-2"></i> Payment Reconciliation Settings (Pengaturan Rekonsiliasi Pembayaran)</h5>
+                    <p>Bagian ini mengonfigurasi otomatisasi proses rekonsiliasi pembayaran.</p>
+                    <ul>
+                        <li><strong>Auto Reconcile Payments (Rekonsiliasi Pembayaran Otomatis):</strong>
+                            <br><strong>Fungsi:</strong> Jika dicentang, sistem akan mencoba secara otomatis merekonsiliasi pembayaran dengan faktur yang sesuai berdasarkan kriteria tertentu.
+                            <br><strong>Efek Akuntansi:</strong> Mengurangi beban kerja manual dalam rekonsiliasi bank dan piutang/hutang. Pembayaran akan secara otomatis ditautkan ke faktur yang relevan, memperbarui status faktur menjadi "Paid" atau "Partially Paid".</li>
+                        <li><strong>Auto Reconciliation Job Trigger (Pemicu Pekerjaan Rekonsiliasi Otomatis):</strong>
+                            <br><strong>Fungsi:</strong> Menentukan interval (dalam menit) antara 1 hingga 59 menit untuk memicu pekerjaan rekonsiliasi otomatis.
+                            <br><strong>Efek Akuntansi:</strong> Mengontrol frekuensi sistem mencoba merekonsiliasi pembayaran secara otomatis. Interval yang lebih pendek berarti rekonsiliasi lebih sering.</li>
+                        <li><strong>Reconciliation Queue Size (Ukuran Antrean Rekonsiliasi):</strong>
+                            <br><strong>Fungsi:</strong> Menentukan jumlah dokumen yang akan diproses dalam setiap pemicu pekerjaan rekonsiliasi otomatis. Ukuran antrean harus antara 5 dan 100 dokumen.
+                            <br><strong>Efek Akuntansi:</strong> Memengaruhi kinerja sistem selama proses rekonsiliasi otomatis. Ukuran antrean yang lebih besar dapat memproses lebih banyak data sekaligus tetapi mungkin membutuhkan lebih banyak sumber daya.</li>
+                    </ul>
+                    <div class="screenshot-container text-center my-4">
+                        <img class="img-fluid rounded shadow" src="assets/images/payment_reconciliation_settings.png" alt="Pengaturan Rekonsiliasi Pembayaran">
+                        <small class="text-muted d-block mt-2">Gambar: Detail Pengaturan Rekonsiliasi Pembayaran.</small>
+                    </div>
+                    <!-- end of invoice n billing -->
+                    <h3 class="mt-4" id="credit-limits"><i class="fas fa-hand-holding-usd me-2"></i> Credit Limits (Batas Kredit)</h3>
+                    <p>Tab Batas Kredit memungkinkan Anda mengelola kebijakan kredit untuk pelanggan. Ini sangat penting untuk mengontrol risiko piutang dan memastikan kesehatan finansial perusahaan.</p>
+                    <p><strong>Fungsi dan Kegunaan:</strong> Menetapkan dan memantau batas kredit untuk setiap pelanggan. Sistem dapat secara otomatis memblokir transaksi jika batas kredit terlampaui, membantu mencegah kerugian akibat piutang tak tertagih.</p>
+                    <p><strong>Field Penting:</strong></p>
+                    <ul>
+                        <li><strong>Enable Credit Limit (Aktifkan Batas Kredit):</strong> Centang opsi ini untuk mengaktifkan fitur batas kredit di seluruh sistem. Jika tidak dicentang, batas kredit tidak akan diberlakukan.
+                            <br><small class="text-muted"><em>Contoh:</em> Jika Anda ingin sistem secara otomatis memperingatkan atau memblokir pesanan penjualan ketika pelanggan melebihi batas kreditnya, aktifkan opsi ini.</small></li>
+                        <li><strong>Credit Limit Type (Tipe Batas Kredit):</strong> Menentukan apakah batas kredit berlaku untuk total piutang atau total pesanan yang belum difakturkan.</li>
+                        <li><strong>Credit Limit Alert (Peringatan Batas Kredit):</strong> Mengatur apakah sistem akan memberikan peringatan atau memblokir transaksi ketika batas kredit tercapai.</li>
+                    </ul>
+                    <div class="screenshot-container text-center my-4">
+                        <img class="img-fluid rounded shadow" src="assets/images/credit_limits_settings.png" alt="Pengaturan Batas Kredit">
+                        <small class="text-muted d-block mt-2">Gambar: Detail Pengaturan Batas Kredit.</small>
+                    </div>
+                    <!-- tab POS -->
+                        <h3 class="mt-4" id="pos"><i class="fas fa-cash-register me-2"></i> POS (Point of Sale)</h3>
+                        <p>Tab ini berisi pengaturan khusus untuk modul Point of Sale (POS) atau penjualan ritel. Konfigurasi di sini memastikan operasi kasir berjalan lancar dan terintegrasi dengan akuntansi.</p>
+                        <p><strong>Fungsi dan Kegunaan:</strong> Mengelola perilaku entri buku besar untuk jumlah kembalian dalam transaksi POS. Ini memastikan pencatatan akuntansi yang akurat untuk setiap aspek transaksi ritel.</p>
+                        <p><strong>Field Penting:</strong></p>
+                        <ul>
+                            <li><strong>Create Ledger Entries for Change Amount (Buat Entri Buku Besar untuk Jumlah Kembalian):</strong>
+                                <br><strong>Fungsi:</strong> Jika dicentang, sistem akan membuat entri buku besar terpisah untuk jumlah kembalian yang diberikan kepada pelanggan dalam transaksi POS.
+                                <br><strong>Efek Akuntansi:</strong> Memastikan bahwa setiap jumlah kembalian dicatat secara eksplisit dalam buku besar, yang dapat membantu dalam rekonsiliasi kas dan pelaporan yang lebih detail. Jika tidak dicentang, jumlah kembalian mungkin hanya mengurangi total penerimaan kas tanpa entri terpisah.</li>
+                        </ul>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/pos_settings_detail.png" alt="Pengaturan POS Detail">
+                            <small class="text-muted d-block mt-2">Gambar: Detail Pengaturan Point of Sale (POS).</small>
+                        </div>
+                    <!-- end tab pos -->
+                    <h3 class="mt-4" id="maintenance"><i class="fas fa-tools me-2"></i> Maintenance (Pemeliharaan)</h3>
+                    <p>Tab Pemeliharaan berisi pengaturan yang berkaitan dengan aset dan jadwal pemeliharaan. Ini penting untuk mengelola umur aset dan biaya operasional.</p>
+                    <p><strong>Fungsi dan Kegunaan:</strong> Mengonfigurasi bagaimana sistem melacak jadwal pemeliharaan aset, biaya terkait, dan depresiasi. Ini membantu dalam perencanaan pemeliharaan preventif dan analisis biaya aset.</p>
+                    <p><strong>Field Penting:</strong></p>
+                    <ul>
+                        <li><strong>Default Maintenance Cost Account (Akun Biaya Pemeliharaan Default):</strong> Menentukan akun akuntansi tempat biaya pemeliharaan aset akan dicatat secara default.
+                            <br><small class="text-muted"><em>Contoh:</em> Pastikan akun ini adalah akun biaya yang tepat di Bagan Akun Anda.</small></li>
+                        <li><strong>Default Accumulated Depreciation Account (Akun Akumulasi Depresiasi Default):</strong> Menentukan akun akumulasi depresiasi default untuk aset.</li>
+                    </ul>
+                    <div class="screenshot-container text-center my-4">
+                        <img class="img-fluid rounded shadow" src="assets/images/maintenance_settings.png" alt="Pengaturan Pemeliharaan">
+                        <small class="text-muted d-block mt-2">Gambar: Detail Pengaturan Pemeliharaan.</small>
+                    </div>
+                    <!-- tab account closing -->
+                    <h3 class="mt-4" id="accounts-closing"><i class="fas fa-lock me-2"></i> Accounts Closing (Penutupan Akun)</h3>
+                    <p>Tab Penutupan Akun mengelola proses pembekuan (freezing) entri akuntansi untuk periode tertentu, yang sangat penting untuk integritas data dan audit. Ini memastikan bahwa setelah periode ditutup, tidak ada perubahan yang tidak sah dapat dilakukan pada catatan keuangan.</p>
+                    <p><strong>Fungsi dan Kegunaan:</strong> Membekukan entri akuntansi hingga tanggal tertentu, mencegah pembuatan atau modifikasi entri oleh pengguna yang tidak berwenang. Ini juga memungkinkan sistem untuk menghasilkan laporan keuangan yang akurat bahkan jika ada voucher penutupan periode yang hilang atau tidak berurutan.</p>
+                    
+                    <h5 class="mt-4"><i class="fas fa-calendar-alt me-2"></i> Period Closing Settings (Pengaturan Penutupan Periode)</h5>
+                    <p>Bagian ini mengonfigurasi parameter utama untuk proses pembekuan akun.</p>
+                    <ul>
+                        <li><strong>Accounts Frozen Till Date (Akun Dibekukan Hingga Tanggal):</strong>
+                            <br><strong>Fungsi:</strong> Tanggal yang Anda masukkan di sini akan menjadi batas waktu pembekuan. Semua entri akuntansi yang memiliki tanggal posting pada atau sebelum tanggal ini akan dibekukan. Tidak ada pengguna yang dapat membuat atau memodifikasi entri akuntansi pada periode yang dibekukan, kecuali mereka memiliki peran khusus yang ditentukan di bawah.
+                            <br><strong>Efek Akuntansi:</strong> Memastikan integritas data historis. Setelah akun dibekukan, laporan keuangan untuk periode tersebut dapat dianggap final dan akurat, karena tidak ada perubahan yang dapat terjadi secara retroaktif. Ini sangat penting untuk tujuan audit dan pelaporan keuangan.
+                            <br><small class="text-muted"><em>Contoh:</em> Jika Anda mengatur tanggal ini ke '31-12-2024', maka semua transaksi hingga akhir tahun 2024 tidak dapat diubah lagi oleh sebagian besar pengguna.</small></li>
+                        <li><strong>Role Allowed to Set Frozen Accounts and Edit Frozen Entries (Peran yang Diizinkan untuk Mengatur Akun Dibekukan dan Mengedit Entri Dibekukan):</strong>
+                            <br><strong>Fungsi:</strong> Field ini memungkinkan Anda menentukan peran pengguna mana yang memiliki wewenang untuk mengatur tanggal pembekuan akun dan, yang lebih penting, untuk membuat atau memodifikasi entri akuntansi terhadap akun yang sudah dibekukan. Ini adalah peran "super-user" untuk audit dan koreksi yang sangat jarang terjadi.
+                            <br><strong>Efek Akuntansi:</strong> Memberikan kontrol granular atas siapa yang dapat memanipulasi data yang sudah dibekukan. Hanya pengguna dengan peran ini (misalnya, "System Manager" atau "Auditor Khusus") yang dapat melakukan penyesuaian yang diperlukan setelah periode ditutup, dengan jejak audit yang jelas.
+                            <br><small class="text-muted"><em>Contoh:</em> Anda bisa menetapkan peran "Auditor Akuntansi" di sini untuk memastikan hanya tim audit yang bisa melakukan koreksi pasca-pembekuan.</small></li>
+                        <li><strong>Ignore Account Closing Balance (Abaikan Saldo Penutupan Akun):</strong>
+                            <br><strong>Fungsi:</strong> Jika dicentang, laporan keuangan akan dihasilkan menggunakan DocType Entri Jurnal (GL Entry), bahkan jika Voucher Penutupan Periode tidak diposting untuk semua tahun secara berurutan atau ada yang hilang. Ini memberikan fleksibilitas dalam melihat laporan tanpa terikat pada proses penutupan periode yang sempurna.
+                            <br><strong>Efek Akuntansi:</strong> Memungkinkan fleksibilitas dalam pelaporan. Jika ada masalah dengan proses penutupan buku tahunan (misal: voucher penutupan tidak dibuat atau hilang), opsi ini memungkinkan Anda tetap menghasilkan laporan keuangan yang valid berdasarkan entri buku besar individual, bukan hanya saldo penutupan yang dikonsolidasi.
+                            <br><small class="text-muted"><em>Contoh:</em> Berguna saat melakukan audit atau analisis data di mana proses penutupan akhir tahun belum sepenuhnya selesai atau ada inkonsistensi historis.</small></li>
+                    </ul>
+                    <div class="screenshot-container text-center my-4">
+                        <img class="img-fluid rounded shadow" src="assets/images/accounts_closing_settings_detail.png" alt="Pengaturan Penutupan Akun Detail">
+                        <small class="text-muted d-block mt-2">Gambar: Detail Pengaturan Penutupan Akun.</small>
+                    </div>
+                    <!-- end account closing -->
+                    <h3 class="mt-4" id="chart-of-accounts"><i class="fas fa-sitemap me-2"></i> Chart Of Accounts (Bagan Akun)</h3>
+                    <p>Tab Bagan Akun memungkinkan Anda mengelola struktur hierarkis dari semua akun keuangan perusahaan Anda. Ini adalah fondasi dari seluruh sistem akuntansi.</p>
+                    <p><strong>Fungsi dan Kegunaan:</strong> Mendefinisikan kategori akun (aset, kewajiban, ekuitas, pendapatan, biaya) dan akun individual di dalamnya. Struktur yang baik memudahkan pencatatan transaksi, pelaporan, dan analisis keuangan.</p>
+                    
+                    <h5 class="mt-4"><i class="fas fa-eye me-2"></i> Tampilan Bagan Akun</h5>
+                    <p>Bagian ini mengonfigurasi bagaimana Bagan Akun ditampilkan dalam sistem.</p>
+                    <ul>
+                        <li><strong>Show Balances in Chart Of Accounts (Tampilkan Saldo di Bagan Akun):</strong>
+                            <br><strong>Fungsi:</strong> Jika dicentang, sistem akan menampilkan saldo terkini dari setiap akun langsung di tampilan Bagan Akun. Ini memberikan gambaran cepat tentang posisi keuangan setiap akun tanpa harus membuka laporan terpisah.
+                            <br><strong>Efek Akuntansi:</strong> Mempermudah pemantauan saldo akun secara real-time. Administrator dan pengguna akuntansi dapat dengan cepat melihat apakah saldo akun sesuai ekspektasi atau jika ada anomali yang perlu diselidiki. Ini adalah fitur visual yang tidak memengaruhi pencatatan, tetapi sangat membantu dalam analisis.
+                            <br><small class="text-muted"><em>Contoh:</em> Dengan opsi ini aktif, Anda bisa langsung melihat total kas di akun 'Kas Bank' atau total piutang di akun 'Piutang Usaha' saat menjelajahi Bagan Akun.</small></li>
+                    </ul>
+                    <div class="screenshot-container text-center my-4">
+                        <img class="img-fluid rounded shadow" src="assets/images/chart_of_accounts_settings_detail.png" alt="Pengaturan Bagan Akun Detail">
+                        <small class="text-muted d-block mt-2">Gambar: Detail Pengaturan Bagan Akun.</small>
+                    </div>
+
+                    <<h3 class="mt-4" id="banking"><i class="fas fa-university me-2"></i> Banking (Perbankan)</h3>
+                    <p>Tab Perbankan mengelola pengaturan terkait akun bank dan rekonsiliasi bank. Ini memastikan semua transaksi bank tercatat dengan benar dan sesuai dengan catatan internal.</p>
+                    <p><strong>Fungsi dan Kegunaan:</strong> Mengonfigurasi otomatisasi pencocokan pihak dalam transaksi bank. Ini penting untuk mempercepat proses rekonsiliasi bank dan memastikan data akuntansi yang akurat.</p>
+                    <p><strong>Field Penting:</strong></p>
+                    <ul>
+                        <li><strong>Enable Automatic Party Matching (Aktifkan Pencocokan Pihak Otomatis):</strong>
+                            <br><strong>Fungsi:</strong> Jika dicentang, sistem akan secara otomatis mencoba mencocokkan dan menetapkan "Pihak" (misal: Pelanggan atau Pemasok) ke transaksi bank berdasarkan data yang tersedia. Ini sangat membantu dalam proses rekonsiliasi bank, mengurangi kebutuhan input manual.
+                            <br><strong>Efek Akuntansi:</strong> Meningkatkan efisiensi rekonsiliasi bank dengan mengotomatisasi identifikasi pihak yang terlibat dalam setiap transaksi. Ini memastikan bahwa transaksi bank ditautkan dengan benar ke akun piutang atau hutang yang relevan, menjaga keakuratan buku besar.
+                            <br><small class="text-muted"><em>Contoh:</em> Ketika Anda mengimpor laporan bank, sistem akan mencoba mencocokkan transaksi dengan faktur atau pembayaran yang sudah ada berdasarkan nama atau nomor referensi, dan secara otomatis menetapkan pelanggan atau pemasok yang sesuai.</small></li>
+                    </ul>
+                    <div class="screenshot-container text-center my-4">
+                        <img class="img-fluid rounded shadow" src="assets/images/banking_settings_detail.png" alt="Pengaturan Perbankan Detail">
+                        <small class="text-muted d-block mt-2">Gambar: Detail Pengaturan Perbankan.</small>
+                    </div>
+
+                       <h3 class="mt-4" id="reports"><i class="fas fa-chart-bar me-2"></i> Reports (Laporan)</h3>
+                        <p>Tab Laporan mengelola pengaturan yang memengaruhi bagaimana laporan akuntansi dihasilkan dan ditampilkan dalam sistem. Konfigurasi di sini sangat penting untuk mengontrol format, kinerja, dan detail data yang muncul di laporan keuangan Anda.</p>
+                        <p><strong>Fungsi dan Kegunaan:</strong> Memungkinkan Anda untuk mengoptimalkan tampilan laporan, mengelola panjang kolom komentar, dan menyesuaikan metode pengambilan data untuk laporan Piutang/Hutang, memastikan laporan yang relevan dan efisien.</p>
+                        
+                        <h5 class="mt-4"><i class="fas fa-text-width me-2"></i> Remarks Column Length (Panjang Kolom Keterangan)</h5>
+                        <p>Bagian ini mengontrol panjang karakter maksimum untuk kolom 'Remarks' (Keterangan) di laporan tertentu. Jika teks melebihi panjang yang ditentukan, itu akan dipotong (truncated).</p>
+                        <ul>
+                            <li><strong>General Ledger (Buku Besar Umum):</strong>
+                                <br><strong>Fungsi:</strong> Mengatur panjang karakter untuk kolom 'Remarks' dalam laporan Buku Besar Umum. Nilai '0' (nol) biasanya berarti tidak ada pemotongan, atau sistem akan menggunakan panjang default yang sangat panjang.
+                                <br><strong>Efek Akuntansi:</strong> Mempengaruhi tampilan laporan. Pemotongan dapat membuat laporan lebih ringkas tetapi berisiko menyembunyikan detail penting jika keterangan terlalu panjang. Pastikan panjang yang cukup untuk informasi relevan.
+                                <br><small class="text-muted"><em>Contoh:</em> Jika Anda memasukkan '50', maka kolom keterangan di Buku Besar Umum hanya akan menampilkan 50 karakter pertama.</small></li>
+                            <li><strong>Accounts Receivable/Payable (Piutang/Hutang):</strong>
+                                <br><strong>Fungsi:</strong> Mengatur panjang karakter untuk kolom 'Remarks' dalam laporan Piutang dan Hutang. Sama seperti Buku Besar Umum, '0' berarti tidak ada pemotongan atau panjang default yang sangat panjang.
+                                <br><strong>Efek Akuntansi:</strong> Mempengaruhi keterbacaan laporan Piutang dan Hutang. Keterangan yang dipotong dapat mempersulit identifikasi detail transaksi yang relevan.
+                                <br><small class="text-muted"><em>Contoh:</em> Jika Anda memasukkan '100', maka kolom keterangan di laporan Piutang/Hutang akan menampilkan hingga 100 karakter.</small></li>
+                        </ul>
+
+                        <h5 class="mt-4"><i class="fas fa-tachometer-alt me-2"></i> Accounts Receivable / Payable Tuning (Penyesuaian Piutang / Hutang)</h5>
+                        <p>Bagian ini mengonfigurasi metode pengambilan data untuk laporan Piutang dan Hutang, yang dapat memengaruhi kinerja laporan, terutama untuk database besar.</p>
+                        <ul>
+                            <li><strong>Data Fetch Method (Metode Pengambilan Data):</strong>
+                                <br><strong>Fungsi:</strong> Pilihan ini menentukan bagaimana sistem mengambil data untuk laporan Piutang dan Hutang. Pilihan yang umum adalah "Buffered Cursor" atau "Direct Fetch".
+                                <br><ul>
+                                    <li><strong>Buffered Cursor:</strong> Mengambil data dalam blok-blok kecil (buffer) yang disimpan di memori, seringkali lebih efisien untuk laporan besar karena mengurangi beban pada database secara langsung.</li>
+                                    <li><strong>Direct Fetch:</strong> Mengambil semua data sekaligus, mungkin lebih cepat untuk laporan kecil tetapi bisa membebani server untuk laporan yang sangat besar.</li>
+                                </ul>
+                                <br><strong>Efek Akuntansi:</strong> Tidak ada efek langsung pada keakuratan data, tetapi sangat memengaruhi kinerja dan kecepatan pembuatan laporan Piutang dan Hutang. Memilih metode yang tepat dapat mencegah laporan menjadi lambat atau *timeout*.
+                                <br><small class="text-muted"><em>Contoh:</em> Jika Anda memiliki ribuan transaksi piutang, memilih "Buffered Cursor" dapat membuat laporan lebih responsif.</small></li>
+                        </ul>
+
+                        <h5 class="mt-4"><i class="fas fa-archive me-2"></i> Legacy Fields (Field Lama)</h5>
+                        <p>Bagian ini berisi pengaturan untuk kompatibilitas dengan fitur atau field lama dalam sistem.</p>
+                        <ul>
+                            <li><strong>Ignore Is Opening check for reporting (Abaikan pemeriksaan Is Opening untuk pelaporan):</strong>
+                                <br><strong>Fungsi:</strong> Jika dicentang, sistem akan mengabaikan field lama 'Is Opening' di Entri Jurnal (GL Entry) yang memungkinkan penambahan saldo awal setelah sistem digunakan saat menghasilkan laporan. Ini berguna jika ada data historis yang perlu diperhitungkan tanpa memengaruhi logika saldo awal saat ini.
+                                <br><strong>Efek Akuntansi:</strong> Memungkinkan fleksibilitas dalam pelaporan data historis yang mungkin memiliki entri saldo awal yang dicatat dengan cara lama. Jika tidak dicentang, laporan mungkin hanya memperhitungkan saldo awal yang dicatat dengan metode standar terbaru.
+                                <br><small class="text-muted"><em>Contoh:</em> Jika Anda mengimpor data lama dari sistem lain yang menggunakan metode saldo awal yang berbeda, mengaktifkan opsi ini dapat membantu laporan Anda tetap konsisten.</small></li>
+                        </ul>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/reports_settings_detail.png" alt="Pengaturan Laporan Detail">
+                            <small class="text-muted d-block mt-2">Gambar: Detail Pengaturan Laporan.</small>
+                        </div>
+
+
+                    <h3 class="mt-4" id="payment-request"><i class="fas fa-money-check-alt me-2"></i> Payment Request (Permintaan Pembayaran)</h3>
+                    <p>Tab Permintaan Pembayaran mengelola pengaturan terkait permintaan pembayaran dari pelanggan atau untuk pembayaran ke pemasok. Ini menyederhanakan proses penagihan dan pembayaran.</p>
+                    <p><strong>Fungsi dan Kegunaan:</strong> Mengonfigurasi perilaku permintaan pembayaran, termasuk seri penomoran dan validasi. Ini membantu mengotomatisasi pengiriman permintaan pembayaran dan pelacakan statusnya.</p>
+                    <p><strong>Field Penting:</strong></p>
+                    <ul>
+                        <li><strong>Create in Draft Status (Buat dalam Status Draf):</strong>
+                            <br><strong>Fungsi:</strong> Jika dicentang, setiap Permintaan Pembayaran yang dibuat akan secara otomatis disimpan dalam status "Draft" (Draf). Ini memungkinkan peninjauan atau modifikasi lebih lanjut sebelum permintaan tersebut dikirim atau diproses. Jika tidak dicentang, permintaan pembayaran mungkin langsung dibuat dalam status "Submitted" atau status aktif lainnya.
+                            <br><strong>Efek Akuntansi:</strong> Memberikan lapisan kontrol dan verifikasi sebelum permintaan pembayaran menjadi aktif. Ini mengurangi risiko kesalahan atau pengiriman permintaan yang belum final, memastikan akurasi data sebelum memengaruhi alur kerja keuangan atau dikirim ke pihak terkait.
+                            <br><small class="text-muted"><em>Contoh:</em> Jika Anda ingin tim keuangan meninjau setiap permintaan pembayaran sebelum dikirim ke pelanggan, aktifkan opsi ini.</small></li>
+                    </ul>
+                    <div class="screenshot-container text-center my-4">
+                        <img class="img-fluid rounded shadow" src="assets/images/payment_request_settings_detail.png" alt="Pengaturan Permintaan Pembayaran Detail">
+                        <small class="text-muted d-block mt-2">Gambar: Detail Pengaturan Permintaan Pembayaran.</small>
+                    </div>
+
+                </section>
+                <!-- end of accounting Setting -->
+                <!-- start Inventory Setting -->
+                    <section class="docs-section" id="inventory-settings">
+                        <h3 class="mt-4" id="inventory-settings"><i class="fas fa-boxes me-2"></i> Inventory Settings (Pengaturan Inventaris)</h3>
+                        <p>Pengaturan Inventaris mengelola perilaku stok, gudang, dan pergerakan barang. Ini vital untuk menjaga akurasi data inventaris dan mengoptimalkan manajemen rantai pasok.</p>
+                        <p><strong>Fungsi dan Kegunaan:</strong> Mengontrol bagaimana sistem melacak kuantitas barang, lokasi penyimpanan, dan metode penilaian stok. Pengaturan ini memengaruhi ketersediaan produk, biaya persediaan, dan efisiensi operasional gudang.</p>
+                        <p><strong>Cara Input:</strong> Anda dapat menentukan metode penilaian stok (misal: FIFO, LIFO, Weighted Average), mengaktifkan fitur Serial Number atau Batch Number, mengatur gudang default, dan mengonfigurasi aturan untuk transfer stok dan penyesuaian inventaris. Field yang tersedia meliputi pilihan metode, kotak centang aktivasi fitur, dan input untuk gudang default.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/inventory_settings.png" alt="Pengaturan Inventaris">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan Inventaris.</small>
+                        </div>
+                    </section>
+                    <!-- end if inventory Setting-->
+
+                    <section class="docs-section" id="sales-settings">
+                        <h3 class="mt-4" id="sales-settings"><i class="fas fa-handshake me-2"></i> Sales Settings (Pengaturan Penjualan)</h3>
+                        <p>Pengaturan Penjualan mengonfigurasi parameter untuk semua aktivitas penjualan, mulai dari penawaran hingga faktur. Ini memastikan proses penjualan yang efisien dan sesuai dengan kebijakan perusahaan.</p>
+                        <p><strong>Fungsi dan Kegunaan:</strong> Mendefinisikan aturan harga, diskon, pajak penjualan, dan alur kerja dokumen penjualan. Pengaturan ini membantu otomatisasi proses, mengurangi kesalahan, dan meningkatkan kepuasan pelanggan.</p>
+                        <p><strong>Cara Input:</strong> Anda dapat mengatur seri penomoran untuk dokumen penjualan (misal: Sales Order, Sales Invoice), menentukan daftar harga default, mengonfigurasi syarat pembayaran standar, dan mengaktifkan validasi tertentu untuk pesanan atau faktur. Field-field ini seringkali berupa input teks untuk seri, dropdown untuk daftar harga, dan kotak centang untuk validasi.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/sales_settings.png" alt="Pengaturan Penjualan">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan Penjualan.</small>
+                        </div>
+                    </section><!--//section-->
+                    <!-- Purchase Setting -->
+                    <section class="docs-section" id="purchase-settings">
+                        <h3 class="mt-4" id="purchase-settings"><i class="fas fa-shopping-cart me-2"></i> Purchase Settings (Pengaturan Pembelian)</h3>
+                        <p>Pengaturan Pembelian mengelola semua aspek terkait pengadaan barang dan jasa, dari permintaan hingga penerimaan dan faktur pembelian. Ini memastikan proses pembelian yang terkontrol dan efisien.</p>
+                        <p><strong>Fungsi dan Kegunaan:</strong> Mendefinisikan aturan untuk permintaan pembelian, pesanan pembelian, dan penerimaan barang. Pengaturan ini membantu mengelola hubungan dengan pemasok, mengontrol biaya, dan memastikan pasokan yang tepat waktu.</p>
+                        <p><strong>Cara Input:</strong> Anda dapat mengatur seri penomoran untuk dokumen pembelian (misal: Purchase Order, Purchase Receipt), menentukan syarat pembayaran default untuk pemasok, dan mengonfigurasi validasi untuk pesanan pembelian atau penerimaan barang. Input yang umum adalah teks untuk seri penomoran, dropdown untuk syarat pembayaran, dan kotak centang untuk aktivasi fitur.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/purchase_settings.png" alt="Pengaturan Pembelian">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan Pembelian.</small>
+                        </div>
+                    </section><!--//section-->
+                    <!-- Production Setting -->
+                    <section class="docs-section" id="production-settings">
+                        <h3 class="mt-4" id="production-settings"><i class="fas fa-industry me-2"></i> Production Settings (Pengaturan Produksi)</h3>
+                        <p>Pengaturan Produksi mengonfigurasi parameter terkait proses manufaktur dan perakitan. Ini penting untuk mengelola Bill of Materials (BOM), Work Order, dan jadwal produksi secara efektif.</p>
+                        <p><strong>Fungsi dan Kegunaan:</strong> Mengontrol bagaimana sistem menangani proses produksi, konsumsi material, dan output produk jadi. Pengaturan ini membantu perencanaan produksi, pelacakan biaya manufaktur, dan efisiensi operasional pabrik.</p>
+                        <p><strong>Cara Input:</strong> Anda dapat menentukan gudang default untuk material mentah dan produk jadi, mengatur seri penomoran untuk Work Order, dan mengonfigurasi aturan untuk backflush material atau alokasi biaya produksi. Field yang tersedia meliputi dropdown untuk gudang, input teks untuk seri, dan kotak centang untuk fitur otomatisasi.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/production_settings.png" alt="Pengaturan Produksi">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan Produksi.</small>
+                        </div>
+                    </section><!--//section-->
+                    <!-- CRM Setting -->
+                    <section class="docs-section" id="crm-settings">
+                        <h3 class="mt-4" id="crm-settings"><i class="fas fa-headset me-2"></i> CRM Settings (Pengaturan CRM)</h3>
+                        <p>Pengaturan CRM (Customer Relationship Management) mengelola konfigurasi terkait interaksi dengan pelanggan, prospek, dan manajemen peluang penjualan. Ini mendukung tim penjualan dan pemasaran.</p>
+                        <p><strong>Fungsi dan Kegunaan:</strong> Mendefinisikan tahapan siklus penjualan, kategori prospek, dan jenis aktivitas CRM. Pengaturan ini membantu melacak interaksi pelanggan, mengelola pipeline penjualan, dan meningkatkan retensi pelanggan.</p>
+                        <p><strong>Cara Input:</strong> Anda dapat mengatur seri penomoran untuk Lead atau Opportunity, menentukan tahapan default dalam siklus penjualan, dan mengonfigurasi integrasi dengan alat komunikasi eksternal jika diperlukan. Field yang umum adalah input teks untuk seri, dropdown untuk tahapan, dan kotak centang untuk aktivasi integrasi.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/crm_settings.png" alt="Pengaturan CRM">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan CRM.</small>
+                        </div>
+                    </section><!--//section-->
+                   <!-- RND Setting -->
+                    <section class="docs-section" id="rnd-projects-settings">
+                        <h3 class="mt-4" id="rnd-projects-settings"><i class="fas fa-flask me-2"></i> RnD Projects Settings (Pengaturan Proyek RnD)</h3>
+                        <p>Pengaturan Proyek RnD (Research and Development) mengelola konfigurasi untuk proyek penelitian dan pengembangan. Ini membantu melacak kemajuan, biaya, dan sumber daya yang dialokasikan untuk inovasi.</p>
+                        <p><strong>Fungsi dan Kegunaan:</strong> Mendefinisikan kategori proyek RnD, tahapan proyek, dan alokasi anggaran. Pengaturan ini mendukung manajemen portofolio proyek, pelacakan pengeluaran, dan evaluasi keberhasilan proyek inovasi.</p>
+                        <p><strong>Cara Input:</strong> Anda dapat mengatur seri penomoran untuk Proyek RnD, menentukan tahapan default dalam siklus proyek, dan mengonfigurasi bagaimana biaya proyek dialokasikan. Input yang umum adalah teks untuk seri, dropdown untuk tahapan, dan pilihan untuk metode alokasi biaya.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/rnd_projects_settings.png" alt="Pengaturan Proyek RnD">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan Proyek RnD.</small>
+                        </div>
+                    </section><!--//section-->
+                    <!-- Help Desk -->
+                    <!-- <section class="docs-section" id="help-desk-settings">
+                        <h3 class="mt-4" id="help-desk-settings"><i class="fas fa-life-ring me-2"></i> Help Desk Settings (Pengaturan Help Desk)</h3>
+                        <p>Pengaturan Help Desk mengelola konfigurasi untuk modul dukungan pelanggan dan tiket bantuan. Ini penting untuk memastikan layanan pelanggan yang responsif dan terorganisir.</p>
+                        <p><strong>Fungsi dan Kegunaan:</strong> Mendefinisikan kategori tiket, prioritas, dan alur kerja penanganan tiket. Pengaturan ini membantu tim dukungan melacak masalah pelanggan, mengelola SLA (Service Level Agreement), dan meningkatkan efisiensi penyelesaian masalah.</p>
+                        <p><strong>Cara Input:</strong> Anda dapat mengatur seri penomoran untuk tiket bantuan, menentukan email masuk untuk pembuatan tiket otomatis, dan mengonfigurasi aturan penetapan agen dukungan. Field yang umum adalah input teks untuk seri, dropdown untuk kategori/prioritas, dan pengaturan email.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/help_desk_settings.png" alt="Pengaturan Help Desk">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan Help Desk.</small>
+                        </div>
+                    </section> --><!--//section-->
+
+                    <section class="docs-section" id="core-settings-main">
+						<h2 class="section-heading"><i class="fas fa-cogs me-2"></i> Core Settings</h2>
+						<p>Bagian Core Settings (Pengaturan Inti) mencakup konfigurasi fundamental yang memengaruhi perilaku sistem ERP Siumang secara keseluruhan, terlepas dari modul spesifik. Pengaturan ini sangat penting untuk stabilitas, keamanan, dan fungsionalitas dasar sistem.</p>
+
+                        <h3 class="mt-4" id="system-settings"><i class="fas fa-desktop me-2"></i> System Settings (Pengaturan Sistem)</h3>
+                        <p>Pengaturan Sistem adalah kumpulan konfigurasi umum yang memengaruhi cara kerja ERP Siumang secara global. Ini mencakup pengaturan bahasa, zona waktu, format tanggal dan waktu, serta perilaku cache.</p>
+                        <p><strong>Fungsi dan Kegunaan:</strong> Mengatur preferensi dasar sistem untuk semua pengguna, memastikan konsistensi tampilan dan fungsionalitas. Pengaturan ini juga memengaruhi kinerja dan lokalisasi sistem.</p>
+                        <p><strong>Cara Input:</strong> Anda dapat memilih bahasa default antarmuka, mengatur zona waktu server, menentukan format tanggal dan waktu yang digunakan di seluruh sistem, dan mengonfigurasi opsi caching untuk meningkatkan kecepatan. Field-field ini biasanya berupa dropdown pilihan atau kotak centang.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/system_settings.png" alt="Pengaturan Sistem">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan Sistem.</small>
+                        </div>
+                    </section><!--//section-->
+
+                    <section class="docs-section" id="domain-settings">
+                        <h3 class="mt-4" id="domain-settings"><i class="fas fa-globe me-2"></i> Domain Settings (Pengaturan Domain)</h3>
+                        <p>Pengaturan Domain memungkinkan Anda untuk mengaktifkan atau menonaktifkan domain bisnis tertentu dalam instalasi ERP Siumang Anda. Domain mencakup area seperti Manufaktur, Pendidikan, atau Layanan Kesehatan, yang masing-masing memiliki fitur dan DocType spesifik.</p>
+                        <p><strong>Fungsi dan Kegunaan:</strong> Menyesuaikan sistem agar hanya menampilkan modul dan fitur yang relevan dengan jenis bisnis Anda, mengurangi kompleksitas antarmuka dan meningkatkan relevansi fungsionalitas.</p>
+                        <p><strong>Cara Input:</strong> Anda dapat mencentang atau menghilangkan centang pada kotak di samping nama domain untuk mengaktifkan atau menonaktifkannya. Setelah perubahan, sistem mungkin memerlukan pembaruan untuk menerapkan konfigurasi domain baru.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/domain_settings.png" alt="Pengaturan Domain">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan Domain.</small>
+                        </div>
+                    </section><!--//section-->
+
+                    <section class="docs-section" id="global-defaults">
+                        <h3 class="mt-4" id="global-defaults"><i class="fas fa-sliders-h me-2"></i> Global Defaults (Standar Global)</h3>
+                        <p>Global Defaults adalah pengaturan nilai standar yang akan diterapkan di seluruh sistem jika tidak ada konfigurasi spesifik yang ditentukan di tempat lain. Ini mencakup pengaturan untuk Company, mata uang, dan gudang default.</p>
+                        <p><strong>Fungsi dan Kegunaan:</strong> Menyederhanakan proses input data dengan mengisi otomatis field-field umum, serta memastikan konsistensi data di seluruh transaksi dan dokumen.</p>
+                        <p><strong>Cara Input:</strong> Anda dapat memilih Perusahaan default untuk instalasi multi-perusahaan, menentukan mata uang default jika multi-mata uang diaktifkan, dan mengatur gudang default yang akan digunakan saat membuat transaksi stok atau penjualan/pembelian. Field-field ini umumnya berupa dropdown pilihan.</p>
+                        <div class="screenshot-container text-center my-4">
+                            <img class="img-fluid rounded shadow" src="assets/images/global_defaults.png" alt="Standar Global">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Pengaturan Standar Global.</small>
+                        </div>
+                    </section><!--//section-->
+			    </article><!--//docs-article-->
+			    
+			    <footer class="footer">
+				    <div class="container text-center py-5">
+			            <small class="copyright">Designed with <span class="sr-only">love</span><i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="theme-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
+				    </div>
+			    </footer>
+		    </div> 
+	    </div>
+    </div><!--//docs-wrapper-->
+   
+       
+    <!-- Javascript -->          
+    <script src="assets/plugins/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
+    
+    
+    <!-- Page Specific JS -->
+    <script src="assets/plugins/smoothscroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
+    <script src="assets/js/highlight-custom.js"></script> 
+    <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>      
+    <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script> 
+    <script src="assets/js/docs.js"></script> 
+
+</body>
+</html>
