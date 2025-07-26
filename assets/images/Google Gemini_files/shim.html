@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<!-- saved from url=(0132)blob:https://2xlfo19ud9oyeq4czojf6bbll1v4a7j7aro6ct42pyhlufscw8-h785866787.scf.usercontent.goog/525c60c9-a67f-4a8e-b605-f6e684f24b75 -->
+<html lang="id"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script>(function(firebaseConfig, initialAuthToken, appId) {
+        window.__firebase_config = firebaseConfig;
+        window.__initial_auth_token = initialAuthToken;
+        window.__app_id = appId;
+            })("\n{\n  \"apiKey\": \"AIzaSyCqyCcs2R2e7AegGjvFAwG98wlamtbHvZY\",\n  \"authDomain\": \"bard-frontend.firebaseapp.com\",\n  \"projectId\": \"bard-frontend\",\n  \"storageBucket\": \"bard-frontend.firebasestorage.app\",\n  \"messagingSenderId\": \"175205271074\",\n  \"appId\": \"1:175205271074:web:2b7bd4d34d33bf38e6ec7b\"\n}\n","eyJhbGciOiJSUzI1NiIsImtpZCI6ImZiMjBhNDYyN2NmNDRiZDBhZGIwMjQyNTBkY2MxNTk0YmRkMGE0NjgiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJmaXJlYmFzZS1hZG1pbnNkay1mYnN2Y0BiYXJkLWZyb250ZW5kLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwiYXVkIjoiaHR0cHM6XC9cL2lkZW50aXR5dG9vbGtpdC5nb29nbGVhcGlzLmNvbVwvZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJ1aWQiOiIxNTAwMjIzNjgzNjA5NTI4NDQ5MSIsImlzcyI6ImZpcmViYXNlLWFkbWluc2RrLWZic3ZjQGJhcmQtZnJvbnRlbmQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJjbGFpbXMiOnsiYXBwSWQiOiJjXzA3ZWMzYzc3ODY3ZjE3NWJfZG9jc19wYWdlX3VzZXJzX21vZHVsZS00MyJ9LCJleHAiOjE3NTM1MDQ3ODIsImlhdCI6MTc1MzUwMTE4MiwiYWxnIjoiUlMyNTYifQ.md-XtcfrAY5ueYOMAsyJYLWcA1II55Pd_uW3YQbcL_-sxaXLGGdqpS_w73U0GSKmZcgHW4uX5fmkcTNZDUGLP9EzMPF0JLwDzTUMEQ7r9Noj0OLiBB43eehPurEuPM4FDgk4ArB83vdY5kuJYzFLP0Px9vfG0AmNsHjCgT3VeIcZYNe5xwNHyDyTePOn4UG-O5m7Qd4C4gVwvjWcQC6PqDv3sN01zU1vMLiBxIQt3h2BjEF6ki3JbxbOSebddHvYQO_4f4xQzkUnIBPl0ls7kCFrlxwlI9aM3SK-Lu3Coe8CLQnsJ2hbJhAZwj9CTHkEK-Iik757vJehtCU2c5Z2Hg","c_07ec3c77867f175b_docs_page_users_module-43")</script><script>(function() {
+  // Ensure this script is executed only once
+  if (window.firebaseAuthBridgeScriptLoaded) {
+    return;
+  }
+  window.firebaseAuthBridgeScriptLoaded = true;
+
+  let nextTokenPromiseId = 0;
+
+  // Stores { resolve, reject } for ongoing token requests
+  const pendingTokenPromises = {};
+
+  // Listen for messages from the Host Application
+  window.addEventListener('message', function(event) {
+
+    const messageData = event.data;
+
+  if (messageData && messageData.type === 'RESOLVE_NEW_FIREBASE_TOKEN') {
+      const { success, token, error, promiseId } = messageData ?? {};
+      if (pendingTokenPromises[promiseId]) {
+        if (success) {
+          pendingTokenPromises[promiseId].resolve(token);
+        } else {
+          pendingTokenPromises[promiseId].reject(new Error(error || 'Token refresh failed from host.'));
+        }
+        delete pendingTokenPromises[promiseId];
+      }
+    }
+  });
+
+  // Expose a function for the Generated App to request a new Firebase token
+  window.requestNewFirebaseToken = function() {
+    const currentPromiseId = nextTokenPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingTokenPromises[currentPromiseId] = { resolve, reject };
+    });
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'REQUEST_NEW_FIREBASE_TOKEN',
+        promiseId: currentPromiseId
+      }, '*');
+    } else {
+      pendingTokenPromises[currentPromiseId].reject(new Error('No parent window to request token from.'));
+      delete pendingTokenPromises[currentPromiseId];
+    }
+    return promise;
+  };
+})();</script><script>
+let realOriginalGetUserMedia = null;
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  realOriginalGetUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
+}
+
+(function() {
+  if (navigator.mediaDevices && navigator.mediaDevices.__proto__) {
+    try {
+      Object.defineProperty(navigator.mediaDevices.__proto__, 'getUserMedia', {
+        get: function() {
+          return undefined; // Or throw an error
+        },
+        configurable: false
+      });
+    } catch (error) {
+      console.error("Error defining prototype getter:", error);
+    }
+  }
+})();
+
+(function() {
+  const pendingMediaResolvers = {};
+  let nextMediaPromiseId = 0;
+
+  function requestMediaPermissions(constraints) {
+    const mediaPromiseId = nextMediaPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingMediaResolvers[mediaPromiseId] = (granted) => {
+        delete pendingMediaResolvers[mediaPromiseId];
+        resolve(granted);
+      };
+    });
+
+    window.parent.postMessage({
+      type: 'requestMediaPermission',
+      constraints: constraints,
+      promiseId: mediaPromiseId,
+    }, '*');
+
+    return promise;
+  }
+
+  let originalGetUserMedia = realOriginalGetUserMedia;
+
+  function interceptGetUserMedia() {
+    if (navigator.mediaDevices) {
+      Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
+        value: function(constraints) {
+          return requestMediaPermissions(constraints).then((granted) => {
+            if (granted) {
+              if (originalGetUserMedia) {
+                return originalGetUserMedia(constraints);
+              } else {
+                throw new Error("Original getUserMedia not available.");
+              }
+            } else {
+              throw new DOMException('Permission denied', 'NotAllowedError');
+            }
+          });
+        },
+        writable: false,
+        configurable: false
+      });
+    }
+  }
+
+  interceptGetUserMedia();
+
+  const observer = new MutationObserver(function(mutationsList, observer) {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'reconfigured' && mutation.name === 'getUserMedia' && mutation.object === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'attributes' && mutation.attributeName === 'getUserMedia' && mutation.target === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'childList' && mutation.addedNodes) {
+        mutation.addedNodes.forEach(node => {
+          if (node === navigator.mediaDevices) {
+            interceptGetUserMedia();
+          }
+        });
+      }
+    }
+  });
+
+  function interceptSpeechRecognition() {
+    if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+      return;
+    }
+
+    const OriginalSpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    const SpeechRecognitionWrapper = function(...args) {
+      const recognizer = new OriginalSpeechRecognition(...args);
+      const originalStart = recognizer.start.bind(recognizer);
+
+      recognizer.start = function() {
+        requestMediaPermissions({ audio: true }).then(granted => {
+          if (granted) {
+            originalStart();
+          } else {
+            const errorEvent = new SpeechRecognitionErrorEvent('error');
+            errorEvent.error = 'not-allowed'; // This is the standard error for permission denial.
+            recognizer.dispatchEvent(errorEvent);
+          }
+        });
+      };
+
+      return recognizer;
+    };
+
+    SpeechRecognitionWrapper.prototype = OriginalSpeechRecognition.prototype;
+    SpeechRecognitionWrapper.prototype.constructor = SpeechRecognitionWrapper;
+
+    if (window.SpeechRecognition) {
+      window.SpeechRecognition = SpeechRecognitionWrapper;
+    }
+    if (window.webkitSpeechRecognition) {
+      window.webkitSpeechRecognition = SpeechRecognitionWrapper;
+    }
+  }
+
+  interceptSpeechRecognition();
+
+  window.addEventListener('message', function(event) {
+    if (event.data) {
+      if (event.data.type === 'resolveMediaPermission') {
+        const { promiseId, granted } = event.data;
+        if (pendingMediaResolvers[promiseId]) {
+          pendingMediaResolvers[promiseId](granted);
+        }
+      }
+    }
+  });
+
+})();</script><script>((function(modelInformation) {
+  const originalFetch = window.fetch;
+  // TODO: b/421908508 - Move these out of the script and match all generative AI model calls.
+  let googleLlmBaseApiUrls = [
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':streamGenerateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageEditModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.ttsModelName + ':generateContent',
+  ];
+  modelInformation.deprecatedTextModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+    );
+  });
+
+  const pendingFetchResolvers = {};
+  let nextPromiseId = 0;
+
+  function handleStringInput(input, optionsArgument) {
+    const actualUrl = input;
+    const fetchCallArgs = [actualUrl, optionsArgument];
+    const effectiveOptions = optionsArgument || {};
+    const bodyForApiKeyCheck = effectiveOptions.body;
+    const bodyForPostMessage = effectiveOptions.body;
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  function handleRequestInput(input, optionsArgument) {
+    const actualUrl = input.url;
+    const fetchCallArgs = [input, optionsArgument];
+    const effectiveOptions = { method: input.method, headers: new Headers(input.headers) };
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (optionsArgument) {
+      if (optionsArgument.method) effectiveOptions.method = optionsArgument.method;
+      if (optionsArgument.headers) effectiveOptions.headers = new Headers(optionsArgument.headers);
+      if ('body' in optionsArgument) {
+        bodyForApiKeyCheck = optionsArgument.body;
+        bodyForPostMessage = optionsArgument.body;
+      } else {
+        bodyForApiKeyCheck = undefined;
+        bodyForPostMessage = input.body;
+      }
+    } else {
+      bodyForApiKeyCheck = undefined;
+      bodyForPostMessage = input.body;
+    }
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  window.fetch = function(input, optionsArgument) {
+    let actualUrl;
+    let fetchCallArgs;
+    let effectiveOptions = {};
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (typeof input === 'string') {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleStringInput(input, optionsArgument));
+    } else if (input instanceof Request) {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleRequestInput(input, optionsArgument));
+    } else {
+      return originalFetch.apply(window, [input, optionsArgument]);
+    }
+
+    effectiveOptions.method = effectiveOptions.method || 'GET';
+    if (!effectiveOptions.headers) {
+      effectiveOptions.headers = new Headers();
+    }
+
+
+    if (typeof actualUrl === 'string' && googleLlmBaseApiUrls.some((url) => actualUrl.startsWith(url))) {
+      let apiKeyIsNull = true;
+
+      const regex = new RegExp("models/([^:]+)");
+      const modelNameMatch = actualUrl.match(regex);
+      const modelName = modelNameMatch ? modelNameMatch[1] : 'unspecified';
+
+
+      try {
+        const urlObject = new URL(actualUrl);  // Use URL object for robust parsing
+        const apiKeyParam = urlObject.searchParams.get('key');
+        if (apiKeyParam) {
+          apiKeyIsNull = false;
+        }
+      } catch (e) {
+        // Continue checks even if URL parsing fails
+      }
+
+      if (apiKeyIsNull && effectiveOptions.headers) {
+        const h = new Headers(effectiveOptions.headers);
+        const apiKeyHeaderValue = h.get('X-API-Key') || h.get('x-api-key');
+        if (apiKeyHeaderValue) {
+          apiKeyIsNull = false;
+          return originalFetch.apply(window, fetchCallArgs);
+        }
+      }
+
+      if (apiKeyIsNull && effectiveOptions.method && ['POST', 'PUT', 'PATCH'].includes(effectiveOptions.method.toUpperCase()) && typeof bodyForApiKeyCheck === 'string') {
+        try {
+          const bodyData = JSON.parse(bodyForApiKeyCheck);
+          if (bodyData && bodyData.apiKey) {
+            apiKeyIsNull = false;
+            return originalFetch.apply(window, fetchCallArgs);
+          }
+        } catch (e) {
+          // Ignore JSON parsing errors
+        }
+      }
+
+      if(apiKeyIsNull) {
+        const promiseId = nextPromiseId++;
+        const promise = new Promise((resolve) => {
+          pendingFetchResolvers[promiseId] = (resolvedResponse) => {
+            delete pendingFetchResolvers[promiseId];
+            resolve(resolvedResponse);
+          };
+        });
+
+        let serializedBodyForPostMessage;
+        if (typeof bodyForPostMessage === 'string' || bodyForPostMessage == null) {
+            serializedBodyForPostMessage = bodyForPostMessage;
+        } else if (bodyForPostMessage instanceof ReadableStream) {
+            serializedBodyForPostMessage = null;
+        } else {
+            try {
+                serializedBodyForPostMessage = JSON.stringify(bodyForPostMessage);
+            } catch (e) {
+                serializedBodyForPostMessage = null;
+            }
+        }
+
+        const messageOptions = {
+            method: effectiveOptions.method,
+            headers: Object.fromEntries(new Headers(effectiveOptions.headers).entries()),
+            body: serializedBodyForPostMessage
+        };
+
+        window.parent.postMessage({
+          type: 'requestFetch',
+          url: actualUrl,
+          modelName: modelName,
+          options: messageOptions,
+          promiseId: promiseId,
+        }, '*');
+
+        return promise;
+      }
+      return originalFetch.apply(window, fetchCallArgs);
+    }
+    return originalFetch.apply(window, fetchCallArgs);
+  };
+
+  window.addEventListener('message', function(event) {
+    if (event.data && event.data.type === 'resolveFetch') {
+      const { promiseId, response } = event.data;
+      if (pendingFetchResolvers[promiseId]) {
+        try {
+          const reconstructedResponse = new Response(response.body, {
+            status: response.status,
+            statusText: response.statusText,
+            headers: new Headers(response.headers),
+          });
+          pendingFetchResolvers[promiseId](reconstructedResponse);
+        } catch (error) {
+          pendingFetchResolvers[promiseId](new Response(null, { status: 500, statusText: "Interceptor Response Reconstruction Error" }));
+        }
+      }
+    }
+  });
+
+}))({"textModelName":"gemini-2.5-flash-preview-05-20","imageModelName":"imagen-3.0-generate-002","imageEditModelName":"gemini-2.0-flash-preview-image-generation","videoModelName":"veo-2.0-generate-001","ttsModelName":"gemini-2.5-flash-preview-tts","deprecatedTextModelNames":["gemini-2.0-flash","gemini-2.5-flash-preview-04-17"]})</script><script>(function() {
+  const originalConsoleLog = console.log;
+  const originalConsoleError = console.error;
+
+    /**
+   * Normalizes an error event or a promise rejection reason into a structured error object.
+   * @param {*} errorEventOrReason The error object or reason.
+   * @return {object} Structured error data { message, name, stack }.
+   */
+  function getErrorObject(errorEventOrReason) {
+    if (errorEventOrReason instanceof Error) {
+      return {
+        message: errorEventOrReason.message,
+        name: errorEventOrReason.name,
+        stack: errorEventOrReason.stack,
+      };
+    }
+    // Fallback for non-Error objects.
+    try {
+      return {
+        message: JSON.stringify(errorEventOrReason),
+        name: 'UnknownErrorType',
+        stack: null,
+      };
+    } catch (e) {
+      return {
+        message: String(errorEventOrReason),
+        name: 'UnknownErrorTypeNonStringifiable',
+        stack: null,
+      };
+    }
+  }
+
+  /**
+   * Converts an array of arguments (from log/error) into a single string.
+   * Handles Error objects specially to include their message and stack.
+   * @param {Array<*>} args - Arguments passed to console methods.
+   * @return {string} A string representation of the arguments.
+   */
+  function stringifyArgs(args) {
+    return args
+      .map((arg) => {
+        if (arg instanceof Error) {
+          const {message, stack} = arg;
+          return `Error: ${message}${stack ? ('\nStack: ' + stack) : ''}`;
+        }
+        if (typeof arg === 'object' && arg !== null) {
+          try {
+            return JSON.stringify(arg);
+          } catch (error) {
+            return '[Circular Object]';
+          }
+        } else {
+          return String(arg);
+        }
+      })
+      .join(' ');
+  }
+
+  console.log = function(...args) {
+    const logString = stringifyArgs(args);
+    window.parent.postMessage({ type: 'log', message: logString }, '*');
+    originalConsoleLog.apply(console, args);
+  };
+
+  console.error = function(...args) {
+    let errorData;
+    if (args.length > 0 && args[0] instanceof Error) {
+      const err = args[0];
+      // If the first arg is an Error, capture its details.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        ...getErrorObject(err),
+        rawArgsString: stringifyArgs(args.slice(1)),
+        timestamp: new Date().toISOString(),
+      };
+    } else {
+      // If not an Error object, treat all args as a general error message.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        message: stringifyArgs(args),
+        name: 'ConsoleLoggedError',
+        stack: null,
+        timestamp: new Date().toISOString(),
+      };
+    }
+    window.parent.postMessage(errorData, '*');
+    originalConsoleError.apply(console, args);
+  };
+
+  // Listen for global unhandled synchronous errors.
+  window.addEventListener('error', function(event) {
+    const errorDetails = event.error ? getErrorObject(event.error) : {
+      message: event.message,
+      name: 'GlobalError',
+      stack: null,
+      filename: event.filename,
+      lineno: event.lineno,
+      colno: event.colno,
+    };
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'global',
+      ...errorDetails,
+      message: errorDetails.message || event.message,
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+  // Listen for unhandled promise rejections (asynchronous errors).
+  window.addEventListener('unhandledrejection', function(event) {
+    const errorDetails = getErrorObject(event.reason);
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'unhandledrejection',
+      ...errorDetails,
+      message: errorDetails.message || 'Unhandled Promise Rejection',
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+})();</script>
+    <title>Dokumentasi ERP Siumang - Modul Users</title>
+    
+    <!-- Meta -->
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="description" content="Dokumentasi Modul Users ERP Siumang">
+    <meta name="author" content="ERP Siumang Team">    
+    <link rel="shortcut icon" href=""> 
+    
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome JS-->
+    <script src=""></script>
+    
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.2/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="">
+
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="">
+
+    <style>
+        /* Penyesuaian umum untuk konsistensi */
+        body {
+            background-color: #f8f9fa; /* Light background for a clean look */
+            color: #343a40; /* Darker text for readability */
+        }
+        .screenshot-container {
+            margin: 1.5em 0;
+            text-align: center;
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 0.375rem;
+            padding: 10px;
+        }
+        .screenshot-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.375rem;
+            box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+        }
+        /* Penyesuaian sidebar agar Bootstrap collapsible berfungsi */
+        .docs-sidebar .nav-item.section-title .theme-icon-holder {
+            font-size: 1.2rem;
+        }
+        .docs-sidebar .nav-link .theme-icon-holder {
+            font-size: 1rem;
+            margin-right: 0.5rem;
+        }
+        .docs-sidebar .nav-link.active {
+            color: #20c997;
+            font-weight: bold;
+        }
+        .docs-sidebar .nav-link:hover {
+            color: #007bff;
+        }
+        /* Style for nested sidebar links */
+        .docs-sidebar .nav-item .nav {
+            padding-left: 1.5rem;
+            border-left: 1px solid #e0e0e0;
+            margin-left: 0.5rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .docs-sidebar .nav-item .nav-link {
+            font-size: 0.9rem;
+            padding-top: 0.3rem;
+            padding-bottom: 0.3rem;
+        }
+        /* Styles for collapsible items */
+        .docs-sidebar .nav-link[data-bs-toggle="collapse"] {
+            position: relative;
+            padding-right: 2rem;
+        }
+        .docs-sidebar .nav-link[data-bs-toggle="collapse"]::after {
+            content: "\f078"; /* Chevron-down icon (Font Awesome) */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.2s ease-in-out;
+        }
+        .docs-sidebar .nav-link[data-bs-toggle="collapse"][aria-expanded="true"]::after {
+            content: "\f077"; /* Chevron-up icon (Font Awesome) */
+            transform: translateY(-50%) rotate(0deg);
+        }
+        .docs-section h3 { /* Changed from h2 to h3 */
+            font-size: 1.75rem; 
+            color: #0056b3; 
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 0.5rem;
+        }
+        .docs-section h4 { /* Changed from h3 to h4 */
+            font-size: 1.5rem;
+            color: #007bff; 
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .docs-section h5 { /* Changed from h4 to h5 */
+            font-size: 1.25rem;
+            color: #495057; 
+            margin-top: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        .docs-section p, .docs-section ul, .docs-section ol {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .docs-section ul li, .docs-section ol li {
+            margin-bottom: 0.5rem;
+        }
+        .docs-section strong {
+            color: #333;
+        }
+        .docs-section code {
+            background-color: #e9ecef;
+            padding: 0.2em 0.4em;
+            border-radius: 0.25em;
+            font-size: 0.9em;
+            color: #e83e8c; 
+        }
+    </style>
+
+</head> 
+
+<body class="docs-page">    
+    <header class="header fixed-top">	    
+        <div class="branding docs-branding">
+            <div class="container-fluid position-relative py-2">
+                <div class="docs-logo-wrapper">
+					<button id="docs-sidebar-toggler" class="docs-sidebar-toggler docs-sidebar-visible me-2 d-xl-none" type="button">
+	                    <span></span>
+	                    <span></span>
+	                    <span></span>
+	                </button>
+	                <div class="site-logo">
+                        <a class="navbar-brand" href="">
+                            <img class="logo-icon me-2" src="" alt="logo Siumang" style="width: 32px; height: 32px;">
+                            <span class="logo-text">ERP<span class="text-alt">Siumang</span></span>
+                        </a>
+                    </div>    
+                </div><!--//docs-logo-wrapper-->
+	            <div class="docs-top-utilities d-flex justify-content-end align-items-center">
+	                <div class="top-search-box d-none d-lg-flex">
+		                <form class="search-form">
+				            <input type="text" placeholder="Cari dokumentasi..." name="search" class="form-control search-input">
+				            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+				        </form>
+	                </div>
+	            </div><!--//docs-top-utilities-->
+            </div><!--//container-->
+        </div><!--//branding-->
+    </header><!--//header-->
+    
+    
+    <div class="docs-wrapper">
+	    <div id="docs-sidebar" class="docs-sidebar">
+		    <div class="top-search-box d-lg-none p-3">
+                <form class="search-form">
+		            <input type="text" placeholder="Cari dokumentasi..." name="search" class="form-control search-input">
+		            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+		        </form>
+            </div>
+		    <nav id="docs-nav" class="docs-nav navbar">
+			    <ul class="section-items list-unstyled nav flex-column pb-3">
+                    <li class="nav-item section-title">
+                        <a class="nav-link" href="">
+                            <span class="theme-icon-holder me-2"><i class="fas fa-home"></i></span>Home
+                        </a>
+                    </li>
+				    <li class="nav-item section-title"><a class="nav-link scrollto active" href="blob:https://2xlfo19ud9oyeq4czojf6bbll1v4a7j7aro6ct42pyhlufscw8-h785866787.scf.usercontent.goog/525c60c9-a67f-4a8e-b605-f6e684f24b75#module-users">
+                        <span class="theme-icon-holder me-2"><i class="fas fa-user-cog"></i></span>Modul Users</a></li>
+
+				    <li class="nav-item">
+                        <a class="nav-link scrollto collapsed" data-bs-toggle="collapse" href="blob:https://2xlfo19ud9oyeq4czojf6bbll1v4a7j7aro6ct42pyhlufscw8-h785866787.scf.usercontent.goog/525c60c9-a67f-4a8e-b605-f6e684f24b75#collapseUsers" aria-expanded="true" aria-controls="collapseUsers">
+                            Users
+                        </a>
+                        <ul id="collapseUsers" class="nav flex-column collapse show">
+                            <li class="nav-item"><a class="nav-link scrollto" href="blob:https://2xlfo19ud9oyeq4czojf6bbll1v4a7j7aro6ct42pyhlufscw8-h785866787.scf.usercontent.goog/525c60c9-a67f-4a8e-b605-f6e684f24b75#users-shortcuts-user">User</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="blob:https://2xlfo19ud9oyeq4czojf6bbll1v4a7j7aro6ct42pyhlufscw8-h785866787.scf.usercontent.goog/525c60c9-a67f-4a8e-b605-f6e684f24b75#users-shortcuts-role">Role</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="blob:https://2xlfo19ud9oyeq4czojf6bbll1v4a7j7aro6ct42pyhlufscw8-h785866787.scf.usercontent.goog/525c60c9-a67f-4a8e-b605-f6e684f24b75#reports-masters-users-role-profile">Role Profile</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="blob:https://2xlfo19ud9oyeq4czojf6bbll1v4a7j7aro6ct42pyhlufscw8-h785866787.scf.usercontent.goog/525c60c9-a67f-4a8e-b605-f6e684f24b75#reports-masters-users-module-profile">Module Profile</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scrollto collapsed" data-bs-toggle="collapse" href="blob:https://2xlfo19ud9oyeq4czojf6bbll1v4a7j7aro6ct42pyhlufscw8-h785866787.scf.usercontent.goog/525c60c9-a67f-4a8e-b605-f6e684f24b75#collapsePermissions" aria-expanded="true" aria-controls="collapsePermissions">
+                            Permissions
+                        </a>
+                        <ul id="collapsePermissions" class="nav flex-column collapse show">
+                            <li class="nav-item"><a class="nav-link scrollto" href="blob:https://2xlfo19ud9oyeq4czojf6bbll1v4a7j7aro6ct42pyhlufscw8-h785866787.scf.usercontent.goog/525c60c9-a67f-4a8e-b605-f6e684f24b75#permissions-sub-role-permissions-manager">Role Permissions Manager</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="blob:https://2xlfo19ud9oyeq4czojf6bbll1v4a7j7aro6ct42pyhlufscw8-h785866787.scf.usercontent.goog/525c60c9-a67f-4a8e-b605-f6e684f24b75#permissions-sub-user-permissions">User Permissions</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="blob:https://2xlfo19ud9oyeq4czojf6bbll1v4a7j7aro6ct42pyhlufscw8-h785866787.scf.usercontent.goog/525c60c9-a67f-4a8e-b605-f6e684f24b75#permissions-sub-role-permission-page-report">Role Permission for Page and Report</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="blob:https://2xlfo19ud9oyeq4czojf6bbll1v4a7j7aro6ct42pyhlufscw8-h785866787.scf.usercontent.goog/525c60c9-a67f-4a8e-b605-f6e684f24b75#permissions-sub-permitted-documents-for-user">Permitted Documents For User</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="blob:https://2xlfo19ud9oyeq4czojf6bbll1v4a7j7aro6ct42pyhlufscw8-h785866787.scf.usercontent.goog/525c60c9-a67f-4a8e-b605-f6e684f24b75#permissions-sub-document-share-report">Document Share Report</a></li>
+                        </ul>
+                    </li>
+			    </ul>
+
+		    </nav><!--//docs-nav-->
+	    </div><!--//docs-sidebar-->
+	    <div class="docs-content">
+		    <div class="container">
+			    <article class="docs-article" id="module-users">
+				    <header class="docs-header">
+					    <h1 class="docs-heading">Modul Users (Pengguna)</h1>
+					    <section class="docs-intro">
+						    <p>Modul Users di ERP Siumang adalah pusat kendali untuk mengelola semua aspek terkait pengguna, peran, dan hak akses dalam sistem Anda. Memastikan pengaturan pengguna yang benar adalah kunci untuk keamanan data dan kelancaran operasional.</p>
+                            <p>Di halaman ini, Anda akan menemukan pintasan cepat ke fungsi-fungsi penting serta bagian terperinci untuk mengelola pengguna, melihat log aktivitas, dan mengonfigurasi izin.</p>
+                            <div class="screenshot-container text-center my-4">
+                                <img class="img-fluid rounded shadow" src="" alt="Overview Modul Users">
+                                <small class="text-muted d-block mt-2">Gambar: Tampilan umum halaman Modul Users.</small>
+                            </div>
+						</section><!--//docs-intro-->
+				    </header>
+				    
+                    <section class="docs-section" id="users-section">
+						<h2 class="section-heading">Pintasan Anda (Your Shortcuts)</h2>
+						<p>Bagian ini menyediakan akses cepat ke fungsi-fungsi manajemen pengguna yang paling sering digunakan.</p>
+
+                        <h5 id="users-shortcuts-user" class="pt-3">1. User (Pengguna)</h5>
+                        <p>Mengelola daftar semua pengguna yang memiliki akses ke sistem ERP Siumang.</p>
+                        <h6>Cara Menggunakan:</h6>
+                        <ol>
+                            <li>Klik pada tautan "User" di bawah "Your Shortcuts".</li>
+                            <div class="screenshot-container text-center my-3">
+                                <img class="img-fluid rounded shadow" src="" alt="Pintasan User">
+                                <small class="text-muted d-block mt-2">Gambar: Klik pintasan 'User'.</small>
+                            </div>
+                            <li>Anda akan diarahkan ke daftar pengguna. Dari sini, Anda dapat:
+                                <ul>
+                                    <li>Menambah Pengguna Baru: Klik tombol "Add User" atau "Baru".</li>
+                                    <li>Mengedit Pengguna: Klik pada nama pengguna untuk membuka detailnya dan melakukan perubahan.</li>
+                                    <li>Melihat Detail Pengguna: Memeriksa informasi kontak, peran, dan status pengguna.</li>
+                                    <li>Menonaktifkan/Mengaktifkan Pengguna: Mengubah status akun pengguna.</li>
+                                </ul>
+                            </li>
+                            <div class="screenshot-container text-center my-3">
+                                <img class="img-fluid rounded shadow" src="https://placehold.co/800x450/E0E0E0/333333?text=Halaman+Daftar+Pengguna" alt="Halaman Daftar Pengguna">
+                                <small class="text-muted d-block mt-2">Gambar: Contoh halaman daftar pengguna.</small>
+                            </div>
+                        </ol>
+
+                        <h5 id="users-shortcuts-role" class="pt-3">2. Role (Peran)</h5>
+                        <p>Mengelola peran yang mendefinisikan sekumpulan hak akses dalam sistem.</p>
+                        <h6>Cara Menggunakan:</h6>
+                        <ol>
+                            <li>Klik pada tautan "Role" di bawah "Your Shortcuts".</li>
+                            <div class="screenshot-container text-center my-3">
+                                <img class="img-fluid rounded shadow" src="" alt="Pintasan Role">
+                                <small class="text-muted d-block mt-2">Gambar: Klik pintasan 'Role'.</small>
+                            </div>
+                            <li>Anda akan melihat daftar peran yang sudah ada. Anda dapat:
+                                <ul>
+                                    <li>Menambah Peran Baru: Klik tombol "Add Role" atau "Baru" dan tentukan nama peran.</li>
+                                    <li>Mengedit Peran: Klik pada nama peran untuk menyesuaikan deskripsi atau properti lainnya.</li>
+                                    <li>Melihat Detail Peran: Memeriksa peran yang tersedia di sistem.</li>
+                                </ul>
+                            </li>
+                            <div class="screenshot-container text-center my-3">
+                                <img class="img-fluid rounded shadow" src="https://placehold.co/800x450/E0E0E0/333333?text=Halaman+Daftar+Peran" alt="Halaman Daftar Peran">
+                                <small class="text-muted d-block mt-2">Gambar: Contoh halaman daftar peran.</small>
+                            </div>
+                        </ol>
+
+                        <h5 id="users-shortcuts-permission-manager" class="pt-3">3. Permission Manager (Manajer Izin)</h5>
+                        <p>Alat utama untuk mengonfigurasi hak akses spesifik untuk setiap peran pada setiap jenis dokumen (DocType).</p>
+                        <h6>Cara Menggunakan:</h6>
+                        <ol>
+                            <li>Klik pada tautan "Permission Manager" di bawah "Your Shortcuts".</li>
+                            <div class="screenshot-container text-center my-3">
+                                <img class="img-fluid rounded shadow" src="" alt="Pintasan Permission Manager">
+                                <small class="text-muted d-block mt-2">Gambar: Klik pintasan 'Permission Manager'.</small>
+                            </div>
+                            <li>Pilih "Role" dan "DocType" yang ingin Anda atur izinnya.</li>
+                            <li>Centang atau hapus centang kotak izin (misal: Baca, Tulis, Buat, Hapus, Kirim, Batalkan, Print, Email, Import, Export, Report, Share, Set User Permissions, Amend) sesuai kebutuhan.</li>
+                            <li>Klik "Update" atau "Perbarui" untuk menyimpan perubahan.</li>
+                            <div class="screenshot-container text-center my-3">
+                                <img class="img-fluid rounded shadow" src="https://placehold.co/800x450/E0E0E0/333333?text=Halaman+Permission+Manager" alt="Halaman Permission Manager">
+                                <small class="text-muted d-block mt-2">Gambar: Contoh halaman Permission Manager.</small>
+                            </div>
+                        </ol>
+
+                        <h5 id="users-shortcuts-user-profile" class="pt-3">4. User Profile (Profil Pengguna)</h5>
+                        <p>Melihat dan mengelola profil pengguna yang sedang login atau pengguna lainnya.</p>
+                        <h6>Cara Menggunakan:</h6>
+                        <ol>
+                            <li>Klik pada tautan "User Profile" di bawah "Your Shortcuts".</li>
+                            <div class="screenshot-container text-center my-3">
+                                <img class="img-fluid rounded shadow" src="" alt="Pintasan User Profile">
+                                <small class="text-muted d-block mt-2">Gambar: Klik pintasan 'User Profile'.</small>
+                            </div>
+                            <li>Anda akan melihat detail profil pengguna. Jika Anda seorang administrator, Anda mungkin dapat mencari dan melihat profil pengguna lain.</li>
+                            <li>Pada halaman profil, Anda dapat melihat informasi pribadi, peran yang ditetapkan, dan pengaturan terkait pengguna.</li>
+                            <div class="screenshot-container text-center my-3">
+                                <img class="img-fluid rounded shadow" src="https://placehold.co/800x450/E0E0E0/333333?text=Halaman+Profil+Pengguna" alt="Halaman Profil Pengguna">
+                                <small class="text-muted d-block mt-2">Gambar: Contoh halaman profil pengguna.</small>
+                            </div>
+                        </ol>
+
+                        <h5 id="users-shortcuts-user-type" class="pt-3">5. User Type (Tipe Pengguna)</h5>
+                        <p>Mengategorikan pengguna berdasarkan jenisnya (misal: Karyawan, Pelanggan, Pemasok, Pengguna Website).</p>
+                        <h6>Cara Menggunakan:</h6>
+                        <ol>
+                            <li>Klik pada tautan "User Type" di bawah "Your Shortcuts".</li>
+                            <div class="screenshot-container text-center my-3">
+                                <img class="img-fluid rounded shadow" src="" alt="Pintasan User Type">
+                                <small class="text-muted d-block mt-2">Gambar: Klik pintasan 'User Type'.</small>
+                            </div>
+                            <li>Anda akan melihat daftar tipe pengguna yang sudah ada. Anda dapat:
+                                <ul>
+                                    <li>Menambah Tipe Pengguna Baru: Klik tombol "Add User Type" atau "Baru".</li>
+                                    <li>Mengedit Tipe Pengguna: Klik pada nama tipe pengguna untuk melihat atau mengubah detailnya.</li>
+                                </ul>
+                            </li>
+                            <div class="screenshot-container text-center my-3">
+                                <img class="img-fluid rounded shadow" src="https://placehold.co/800x450/E0E0E0/333333?text=Halaman+Daftar+Tipe+Pengguna" alt="Halaman Daftar Tipe Pengguna">
+                                <small class="text-muted d-block mt-2">Gambar: Contoh halaman daftar tipe pengguna.</small>
+                            </div>
+                        </ol>
+					</section><!--//section-->
+					
+					<section class="docs-section" id="reports-masters">
+						<h2 class="section-heading">Laporan &amp; Master (Reports &amp; Masters)</h2>
+						<p>Bagian ini menyediakan akses ke laporan dan data master yang lebih spesifik terkait pengguna dan izin.</p>
+
+                        <h3 class="mt-4" id="users-sub">Users</h3>
+                        <p>Sub-bagian ini mengulang beberapa akses ke data master pengguna dan peran, serta menambahkan manajemen profil.</p>
+                        
+                        <h5 id="reports-masters-users-user" class="pt-3">1. User (Pengguna)</h5>
+                        <p>Sama seperti pintasan di atas, ini mengarahkan Anda ke daftar semua pengguna sistem.</p>
+                        <h6>Cara Menggunakan:</h6>
+                        <p>Klik pada tautan "User" di bawah "Reports &amp; Masters &gt; Users". Ini akan menampilkan daftar pengguna yang sama seperti pintasan "User".</p>
+                        <div class="screenshot-container text-center my-3">
+                            <img class="img-fluid rounded shadow" src="" alt="Reports &amp; Masters User">
+                            <small class="text-muted d-block mt-2">Gambar: Klik 'User' di bagian Reports &amp; Masters.</small>
+                        </div>
+
+                        <h5 id="reports-masters-users-role" class="pt-3">2. Role (Peran)</h5>
+                        <p>Sama seperti pintasan di atas, ini mengarahkan Anda ke daftar peran yang ada di sistem.</p>
+                        <h6>Cara Menggunakan:</h6>
+                        <p>Klik pada tautan "Role" di bawah "Reports &amp; Masters &gt; Users". Ini akan menampilkan daftar peran yang sama seperti pintasan "Role".</p>
+                        <div class="screenshot-container text-center my-3">
+                            <img class="img-fluid rounded shadow" src="" alt="Reports &amp; Masters Role">
+                            <small class="text-muted d-block mt-2">Gambar: Klik 'Role' di bagian Reports &amp; Masters.</small>
+                        </div>
+
+                        <h5 id="reports-masters-users-role-profile" class="pt-3">3. Role Profile (Profil Peran)</h5>
+                        <p>Memungkinkan Anda mengelompokkan beberapa peran menjadi satu profil yang dapat ditetapkan ke pengguna, menyederhanakan manajemen izin.</p>
+                        <h6>Cara Menggunakan:</h6>
+                        <ol>
+                            <li>Klik pada tautan "Role Profile" di bawah "Reports &amp; Masters &gt; Users".</li>
+                            <div class="screenshot-container text-center my-3">
+                                <img class="img-fluid rounded shadow" src="" alt="Reports &amp; Masters Role Profile">
+                                <small class="text-muted d-block mt-2">Gambar: Klik 'Role Profile' di bagian Reports &amp; Masters.</small>
+                            </div>
+                            <li>Anda dapat membuat profil peran baru atau mengedit yang sudah ada.</li>
+                            <li>Dalam formulir Profil Peran, Anda dapat memilih beberapa peran untuk digabungkan ke dalam satu profil.</li>
+                            <div class="screenshot-container text-center my-3">
+                                <img class="img-fluid rounded shadow" src="https://placehold.co/800x450/E0E0E0/333333?text=Formulir+Profil+Peran" alt="Formulir Profil Peran">
+                                <small class="text-muted d-block mt-2">Gambar: Contoh formulir Profil Peran.</small>
+                            </div>
+                        </ol>
+
+                        <h5 id="reports-masters-users-module-profile" class="pt-3">4. Module Profile (Profil Modul)</h5>
+                        <p>Mengatur modul apa saja yang akan terlihat untuk peran tertentu, membantu menyederhanakan antarmuka pengguna.</p>
+                        <h6>Cara Menggunakan:</h6>
+                        <ol>
+                            <li>Klik pada tautan "Module Profile" di bawah "Reports &amp; Masters &gt; Users".</li>
+                            <div class="screenshot-container text-center my-3">
+                                <img class="img-fluid rounded shadow" src="" alt="Reports &amp; Masters Module Profile">
+                                <small class="text-muted d-block mt-2">Gambar: Klik 'Module Profile' di bagian Reports &amp; Masters.</small>
+                            </div>
+                            <li>Anda dapat membuat profil modul baru atau mengedit yang sudah ada.</li>
+                            <li>Pilih modul yang ingin Anda tampilkan atau sembunyikan untuk profil ini.</li>
+                            <div class="screenshot-container text-center my-3">
+                                <img class="img-fluid rounded shadow" src="https://placehold.co/800x450/E0E0E0/333333?text=Formulir+Profil+Modul" alt="Formulir Profil Modul">
+                                <small class="text-muted d-block mt-2">Gambar: Contoh formulir Profil Modul.</small>
+                            </div>
+                        </ol>
+
+                        <h3 class="mt-4" id="logs-sub">Logs</h3>
+                        <p>Bagian ini berisi laporan aktivitas dan akses yang penting untuk audit dan pemantauan sistem.</p>
+                        
+                        <h5 id="reports-masters-logs-activity-log" class="pt-3">1. Activity Log (Log Aktivitas)</h5>
+                        <p>Mencatat semua aktivitas pengguna dalam sistem (misal: kapan dokumen dibuat, diubah, dihapus).</p>
+                        <h6>Cara Menggunakan:</h6>
+                        <p>Klik pada tautan "Activity Log". Laporan ini tidak memerlukan input pengguna untuk ditampilkan, cukup klik untuk melihat daftar aktivitas terbaru.</p>
+                        <div class="screenshot-container text-center my-3">
+                            <img class="img-fluid rounded shadow" src="" alt="Activity Log">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Laporan Log Aktivitas.</small>
+                        </div>
+
+                        <h5 id="reports-masters-logs-access-log" class="pt-3">2. Access Log (Log Akses)</h5>
+                        <p>Mencatat semua upaya masuk (login) ke sistem, termasuk keberhasilan atau kegagalan.</p>
+                        <h6>Cara Menggunakan:</h6>
+                        <p>Klik pada tautan "Access Log". Laporan ini tidak memerlukan input pengguna untuk ditampilkan, cukup klik untuk melihat daftar riwayat akses.</p>
+                        <div class="screenshot-container text-center my-3">
+                            <img class="img-fluid rounded shadow" src="" alt="Access Log">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Laporan Log Akses.</small>
+                        </div>
+
+                        <h3 class="mt-4" id="permissions-sub">Permissions</h3>
+                        <p>Sub-bagian ini berfokus pada laporan dan alat yang lebih spesifik untuk manajemen izin.</p>
+                        
+                        <h5 id="permissions-sub-role-permissions-manager" class="pt-3">1. Role Permissions Manager (Manajer Izin Peran)</h5>
+                        <p>Sama seperti pintasan di atas, ini adalah alat utama untuk mengelola izin berbasis peran.</p>
+                        <h6>Cara Menggunakan:</h6>
+                        <p>Klik pada tautan "Role Permissions Manager". Anda akan diarahkan ke halaman Manajer Izin yang sama dengan pintasan di bagian "Your Shortcuts".</p>
+                        <div class="screenshot-container text-center my-3">
+                            <img class="img-fluid rounded shadow" src="" alt="Role Permissions Manager">
+                            <small class="text-muted d-block mt-2">Gambar: Klik 'Role Permissions Manager' di bagian Reports &amp; Masters.</small>
+                        </div>
+
+                        <h5 id="permissions-sub-user-permissions" class="pt-3">2. User Permissions (Izin Pengguna)</h5>
+                        <p>Mengatur izin spesifik untuk pengguna individu, yang bisa mengesampingkan atau menambah izin dari peran mereka.</p>
+                        <h6>Cara Menggunakan:</h6>
+                        <ol>
+                            <li>Klik pada tautan "User Permissions".</li>
+                            <div class="screenshot-container text-center my-3">
+                                <img class="img-fluid rounded shadow" src="" alt="User Permissions">
+                                <small class="text-muted d-block mt-2">Gambar: Klik 'User Permissions'.</small>
+                            </div>
+                            <li>Pilih "User" dan "DocType" untuk mengatur izin spesifik.</li>
+                            <li>Tambahkan atau hapus baris izin sesuai kebutuhan.</li>
+                            <div class="screenshot-container text-center my-3">
+                                <img class="img-fluid rounded shadow" src="https://placehold.co/800x450/E0E0E0/333333?text=Halaman+Izin+Pengguna" alt="Halaman Izin Pengguna">
+                                <small class="text-muted d-block mt-2">Gambar: Contoh halaman Izin Pengguna.</small>
+                            </div>
+                        </ol>
+
+                        <h5 id="permissions-sub-role-permission-page-report" class="pt-3">3. Role Permission for Page and Report (Izin Peran untuk Halaman dan Laporan)</h5>
+                        <p>Mengatur akses peran ke halaman atau laporan tertentu yang tidak tercakup dalam izin DocType standar.</p>
+                        <h6>Cara Menggunakan:</h6>
+                        <ol>
+                            <li>Klik pada tautan "Role Permission for Page and Report".</li>
+                            <div class="screenshot-container text-center my-3">
+                                <img class="img-fluid rounded shadow" src="" alt="Role Permission for Page and Report">
+                                <small class="text-muted d-block mt-2">Gambar: Klik 'Role Permission for Page and Report'.</small>
+                            </div>
+                            <li>Pilih "Role" dan tentukan "Page" atau "Report" yang ingin Anda atur aksesnya.</li>
+                            <li>Centang "Permitted" untuk memberikan akses.</li>
+                            <div class="screenshot-container text-center my-3">
+                                <img class="img-fluid rounded shadow" src="https://placehold.co/800x450/E0E0E0/333333?text=Halaman+Izin+Halaman+dan+Laporan" alt="Halaman Izin Halaman dan Laporan">
+                                <small class="text-muted d-block mt-2">Gambar: Contoh halaman Izin Peran untuk Halaman dan Laporan.</small>
+                            </div>
+                        </ol>
+
+                        <h5 id="permissions-sub-permitted-documents-for-user" class="pt-3">4. Permitted Documents For User (Dokumen yang Diizinkan untuk Pengguna)</h5>
+                        <p>Laporan yang menampilkan dokumen apa saja yang dapat diakses oleh pengguna tertentu, berdasarkan peran dan izin pengguna.</p>
+                        <h6>Cara Menggunakan:</h6>
+                        <p>Klik pada tautan "Permitted Documents For User". Anda mungkin perlu memilih pengguna dari filter untuk melihat laporan yang relevan.</p>
+                        <div class="screenshot-container text-center my-3">
+                            <img class="img-fluid rounded shadow" src="" alt="Permitted Documents For User">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Laporan Dokumen yang Diizinkan untuk Pengguna.</small>
+                        </div>
+
+                        <h5 id="permissions-sub-document-share-report" class="pt-3">5. Document Share Report (Laporan Berbagi Dokumen)</h5>
+                        <p>Menampilkan dokumen apa saja yang telah dibagikan secara spesifik kepada pengguna atau peran tertentu.</p>
+                        <h6>Cara Menggunakan:</h6>
+                        <p>Klik pada tautan "Document Share Report". Laporan ini akan menunjukkan daftar dokumen yang dibagikan dan kepada siapa dokumen tersebut dibagikan.</p>
+                        <div class="screenshot-container text-center my-3">
+                            <img class="img-fluid rounded shadow" src="" alt="Document Share Report">
+                            <small class="text-muted d-block mt-2">Gambar: Tampilan Laporan Berbagi Dokumen.</small>
+                        </div>
+					</section><!--//section-->
+					
+			    </article><!--//docs-article-->
+			    
+			    <footer class="footer">
+				    <div class="container text-center py-5">
+				        <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+			            <small class="copyright">Didesain dengan <span class="sr-only">cinta</span><i class="fas fa-heart" style="color: #fb866a;"></i> oleh <a class="theme-link" href="http://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> untuk pengembang</small>
+				        <ul class="social-list list-unstyled pt-4 mb-0">
+						    <li class="list-inline-item"><a href="blob:https://2xlfo19ud9oyeq4czojf6bbll1v4a7j7aro6ct42pyhlufscw8-h785866787.scf.usercontent.goog/525c60c9-a67f-4a8e-b605-f6e684f24b75#"><i class="fa-brands fa-github fa-fw"></i></a></li> 
+				            <li class="list-inline-item"><a href="blob:https://2xlfo19ud9oyeq4czojf6bbll1v4a7j7aro6ct42pyhlufscw8-h785866787.scf.usercontent.goog/525c60c9-a67f-4a8e-b605-f6e684f24b75#"><i class="fa-brands fa-x-twitter fa-fw"></i></a></li>
+				            <li class="list-inline-item"><a href="blob:https://2xlfo19ud9oyeq4czojf6bbll1v4a7j7aro6ct42pyhlufscw8-h785866787.scf.usercontent.goog/525c60c9-a67f-4a8e-b605-f6e684f24b75#"><i class="fa-brands fa-slack fa-fw"></i></a></li>
+				            <li class="list-inline-item"><a href="blob:https://2xlfo19ud9oyeq4czojf6bbll1v4a7j7aro6ct42pyhlufscw8-h785866787.scf.usercontent.goog/525c60c9-a67f-4a8e-b605-f6e684f24b75#"><i class="fa-brands fa-product-hunt fa-fw"></i></a></li>
+				            <li class="list-inline-item"><a href="blob:https://2xlfo19ud9oyeq4czojf6bbll1v4a7j7aro6ct42pyhlufscw8-h785866787.scf.usercontent.goog/525c60c9-a67f-4a8e-b605-f6e684f24b75#"><i class="fa-brands fa-facebook-f fa-fw"></i></a></li>
+				            <li class="list-inline-item"><a href="blob:https://2xlfo19ud9oyeq4czojf6bbll1v4a7j7aro6ct42pyhlufscw8-h785866787.scf.usercontent.goog/525c60c9-a67f-4a8e-b605-f6e684f24b75#"><i class="fa-brands fa-instagram fa-fw"></i></a></li>
+				        </ul><!--//social-list-->
+				    </div>
+			    </footer>
+		    </div> 
+	    </div>
+    </div><!--//docs-wrapper-->
+   
+       
+    <!-- Javascript -->          
+    <script src=""></script>
+    <script src=""></script>  
+    
+    
+    <!-- Page Specific JS -->
+    <script src=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js" crossorigin="anonymous"></script>
+    <script src=""></script> 
+    <script src=""></script>      
+    <script src=""></script> 
+    <script src=""></script> 
+
+
+
+</body></html>

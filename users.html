@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
     
     <!-- FontAwesome JS-->
-    <script defer src="assets/fontawesome/js/all.min.js"></script>
+    <script src="assets/fontawesome/js/all.min.js"></script>
     
     <!-- Plugins CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.2/styles/atom-one-dark.min.css">
@@ -25,20 +25,112 @@
     <link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
 
     <style>
-        /* Tambahkan style kustom jika diperlukan untuk halaman detail modul */
+        /* Penyesuaian umum untuk konsistensi */
+        body {
+            background-color: #f8f9fa; /* Light background for a clean look */
+            color: #343a40; /* Darker text for readability */
+        }
         .screenshot-container {
             margin: 1.5em 0;
             text-align: center;
             background-color: #f9f9f9;
             border: 1px solid #e0e0e0;
-            border-radius: 8px;
+            border-radius: 0.375rem;
             padding: 10px;
         }
         .screenshot-container img {
             max-width: 100%;
             height: auto;
-            border-radius: 6px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 0.375rem;
+            box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+        }
+        /* Penyesuaian sidebar agar Bootstrap collapsible berfungsi */
+        .docs-sidebar .nav-item.section-title .theme-icon-holder {
+            font-size: 1.2rem;
+        }
+        .docs-sidebar .nav-link .theme-icon-holder {
+            font-size: 1rem;
+            margin-right: 0.5rem;
+        }
+        .docs-sidebar .nav-link.active {
+            color: #20c997;
+            font-weight: bold;
+        }
+        .docs-sidebar .nav-link:hover {
+            color: #007bff;
+        }
+        /* Style for nested sidebar links */
+        .docs-sidebar .nav-item .nav {
+            padding-left: 0.5rem !important;
+            border-left: 1px solid #e0e0e0;
+            margin-left: 0.5rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .docs-nav .nav-item{
+            margin-left:0.5rem !important;
+        }
+        .docs-sidebar .nav-item .nav-link {
+            font-size: 0.9rem;
+            padding-top: 0.3rem;
+            padding-bottom: 0.3rem;
+        }
+        /* Styles for collapsible items */
+        .docs-sidebar .nav-link[data-bs-toggle="collapse"] {
+            position: relative;
+            padding-right: 2rem;
+        }
+        .docs-sidebar .nav-link[data-bs-toggle="collapse"]::after {
+            content: "\f078"; /* Chevron-down icon (Font Awesome) */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.2s ease-in-out;
+        }
+        .docs-sidebar .nav-link[data-bs-toggle="collapse"][aria-expanded="true"]::after {
+            content: "\f077"; /* Chevron-up icon (Font Awesome) */
+            transform: translateY(-50%) rotate(0deg);
+        }
+        .docs-section h3 { /* Changed from h2 to h3 */
+            font-size: 1.75rem; 
+            color: #0056b3; 
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 0.5rem;
+        }
+        .docs-section h4 { /* Changed from h3 to h4 */
+            font-size: 1.5rem;
+            color: #007bff; 
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .docs-section h5 { /* Changed from h4 to h5 */
+            font-size: 1.25rem;
+            color: #495057; 
+            margin-top: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        .docs-section p, .docs-section ul, .docs-section ol {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .docs-section ul li, .docs-section ol li {
+            margin-bottom: 0.5rem;
+        }
+        .docs-section strong {
+            color: #333;
+        }
+        .docs-section code {
+            background-color: #e9ecef;
+            padding: 0.2em 0.4em;
+            border-radius: 0.25em;
+            font-size: 0.9em;
+            color: #e83e8c; 
         }
     </style>
 
@@ -56,7 +148,7 @@
 	                </button>
 	                <div class="site-logo">
                         <a class="navbar-brand" href="index.html">
-                            <img class="logo-icon me-2" src="assets/images/coderdocs-logo.svg" alt="logo">
+                            <img class="logo-icon me-2" src="assets/images/logo-siumang@0.33x.svg" alt="logo Siumang" style="width: 32px; height: 32px;">
                             <span class="logo-text">ERP<span class="text-alt">Siumang</span></span>
                         </a>
                     </div>    
@@ -68,14 +160,6 @@
 				            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
 				        </form>
 	                </div>
-	
-					<ul class="social-list list-inline mx-md-3 mx-lg-5 mb-0 d-none d-lg-flex">
-						<li class="list-inline-item"><a href="#"><i class="fa-brands fa-github fa-fw"></i></a></li>
-			            <li class="list-inline-item"><a href="#"><i class="fa-brands fa-x-twitter fa-fw"></i></a></li>
-		                <li class="list-inline-item"><a href="#"><i class="fa-brands fa-slack fa-fw"></i></a></li>
-		                <li class="list-inline-item"><a href="#"><i class="fa-brands fa-product-hunt fa-fw"></i></a></li>
-		            </ul><!--//social-list-->
-		            <a href="#" class="btn btn-primary d-none d-lg-flex">Unduh Manual</a>
 	            </div><!--//docs-top-utilities-->
             </div><!--//container-->
         </div><!--//branding-->
@@ -92,14 +176,37 @@
             </div>
 		    <nav id="docs-nav" class="docs-nav navbar">
 			    <ul class="section-items list-unstyled nav flex-column pb-3">
-				    <li class="nav-item section-title"><a class="nav-link scrollto active" href="#module-users"><span class="theme-icon-holder me-2"><i class="fas fa-user-cog"></i></span>Modul Users</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto" href="#users-shortcuts">Pintasan Anda (Your Shortcuts)</a></li>
-				    <li class="nav-item"><a class="nav-link scrollto" href="#reports-masters">Laporan & Master (Reports & Masters)</a></li>
-                    <ul class="section-items list-unstyled nav flex-column pb-3 ps-3">
-                        <li class="nav-item"><a class="nav-link scrollto" href="#users-sub">Users</a></li>
-                        <li class="nav-item"><a class="nav-link scrollto" href="#logs-sub">Logs</a></li>
-                        <li class="nav-item"><a class="nav-link scrollto" href="#permissions-sub">Permissions</a></li>
-                    </ul>
+                    <li class="nav-item section-title">
+                        <a class="nav-link" href="index.html">
+                            <span class="theme-icon-holder me-2"><i class="fas fa-home"></i></span>Home
+                        </a>
+                    </li>
+				    <li class="nav-item section-title"><a class="nav-link scrollto active" href="#module-users">
+                        <span class="theme-icon-holder me-2"><i class="fas fa-user-cog"></i></span>Modul Users</a></li>
+
+				    <li class="nav-item">
+                        <a class="nav-link scrollto collapsed" data-bs-toggle="collapse" href="#collapseUsers" aria-expanded="true" aria-controls="collapseUsers">
+                            Users
+                        </a>
+                        <ul id="collapseUsers" class="nav flex-column collapse show">
+                            <li class="nav-item"><a class="nav-link scrollto" href="#users-user">User</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#users-role">Role</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#users-role-profile">Role Profile</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#users-module-profile">Module Profile</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scrollto collapsed" data-bs-toggle="collapse" href="#collapsePermissions" aria-expanded="true" aria-controls="collapsePermissions">
+                            Permissions
+                        </a>
+                        <ul id="collapsePermissions" class="nav flex-column collapse show">
+                            <li class="nav-item"><a class="nav-link scrollto" href="#permissions-role-permissions-manager">Role Permissions Manager</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#permissions-user-permissions">User Permissions</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#permissions-role-permission-page-report">Role Permission for Page and Report</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#permissions-permitted-documents-for-user">Permitted Documents For User</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#permissions-document-share-report">Document Share Report</a></li>
+                        </ul>
+                    </li>
 			    </ul>
 
 		    </nav><!--//docs-nav-->
@@ -111,7 +218,7 @@
 					    <h1 class="docs-heading">Modul Users (Pengguna)</h1>
 					    <section class="docs-intro">
 						    <p>Modul Users di ERP Siumang adalah pusat kendali untuk mengelola semua aspek terkait pengguna, peran, dan hak akses dalam sistem Anda. Memastikan pengaturan pengguna yang benar adalah kunci untuk keamanan data dan kelancaran operasional.</p>
-                            <p>Di halaman ini, Anda akan menemukan pintasan cepat ke fungsi-fungsi penting serta bagian terperinci untuk mengelola pengguna, melihat log aktivitas, dan mengonfigurasi izin.</p>
+                            <p>Di halaman ini, Anda akan menemukan panduan terperinci untuk mengelola pengguna, peran, dan mengonfigurasi izin secara efektif.</p>
                             <div class="screenshot-container text-center my-4">
                                 <img class="img-fluid rounded shadow" src="assets/images/users_module_overview.png" alt="Overview Modul Users">
                                 <small class="text-muted d-block mt-2">Gambar: Tampilan umum halaman Modul Users.</small>
@@ -119,255 +226,1098 @@
 						</section><!--//docs-intro-->
 				    </header>
 				    
-                    <section class="docs-section" id="users-shortcuts">
-						<h2 class="section-heading">Pintasan Anda (Your Shortcuts)</h2>
-						<p>Bagian ini menyediakan akses cepat ke fungsi-fungsi manajemen pengguna yang paling sering digunakan.</p>
+                    <section class="docs-section" id="section-users">
+						<h2 class="section-heading">Users</h2>
+						<p>Bagian ini mencakup pengelolaan akun pengguna, peran, profil peran, dan profil modul untuk mengontrol akses dan tampilan antarmuka.</p>
 
-                        <h5 class="pt-3">1. User (Pengguna)</h5>
+                        <h4 id="users-user" class="mt-4">1. User (Pengguna)</h4>
                         <p>Mengelola daftar semua pengguna yang memiliki akses ke sistem ERP Siumang.</p>
+                        <h6>Tujuan:</h6>
+                        <ul>
+                            <li>Membuat dan mengelola akun pengguna sistem.</li>
+                            <li>Mengatur informasi dasar pengguna seperti nama, email, dan status aktif.</li>
+                        </ul>
                         <h6>Cara Menggunakan:</h6>
                         <ol>
-                            <li>Klik pada tautan "User" di bawah "Your Shortcuts".</li>
+                            <li>Navigasi ke: <code>Modul Users > Users > User</code> atau ketik "User" di Awesome Bar.</li>
                             <div class="screenshot-container text-center my-3">
-                                <img class="img-fluid rounded shadow" src="assets/images/users_shortcut_user.png" alt="Pintasan User">
-                                <small class="text-muted d-block mt-2">Gambar: Klik pintasan 'User'.</small>
+                                <img class="img-fluid rounded shadow" src="assets/images/users_list.png" alt="Halaman Daftar Pengguna">
+                                <small class="text-muted d-block mt-2">Gambar: Halaman daftar pengguna.</small>
                             </div>
-                            <li>Anda akan diarahkan ke daftar pengguna. Dari sini, Anda dapat:
-                                <ul>
-                                    <li>Menambah Pengguna Baru: Klik tombol "Add User" atau "Baru".</li>
-                                    <li>Mengedit Pengguna: Klik pada nama pengguna untuk membuka detailnya dan melakukan perubahan.</li>
-                                    <li>Melihat Detail Pengguna: Memeriksa informasi kontak, peran, dan status pengguna.</li>
-                                    <li>Menonaktifkan/Mengaktifkan Pengguna: Mengubah status akun pengguna.</li>
-                                </ul>
-                            </li>
-                            <div class="screenshot-container text-center my-3">
-                                <img class="img-fluid rounded shadow" src="https://placehold.co/800x450/E0E0E0/333333?text=Halaman+Daftar+Pengguna" alt="Halaman Daftar Pengguna">
-                                <small class="text-muted d-block mt-2">Gambar: Contoh halaman daftar pengguna.</small>
-                            </div>
+                            <li>Untuk menambah pengguna baru, klik tombol "Add User" atau "Baru". Isi detail yang diperlukan seperti nama lengkap, alamat email, dan peran.</li>
+                            <li>Untuk mengedit pengguna, klik pada nama pengguna di daftar. Anda dapat memperbarui informasi, menetapkan ulang kata sandi, atau mengubah status aktif/nonaktif.</li>
                         </ol>
+                        <section class="docs-section" id="create-new-user-steps">
+                            <h3 class="section-heading"><i class="fas fa-user-plus me-2"></i> Membuat Pengguna Baru</h3>
+                            <p>Menambahkan pengguna baru ke sistem ERP Siumang adalah proses yang sederhana dan cepat, memungkinkan Anda untuk memperluas akses tim Anda dengan mudah. Ikuti panduan langkah demi langkah di bawah ini untuk membuat akun pengguna baru.</p>
 
-                        <h5 class="pt-3">2. Role (Peran)</h5>
+                            <h4 class="mt-4">Langkah 1: Mengakses Halaman Daftar Pengguna</h4>
+                            <p>Sebelum membuat pengguna baru, pastikan Anda berada di halaman yang tepat. Navigasikan ke daftar pengguna di sistem Anda.</p>
+                            <ol>
+                                <li>Dari *Awesome Bar* (bilah pencarian di bagian atas), ketik "User" dan pilih opsi "User List".</li>
+                                <li>Atau, jika Anda berada di Modul Users, Anda dapat mengklik "Users" lalu "User".</li>
+                            </ol>
+                            <!-- <div class="screenshot-container text-center my-3">
+                                <img class="img-fluid rounded shadow" src="assets/images/users_list.png" alt="Halaman Daftar Pengguna">
+                                <small class="text-muted d-block mt-2">Gambar: Halaman daftar pengguna di ERP Siumang.</small>
+                            </div> -->
+
+                            <h4 class="mt-4">Langkah 2: Memulai Pembuatan Pengguna Baru</h4>
+                            <p>Setelah berada di halaman daftar pengguna, Anda akan menemukan opsi untuk menambahkan entri baru.</p>
+                            <ol>
+                                <li>Di pojok kanan atas halaman daftar pengguna, cari dan klik tombol <strong>"+ Add User"</strong> atau <strong>"Tambah Pengguna"</strong>.</li>
+                                <li>Sebuah jendela pop-up "New User" atau "Pengguna Baru" akan muncul, siap untuk Anda isi.</li>
+                            </ol>
+                            <!-- <div class="screenshot-container text-center my-3">
+                                <img class="img-fluid rounded shadow" src="assets/images/users_add_new.png" alt="Jendela Pop-up Pengguna Baru">
+                                <small class="text-muted d-block mt-2">Gambar: Jendela pop-up untuk membuat pengguna baru.</small>
+                            </div> -->
+
+                            <h4 class="mt-4">Langkah 3: Mengisi Detail Dasar Pengguna</h4>
+                            <p>Jendela "New User" meminta informasi penting untuk membuat akun pengguna. Pastikan untuk mengisi field-field wajib yang ditandai dengan tanda bintang merah.</p>
+                            <ol>
+                                <li><strong>Email:</strong> Masukkan alamat email pengguna. Ini akan menjadi *username* utama mereka untuk login ke sistem.</li>
+                                <li><strong>First Name:</strong> Isi nama depan pengguna.</li>
+                                <li><strong>Role Profile:</strong> Pilih profil peran yang sesuai untuk pengguna ini dari daftar *dropdown*. Profil peran akan menentukan hak akses dan modul yang dapat dilihat pengguna. Anda bisa memilih satu atau lebih peran.</li>
+                                <li>Setelah mengisi detail dasar ini, Anda memiliki dua pilihan:
+                                    <ul>
+                                        <li><strong>Save:</strong> Klik tombol "Save" untuk menyimpan pengguna dengan detail yang telah Anda masukkan. Sistem akan membuat akun dan mengirimkan email notifikasi kepada pengguna untuk mengatur kata sandi mereka.</li>
+                                        <li><strong>Edit Full Form:</strong> Jika Anda perlu mengisi detail lebih lanjut seperti informasi kontak, alamat, atau pengaturan izin yang lebih spesifik, klik "Edit Full Form". Ini akan membuka formulir pengguna lengkap di halaman terpisah.</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                            <div class="screenshot-container text-center my-3">
+                                <img class="img-fluid rounded shadow" src="assets/images/users_add_new.png" alt="Formulir Pengguna Baru Terisi">
+                                <small class="text-muted d-block mt-2">Gambar: Contoh pengisian detail dasar pengguna baru.</small>
+                            </div>
+
+                            <h4 class="mt-4">Langkah 4: Konfirmasi dan Pemberitahuan</h4>
+                            <p>Setelah Anda menyimpan pengguna baru, sistem akan memproses pembuatan akun.</p>
+                            <p>Pengguna yang baru dibuat akan menerima email dengan instruksi untuk mengatur kata sandi mereka dan mulai menggunakan sistem. Pastikan mereka memeriksa folder spam jika email tidak langsung terlihat di kotak masuk.</p>
+                            <p>Dengan mengikuti langkah-langkah ini, Anda dapat dengan mudah dan efisien menambahkan pengguna baru ke ERP Siumang, memberdayakan tim Anda dengan akses yang sesuai ke sistem.</p>
+                        </section>
+                        <section class="docs-section" id="user-details-tab">
+                            <h3 class="section-heading"><i class="fas fa-info-circle me-2"></i> Detail Pengguna (User Details Tab)</h3>
+                            <p>Tab <strong>User Details</strong> adalah bagian utama dalam formulir pengguna baru atau yang sudah ada, tempat Anda mengelola informasi dasar dan status akun pengguna. Pengaturan di sini sangat penting untuk identifikasi dan akses pengguna dalam sistem.</p>
+
+                            <div class="screenshot-container text-center my-4">
+                                <img class="img-fluid rounded shadow" src="assets/images/users_add_new_detail.png" alt="Tampilan Tab User Details">
+                                <small class="text-muted d-block mt-2">Gambar: Tampilan tab User Details saat membuat atau mengedit pengguna.</small>
+                            </div>
+
+                            <h4 class="mt-4"><i class="fas fa-power-off me-3"></i> Status Akun</h4>
+                            <ul class="list-unstyled">
+                                <li><strong>Enabled:</strong>
+                                    <p><strong>Fungsi:</strong> Kotak centang ini mengontrol status aktivasi akun pengguna. Jika dicentang, pengguna dapat login ke sistem. Jika tidak dicentang, akun pengguna dinonaktifkan dan mereka tidak dapat login, sehingga mengendalikan apakah pengguna memiliki akses aktif ke ERP Siumang.</p>
+                                    <p><strong>Cara Input:</strong> Centang kotak ini untuk mengaktifkan akun, atau biarkan tidak dicentang untuk menonaktifkan.</p>
+                                </li>
+                            </ul>
+
+                            <h4 class="mt-4"><i class="fas fa-user me-2"></i> Basic Info (Informasi Dasar)</h4>
+                            <p>Bagian ini berisi detail identitas utama pengguna.</p>
+                            <ul class="list-unstyled">
+                                <li><strong>Email <span class="text-danger">*</span>:</strong>
+                                    <p><strong>Fungsi:</strong> Alamat email pengguna. Ini adalah field wajib dan akan berfungsi sebagai identifikasi utama (username) untuk login ke sistem, serta digunakan untuk notifikasi sistem dan komunikasi email.</p>
+                                    <p><strong>Cara Input:</strong> Masukkan alamat email yang valid dan unik untuk setiap pengguna.</p>
+                                </li>
+                                <li class="mt-3"><strong>Full Name:</strong>
+                                    <p><strong>Fungsi:</strong> Nama lengkap pengguna. Field ini biasanya terisi otomatis berdasarkan "First Name", "Middle Name", dan "Last Name", tetapi dapat disesuaikan secara manual. Nama lengkap ini digunakan untuk tampilan nama pengguna di seluruh antarmuka dan laporan.</p>
+                                    <p><strong>Cara Input:</strong> Biasanya terisi otomatis. Dapat diedit jika diperlukan.</p>
+                                </li>
+                                <li class="mt-3"><strong>Language:</strong>
+                                    <p><strong>Fungsi:</strong> Menentukan bahasa antarmuka pengguna spesifik untuk akun ini, yang akan mengesampingkan pengaturan bahasa global di System Settings jika diatur. Ini mengubah bahasa tampilan untuk pengguna individu ini.</p>
+                                    <p><strong>Cara Input:</strong> Pilih bahasa yang diinginkan dari daftar *dropdown* (misal: "English", "Bahasa Indonesia").</p>
+                                </li>
+                                <li class="mt-3"><strong>First Name <span class="text-danger">*</span>:</strong>
+                                    <p><strong>Fungsi:</strong> Nama depan pengguna. Ini adalah field wajib yang digunakan bersama nama lain untuk membentuk "Full Name".</p>
+                                    <p><strong>Cara Input:</strong> Masukkan nama depan pengguna.</p>
+                                </li>
+                                <li class="mt-3"><strong>Username:</strong>
+                                    <p><strong>Fungsi:</strong> Nama pengguna unik untuk login. Secara default, ini sering kali dihasilkan dari alamat email atau nama depan pengguna, tetapi dapat diubah. Ini berfungsi sebagai identifikasi alternatif untuk login, terutama jika login email dinonaktifkan.</p>
+                                    <p><strong>Cara Input:</strong> Dapat diisi otomatis atau diatur secara manual. Pastikan unik.</p>
+                                </li>
+                                <li class="mt-3"><strong>Time Zone:</strong>
+                                    <p><strong>Fungsi:</strong> Menentukan zona waktu spesifik untuk pengguna ini, yang akan mengesampingkan pengaturan zona waktu global di System Settings jika diatur. Ini memastikan stempel waktu pada aktivitas dan transaksi pengguna ini ditampilkan sesuai zona waktu pribadi mereka.</p>
+                                    <p><strong>Cara Input:</strong> Pilih zona waktu yang sesuai dari daftar *dropdown* (misal: "Asia/Jakarta").</p>
+                                </li>
+                                <li class="mt-3"><strong>Middle Name:</strong>
+                                    <p><strong>Fungsi:</strong> Nama tengah pengguna (opsional) yang berkontribusi pada pembentukan "Full Name".</p>
+                                    <p><strong>Cara Input:</strong> Masukkan nama tengah jika ada.</p>
+                                </li>
+                                <li class="mt-3"><strong>Last Name:</strong>
+                                    <p><strong>Fungsi:</strong> Nama belakang pengguna (opsional) yang berkontribusi pada pembentukan "Full Name".</p>
+                                    <p><strong>Cara Input:</strong> Masukkan nama belakang jika ada.</p>
+                                </li>
+                            </ul>
+                        
+                            <h3 class="section-heading"><i class="fas fa-lock me-2"></i> Peran & Izin (Roles & Permissions Tab)</h3>
+                            <p>Tab <strong>Roles & Permissions</strong> adalah tempat Anda menetapkan peran kepada pengguna, yang secara langsung memengaruhi hak akses dan fungsionalitas yang dapat diakses oleh pengguna tersebut dalam sistem. Penetapan peran yang tepat sangat krusial untuk keamanan data dan memastikan setiap pengguna memiliki izin yang sesuai dengan tanggung jawab pekerjaan mereka.</p>
+
+                            <div class="screenshot-container text-center my-4">
+                                <img class="img-fluid rounded shadow" src="assets/images/user_add_new_role.png" alt="Tampilan Tab Roles & Permissions">
+                                <small class="text-muted d-block mt-2">Gambar: Tampilan tab Roles & Permissions saat membuat atau mengedit pengguna.</small>
+                            </div>
+
+                            <h4 class="mt-4"><i class="fas fa-user-tag me-2"></i> Roles (Peran)</h4>
+                            <p>Bagian ini memungkinkan Anda untuk menetapkan satu atau beberapa peran kepada pengguna. Setiap peran memiliki sekumpulan izin yang telah ditentukan sebelumnya.</p>
+                            <ul class="list-unstyled">
+                                <li><strong>Role Profile:</strong>
+                                    <p><strong>Fungsi:</strong> Field ini memungkinkan Anda untuk memilih profil peran yang telah dikonfigurasi sebelumnya. Profil peran adalah kumpulan dari beberapa peran yang sering ditetapkan bersamaan. Memilih profil peran akan secara otomatis mencentang semua peran yang termasuk dalam profil tersebut, menyederhanakan proses penetapan izin.</p>
+                                    <p><strong>Cara Input:</strong> Ketik nama profil peran yang ingin Anda terapkan, lalu pilih dari daftar saran yang muncul. Anda juga dapat menghapus profil peran yang sudah ada dengan mengklik ikon 'x' di samping nama profil.</p>
+                                </li>
+                            </ul>
+
+                            <h4 class="mt-4"><i class="fas fa-list-check me-2"></i> Daftar Peran</h4>
+                            <p>Di bawah "Role Profile", Anda akan melihat daftar lengkap semua peran yang tersedia di sistem. Anda dapat secara manual mencentang atau menghilangkan centang pada peran-peran ini untuk memberikan atau mencabut hak akses spesifik.</p>
+                            <ul class="list-unstyled">
+                                <li><strong>Select All / Unselect All:</strong>
+                                    <p><strong>Fungsi:</strong> Tombol-tombol ini memungkinkan Anda untuk dengan cepat mencentang semua peran atau menghilangkan centang dari semua peran dalam daftar. Ini berguna untuk pengaturan awal atau jika Anda ingin memulai dari nol dalam menetapkan peran.</p>
+                                    <p><strong>Cara Input:</strong> Klik "Select All" untuk memilih semua peran, atau "Unselect All" untuk menghapus semua pilihan peran.</p>
+                                </li>
+                                <li><strong>Daftar Checkbox Peran Individual:</strong>
+                                    <p><strong>Fungsi:</strong> Setiap peran diwakili oleh sebuah checkbox. Mencentang sebuah peran akan memberikan semua izin yang terkait dengan peran tersebut kepada pengguna. Menghilangkan centang akan mencabut izin tersebut.</p>
+                                    <p><strong>Cara Input:</strong> Klik pada checkbox di samping nama peran (misal: "Sales Manager", "Stock User", "Accounts Manager") untuk memilih atau membatalkan pilihan peran tersebut.</p>
+                                    <p><strong>Contoh:</strong> Jika Anda mencentang "Sales Manager" dan "Stock User", pengguna akan memiliki semua izin yang terkait dengan kedua peran tersebut, memungkinkan mereka untuk melakukan tugas-tugas penjualan dan manajemen stok.</p>
+                                </li>
+                            </ul>
+                            <p>Setelah Anda selesai menetapkan peran, pastikan untuk menyimpan perubahan pada formulir pengguna. Peran yang ditetapkan akan langsung memengaruhi kemampuan pengguna untuk mengakses dan berinteraksi dengan berbagai bagian dan dokumen dalam sistem ERP Siumang.</p>
+                        
+                            <h3 class="section-heading"><i class="fas fa-info-circle me-2"></i> Informasi Lebih Lanjut (More Information Tab)</h3>
+                            <p>Tab <strong>More Information</strong> memungkinkan Anda untuk mencatat detail tambahan mengenai pengguna yang mungkin tidak secara langsung terkait dengan fungsionalitas sistem, tetapi penting untuk catatan internal atau referensi. Informasi ini membantu dalam pengelolaan data karyawan atau kontak yang lebih komprehensif.</p>
+
+                            <div class="screenshot-container text-center my-4">
+                                <img class="img-fluid rounded shadow" src="assets/images/add_new_user_moreinfo.png" alt="Tampilan Tab More Information">
+                                <small class="text-muted d-block mt-2">Gambar: Tampilan tab More Information saat membuat atau mengedit pengguna.</small>
+                            </div>
+
+                            <h4 class="mt-4"><i class="fas fa-address-card me-2"></i> Detail Pribadi & Kontak</h4>
+                            <p>Bagian ini berisi field-field untuk informasi pribadi dan detail kontak tambahan pengguna.</p>
+                            <ul class="list-unstyled">
+                                <li><strong>Gender:</strong>
+                                    <p><strong>Fungsi:</strong> Menentukan jenis kelamin pengguna. Ini adalah field opsional yang dapat digunakan untuk keperluan demografi atau pelaporan internal.</p>
+                                    <p><strong>Cara Input:</strong> Pilih jenis kelamin dari daftar *dropdown* (misal: "Male", "Female", "Other").</p>
+                                </li>
+                                <li class="mt-3"><strong>Phone:</strong>
+                                    <p><strong>Fungsi:</strong> Nomor telepon utama pengguna. Dapat digunakan untuk kontak darurat atau komunikasi bisnis.</p>
+                                    <p><strong>Cara Input:</strong> Masukkan nomor telepon lengkap, termasuk kode area jika relevan.</p>
+                                </li>
+                                <li class="mt-3"><strong>Mobile No:</strong>
+                                    <p><strong>Fungsi:</strong> Nomor telepon seluler pengguna. Sering digunakan untuk komunikasi yang lebih langsung atau notifikasi SMS jika diintegrasikan.</p>
+                                    <p><strong>Cara Input:</strong> Masukkan nomor telepon seluler lengkap.</p>
+                                </li>
+                                <li class="mt-3"><strong>Birth Date:</strong>
+                                    <p><strong>Fungsi:</strong> Tanggal lahir pengguna. Berguna untuk catatan demografi, perayaan ulang tahun, atau kebijakan terkait usia.</p>
+                                    <p><strong>Cara Input:</strong> Pilih tanggal dari kalender pop-up.</p>
+                                </li>
+                                <li class="mt-3"><strong>Location:</strong>
+                                    <p><strong>Fungsi:</strong> Lokasi fisik atau geografis pengguna. Ini bisa menjadi alamat kantor, kota, atau wilayah tempat pengguna sering bekerja.</p>
+                                    <p><strong>Cara Input:</strong> Masukkan detail lokasi (misal: "Jakarta", "Kantor Pusat", "Remote").</p>
+                                </li>
+                            </ul>
+
+                            <h4 class="mt-4"><i class="fas fa-file-alt me-2"></i> Informasi Tambahan</h4>
+                            <p>Bagian ini menyediakan ruang untuk detail naratif atau deskriptif mengenai pengguna.</p>
+                            <ul class="list-unstyled">
+                                <li><strong>Interests:</strong>
+                                    <p><strong>Fungsi:</strong> Bidang ini dapat digunakan untuk mencatat minat atau hobi pengguna. Meskipun tidak langsung memengaruhi fungsionalitas ERP, ini bisa berguna untuk membangun profil karyawan yang lebih lengkap atau untuk kegiatan internal perusahaan.</p>
+                                    <p><strong>Cara Input:</strong> Masukkan teks bebas yang menjelaskan minat pengguna.</p>
+                                </li>
+                                <li class="mt-3"><strong>Bio:</strong>
+                                    <p><strong>Fungsi:</strong> Bidang teks panjang untuk biografi singkat atau deskripsi diri pengguna. Ini bisa mencakup latar belakang profesional, keahlian khusus, atau informasi relevan lainnya.</p>
+                                    <p><strong>Cara Input:</strong> Masukkan teks bebas yang lebih panjang untuk biografi pengguna.</p>
+                                </li>
+                            </ul>
+                            <p>Setelah mengisi semua informasi yang relevan di tab ini, pastikan untuk menyimpan perubahan pada formulir pengguna. Data ini akan tersimpan sebagai bagian dari profil pengguna dan dapat diakses kapan saja untuk referensi.</p>
+                        </section>
+                        <section class="docs-section" id="settings-tab">
+                            <h3 class="section-heading"><i class="fas fa-cog me-2"></i> Pengaturan (Settings Tab)</h3>
+                            <p>Tab <strong>Settings</strong> adalah pusat konfigurasi bagi pengguna untuk menyesuaikan pengalaman mereka dalam sistem ERP Siumang. Bagian ini memungkinkan penyesuaian tampilan, navigasi, keamanan, dan integrasi, memberikan kontrol yang lebih personal atas cara pengguna berinteraksi dengan aplikasi.</p>
+
+                            <h4 class="mt-4"><i class="fas fa-wrench me-2"></i> Kategori Pengaturan</h4>
+                            <p>Setiap kategori pengaturan dapat diperluas (dengan mengklik panah ke bawah) untuk menampilkan opsi-opsi spesifik di dalamnya.</p>
+                            <div class="screenshot-container text-center my-4">
+                                <img class="img-fluid rounded shadow" src="assets/images/user_add_new_setting.png" alt="Tampilan Tab setting">
+                                <small class="text-muted d-block mt-2">Gambar: Tampilan tab settings saat membuat atau mengedit pengguna.</small>
+                            </div>
+                            <ul class="list-unstyled">
+                                <li><strong>Desk Settings:</strong>
+                                    <p><strong>Fungsi:</strong> Mengatur preferensi terkait tampilan dan fungsionalitas "Desk" atau halaman utama pengguna. Ini mungkin termasuk pengaturan tata letak, widget yang ditampilkan, atau pintasan favorit.</p>
+                                    <p><strong>Detail:</strong></p>
+                                    <ul>
+                                        <li><strong>Mute Sounds:</strong> Centang kotak ini untuk menonaktifkan semua suara notifikasi atau suara lain yang dihasilkan oleh sistem saat pengguna berinteraksi dengan "Desk".</li>
+                                        <li><strong>Desk Theme:</strong> Pilih tema visual untuk "Desk" pengguna dari daftar *dropdown*. Opsi yang umum adalah "Light" (terang) atau "Dark" (gelap), yang mengubah skema warna antarmuka.</li>
+                                        <li><strong>Banner Image:</strong> Memungkinkan pengguna untuk mengunggah atau memilih gambar yang akan ditampilkan sebagai banner di bagian atas "Desk". Ini dapat digunakan untuk personalisasi atau branding internal.</li>
+                                    </ul>
+                                </li>
+                                <li class="mt-3"><strong>Navigation Settings:</strong>
+                                    <p><strong>Fungsi:</strong> Mengelola bagaimana pengguna menavigasi dalam sistem. Ini bisa mencakup pengaturan bilah sisi (sidebar), menu favorit, atau pintasan navigasi cepat.</p>
+                                    <p><strong>Detail:</strong></p>
+                                    <ul>
+                                        <li><strong>Search Bar:</strong> Centang kotak ini untuk menampilkan bilah pencarian di antarmuka pengguna, memungkinkan pencarian cepat untuk dokumen, modul, atau informasi lainnya.</li>
+                                        <li><strong>Notifications:</strong> Centang kotak ini untuk mengaktifkan notifikasi sistem yang muncul di antarmuka pengguna, seperti notifikasi pesan baru, tugas yang jatuh tempo, atau pembaruan dokumen.</li>
+                                    </ul>
+                                </li>
+                                <li class="mt-3"><strong>List Settings:</strong>
+                                    <p><strong>Fungsi:</strong> Mengatur tampilan daftar dokumen (misalnya, daftar Penjualan, daftar Pembelian). Ini mungkin termasuk jumlah item per halaman, kolom yang ditampilkan secara default, atau filter yang disimpan.</p>
+                                    <p><strong>Detail:</strong></p>
+                                    <ul>
+                                        <li><strong>Sidebar:</strong> Centang kotak ini untuk menampilkan bilah sisi (sidebar) di tampilan daftar, yang biasanya berisi filter cepat, kategori, atau opsi terkait daftar.</li>
+                                        <li><strong>Bulk Actions:</strong> Centang kotak ini untuk mengaktifkan opsi "Bulk Actions" (Tindakan Massal) di tampilan daftar, memungkinkan pengguna untuk melakukan operasi pada beberapa item sekaligus (misalnya, menghapus atau mengubah status beberapa dokumen).</li>
+                                        <li><strong>View Switcher:</strong> Centang kotak ini untuk menampilkan "View Switcher" (Pengalih Tampilan), yang memungkinkan pengguna beralih antara berbagai tampilan daftar (misalnya, tampilan daftar, tampilan kartu, tampilan kalender).</li>
+                                    </ul>
+                                </li>
+                                <li class="mt-3"><strong>Form Settings:</strong>
+                                    <p><strong>Fungsi:</strong> Menyesuaikan perilaku dan tampilan formulir entri data (misalnya, formulir Invoice Penjualan, formulir Item). Ini bisa mencakup pengaturan untuk validasi, urutan field, atau opsi penyimpanan otomatis.</p>
+                                    <p><strong>Detail:</strong></p>
+                                    <ul>
+                                        <li><strong>Sidebar:</strong> Centang kotak ini untuk menampilkan bilah sisi (sidebar) di tampilan formulir, yang mungkin berisi informasi terkait, riwayat, atau pintasan ke dokumen terkait.</li>
+                                        <li><strong>Timeline:</strong> Centang kotak ini untuk menampilkan bagian "Timeline" di formulir, yang menunjukkan riwayat aktivitas dan perubahan pada dokumen tersebut (misalnya, siapa yang membuat, mengedit, atau mengomentari dokumen).</li>
+                                        <li><strong>Dashboard:</strong> Centang kotak ini untuk menampilkan "Dashboard" terkait di formulir, yang mungkin berisi ringkasan data atau metrik relevan untuk dokumen yang sedang dilihat.</li>
+                                    </ul>
+                                </li>
+                                <li class="mt-3"><strong>Change Password:</strong>
+                                    <p><strong>Fungsi:</strong> Memungkinkan pengguna untuk mengubah kata sandi akun mereka. Ini adalah fitur keamanan penting untuk menjaga integritas akun.</p>
+                                    <p><strong>Detail:</strong></p>
+                                    <ul>
+                                        <li><strong>Set New Password:</strong> Field untuk memasukkan kata sandi baru. Biasanya akan ada ikon mata untuk menampilkan atau menyembunyikan kata sandi.</li>
+                                        <li><strong>Logout From All Devices After Changing Password:</strong> Centang kotak ini untuk secara otomatis mengeluarkan pengguna dari semua sesi aktif di perangkat lain setelah kata sandi berhasil diubah. Ini adalah praktik keamanan yang baik.</li>
+                                    </ul>
+                                </li>
+                                <li class="mt-3"><strong>Document Follow:</strong>
+                                    <p><strong>Fungsi:</strong> Mengelola notifikasi yang diterima pengguna terkait perubahan pada dokumen tertentu yang mereka "ikuti". Ini membantu pengguna tetap update dengan progres atau modifikasi penting.</p>
+                                    <p><strong>Detail:</strong></p>
+                                    <ul>
+                                        <li><strong>Send Notifications For Documents Followed By Me:</strong> Centang kotak ini untuk mengaktifkan notifikasi email atau dalam aplikasi ketika ada pembaruan pada dokumen yang telah ditandai untuk diikuti oleh pengguna.</li>
+                                    </ul>
+                                </li>
+                                <li class="mt-3"><strong>Email:</strong>
+                                    <p><strong>Fungsi:</strong> Mengkonfigurasi pengaturan email pribadi pengguna, seperti alamat email pengirim default, tanda tangan email, atau integrasi dengan server email eksternal.</p>
+                                    <p><strong>Detail:</strong></p>
+                                    <ul>
+                                        <li><strong>Email Signature:</strong> Kotak teks untuk memasukkan tanda tangan email yang akan secara otomatis ditambahkan ke setiap email yang dikirim oleh pengguna dari sistem.</li>
+                                        <li><strong>Send Notifications For Email Threads:</strong> Centang kotak ini untuk menerima notifikasi ketika ada balasan atau aktivitas baru dalam utas email yang melibatkan pengguna.</li>
+                                        <li><strong>Send Me A Copy of Outgoing Emails:</strong> Centang kotak ini untuk secara otomatis mengirim salinan (Cc/Bcc) dari setiap email yang dikirim pengguna dari sistem ke alamat email mereka sendiri.</li>
+                                        <li><strong>Allowed In Mentions:</strong> Centang kotak ini untuk memungkinkan pengguna lain menyebut (mention) pengguna ini dalam komentar atau diskusi, yang akan memicu notifikasi kepada pengguna ini.</li>
+                                        <li><strong>User Emails:</strong> Bagian ini biasanya menampilkan daftar akun email yang terhubung dengan pengguna, memungkinkan penambahan atau pengelolaan akun email eksternal yang dapat digunakan untuk mengirim dan menerima email melalui sistem.</li>
+                                    </ul>
+                                </li>
+                                <li class="mt-3"><strong>Workspace:</strong>
+                                    <p><strong>Fungsi:</strong> Menyesuaikan tampilan dan fungsionalitas "Workspace" atau modul kerja pengguna. Mirip dengan Desk Settings, tetapi mungkin lebih spesifik untuk modul tertentu.</p>
+                                    <p><strong>Detail:</strong></p>
+                                    <ul>
+                                        <li><strong>Default Workspace:</strong> Pilih *workspace* default yang akan ditampilkan kepada pengguna setelah login. Jika dikosongkan, *workspace* terakhir yang dikunjungi akan menjadi *default*.</li>
+                                    </ul>
+                                </li>
+                                <li class="mt-3"><strong>App:</strong>
+                                    <p><strong>Fungsi:</strong> Pengaturan umum terkait aplikasi atau klien yang digunakan pengguna, seperti preferensi notifikasi aplikasi, tema, atau mode gelap/terang.</p>
+                                    <p><strong>Detail:</strong></p>
+                                    <ul>
+                                        <li><strong>Default App:</strong> Pilih aplikasi default yang akan dialihkan kepada pengguna setelah login. Ini berguna dalam lingkungan multi-aplikasi.</li>
+                                    </ul>
+                                </li>
+                                <li class="mt-3"><strong>Security Settings:</strong>
+                                    <p><strong>Fungsi:</strong> Mengelola pengaturan keamanan tambahan untuk akun pengguna, seperti otentikasi dua faktor (2FA), log aktivitas login, atau sesi aktif.</p>
+                                    <p><strong>Detail:</strong></p>
+                                    <ul>
+                                        <li><strong>Simultaneous Sessions:</strong> Atur jumlah maksimum sesi login bersamaan yang diizinkan untuk pengguna ini. Jika melebihi batas, sesi tertua mungkin akan dikeluarkan.</li>
+                                        <li><strong>Login After:</strong> Tentukan jam (dalam format 24 jam) setelah itu pengguna diizinkan untuk login. Misalnya, "8" berarti pengguna hanya bisa login setelah jam 8 pagi.</li>
+                                        <li><strong>Login Before:</strong> Tentukan jam (dalam format 24 jam) sebelum itu pengguna diizinkan untuk login. Misalnya, "17" berarti pengguna hanya bisa login sebelum jam 5 sore.</li>
+                                        <li><strong>Restrict IP:</strong> Masukkan daftar alamat IP yang diizinkan untuk login. Pengguna hanya dapat login dari alamat IP yang tercantum di sini. Beberapa alamat IP dapat dipisahkan dengan koma.</li>
+                                        <li><strong>User Type:</strong> Menampilkan jenis pengguna. Jika pengguna memiliki peran yang dicentang, mereka adalah "System User" dan memiliki akses ke desktop sistem.</li>
+                                    </ul>
+                                </li>
+                                <li class="mt-3"><strong>Third Party Authentication:</strong>
+                                    <p><strong>Fungsi:</strong> Mengkonfigurasi integrasi dengan penyedia otentikasi pihak ketiga (misalnya, Google, Microsoft, LDAP) jika sistem mendukungnya. Ini memungkinkan pengguna untuk login menggunakan kredensial dari layanan eksternal.</p>
+                                    <p><strong>Detail:</strong> Bagian ini akan berisi opsi untuk menghubungkan atau memutuskan akun dari layanan otentikasi pihak ketiga yang telah dikonfigurasi di tingkat sistem. Pengguna dapat melihat status koneksi mereka ke layanan seperti Google, Microsoft, atau lainnya.</p>
+                                </li>
+                                <li class="mt-3"><strong>API Access:</strong>
+                                    <p><strong>Fungsi:</strong> Mengelola kunci API dan token akses untuk pengguna ini, memungkinkan aplikasi eksternal atau skrip untuk berinteraksi dengan data ERP Siumang atas nama pengguna ini.</p>
+                                    <p><strong>Detail:</strong> Bagian ini memungkinkan pengguna untuk membuat, melihat, atau mencabut kunci API dan rahasia API mereka. Kunci ini penting untuk integrasi dengan aplikasi eksternal atau untuk mengembangkan skrip kustom yang berinteraksi dengan sistem secara terprogram.</p>
+                                    <ul>
+                                        <li><strong>Generate API Key:</strong> Tombol untuk membuat pasangan kunci API dan rahasia API baru.</li>
+                                        <li><strong>API Secret:</strong> Rahasia API yang terkait dengan kunci API, digunakan untuk otentikasi dalam panggilan API.</li>
+                                        <li><strong>API Key List:</strong> Daftar kunci API yang sudah ada untuk pengguna ini, dengan opsi untuk mengelola atau mencabutnya.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p>Pengaturan ini memberikan fleksibilitas yang besar bagi setiap pengguna untuk mengoptimalkan pengalaman mereka sesuai dengan kebutuhan dan preferensi pribadi, meningkatkan efisiensi dan kenyamanan dalam penggunaan sistem ERP Siumang.</p>
+                        </section>
+                        <section class="docs-section" id="connections-tab">
+                            <h3 class="section-heading"><i class="fas fa-link me-2"></i> Koneksi (Connections Tab)</h3>
+                            <p>Tab <strong>Connections</strong> <i class="fas fa-plug fa-sm text-primary"></i> adalah pusat untuk mengelola berbagai tautan dan relasi data yang terkait dengan pengguna dalam sistem ERP Siumang. Bagian ini menyediakan akses cepat ke profil terkait seperti Kontak atau Blogger, log aktivitas pengguna seperti log akses dan aktivitas, pengaturan izin khusus pengguna, serta integrasi eksternal seperti cache token. Ini memungkinkan pengguna untuk melihat gambaran menyeluruh tentang bagaimana akun mereka terhubung dengan berbagai aspek data dan fungsionalitas dalam sistem, meningkatkan transparansi dan kemudahan navigasi ke informasi terkait.</p>
+
+                            <div class="screenshot-container text-center my-4">
+                                <img class="img-fluid rounded shadow" src="assets/images/user_add_new_tabconnection.png" alt="Tampilan Tab Connections yang diperluas">
+                                <small class="text-muted d-block mt-2">Gambar: Tampilan kategori koneksi yang diperluas pada tab Connections.</small>
+                            </div>
+
+                            <h4 class="mt-4"><i class="fas fa-user-friends me-2"></i> Profil (Profile)</h4>
+                            <p>Bagian ini menampilkan tautan ke profil terkait pengguna dalam sistem.</p>
+                            <ul class="list-unstyled">
+                                <li><strong>Contact <i class="fas fa-address-book fa-sm text-info"></i>:</strong>
+                                    <p><strong>Fungsi:</strong> Tautan ke dokumen Kontak yang terkait dengan pengguna ini. Jika pengguna adalah seorang kontak dalam daftar kontak Anda, tautan ini akan membawa Anda langsung ke detail kontak tersebut. Ini berguna untuk melihat informasi kontak lengkap, riwayat komunikasi, atau transaksi terkait.</p>
+                                    <p><strong>Cara Penggunaan:</strong> Klik tombol "+" untuk menambahkan tautan ke Kontak baru jika belum ada, atau klik nama "Contact" untuk melihat detail kontak yang sudah ada.</p>
+                                </li>
+                                <li class="mt-3"><strong>Blogger <i class="fas fa-blog fa-sm text-info"></i>:</strong>
+                                    <p><strong>Fungsi:</strong> Tautan ke profil Blogger yang terkait dengan pengguna ini. Jika pengguna memiliki peran sebagai blogger dalam sistem, tautan ini akan mengarahkan Anda ke profil blog mereka, di mana Anda dapat melihat postingan, statistik, atau pengaturan blog.</p>
+                                    <p><strong>Cara Penggunaan:</strong> Klik tombol "+" untuk menambahkan tautan ke profil Blogger baru jika relevan, atau klik nama "Blogger" untuk melihat detail profil blogger yang sudah ada.</p>
+                                </li>
+                            </ul>
+
+                            <h4 class="mt-4"><i class="fas fa-clipboard-list me-2"></i> Log (Logs)</h4>
+                            <p>Bagian ini menyediakan akses ke berbagai catatan log aktivitas pengguna.</p>
+                            <ul class="list-unstyled">
+                                <li><strong>Access Log <i class="fas fa-sign-in-alt fa-sm text-info"></i>:</strong>
+                                    <p><strong>Fungsi:</strong> Menampilkan catatan detail setiap kali pengguna login atau mencoba login ke sistem, termasuk stempel waktu, alamat IP, dan status keberhasilan/kegagalan. Ini penting untuk audit keamanan dan melacak aktivitas login.</p>
+                                    <p><strong>Cara Penggunaan:</strong> Klik "Access Log" untuk membuka daftar log akses pengguna ini.</p>
+                                </li>
+                                <li class="mt-3"><strong>Activity Log <i class="fas fa-history fa-sm text-info"></i>:</strong>
+                                    <p><strong>Fungsi:</strong> Menyediakan riwayat lengkap semua tindakan yang dilakukan oleh pengguna dalam sistem, seperti pembuatan dokumen, modifikasi, penghapusan, atau interaksi lainnya. Ini sangat berguna untuk pelacakan perubahan dan akuntabilitas.</p>
+                                    <p><strong>Cara Penggunaan:</strong> Klik "Activity Log" untuk melihat daftar aktivitas pengguna ini.</p>
+                                </li>
+                                <li class="mt-3"><strong>Energy Point Log <i class="fas fa-bolt fa-sm text-info"></i>:</strong>
+                                    <p><strong>Fungsi:</strong> Mencatat poin energi yang diperoleh atau digunakan oleh pengguna. Poin energi adalah fitur gamifikasi yang dapat digunakan untuk memotivasi pengguna atau melacak kontribusi mereka dalam sistem.</p>
+                                    <p><strong>Cara Penggunaan:</strong> Klik "Energy Point Log" untuk melihat riwayat poin energi pengguna ini.</p>
+                                </li>
+                                <li class="mt-3"><strong>Route History <i class="fas fa-route fa-sm text-info"></i>:</strong>
+                                    <p><strong>Fungsi:</strong> Menampilkan riwayat navigasi pengguna dalam sistem, mencatat halaman atau modul mana yang telah mereka kunjungi. Ini dapat membantu dalam memahami pola penggunaan atau memecahkan masalah navigasi.</p>
+                                    <p><strong>Cara Penggunaan:</strong> Klik "Route History" untuk melihat jalur navigasi pengguna ini.</p>
+                                </li>
+                            </ul>
+
+                            <h4 class="mt-4"><i class="fas fa-cogs me-2"></i> Pengaturan (Settings)</h4>
+                            <p>Bagian ini berisi tautan ke pengaturan spesifik yang terkait dengan pengguna.</p>
+                            <ul class="list-unstyled">
+                                <li><strong>User Permission <i class="fas fa-user-shield fa-sm text-info"></i>:</strong>
+                                    <p><strong>Fungsi:</strong> Tautan langsung ke pengaturan izin spesifik pengguna ini. Meskipun peran menetapkan izin umum, "User Permission" memungkinkan penyesuaian izin yang lebih granular untuk dokumen atau modul tertentu yang mungkin tidak tercakup oleh peran default.</p>
+                                    <p><strong>Cara Penggunaan:</strong> Klik tombol "+" untuk menambahkan izin pengguna baru atau klik "User Permission" untuk mengelola izin yang sudah ada.</p>
+                                </li>
+                                <li class="mt-3"><strong>Document Follow <i class="fas fa-file-alt fa-sm text-info"></i>:</strong>
+                                    <p><strong>Fungsi:</strong> Tautan ke daftar dokumen yang sedang diikuti oleh pengguna ini. Pengaturan ini memungkinkan pengguna untuk menerima notifikasi tentang perubahan atau pembaruan pada dokumen-dokumen tertentu yang penting bagi mereka.</p>
+                                    <p><strong>Cara Penggunaan:</strong> Klik "Document Follow" untuk melihat dan mengelola dokumen yang diikuti oleh pengguna ini.</p>
+                                </li>
+                            </ul>
+
+                            <h4 class="mt-4"><i class="fas fa-chart-line me-2"></i> Aktivitas (Activity)</h4>
+                            <p>Bagian ini menampilkan tautan ke aktivitas yang terkait dengan pengguna.</p>
+                            <ul class="list-unstyled">
+                                <li><strong>Communication <i class="fas fa-comments fa-sm text-info"></i>:</strong>
+                                    <p><strong>Fungsi:</strong> Tautan ke semua komunikasi (email, pesan internal, komentar) yang terkait dengan pengguna ini. Ini memberikan gambaran terpusat tentang interaksi komunikasi pengguna dalam sistem.</p>
+                                    <p><strong>Cara Penggunaan:</strong> Klik tombol "+" untuk memulai komunikasi baru atau klik "Communication" untuk melihat riwayat komunikasi yang ada.</p>
+                                </li>
+                                <li class="mt-3"><strong>ToDo <i class="fas fa-tasks fa-sm text-info"></i>:</strong>
+                                    <p><strong>Fungsi:</strong> Tautan ke daftar tugas (ToDo) yang ditetapkan kepada atau dibuat oleh pengguna ini. Ini membantu dalam mengelola dan melacak tugas-tugas yang belum selesai.</p>
+                                    <p><strong>Cara Penggunaan:</strong> Klik tombol "+" untuk menambahkan tugas baru atau klik "ToDo" untuk melihat daftar tugas yang ada.</p>
+                                </li>
+                            </ul>
+
+                            <h4 class="mt-4"><i class="fas fa-puzzle-piece me-2"></i> Integrasi (Integrations)</h4>
+                            <p>Bagian ini mengelola aspek integrasi teknis.</p>
+                            <ul class="list-unstyled">
+                                <li><strong>Token Cache <i class="fas fa-key fa-sm text-info"></i>:</strong>
+                                    <p><strong>Fungsi:</strong> Menampilkan informasi tentang token otentikasi yang disimpan (cached) untuk pengguna ini. Ini relevan untuk integrasi dengan layanan eksternal yang menggunakan token untuk otentikasi, dan dapat digunakan untuk memecahkan masalah konektivitas.</p>
+                                    <p><strong>Cara Penggunaan:</strong> Klik "Token Cache" untuk melihat detail token yang disimpan.</p>
+                                </li>
+                            </ul>
+                        </section>
+                        <!-- end if menu user -->
+                        <!-- menu role -->
+                        <h3 id="users-role" class="pt-3">2. Role (Peran)</h3>
                         <p>Mengelola peran yang mendefinisikan sekumpulan hak akses dalam sistem.</p>
-                        <h6>Cara Menggunakan:</h6>
-                        <ol>
-                            <li>Klik pada tautan "Role" di bawah "Your Shortcuts".</li>
-                            <div class="screenshot-container text-center my-3">
-                                <img class="img-fluid rounded shadow" src="assets/images/users_shortcut_role.png" alt="Pintasan Role">
-                                <small class="text-muted d-block mt-2">Gambar: Klik pintasan 'Role'.</small>
-                            </div>
-                            <li>Anda akan melihat daftar peran yang sudah ada. Anda dapat:
-                                <ul>
-                                    <li>Menambah Peran Baru: Klik tombol "Add Role" atau "Baru" dan tentukan nama peran.</li>
-                                    <li>Mengedit Peran: Klik pada nama peran untuk menyesuaikan deskripsi atau properti lainnya.</li>
-                                    <li>Melihat Detail Peran: Memeriksa peran yang tersedia di sistem.</li>
-                                </ul>
-                            </li>
-                            <div class="screenshot-container text-center my-3">
-                                <img class="img-fluid rounded shadow" src="https://placehold.co/800x450/E0E0E0/333333?text=Halaman+Daftar+Peran" alt="Halaman Daftar Peran">
-                                <small class="text-muted d-block mt-2">Gambar: Contoh halaman daftar peran.</small>
-                            </div>
-                        </ol>
+                        <h6>Tujuan:</h6>
+                        <ul>
+                            <li>Mendefinisikan kelompok izin yang dapat ditetapkan ke pengguna.</li>
+                            <li>Menyederhanakan manajemen hak akses dengan mengelompokkan izin yang serupa.</li>
+                        </ul>
+                        <section class="docs-section" id="users_role">
+                            <h3 class="section-heading"><i class="fas fa-user-tag me-2"></i> Manajemen Peran (Role Management)</h3>
+                            <p>Manajemen peran adalah fitur krusial dalam ERP Siumang yang memungkinkan administrator untuk mengontrol hak akses dan fungsionalitas bagi berbagai kelompok pengguna. Dengan mendefinisikan peran, Anda dapat memastikan bahwa setiap pengguna hanya dapat mengakses data dan fitur yang relevan dengan tanggung jawab pekerjaan mereka, meningkatkan keamanan dan efisiensi operasional.</p>
 
-                        <h5 class="pt-3">3. Permission Manager (Manajer Izin)</h5>
-                        <p>Alat utama untuk mengonfigurasi hak akses spesifik untuk setiap peran pada setiap jenis dokumen (DocType).</p>
-                        <h6>Cara Menggunakan:</h6>
-                        <ol>
-                            <li>Klik pada tautan "Permission Manager" di bawah "Your Shortcuts".</li>
-                            <div class="screenshot-container text-center my-3">
-                                <img class="img-fluid rounded shadow" src="assets/images/users_shortcut_permission_manager.png" alt="Pintasan Permission Manager">
-                                <small class="text-muted d-block mt-2">Gambar: Klik pintasan 'Permission Manager'.</small>
-                            </div>
-                            <li>Pilih "Role" dan "DocType" yang ingin Anda atur izinnya.</li>
-                            <li>Centang atau hapus centang kotak izin (misal: Baca, Tulis, Buat, Hapus, Kirim, Batalkan, Print, Email, Import, Export, Report, Share, Set User Permissions, Amend) sesuai kebutuhan.</li>
-                            <li>Klik "Update" atau "Perbarui" untuk menyimpan perubahan.</li>
-                            <div class="screenshot-container text-center my-3">
-                                <img class="img-fluid rounded shadow" src="https://placehold.co/800x450/E0E0E0/333333?text=Halaman+Permission+Manager" alt="Halaman Permission Manager">
-                                <small class="text-muted d-block mt-2">Gambar: Contoh halaman Permission Manager.</small>
-                            </div>
-                        </ol>
+                            <h4 class="mt-4"><i class="fas fa-list me-2"></i> Daftar Peran (Role List)</h4>
+                            <p>Halaman daftar peran menampilkan semua peran yang telah dibuat dalam sistem, baik peran bawaan maupun peran kustom. Di sini, Anda dapat melihat gambaran umum setiap peran dan statusnya.</p>
 
-                        <h5 class="pt-3">4. User Profile (Profil Pengguna)</h5>
-                        <p>Melihat dan mengelola profil pengguna yang sedang login atau pengguna lainnya.</p>
-                        <h6>Cara Menggunakan:</h6>
-                        <ol>
-                            <li>Klik pada tautan "User Profile" di bawah "Your Shortcuts".</li>
-                            <div class="screenshot-container text-center my-3">
-                                <img class="img-fluid rounded shadow" src="assets/images/users_shortcut_user_profile.png" alt="Pintasan User Profile">
-                                <small class="text-muted d-block mt-2">Gambar: Klik pintasan 'User Profile'.</small>
+                            <div class="screenshot-container text-center my-4">
+                                <img class="img-fluid rounded shadow" src="assets/images/role_list.png" alt="Tampilan Daftar Peran (Role List)">
+                                <small class="text-muted d-block mt-2">Gambar: Tampilan daftar peran yang tersedia dalam sistem.</small>
                             </div>
-                            <li>Anda akan melihat detail profil pengguna. Jika Anda seorang administrator, Anda mungkin dapat mencari dan melihat profil pengguna lain.</li>
-                            <li>Pada halaman profil, Anda dapat melihat informasi pribadi, peran yang ditetapkan, dan pengaturan terkait pengguna.</li>
-                            <div class="screenshot-container text-center my-3">
-                                <img class="img-fluid rounded shadow" src="https://placehold.co/800x450/E0E0E0/333333?text=Halaman+Profil+Pengguna" alt="Halaman Profil Pengguna">
-                                <small class="text-muted d-block mt-2">Gambar: Contoh halaman profil pengguna.</small>
-                            </div>
-                        </ol>
 
-                        <h5 class="pt-3">5. User Type (Tipe Pengguna)</h5>
-                        <p>Mengategorikan pengguna berdasarkan jenisnya (misal: Karyawan, Pelanggan, Pemasok, Pengguna Website).</p>
-                        <h6>Cara Menggunakan:</h6>
-                        <ol>
-                            <li>Klik pada tautan "User Type" di bawah "Your Shortcuts".</li>
-                            <div class="screenshot-container text-center my-3">
-                                <img class="img-fluid rounded shadow" src="assets/images/users_shortcut_user_type.png" alt="Pintasan User Type">
-                                <small class="text-muted d-block mt-2">Gambar: Klik pintasan 'User Type'.</small>
-                            </div>
-                            <li>Anda akan melihat daftar tipe pengguna yang sudah ada. Anda dapat:
-                                <ul>
-                                    <li>Menambah Tipe Pengguna Baru: Klik tombol "Add User Type" atau "Baru".</li>
-                                    <li>Mengedit Tipe Pengguna: Klik pada nama tipe pengguna untuk melihat atau mengubah detailnya.</li>
-                                </ul>
-                            </li>
-                            <div class="screenshot-container text-center my-3">
-                                <img class="img-fluid rounded shadow" src="https://placehold.co/800x450/E0E0E0/333333?text=Halaman+Daftar+Tipe+Pengguna" alt="Halaman Daftar Tipe Pengguna">
-                                <small class="text-muted d-block mt-2">Gambar: Contoh halaman daftar tipe pengguna.</small>
-                            </div>
-                        </ol>
-					</section><!--//section-->
-					
-					<section class="docs-section" id="reports-masters">
-						<h2 class="section-heading">Laporan & Master (Reports & Masters)</h2>
-						<p>Bagian ini menyediakan akses ke laporan dan data master yang lebih spesifik terkait pengguna dan izin.</p>
+                            <ul class="list-unstyled">
+                                <li><strong>ID:</strong>
+                                    <p><strong>Fungsi:</strong> Menampilkan nama unik dari setiap peran. Ini adalah pengidentifikasi utama untuk peran tersebut dalam sistem.</p>
+                                </li>
+                                <li class="mt-3"><strong>Status:</strong>
+                                    <p><strong>Fungsi:</strong> Menunjukkan apakah peran tersebut "Enabled" (aktif) atau "Disabled" (dinonaktifkan). Peran yang dinonaktifkan tidak dapat ditetapkan kepada pengguna dan tidak memberikan hak akses.</p>
+                                </li>
+                                <li class="mt-3"><strong>Is Custom:</strong>
+                                    <p><strong>Fungsi:</strong> Mengindikasikan apakah peran tersebut adalah peran kustom (dibuat oleh pengguna) atau peran bawaan sistem. Peran kustom dapat dimodifikasi atau dihapus, sedangkan peran bawaan biasanya memiliki batasan modifikasi.</p>
+                                </li>
+                                <li class="mt-3"><strong>Desk Access:</strong>
+                                    <p><strong>Fungsi:</strong> Menunjukkan apakah pengguna dengan peran ini memiliki akses ke "Desk" atau halaman utama sistem. Jika dicentang, pengguna dapat melihat dan berinteraksi dengan dashboard utama.</p>
+                                </li>
+                                <li class="mt-3"><strong>Last Updated On:</strong>
+                                    <p><strong>Fungsi:</strong> Menampilkan tanggal dan waktu terakhir peran tersebut diperbarui.</p>
+                                </li>
+                            </ul>
 
-                        <h3 class="mt-4">Users</h3>
-                        <p>Sub-bagian ini mengulang beberapa akses ke data master pengguna dan peran, serta menambahkan manajemen profil.</p>
+                            <h4 class="mt-4"><i class="fas fa-plus-circle me-2"></i> Menambah Peran Baru (Add New Role)</h4>
+                            <p>Untuk membuat peran baru, ikuti langkah-langkah berikut:</p>
+                            <ol>
+                                <li>Klik tombol <strong><i class="fas fa-plus me-1"></i> Add Role</strong> yang terletak di kanan atas halaman daftar peran.</li>
+                                <li>Anda akan diarahkan ke halaman "New Role". Masukkan <strong>Role Name</strong> yang diinginkan (misalnya, "Sales Support", "Inventory Clerk").</li>
+                                <li>Setelah menulis nama peran, klik tombol <strong>Edit Full Role</strong>. Tombol ini akan muncul setelah Anda mengisi nama peran dan menyimpan draf awal peran tersebut.</li>
+                            </ol>
+
+                            <h4 class="mt-4"><i class="fas fa-edit me-2"></i> Mengedit Peran Penuh (Edit Full Role)</h4>
+                            <p>Setelah mengklik "Edit Full Role", Anda akan dibawa ke halaman detail peran yang lebih komprehensif, di mana Anda dapat mengkonfigurasi berbagai aspek peran tersebut.</p>
+
+                            <div class="screenshot-container text-center my-4">
+                                <img class="img-fluid rounded shadow" src="assets/images/role_new_role.png" alt="Tampilan Formulir Peran Baru (New Role)">
+                                <small class="text-muted d-block mt-2">Gambar: Tampilan formulir New Role untuk mengkonfigurasi peran baru.</small>
+                            </div>
+
+                            <ul class="list-unstyled">
+                                <li><strong>Role Name <span class="text-danger">*</span>:</strong>
+                                    <p><strong>Fungsi:</strong> Nama unik dari peran. Ini adalah field wajib dan harus deskriptif agar mudah diidentifikasi.</p>
+                                    <p><strong>Cara Input:</strong> Masukkan nama yang jelas untuk peran (misal: "Sales Manager", "HR Assistant").</p>
+                                </li>
+                                <li class="mt-3"><strong>Disabled:</strong>
+                                    <p><strong>Fungsi:</strong> Jika dicentang, peran ini akan dinonaktifkan dan secara otomatis dihapus dari semua pengguna yang saat ini memiliki peran ini. Pengguna tersebut tidak lagi memiliki hak akses yang diberikan oleh peran ini.</p>
+                                    <p><strong>Cara Input:</strong> Centang kotak ini untuk menonaktifkan peran.</p>
+                                </li>
+                                <li class="mt-3"><strong>Home Page:</strong>
+                                    <p><strong>Fungsi:</strong> Menentukan halaman default yang akan dilihat pengguna dengan peran ini setelah login. Ini dapat berupa modul tertentu, dashboard kustom, atau halaman laporan.</p>
+                                    <p><strong>Cara Input:</strong> Masukkan rute halaman (misal: "/app/sales-dashboard" atau biarkan kosong untuk default sistem).</p>
+                                </li>
+                                <li class="mt-3"><strong>Is Custom:</strong>
+                                    <p><strong>Fungsi:</strong> Menunjukkan apakah peran ini adalah peran kustom yang Anda buat. Peran bawaan sistem tidak akan memiliki opsi ini untuk diedit.</p>
+                                    <p><strong>Cara Input:</strong> Ini adalah indikator, tidak dapat diubah secara langsung.</p>
+                                </li>
+                                <li class="mt-3"><strong>Restrict To Domain:</strong>
+                                    <p><strong>Fungsi:</strong> Membatasi akses peran ini hanya untuk domain tertentu dalam sistem multi-domain. Ini berguna dalam lingkungan di mana satu instalasi ERP Siumang digunakan oleh beberapa entitas bisnis atau departemen yang berbeda.</p>
+                                    <p><strong>Cara Input:</strong> Pilih domain dari daftar *dropdown* jika relevan.</p>
+                                </li>
+                                <li class="mt-3"><strong>Desk Access:</strong>
+                                    <p><strong>Fungsi:</strong> Mengontrol apakah pengguna dengan peran ini dapat mengakses "Desk" atau halaman utama sistem. Jika dicentang, mereka dapat melihat dan berinteraksi dengan dashboard utama.</p>
+                                    <p><strong>Cara Input:</strong> Centang kotak ini untuk memberikan akses Desk.</p>
+                                </li>
+                                <li class="mt-3"><strong>Two Factor Authentication:</strong>
+                                    <p><strong>Fungsi:</strong> Jika dicentang, pengguna dengan peran ini akan diwajibkan untuk menggunakan otentikasi dua faktor (2FA) saat login, menambahkan lapisan keamanan ekstra.</p>
+                                    <p><strong>Cara Input:</strong> Centang kotak ini untuk mengaktifkan 2FA untuk peran ini.</p>
+                                </li>
+                            </ul>
+
+                            <h4 class="mt-4"><i class="fas fa-shield-alt me-2"></i> Pengaturan Izin Peran (Role Permissions Manager)</h4>
+                            <p>Setelah mengisi detail dasar peran, Anda perlu mengkonfigurasi izin spesifik yang terkait dengan peran tersebut. Klik tombol <strong>Role Permissions Manager</strong> di kanan atas halaman "New Role" untuk mengakses pengaturan izin yang lebih detail.</p>
+                            <p>Di sini, Anda dapat menentukan dokumen (misalnya, Sales Order, Purchase Invoice, Item) dan jenis operasi (Create, Read, Update, Delete, Submit, Cancel, dll.) yang diizinkan untuk peran ini. Ini adalah bagian paling penting dalam mendefinisikan hak akses peran.</p>
+                            <p>Setelah semua konfigurasi selesai, pastikan untuk mengklik tombol <strong><i class="fas fa-save me-1"></i> Save</strong> untuk menyimpan peran baru atau perubahan pada peran yang sudah ada.</p>
+                        </section>
+
+
+                        <h3 id="users-role-profile" class="pt-3">3. Role Profile (Profil Peran)</h3>
+                        <p>Memungkinkan Anda mengelompokkan beberapa peran menjadi satu profil yang dapat ditetapkan ke pengguna.</p>
+                        <h6>Tujuan:</h6>
+                        <ul>
+                            <li>Menyederhanakan penetapan banyak peran ke satu pengguna.</li>
+                            <li>Mengelola kombinasi peran yang sering digunakan.</li>
+                        </ul>
+                        <section class="docs-section" id="role-profile-management">
+                            <h3 class="section-heading"><i class="fas fa-id-badge me-2"></i> Manajemen Profil Peran (Role Profile Management)</h3>
+                            <p>Fitur <strong>Role Profile</strong> dalam ERP Siumang dirancang untuk menyederhanakan proses penetapan peran kepada pengguna. Bayangkan Anda memiliki beberapa peran yang sering kali diberikan bersamaan kepada satu jenis pengguna, misalnya, seorang "Manajer Penjualan" yang juga membutuhkan akses sebagai "Pengguna Stok" dan "Pengguna Laporan". Daripada harus mencentang ketiga peran tersebut satu per satu setiap kali Anda membuat atau mengedit akun pengguna baru, Anda dapat mengelompokkan peran-peran ini ke dalam satu "Profil Peran".</p>
+                            <p>Dengan menggunakan Role Profile, Anda dapat membuat template kumpulan peran yang dapat diterapkan dengan cepat. Ini sangat menghemat waktu dan mengurangi potensi kesalahan, terutama dalam organisasi besar dengan banyak pengguna dan kombinasi peran yang kompleks. Ini adalah alat yang ampuh untuk standarisasi penetapan izin dan memastikan konsistensi di seluruh sistem.</p>
+
+                            <h4 class="mt-4"><i class="fas fa-list-alt me-2"></i> Daftar Profil Peran (Role Profile List)</h4>
+                            <p>Halaman ini menampilkan semua profil peran yang telah Anda buat, memberikan gambaran singkat tentang nama profil dan kapan terakhir kali diperbarui.</p>
+
+                            <div class="screenshot-container text-center my-4">
+                                <img class="img-fluid rounded shadow" src="assets/images/user_role_profile.png" alt="">
+                                <small class="text-muted d-block mt-2">Gambar: Tampilan daftar Profil Peran yang sudah ada.</small>
+                            </div>
+
+                            <ul class="list-unstyled">
+                                <li><strong>Role Name:</strong>
+                                    <p><strong>Fungsi:</strong> Nama unik dari profil peran. Nama ini harus deskriptif agar mudah dipahami peran-peran apa saja yang tergabung di dalamnya.</p>
+                                </li>
+                                <li class="mt-3"><strong>ID:</strong>
+                                    <p><strong>Fungsi:</strong> Pengidentifikasi internal untuk profil peran.</p>
+                                </li>
+                                <li class="mt-3"><strong>Last Updated On:</strong>
+                                    <p><strong>Fungsi:</strong> Menunjukkan tanggal dan waktu terakhir profil peran ini dimodifikasi.</p>
+                                </li>
+                            </ul>
+
+                            <h4 class="mt-4"><i class="fas fa-plus-square me-2"></i> Langkah-langkah Membuat Profil Peran Baru</h4>
+                            <p>Untuk membuat profil peran yang disesuaikan dengan kebutuhan Anda, ikuti langkah-langkah mudah ini:</p>
+
+                            <ol>
+                                <li>
+                                    <p><strong>Klik Tombol "Add Role Profile"</strong></p>
+                                    <p>Dari halaman daftar Profil Peran, cari dan klik tombol <strong><i class="fas fa-plus me-1"></i> Add Role Profile</strong> yang terletak di sudut kanan atas. Ini akan membawa Anda ke formulir pembuatan profil baru.</p>
+                                </li>
+                                <li>
+                                    <p><strong>Isi Nama Profil Peran</strong></p>
+                                    <p>Anda akan melihat halaman "New Role Profile". Pada field <strong>Role Name <span class="text-danger">*</span></strong>, masukkan nama yang jelas dan deskriptif untuk profil peran Anda (misalnya, "Sales Team Default", "Finance Department Access"). Nama ini akan muncul saat Anda memilih profil peran untuk pengguna.</p>
+                                    <div class="screenshot-container text-center my-4">
+                                        <img class="img-fluid rounded shadow" src="assets/images/user_role_profile_rolename.png" alt="">
+                                        <small class="text-muted d-block mt-2">Gambar: Formulir New Role Profile dengan field Role Name.</small>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p><strong>Pilih Peran yang Ingin Dimasukkan</strong></p>
+                                    <p>Di bawah field "Role Name", Anda akan menemukan daftar lengkap semua peran yang tersedia dalam sistem. Ini adalah inti dari pembuatan profil peran, di mana Anda memilih peran-peran yang akan menjadi bagian dari profil ini.</p>
+
+                                    <ul class="list-group list-group-flush mt-3">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center bg-light">
+                                            <strong>Opsi Cepat:</strong>
+                                            <div>
+                                                <button class="btn btn-sm btn-outline-primary me-2"><i class="fas fa-check-double me-1"></i> Select All</button>
+                                                <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-times-circle me-1"></i> Unselect All</button>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <h5 class="mb-3">Daftar Peran yang Tersedia:</h5>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="academicsUser">
+                                                        <label class="form-check-label" for="academicsUser">
+                                                            <strong>Academics User:</strong> Akses ke modul akademik.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="accountsManager">
+                                                        <label class="form-check-label" for="accountsManager">
+                                                            <strong>Accounts Manager:</strong> Mengelola akun dan transaksi keuangan.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="accountsUser">
+                                                        <label class="form-check-label" for="accountsUser">
+                                                            <strong>Accounts User:</strong> Akses dasar ke fungsi akuntansi.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="agricultureManager">
+                                                        <label class="form-check-label" for="agricultureManager">
+                                                            <strong>Agriculture Manager:</strong> Mengelola operasi pertanian.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="agricultureUser">
+                                                        <label class="form-check-label" for="agricultureUser">
+                                                            <strong>Agriculture User:</strong> Akses dasar ke modul pertanian.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="analytics">
+                                                        <label class="form-check-label" for="analytics">
+                                                            <strong>Analytics:</strong> Melihat dan membuat laporan analitik.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="auditor">
+                                                        <label class="form-check-label" for="auditor">
+                                                            <strong>Auditor:</strong> Melakukan audit dan verifikasi data.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="blogger">
+                                                        <label class="form-check-label" for="blogger">
+                                                            <strong>Blogger:</strong> Membuat dan mengelola postingan blog.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="customer">
+                                                        <label class="form-check-label" for="customer">
+                                                            <strong>Customer:</strong> Akses sebagai pelanggan (portal pelanggan).
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="dashboardManager">
+                                                        <label class="form-check-label" for="dashboardManager">
+                                                            <strong>Dashboard Manager:</strong> Mengelola dan menyesuaikan dashboard.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="deliveryManager">
+                                                        <label class="form-check-label" for="deliveryManager">
+                                                            <strong>Delivery Manager:</strong> Mengelola proses pengiriman.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="deliveryUser">
+                                                        <label class="form-check-label" for="deliveryUser">
+                                                            <strong>Delivery User:</strong> Akses dasar ke fungsi pengiriman.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="employee">
+                                                        <label class="form-check-label" for="employee">
+                                                            <strong>Employee:</strong> Akses sebagai karyawan (portal karyawan).
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="expenseApprover">
+                                                        <label class="form-check-label" for="expenseApprover">
+                                                            <strong>Expense Approver:</strong> Menyetujui klaim pengeluaran.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="fleetManager">
+                                                        <label class="form-check-label" for="fleetManager">
+                                                            <strong>Fleet Manager:</strong> Mengelola armada kendaraan.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="fulfillmentUser">
+                                                        <label class="form-check-label" for="fulfillmentUser">
+                                                            <strong>Fulfillment User:</strong> Mengelola proses pemenuhan pesanan.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="hrManager">
+                                                        <label class="form-check-label" for="hrManager">
+                                                            <strong>HR Manager:</strong> Mengelola sumber daya manusia.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="hrUser">
+                                                        <label class="form-check-label" for="hrUser">
+                                                            <strong>HR User:</strong> Akses dasar ke modul HR.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="inboxUser">
+                                                        <label class="form-check-label" for="inboxUser">
+                                                            <strong>Inbox User:</strong> Mengelola kotak masuk pesan.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="interviewer">
+                                                        <label class="form-check-label" for="interviewer">
+                                                            <strong>Interviewer:</strong> Melakukan wawancara rekrutmen.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="itemManager">
+                                                        <label class="form-check-label" for="itemManager">
+                                                            <strong>Item Manager:</strong> Mengelola data item/produk.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="knowledgeBaseContributor">
+                                                        <label class="form-check-label" for="knowledgeBaseContributor">
+                                                            <strong>Knowledge Base Contributor:</strong> Berkontribusi pada basis pengetahuan.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="knowledgeBaseEditor">
+                                                        <label class="form-check-label" for="knowledgeBaseEditor">
+                                                            <strong>Knowledge Base Editor:</strong> Mengedit artikel basis pengetahuan.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="leaveApprover">
+                                                        <label class="form-check-label" for="leaveApprover">
+                                                            <strong>Leave Approver:</strong> Menyetujui permintaan cuti.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="maintenanceManager">
+                                                        <label class="form-check-label" for="maintenanceManager">
+                                                            <strong>Maintenance Manager:</strong> Mengelola jadwal pemeliharaan.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="maintenanceUser">
+                                                        <label class="form-check-label" for="maintenanceUser">
+                                                            <strong>Maintenance User:</strong> Akses dasar ke modul pemeliharaan.
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="manufacturingManager">
+                                                        <label class="form-check-label" for="manufacturingManager">
+                                                            <strong>Manufacturing Manager:</strong> Mengelola proses manufaktur.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="manufacturingUser">
+                                                        <label class="form-check-label" for="manufacturingUser">
+                                                            <strong>Manufacturing User:</strong> Akses dasar ke modul manufaktur.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="newsletterManager">
+                                                        <label class="form-check-label" for="newsletterManager">
+                                                            <strong>Newsletter Manager:</strong> Mengelola kampanye newsletter.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="pajakAdmin">
+                                                        <label class="form-check-label" for="pajakAdmin">
+                                                            <strong>Pajak Admin:</strong> Mengelola pengaturan dan laporan pajak.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="pajakUser">
+                                                        <label class="form-check-label" for="pajakUser">
+                                                            <strong>Pajak User:</strong> Akses dasar ke fungsi pajak.
+                                                        </label>
+                                                    </div>
+                                                  
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="preparedReportUser">
+                                                        <label class="form-check-label" for="preparedReportUser">
+                                                            <strong>Prepared Report User:</strong> Melihat laporan yang sudah disiapkan.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="procurement">
+                                                        <label class="form-check-label" for="procurement">
+                                                            <strong>Procurement:</strong> Mengelola proses pengadaan barang/jasa.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="projectsManager">
+                                                        <label class="form-check-label" for="projectsManager">
+                                                            <strong>Projects Manager:</strong> Mengelola proyek dan tugas.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="projectsUser">
+                                                        <label class="form-check-label" for="projectsUser">
+                                                            <strong>Projects User:</strong> Akses dasar ke modul proyek.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="purchaseManager">
+                                                        <label class="form-check-label" for="purchaseManager">
+                                                            <strong>Purchase Manager:</strong> Mengelola proses pembelian.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="purchaseMasterManager">
+                                                        <label class="form-check-label" for="purchaseMasterManager">
+                                                            <strong>Purchase Master Manager:</strong> Mengelola data master pembelian.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="purchaseUser">
+                                                        <label class="form-check-label" for="purchaseUser">
+                                                            <strong>Purchase User:</strong> Akses dasar ke fungsi pembelian.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="qualityManager">
+                                                        <label class="form-check-label" for="qualityManager">
+                                                            <strong>Quality Manager:</strong> Mengelola kontrol kualitas.
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-md-4">
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="reportManager">
+                                                        <label class="form-check-label" for="reportManager">
+                                                            <strong>Report Manager:</strong> Mengelola dan membuat laporan kustom.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="salesManager">
+                                                        <label class="form-check-label" for="salesManager">
+                                                            <strong>Sales Manager:</strong> Mengelola proses penjualan.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="salesMasterManager">
+                                                        <label class="form-check-label" for="salesMasterManager">
+                                                            <strong>Sales Master Manager:</strong> Mengelola data master penjualan.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="salesUser">
+                                                        <label class="form-check-label" for="salesUser">
+                                                            <strong>Sales User:</strong> Akses dasar ke fungsi penjualan.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="scriptManager">
+                                                        <label class="form-check-label" for="scriptManager">
+                                                            <strong>Script Manager:</strong> Mengelola dan menjalankan skrip kustom.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="stockManager">
+                                                        <label class="form-check-label" for="stockManager">
+                                                            <strong>Stock Manager:</strong> Mengelola inventaris dan stok.
+                                                        </label>
+                                                    </div>
+                                                 
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="stockUser">
+                                                        <label class="form-check-label" for="stockUser">
+                                                            <strong>Stock User:</strong> Akses dasar ke modul stok.
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4"> 
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="supplier">
+                                                        <label class="form-check-label" for="supplier">
+                                                            <strong>Supplier:</strong> Akses sebagai pemasok (portal pemasok).
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="supportTeam">
+                                                        <label class="form-check-label" for="supportTeam">
+                                                            <strong>Support Team:</strong> Mengelola tiket dukungan pelanggan.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="systemManager">
+                                                        <label class="form-check-label" for="systemManager">
+                                                            <strong>System Manager:</strong> Mengelola pengaturan sistem global.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="translator">
+                                                        <label class="form-check-label" for="translator">
+                                                            <strong>Translator:</strong> Mengelola terjemahan dalam sistem.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="websiteManager">
+                                                        <label class="form-check-label" for="websiteManager">
+                                                            <strong>Website Manager:</strong> Mengelola konten dan pengaturan situs web.
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="workspaceManager">
+                                                        <label class="form-check-label" for="workspaceManager">
+                                                            <strong>Workspace Manager:</strong> Mengelola workspace pengguna.
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <p class="mt-3"><strong>Cara Input:</strong> Centang kotak di samping setiap peran yang ingin Anda sertakan dalam profil ini. Anda dapat menggunakan tombol "Select All" atau "Unselect All" untuk mempercepat proses pemilihan.</p>
+                                </li>
+                                <li>
+                                    <p><strong>Simpan Profil Peran Anda</strong></p>
+                                    <p>Setelah Anda selesai memilih semua peran yang relevan untuk profil ini, klik tombol <strong><i class="fas fa-save me-1"></i> Save</strong> yang terletak di kanan atas halaman. Profil peran Anda kini siap digunakan dan dapat diterapkan kepada pengguna baru atau yang sudah ada melalui tab "Roles & Permissions" di formulir pengguna.</p>
+                                </li>
+                            </ol>
+                        </section>
+
+					<!-- modul permissiom -->
+					<section class="docs-section" id="section-permissions">
+						<h2 class="section-heading">Permissions</h2>
+						<p>Bagian ini berfokus pada alat dan laporan yang lebih spesifik untuk manajemen izin dan hak akses data.</p>
                         
-                        <h5 class="pt-3">1. User (Pengguna)</h5>
-                        <p>Sama seperti pintasan di atas, ini mengarahkan Anda ke daftar semua pengguna sistem.</p>
-                        <h6>Cara Menggunakan:</h6>
-                        <p>Klik pada tautan "User" di bawah "Reports & Masters > Users". Ini akan menampilkan daftar pengguna yang sama seperti pintasan "User".</p>
-                        <div class="screenshot-container text-center my-3">
-                            <img class="img-fluid rounded shadow" src="assets/images/reports_masters_users_user.png" alt="Reports & Masters User">
-                            <small class="text-muted d-block mt-2">Gambar: Klik 'User' di bagian Reports & Masters.</small>
-                        </div>
+                        <section class="docs-section" id="role-permission-manager">
+                            <h3 class="section-heading"><i class="fas fa-user-tag me-2"></i> Pengelola Izin Peran (Role Permission Manager)</h3>
+                            <p><strong>Pengelola Izin Peran (Role Permission Manager)</strong> adalah inti dari sistem keamanan berbasis peran. Ini memungkinkan administrator untuk mendefinisikan apa yang dapat dilakukan oleh setiap peran dalam sistem, pada tingkat dokumen (DocType).</p>
+                            <p>Dengan mengelola izin peran, Anda dapat memastikan bahwa pengguna hanya memiliki akses ke fungsionalitas dan data yang relevan dengan tanggung jawab pekerjaan mereka, meningkatkan keamanan dan efisiensi operasional.</p>
 
-                        <h5 class="pt-3">2. Role (Peran)</h5>
-                        <p>Sama seperti pintasan di atas, ini mengarahkan Anda ke daftar peran yang ada di sistem.</p>
-                        <h6>Cara Menggunakan:</h6>
-                        <p>Klik pada tautan "Role" di bawah "Reports & Masters > Users". Ini akan menampilkan daftar peran yang sama seperti pintasan "Role".</p>
-                        <div class="screenshot-container text-center my-3">
-                            <img class="img-fluid rounded shadow" src="assets/images/reports_masters_users_role.png" alt="Reports & Masters Role">
-                            <small class="text-muted d-block mt-2">Gambar: Klik 'Role' di bagian Reports & Masters.</small>
-                        </div>
-
-                        <h5 class="pt-3">3. Role Profile (Profil Peran)</h5>
-                        <p>Memungkinkan Anda mengelompokkan beberapa peran menjadi satu profil yang dapat ditetapkan ke pengguna, menyederhanakan manajemen izin.</p>
-                        <h6>Cara Menggunakan:</h6>
-                        <ol>
-                            <li>Klik pada tautan "Role Profile" di bawah "Reports & Masters > Users".</li>
-                            <div class="screenshot-container text-center my-3">
-                                <img class="img-fluid rounded shadow" src="assets/images/reports_masters_users_role_profile.png" alt="Reports & Masters Role Profile">
-                                <small class="text-muted d-block mt-2">Gambar: Klik 'Role Profile' di bagian Reports & Masters.</small>
+                            <h4 class="mt-4"><i class="fas fa-edit me-2"></i> Mengelola Izin Peran</h4>
+                            <p>Antarmuka Pengelola Izin Peran memungkinkan Anda untuk mengatur hak akses untuk setiap peran pada berbagai Tipe Dokumen. Anda dapat memilih Tipe Dokumen dan Peran untuk melihat dan memodifikasi izin yang terkait.</p>
+                            <div class="text-center my-4">
+                                <!-- Gambar untuk Pengelola Izin Peran, diambil dari folder assets/images -->
+                                <img src="assets/images/permission_role_permission_mgr.png" alt="" class="img-fluid rounded shadow">
+                                <p class="mt-2 text-muted">Tampilan antarmuka Pengelola Izin Peran.</p>
                             </div>
-                            <li>Anda dapat membuat profil peran baru atau mengedit yang sudah ada.</li>
-                            <li>Dalam formulir Profil Peran, Anda dapat memilih beberapa peran untuk digabungkan ke dalam satu profil.</li>
-                            <div class="screenshot-container text-center my-3">
-                                <img class="img-fluid rounded shadow" src="https://placehold.co/800x450/E0E0E0/333333?text=Formulir+Profil+Peran" alt="Formulir Profil Peran">
-                                <small class="text-muted d-block mt-2">Gambar: Contoh formulir Profil Peran.</small>
-                            </div>
-                        </ol>
 
-                        <h5 class="pt-3">4. Module Profile (Profil Modul)</h5>
-                        <p>Mengatur modul apa saja yang akan terlihat untuk peran tertentu, membantu menyederhanakan antarmuka pengguna.</p>
-                        <h6>Cara Menggunakan:</h6>
-                        <ol>
-                            <li>Klik pada tautan "Module Profile" di bawah "Reports & Masters > Users".</li>
-                            <div class="screenshot-container text-center my-3">
-                                <img class="img-fluid rounded shadow" src="assets/images/reports_masters_users_module_profile.png" alt="Reports & Masters Module Profile">
-                                <small class="text-muted d-block mt-2">Gambar: Klik 'Module Profile' di bagian Reports & Masters.</small>
-                            </div>
-                            <li>Anda dapat membuat profil modul baru atau mengedit yang sudah ada.</li>
-                            <li>Pilih modul yang ingin Anda tampilkan atau sembunyikan untuk profil ini.</li>
-                            <div class="screenshot-container text-center my-3">
-                                <img class="img-fluid rounded shadow" src="https://placehold.co/800x450/E0E0E0/333333?text=Formulir+Profil+Modul" alt="Formulir Profil Modul">
-                                <small class="text-muted d-block mt-2">Gambar: Contoh formulir Profil Modul.</small>
-                            </div>
-                        </ol>
+                            <ul class="list-unstyled">
+                                <li><strong>1. Pilih Tipe Dokumen dan Peran:</strong>
+                                    <p>Gunakan bidang "Document Type" dan "Role" untuk memilih kombinasi dokumen dan peran yang ingin Anda kelola izinnya.</p>
+                                </li>
+                                <li class="mt-3"><strong>2. Konfigurasi Izin:</strong>
+                                    <p>Untuk setiap baris yang mewakili kombinasi Tipe Dokumen dan Peran, Anda dapat mencentang kotak untuk memberikan hak akses berikut:</p>
+                                    <ul>
+                                        <li><strong>Select:</strong> Memungkinkan pengguna untuk memilih dokumen.</li>
+                                        <li><strong>Read (Baca):</strong> Memungkinkan pengguna untuk melihat dokumen.</li>
+                                        <li><strong>Write (Tulis):</strong> Memungkinkan pengguna untuk membuat dan mengedit dokumen.</li>
+                                        <li><strong>Create (Buat):</strong> Memungkinkan pengguna untuk membuat dokumen baru.</li>
+                                        <li><strong>Delete (Hapus):</strong> Memungkinkan pengguna untuk menghapus dokumen.</li>
+                                        <li><strong>Print (Cetak):</strong> Memungkinkan pengguna untuk mencetak dokumen.</li>
+                                        <li><strong>Email (Email):</strong> Memungkinkan pengguna untuk mengirim dokumen melalui email.</li>
+                                        <li><strong>Report (Laporan):</strong> Memungkinkan pengguna untuk melihat laporan terkait dokumen.</li>
+                                        <li><strong>Import (Impor):</strong> Memungkinkan pengguna untuk mengimpor data dokumen.</li>
+                                        <li><strong>Export (Ekspor):</strong> Memungkinkan pengguna untuk mengekspor data dokumen.</li>
+                                        <li><strong>Share (Bagikan):</strong> Memungkinkan pengguna untuk berbagi dokumen.</li>
+                                    </ul>
+                                    <p>Anda juga dapat mencentang "Only If Creator" jika izin hanya berlaku untuk dokumen yang dibuat oleh pengguna tersebut.</p>
+                                </li>
+                                <li class="mt-3"><strong>3. Tambah Aturan Baru:</strong>
+                                    <p>Klik tombol "Add A New Rule" untuk menambahkan baris izin baru untuk Tipe Dokumen atau Peran yang berbeda.</p>
+                                </li>
+                                <li class="mt-3"><strong>4. Atur Izin Pengguna:</strong>
+                                    <p>Tombol "Set User Permissions" memungkinkan Anda untuk mengatur izin spesifik untuk pengguna individu, yang dapat lebih membatasi akses daripada izin peran.</p>
+                                </li>
+                            </ul>
 
-                        <h3 class="mt-4" id="logs-sub">Logs</h3>
-                        <p>Bagian ini berisi laporan aktivitas dan akses yang penting untuk audit dan pemantauan sistem.</p>
-                        
-                        <h5 class="pt-3">1. Activity Log (Log Aktivitas)</h5>
-                        <p>Mencatat semua aktivitas pengguna dalam sistem (misal: kapan dokumen dibuat, diubah, dihapus).</p>
-                        <h6>Cara Menggunakan:</h6>
-                        <p>Klik pada tautan "Activity Log". Laporan ini tidak memerlukan input pengguna untuk ditampilkan, cukup klik untuk melihat daftar aktivitas terbaru.</p>
-                        <div class="screenshot-container text-center my-3">
-                            <img class="img-fluid rounded shadow" src="assets/images/reports_masters_logs_activity_log.png" alt="Activity Log">
-                            <small class="text-muted d-block mt-2">Gambar: Tampilan Laporan Log Aktivitas.</small>
-                        </div>
+                            <!-- Keterangan tambahan dari gambar kedua -->
+                            <h4 class="mt-4"><i class="fas fa-question-circle me-2"></i> Bantuan Cepat untuk Mengatur Izin</h4>
+                            <ul class="list-unstyled">
+                                <li>1. Izin diatur pada Peran dan Tipe Dokumen (disebut DocTypes) dengan mengatur hak Read, Write, Create, Delete, Submit, Cancel, Amend, Report, Import, Export, Print, Email, dan Set User Permissions.</li>
+                                <li>2. Izin diterapkan pada Pengguna berdasarkan Peran yang ditugaskan kepada mereka.</li>
+                                <li>3. Peran dapat diatur untuk pengguna dari Pengaturan Pengguna Anda. <code>Setup > User</code></li>
+                                <li>4. Sistem menyediakan banyak peran yang sudah ditentukan sebelumnya. Anda dapat menambahkan peran baru untuk pengaturan izin yang lebih baik. <code>Add a New Role</code></li>
+                                <li>5. Izin secara otomatis diterapkan ke Laporan Standar dan pencarian.</li>
+                                <li>6. Sebagai praktik terbaik, jangan menetapkan kumpulan izin yang sama ke Peran yang berbeda. Sebaliknya, tetapkan beberapa Peran ke Pengguna yang sama.</li>
+                            </ul>
 
-                        <h5 class="pt-3">2. Access Log (Log Akses)</h5>
-                        <p>Mencatat semua upaya masuk (login) ke sistem, termasuk keberhasilan atau kegagalan.</p>
-                        <h6>Cara Menggunakan:</h6>
-                        <p>Klik pada tautan "Access Log". Laporan ini tidak memerlukan input pengguna untuk ditampilkan, cukup klik untuk melihat daftar riwayat akses.</p>
-                        <div class="screenshot-container text-center my-3">
-                            <img class="img-fluid rounded shadow" src="assets/images/reports_masters_logs_access_log.png" alt="Access Log">
-                            <small class="text-muted d-block mt-2">Gambar: Tampilan Laporan Log Akses.</small>
-                        </div>
+                            <h4 class="mt-4"><i class="fas fa-file-alt me-2"></i> Arti Submit, Cancel, Amend</h4>
+                            <ul class="list-unstyled">
+                                <li>1. Dokumen tertentu, seperti Faktur, tidak boleh diubah setelah final. Status final untuk dokumen tersebut disebut Submitted. Anda dapat membatasi Peran yang dapat Submit.</li>
+                                <li>2. Anda dapat mengubah dokumen yang sudah Submitted dengan membatalkannya, lalu mengubahnya (amending).</li>
+                                <li>3. Saat Anda Amend dokumen setelah Cancel dan menyimpannya, dokumen tersebut akan mendapatkan nomor baru yang merupakan versi dari nomor lama.</li>
+                                <li>4. Contoh: jika Anda cancel dan amend INV004, itu akan menjadi dokumen baru INV004-1. Ini membantu Anda melacak setiap perubahan.</li>
+                            </ul>
 
-                        <h3 class="mt-4" id="permissions-sub">Permissions</h3>
-                        <p>Sub-bagian ini berfokus pada laporan dan alat yang lebih spesifik untuk manajemen izin.</p>
-                        
-                        <h5 class="pt-3">1. Role Permissions Manager (Manajer Izin Peran)</h5>
-                        <p>Sama seperti pintasan di atas, ini adalah alat utama untuk mengelola izin berbasis peran.</p>
-                        <h6>Cara Menggunakan:</h6>
-                        <p>Klik pada tautan "Role Permissions Manager". Anda akan diarahkan ke halaman Manajer Izin yang sama dengan pintasan di bagian "Your Shortcuts".</p>
-                        <div class="screenshot-container text-center my-3">
-                            <img class="img-fluid rounded shadow" src="assets/images/reports_masters_permissions_role_permissions_manager.png" alt="Role Permissions Manager">
-                            <small class="text-muted d-block mt-2">Gambar: Klik 'Role Permissions Manager' di bagian Reports & Masters.</small>
-                        </div>
+                            <h4 class="mt-4"><i class="fas fa-layer-group me-2"></i> Tingkat Izin</h4>
+                            <ul class="list-unstyled">
+                                <li>1. Izin pada Level 0 adalah Izin Tingkat Dokumen, yaitu izin tersebut adalah akses utama ke dokumen.</li>
+                                <li>2. Jika suatu Peran tidak memiliki akses pada Level 0, maka tingkat yang lebih tinggi tidak ada artinya.</li>
+                                <li>3. Izin pada tingkat yang lebih tinggi adalah Izin Tingkat Bidang (Field Level Permissions). Semua Bidang memiliki Tingkat Izin yang ditetapkan terhadapnya dan aturan yang ditentukan pada izin tersebut berlaku untuk Bidang ini. Ini berguna jika Anda ingin menyembunyikan atau membuat bidang tertentu hanya-baca untuk Peran tertentu.</li>
+                                <li>4. Anda dapat menggunakan Formulir Kustom untuk mengatur tingkat pada bidang. <code>Setup > Customize Form</code></li>
+                            </ul>
 
-                        <h5 class="pt-3">2. User Permissions (Izin Pengguna)</h5>
+                            <h4 class="mt-4"><i class="fas fa-users-cog me-2"></i> Izin Pengguna</h4>
+                            <ul class="list-unstyled">
+                                <li>1. Izin Pengguna digunakan untuk membatasi pengguna ke catatan spesifik. <code>Setup > User Permissions</code></li>
+                                <li>2. Pilih Tipe Dokumen spesifik yang Izin Penggunanya digunakan untuk membatasi akses.</li>
+                                <li>3. Setelah Anda mengatur ini, pengguna hanya akan dapat mengakses dokumen (misalnya, Blog Post) di mana tautan tersebut ada (misalnya, Blogger).</li>
+                                <li>4. Selain dari Manajer Sistem, peran dengan Set User Permissions dapat mengatur izin untuk pengguna lain untuk Tipe Dokumen tersebut.</li>
+                            </ul>
+                            <p>Jika instruksi ini tidak membantu, silakan tambahkan saran Anda di GitHub Issues. <code>Submit an Issue</code></p>
+
+                            <p>Dengan memahami dan mengelola Pengelola Izin Peran, Anda dapat membangun struktur keamanan yang kuat dan fleksibel yang sesuai dengan kebutuhan organisasi Anda.</p>
+                        </section>
+                       
+                        <h3 id="permissions-user-permissions" class="pt-3">2. User Permissions (Izin Pengguna)</h3>
                         <p>Mengatur izin spesifik untuk pengguna individu, yang bisa mengesampingkan atau menambah izin dari peran mereka.</p>
-                        <h6>Cara Menggunakan:</h6>
-                        <ol>
-                            <li>Klik pada tautan "User Permissions".</li>
-                            <div class="screenshot-container text-center my-3">
-                                <img class="img-fluid rounded shadow" src="assets/images/reports_masters_permissions_user_permissions.png" alt="User Permissions">
-                                <small class="text-muted d-block mt-2">Gambar: Klik 'User Permissions'.</small>
-                            </div>
-                            <li>Pilih "User" dan "DocType" untuk mengatur izin spesifik.</li>
-                            <li>Tambahkan atau hapus baris izin sesuai kebutuhan.</li>
-                            <div class="screenshot-container text-center my-3">
-                                <img class="img-fluid rounded shadow" src="https://placehold.co/800x450/E0E0E0/333333?text=Halaman+Izin+Pengguna" alt="Halaman Izin Pengguna">
-                                <small class="text-muted d-block mt-2">Gambar: Contoh halaman Izin Pengguna.</small>
-                            </div>
-                        </ol>
+                        <h6>Tujuan:</h6>
+                        <ul>
+                            <li>Memberikan atau membatasi akses ke dokumen atau data tertentu untuk pengguna individu.</li>
+                            <li>Mengatasi kebutuhan izin yang sangat spesifik yang tidak dapat dipenuhi oleh izin berbasis peran.</li>
+                        </ul>
+                        <section class="docs-section" id="user-permission">
+                            <h3 class="section-heading"><i class="fas fa-user-check me-2"></i> Izin Pengguna (User Permission)</h3>
+                            <p><strong>Izin Pengguna (User Permission)</strong> digunakan untuk membatasi akses pengguna ke catatan spesifik dalam sistem, bahkan jika peran mereka memberikan akses yang lebih luas. Ini memungkinkan kontrol granular atas data.</p>
 
-                        <h5 class="pt-3">3. Role Permission for Page and Report (Izin Peran untuk Halaman dan Laporan)</h5>
-                        <p>Mengatur akses peran ke halaman atau laporan tertentu yang tidak tercakup dalam izin DocType standar.</p>
-                        <h6>Cara Menggunakan:</h6>
-                        <ol>
-                            <li>Klik pada tautan "Role Permission for Page and Report".</li>
-                            <div class="screenshot-container text-center my-3">
-                                <img class="img-fluid rounded shadow" src="assets/images/reports_masters_permissions_role_permission_page_report.png" alt="Role Permission for Page and Report">
-                                <small class="text-muted d-block mt-2">Gambar: Klik 'Role Permission for Page and Report'.</small>
+                            <h4 class="mt-4"><i class="fas fa-list-alt me-2"></i> Daftar Izin Pengguna</h4>
+                            <p>Halaman ini menampilkan daftar semua izin pengguna yang telah dikonfigurasi. Setiap entri menunjukkan pengguna, jenis dokumen yang diizinkan (Allow), dan nilai spesifik yang diizinkan (For Value).</p>
+                            <div class="text-center my-4">
+                                <!-- Gambar untuk Daftar Izin Pengguna, diambil dari folder assets/images -->
+                                <img src="assets/images/permission_user_permission.png" alt="" class="img-fluid rounded shadow">
+                                <p class="mt-2 text-muted">Tampilan daftar izin pengguna yang ada.</p>
                             </div>
-                            <li>Pilih "Role" dan tentukan "Page" atau "Report" yang ingin Anda atur aksesnya.</li>
-                            <li>Centang "Permitted" untuk memberikan akses.</li>
-                            <div class="screenshot-container text-center my-3">
-                                <img class="img-fluid rounded shadow" src="https://placehold.co/800x450/E0E0E0/333333?text=Halaman+Izin+Halaman+dan+Laporan" alt="Halaman Izin Halaman dan Laporan">
-                                <small class="text-muted d-block mt-2">Gambar: Contoh halaman Izin Peran untuk Halaman dan Laporan.</small>
-                            </div>
-                        </ol>
+                            <ul class="list-unstyled">
+                                <li><strong>ID:</strong> Pengidentifikasi unik untuk entri izin.</li>
+                                <li><strong>User (Pengguna):</strong> Alamat email atau nama pengguna yang izinnya sedang dikonfigurasi.</li>
+                                <li><strong>Allow (Izinkan):</strong> Jenis dokumen atau modul yang izinnya diterapkan (misalnya, "Item Group", "Customer").</li>
+                                <li><strong>For Value (Untuk Nilai):</strong> Nilai spesifik dalam jenis dokumen yang diizinkan (misalnya, "Services", "Consumable" untuk "Item Group").</li>
+                                <li><strong>Applicable For (Berlaku Untuk):</strong> Menunjukkan DocType atau modul mana izin ini berlaku.</li>
+                                <li><strong>Last Updated On (Terakhir Diperbarui Pada):</strong> Tanggal terakhir izin diperbarui.</li>
+                            </ul>
+                            <p>Anda dapat menggunakan tombol <code>Add / Update</code>, <code>Bulk Delete</code>, dan <code>List View</code> untuk mengelola daftar izin. Tombol <code>+ Add User Permission</code> digunakan untuk menambahkan izin pengguna baru.</p>
 
-                        <h5 class="pt-3">4. Permitted Documents For User (Dokumen yang Diizinkan untuk Pengguna)</h5>
+                            <h4 class="mt-4"><i class="fas fa-plus-circle me-2"></i> Menambah Izin Pengguna Baru</h4>
+                            <p>Saat menambahkan izin pengguna baru, Anda akan mengisi detail untuk menentukan batasan akses spesifik untuk pengguna tertentu.</p>
+                            <div class="text-center my-4">
+                                <!-- Gambar untuk Menambah Izin Pengguna Baru, diambil dari folder assets/images -->
+                                <img src="assets/images/permision _user_permission_add.png" alt="" class="img-fluid rounded shadow">
+                                <p class="mt-2 text-muted">Formulir untuk menambahkan izin pengguna baru.</p>
+                            </div>
+                            <ul class="list-unstyled">
+                                <li><strong>User (Pengguna):</strong> Pilih pengguna yang akan diberikan izin ini. Ini adalah bidang wajib.</li>
+                                <li><strong>Allow (Izinkan):</strong> Tentukan jenis dokumen atau kategori yang akan diizinkan atau dibatasi. Ini adalah bidang wajib.</li>
+                                <li><strong>For Value (Untuk Nilai):</strong> Masukkan nilai spesifik yang diizinkan untuk jenis dokumen yang dipilih. Ini adalah bidang wajib.</li>
+                                <li><strong>Is Default (Apakah Default):</strong> Centang jika izin ini harus menjadi pengaturan default untuk pengguna tersebut.</li>
+                                <li><strong>Advanced Control (Kontrol Lanjutan):</strong>
+                                    <ul>
+                                        <li><strong>Apply To All Document Types (Terapkan Ke Semua Tipe Dokumen):</strong> Centang opsi ini jika izin ini harus berlaku untuk semua jenis dokumen yang terkait dengan "Allow" dan "For Value" yang dipilih.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p>Setelah mengisi semua detail, klik tombol <code>Save</code> untuk menyimpan izin pengguna baru. Anda juga dapat melihat dokumen yang diizinkan dengan mengklik <code>View Permitted Documents</code>.</p>
+                        </section>
+
+                        <!-- role permisson report -->
+
+                        <section class="docs-section" id="role-permission-page-report">
+                            <h3 class="section-heading"><i class="fas fa-file-contract me-2"></i> Izin Peran untuk Halaman dan Laporan (Role Permission for Page and Report)</h3>
+                            <p>Bagian ini memungkinkan Anda untuk mengelola izin akses untuk halaman dan laporan tertentu berdasarkan peran pengguna. Ini memberikan kontrol yang lebih halus atas apa yang dapat dilihat dan diakses oleh setiap peran dalam sistem.</p>
+
+                            <h4 class="mt-4"><i class="fas fa-file-alt me-2"></i> Izin Peran untuk Halaman</h4>
+                            <p>Anda dapat menentukan peran mana yang memiliki akses ke halaman tertentu dalam sistem. Ini berguna untuk membatasi akses ke halaman administratif atau halaman sensitif lainnya.</p>
+                            <div class="text-center my-4">
+                                <!-- Gambar untuk Izin Peran untuk Halaman, diambil dari folder assets/images -->
+                                <img src="assets/images/role_permission_forpage.png" alt="" class="img-fluid rounded shadow">
+                                <p class="mt-2 text-muted">Mengatur izin peran untuk halaman tertentu.</p>
+                            </div>
+                            <ul class="list-unstyled">
+                                <li><strong>Set Role For (Atur Peran Untuk):</strong> Pilih 'Page' dari dropdown.</li>
+                                <li><strong>Page (Halaman):</strong> Masukkan atau pilih nama halaman yang ingin Anda atur izinnya (misalnya, "dashboard-view").</li>
+                                <li><strong>Allow Roles (Izinkan Peran):</strong> Centang kotak di samping setiap peran yang diizinkan untuk mengakses halaman yang dipilih. Anda dapat menggunakan tombol "Select All" atau "Unselect All" untuk memudahkan pemilihan.</li>
+                            </ul>
+                            <p>Setelah memilih halaman dan peran yang diizinkan, klik tombol <code>Update</code> untuk menyimpan perubahan. Anda juga dapat mengatur ulang ke pengaturan default dengan tombol <code>Reset to defaults</code>.</p>
+
+                            <h4 class="mt-4"><i class="fas fa-chart-bar me-2"></i> Izin Peran untuk Laporan</h4>
+                            <p>Bagian ini memungkinkan Anda untuk mengontrol peran mana yang dapat melihat laporan tertentu. Ini memastikan bahwa laporan sensitif atau laporan yang hanya relevan untuk peran tertentu dapat dibatasi aksesnya.</p>
+                            <div class="text-center my-4">
+                                <!-- Gambar untuk Izin Peran untuk Laporan, diambil dari folder assets/images -->
+                                <img src="assets/images/role_permission_forreport.png" alt="" class="img-fluid rounded shadow">
+                                <p class="mt-2 text-muted">Mengatur izin peran untuk laporan tertentu.</p>
+                            </div>
+                            <ul class="list-unstyled">
+                                <li><strong>Set Role For (Atur Peran Untuk):</strong> Pilih 'Report' dari dropdown.</li>
+                                <li><strong>Report (Laporan):</strong> Masukkan atau pilih nama laporan yang ingin Anda atur izinnya (misalnya, "Gross Profit").</li>
+                                <li><strong>Enable Prepared Report (Aktifkan Laporan yang Disiapkan):</strong> Centang opsi ini jika Anda ingin mengaktifkan laporan yang telah disiapkan untuk peran yang dipilih.</li>
+                                <li><strong>Allow Roles (Izinkan Peran):</strong> Centang kotak di samping setiap peran yang diizinkan untuk melihat laporan yang dipilih. Anda dapat menggunakan tombol "Select All" atau "Unselect All" untuk memudahkan pemilihan.</li>
+                            </ul>
+                            <p>Setelah memilih laporan dan peran yang diizinkan, klik tombol <code>Update</code> untuk menyimpan perubahan. Anda juga dapat mengatur ulang ke pengaturan default dengan tombol <code>Reset to defaults</code>.</p>
+                        </section>
+                        <!-- permited document -->
+                        <h3 id="permissions-permitted-documents-for-user" class="pt-3">4. Permitted Documents For User (Dokumen yang Diizinkan untuk Pengguna)</h3>
                         <p>Laporan yang menampilkan dokumen apa saja yang dapat diakses oleh pengguna tertentu, berdasarkan peran dan izin pengguna.</p>
+                        <h6>Tujuan:</h6>
+                        <ul>
+                            <li>Memverifikasi dan mengaudit dokumen yang dapat diakses oleh pengguna tertentu.</li>
+                            <li>Membantu administrator dalam memecahkan masalah akses pengguna.</li>
+                        </ul>
                         <h6>Cara Menggunakan:</h6>
-                        <p>Klik pada tautan "Permitted Documents For User". Anda mungkin perlu memilih pengguna dari filter untuk melihat laporan yang relevan.</p>
-                        <div class="screenshot-container text-center my-3">
-                            <img class="img-fluid rounded shadow" src="assets/images/reports_masters_permissions_permitted_documents_for_user.png" alt="Permitted Documents For User">
-                            <small class="text-muted d-block mt-2">Gambar: Tampilan Laporan Dokumen yang Diizinkan untuk Pengguna.</small>
-                        </div>
+                        <ol>
+                            <li>Navigasi ke: <code>Modul Users > Permissions > Permitted Documents For User</code> atau ketik "Permitted Documents For User" di Awesome Bar.</li>
+                            <div class="screenshot-container text-center my-3">
+                                <img class="img-fluid rounded shadow" src="assets/images/permitted_documents_for_user_report.png" alt="Laporan Dokumen yang Diizinkan untuk Pengguna">
+                                <small class="text-muted d-block mt-2">Gambar: Laporan Dokumen yang Diizinkan untuk Pengguna.</small>
+                            </div>
+                            <li>Pilih pengguna dari filter untuk melihat daftar dokumen yang dapat mereka akses.</li>
+                        </ol>
 
-                        <h5 class="pt-3">5. Document Share Report (Laporan Berbagi Dokumen)</h5>
+                        <h3 id="permissions-document-share-report" class="pt-3">5. Document Share Report (Laporan Berbagi Dokumen)</h3>
                         <p>Menampilkan dokumen apa saja yang telah dibagikan secara spesifik kepada pengguna atau peran tertentu.</p>
+                        <h6>Tujuan:</h6>
+                        <ul>
+                            <li>Melacak dokumen yang telah dibagikan secara ad-hoc kepada pengguna atau peran tertentu.</li>
+                            <li>Mengaudit siapa yang memiliki akses ke dokumen spesifik melalui fitur berbagi.</li>
+                        </ul>
                         <h6>Cara Menggunakan:</h6>
-                        <p>Klik pada tautan "Document Share Report". Laporan ini akan menunjukkan daftar dokumen yang dibagikan dan kepada siapa dokumen tersebut dibagikan.</p>
-                        <div class="screenshot-container text-center my-3">
-                            <img class="img-fluid rounded shadow" src="assets/images/reports_masters_permissions_document_share_report.png" alt="Document Share Report">
-                            <small class="text-muted d-block mt-2">Gambar: Tampilan Laporan Berbagi Dokumen.</small>
-                        </div>
+                        <ol>
+                            <li>Navigasi ke: <code>Modul Users > Permissions > Document Share Report</code> atau ketik "Document Share Report" di Awesome Bar.</li>
+                            <div class="screenshot-container text-center my-3">
+                                <img class="img-fluid rounded shadow" src="assets/images/document_share_report.png" alt="Laporan Berbagi Dokumen">
+                                <small class="text-muted d-block mt-2">Gambar: Laporan Berbagi Dokumen.</small>
+                            </div>
+                            <li>Laporan ini akan menunjukkan daftar dokumen yang dibagikan, kepada siapa dibagikan, dan jenis izin yang diberikan.</li>
+                        </ol>
 					</section><!--//section-->
 					
 			    </article><!--//docs-article-->
