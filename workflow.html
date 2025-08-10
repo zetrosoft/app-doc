@@ -69,12 +69,13 @@
 		    <nav id="docs-nav" class="docs-nav navbar">
 			    <ul class="section-items list-unstyled nav flex-column pb-3">
 				    <li class="nav-item"><a class="nav-link" href="index.html"><span class="theme-icon-holder me-2"><i class="fas fa-home"></i></span>Home</a></li>
-				    <li class="nav-item section-title"><a class="nav-link scrollto active" href="#section-1"><span class="theme-icon-holder me-2"><i class="fas fa-cogs"></i></span>Workflow</a></li>
-                    <li class="nav-item"><a class="nav-link scrollto" href="#section-1">1. Pengantar</a></li>
-                    <li class="nav-item"><a class="nav-link scrollto" href="#section-2">2. Kegunaan & Keuntungan</a></li>
-                    <li class="nav-item"><a class="nav-link scrollto" href="#section-3">3. Contoh Penerapan</a></li>
-                    <li class="nav-item"><a class="nav-link scrollto" href="#section-4">4. Manual: Pembelian</a></li>
-                    <li class="nav-item"><a class="nav-link scrollto" href="#section-5">5. Manual: Cuti Karyawan</a></li>
+				    <li class="nav-item section-title"><a class="nav-link scrollto active" href="#module-workflow"><span class="theme-icon-holder me-2"><i class="fas fa-cogs"></i></span>Workflow</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="#section-1">1. Pengantar Workflow</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="#section-2">2. Konsep-Konsep Dasar</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="#section-3">3. Panduan Umum</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="#section-4">4. Studi Kasus Approval</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="#section-5">5. Studi Kasus Non-Approval</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="#section-6">6. Kesimpulan</a></li>
 			    </ul>
 
 		    </nav><!--//docs-nav-->
@@ -91,135 +92,631 @@
 				    </header>
 				    
                     <section class="docs-section" id="section-1">
-                        <h2 class="section-heading">1. Pengantar Workflow di ERP Siumang</h2>
+                        <h2 class="section-heading">1. Pengantar: Memahami Apa Itu Workflow</h2>
                         <p>
-                            Fitur Workflow di ERP Siumang adalah alat canggih untuk mengotomatisasi dan merapikan alur kerja dokumen di perusahaan Anda. Anggap saja ini sebagai "aturan main" yang cerdas untuk setiap dokumen, seperti Permintaan Pembelian atau Permohonan Cuti. Dengan Workflow, setiap dokumen akan bergerak dari satu tahapan ke tahapan berikutnya secara otomatis, memastikan semua proses berjalan sesuai aturan yang telah ditetapkan.
+                            Di ERP Siumang, fitur Workflow dirancang sebagai otak sentral yang mengatur setiap dokumen penting, memastikan alur kerja berjalan secara otomatis, terstruktur, dan efisien. Fitur ini bukan hanya tentang otomatisasi, melainkan juga tentang standarisasi proses bisnis.
+                        </p>
+                        <p>
+                            Dengan mengaktifkan Workflow, setiap dokumen (seperti Permintaan Pembelian, Permintaan Cuti, atau Laporan Biaya) akan mengikuti jalur yang telah ditentukan, melewati serangkaian "pos" atau tahapan, dan hanya dapat diproses oleh peran pengguna yang berwenang di setiap tahap. Ini memastikan semua proses bisnis dilakukan dengan konsisten dan mengurangi risiko kesalahan manual.
                         </p>
                     </section>
-
-                    <section class="docs-section" id="section-2">
-                        <h2 class="section-heading">2. Kegunaan dan Keuntungan Menggunakan Workflow</h2>
+					
+					<section class="docs-section" id="section-2">
+                        <h2 class="section-heading">2. Konsep-Konsep Dasar Workflow</h2>
                         <p>
-                            Mengimplementasikan Workflow di ERP Siumang akan memberikan banyak manfaat, di antaranya:
+                            Sebelum kita mulai membuat workflow, ada tiga konsep dasar yang perlu Anda pahami. Memahami konsep-konsep ini akan menjadi kunci dalam merancang workflow yang efektif dan sesuai dengan kebutuhan bisnis Anda.
+                        </p>
+                        <h3 class="mt-4">2.1. State (Status)</h3>
+                        <p>
+                            **State** adalah tahapan atau status yang bisa dilalui oleh sebuah dokumen. Anggaplah ini sebagai "pos-pos pemeriksaan" dalam perjalanan dokumen. Sebuah dokumen akan selalu berada di salah satu status yang telah Anda definisikan.
+                        </p>
+                        <p><strong>Detail Teknis:</strong> Ketika membuat `Workflow States` di ERP Siumang, Anda akan mengisi kolom-kolom berikut:</p>
+                        <ul>
+                            <li>
+                                <strong>State:</strong> Kolom ini diisi dengan nama unik untuk setiap status. Nama ini akan menjadi label yang jelas untuk mengidentifikasi posisi dokumen saat ini. Contoh: `Draft`, `Submitted`, `Approved`, `Rejected`. Pastikan nama yang Anda berikan deskriptif.
+                            </li>
+                            <li>
+                                <strong>Doc Status:</strong> Kolom ini menentukan status internal dokumen di ERP Siumang. Opsi yang tersedia adalah:
+                                <ul>
+                                    <li>`0` (Draft): Digunakan untuk dokumen yang masih dalam tahap awal atau belum diserahkan. Dokumen di status ini bisa diubah.</li>
+                                    <li>`1` (Submitted): Digunakan untuk dokumen yang telah diserahkan (submit) dan tidak bisa lagi diubah. Ini biasanya status untuk dokumen yang sedang menunggu persetujuan.</li>
+                                    <li>`2` (Cancelled): Digunakan untuk dokumen yang telah dibatalkan.</li>
+                                </ul>
+                                Menentukan `Doc Status` yang tepat sangat penting karena ini mempengaruhi hak akses dan kemampuan untuk mengedit dokumen.
+                            </li>
+                            <li>
+                                <strong>Only Allow Edit For:</strong> Di sini Anda menentukan peran (`Role`) pengguna yang masih diperbolehkan untuk mengedit dokumen saat berada di status ini. Jika kolom ini dibiarkan kosong (atau ditandai dengan `-`), artinya tidak ada peran yang bisa mengedit dokumen, yang seringkali menjadi kondisi penting untuk dokumen yang sudah disubmit.
+                            </li>
+                        </ul>
+                        <h3 class="mt-4">2.2. Transition (Transisi)</h3>
+                        <p>
+                            **Transition** adalah aksi atau tindakan yang membuat dokumen berpindah dari satu status ke status lain. Transisi ini akan muncul sebagai tombol di antarmuka dokumen, dan hanya peran pengguna yang berhak yang bisa melihatnya.
+                        </p>
+                        <p><strong>Detail Teknis:</strong> Saat membuat `Transitions`, Anda akan mengisi kolom-kolom berikut:</p>
+                        <ul>
+                            <li>
+                                <strong>State:</strong> Kolom ini menentukan status dokumen saat ini. Transisi hanya akan aktif jika dokumen berada di status ini.
+                            </li>
+                            <li>
+                                <strong>Action:</strong> Ini adalah nama tombol yang akan tampil di layar pengguna. Contoh: `Submit`, `Approve`, `Reject`, `Cancel`. Nama ini harus jelas dan mencerminkan tindakan yang akan dilakukan.
+                            </li>
+                            <li>
+                                <strong>Next State:</strong> Kolom ini menentukan status tujuan setelah `Action` dilakukan. Misalnya, jika `State` saat ini adalah `Submitted` dan `Action` adalah `Approve`, maka `Next State` bisa jadi `Approved by Manager`.
+                            </li>
+                            <li>
+                                <strong>Allowed:</strong> Di sini Anda menentukan satu atau lebih `Role` (peran) yang memiliki hak untuk melihat dan mengklik tombol `Action` ini. Hanya peran yang terdaftar di sini yang bisa melakukan transisi.
+                            </li>
+                            <li>
+                                <strong>Condition:</strong> Kolom ini bersifat **opsional**. Jika Anda mengosongkan kolom ini (ditandai dengan `-`), transisi akan selalu tersedia untuk peran yang diizinkan (`Allowed`). Namun, jika Anda mengisinya dengan ekspresi Python, tombol `Action` hanya akan muncul jika kondisi tersebut terpenuhi.
+                            </li>
+                        </ul>
+                        <h4 class="mt-3">Memahami Kolom Kondisi (`Condition`)</h4>
+                        <p>
+                            Kolom kondisi adalah fitur yang sangat kuat untuk membuat alur kerja dinamis. Anda bisa menggunakan ekspresi Python sederhana hingga yang rumit untuk membandingkan nilai-nilai pada dokumen. Berikut adalah beberapa contoh formula yang bisa Anda gunakan:
                         </p>
                         <ul>
-                            <li><strong>Proses Jadi Lebih Cepat & Efisien:</strong> Dokumen tidak lagi menunggu di meja, melainkan langsung diteruskan ke orang yang berwenang. Semua orang yang terlibat akan mendapatkan notifikasi, sehingga tindakan bisa segera diambil.</li>
-                            <li><strong>Lebih Teratur & Konsisten:</strong> Semua dokumen akan mengikuti alur yang sama. Ini menghilangkan potensi kesalahan dan memastikan standarisasi dalam setiap proses bisnis.</li>
-                            <li><strong>Lebih Transparan & Akuntabel:</strong> Setiap tindakan, baik itu persetujuan maupun penolakan, akan tercatat secara otomatis. Anda bisa melihat riwayat lengkap dokumen, jadi jelas siapa yang bertanggung jawab atas setiap keputusan.</li>
+                            <li>
+                                <strong>Contoh Sederhana:</strong>
+                                <ul>
+                                    <li>
+                                        `doc.grand_total > 5000000`: Transisi hanya akan muncul jika total nominal dokumen lebih dari 5 juta.
+                                    </li>
+                                    <li>
+                                        `doc.is_paid == 1`: Transisi hanya bisa dilakukan jika dokumen sudah lunas.
+                                    </li>
+                                    <li>
+                                        `doc.employee == frappe.session.user`: Transisi hanya bisa dilakukan oleh karyawan yang namanya terdaftar di dokumen.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>Contoh Rumit (Menggunakan Operator Logika):</strong>
+                                <ul>
+                                    <li>
+                                        `doc.grand_total > 10000000 and doc.project_status == 'On Hold'`: Transisi hanya muncul jika total nominal di atas 10 juta DAN status proyek adalah 'On Hold'.
+                                    </li>
+                                    <li>
+                                        `doc.grand_total > 5000000 or doc.is_urgent == 1`: Transisi akan muncul jika total nominal di atas 5 juta ATAU jika dokumen ditandai sebagai mendesak.
+                                    </li>
+                                    <li>
+                                        `frappe.db.get_value("Employee", {"user_id": frappe.session.user}, "department") == "IT"`: Transisi hanya bisa dilakukan oleh pengguna yang departemennya adalah IT.
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
+                        
+                        <h3 class="mt-4">2.3. Role (Peran Pengguna)</h3>
+                        <p>
+                            **Role** adalah peran atau jabatan yang diberikan kepada pengguna. Peran ini adalah fondasi dari sistem otorisasi di ERP Siumang.
+                        </p>
+                        <p>
+                            Dalam konteks workflow, peran ini digunakan di dua tempat utama:
+                        </p>
+                        <ul>
+                            <li><strong>Di Kolom `Only Allow Edit For` (States):</strong> Kolom ini menentukan peran mana yang dapat mengubah dokumen saat berada di status tertentu. **Jika kolom ini dikosongkan, tidak ada yang dapat mengedit dokumen**. Ini sangat penting untuk menjaga integritas dokumen yang sudah disubmit atau diapprove.</li>
+                            <li><strong>Di Kolom `Allowed` (Transitions):</strong> Kolom ini menentukan peran mana yang memiliki hak untuk melihat dan mengaktifkan transisi. **Jika kolom ini dikosongkan, tidak ada yang dapat melakukan transisi tersebut**.</li>
+                        </ul>
+                        <p>
+                            Dengan memahami kedua kolom ini, Anda bisa mengontrol alur kerja secara ketat, memastikan hanya peran yang benar yang memiliki akses untuk mengedit atau memproses dokumen di setiap tahapannya.
+                        </p>
                     </section>
 
                     <section class="docs-section" id="section-3">
-                        <h2 class="section-heading">3. Contoh-contoh Penerapan Workflow</h2>
+                        <h2 class="section-heading">3. Panduan Umum: Langkah-Langkah Membuat Workflow</h2>
                         <p>
-                            Berikut adalah beberapa contoh praktis penerapan Workflow yang bisa Anda implementasikan:
+                            Berikut adalah panduan umum dan teknis untuk membuat workflow, dengan referensi langsung ke formulir di ERP Siumang.
                         </p>
-                        <div class="card-deck">
-                            <div class="card shadow-sm mb-4">
-                                <div class="card-body">
-                                    <h5 class="card-title text-primary">Workflow Sederhana: Persetujuan Pengeluaran</h5>
-                                    <p><strong>Alur:</strong> Karyawan (Draft) &rarr; Manajer (Approved).</p>
-                                    <p><strong>Penjelasan:</strong> Dokumen pengeluaran langsung disetujui oleh satu orang Manajer.</p>
-                                </div>
-                            </div>
-                            <div class="card shadow-sm mb-4">
-                                <div class="card-body">
-                                    <h5 class="card-title text-primary">Workflow dengan 2 Tingkat Persetujuan: Pesanan Pembelian</h5>
-                                    <p><strong>Alur:</strong> Karyawan (Draft) &rarr; Kepala Bagian (Level 1 Approval) &rarr; Manajer Umum (Level 2 Approval).</p>
-                                    <p><strong>Penjelasan:</strong> Memastikan persetujuan berlapis untuk nominal pembelian tertentu.</p>
-                                </div>
-                            </div>
-                            <div class="card shadow-sm mb-4">
-                                <div class="card-body">
-                                    <h5 class="card-title text-primary">Workflow dengan Kondisi: Pengajuan Biaya</h5>
-                                    <p><strong>Alur:</strong> Karyawan &rarr; Persetujuan berdasarkan nominal. Jika nominal kecil, cukup ke satu orang. Jika nominal besar, ke beberapa orang.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    
-                    <section class="docs-section" id="section-4">
-                        <h2 class="section-heading">4. User Manual: Panduan Lengkap Membuat Workflow Pembelian Bahan Baku</h2>
+                        <h3 class="mt-4">3.1. Langkah 1: Merancang Alur</h3>
                         <p>
-                            Ikuti panduan ini untuk membuat workflow pembelian bahan baku dengan skenario berikut:
+                            Sebelum membuka ERP, sangat penting untuk merancang alur kerja secara terstruktur. Pertimbangkan hal-hal berikut:
+                        </p>
+                        <ul>
+                            <li><strong>Dokumen apa</strong> yang akan diatur (misalnya: `Material Request`).</li>
+                            <li><strong>Status apa saja</strong> yang akan dilalui dokumen tersebut (`Draft`, `Submitted`, `Approved`, dst.).</li>
+                            <li><strong>Aksi apa saja</strong> yang akan memindahkan status (`Submit`, `Approve`, `Reject`).</li>
+                            <li><strong>Siapa saja</strong> yang berhak melakukan aksi tersebut (peran atau `Role`).</li>
+                        </ul>
+                        
+                        <h3 class="mt-4">3.2. Langkah 2: Membangun Workflow Secara Teknis</h3>
+                        <p>
+                            Setelah alur sudah jelas, saatnya membangunnya di ERP Siumang.
+                        </p>
+                        <ol>
+                            <li>Buka <strong>Awesome Bar</strong> dan ketik `Workflow List`, lalu klik `Add Workflow`.</li>
+                            <li>Isi detail utama:
+                                <ul>
+                                    <li><strong>Workflow Name:</strong> Berikan nama yang jelas untuk workflow Anda, misalnya `Workflow Pembelian Bahan Baku`.</li>
+                                    <li><strong>Document Type:</strong> Pilih jenis dokumen yang akan diatur, misalnya `Material Request`.</li>
+                                </ul>
+                            </li>
+                            <li>Scroll ke bagian **States**. Klik `Add Row` dan isi setiap kolom sesuai kebutuhan Anda.</li>
+                        </ol>
+
+                        <h3 class="mt-4">3.3. Langkah 3: Menentukan Aturan Perpindahan (Transitions)</h3>
+                        <p>
+                            Bagian ini adalah "otak" workflow Anda. Di sini kita membuat aturan untuk setiap perpindahan status.
+                        </p>
+                        <ol>
+                            <li>Scroll ke bagian **Transitions**. Klik `Add Row` untuk setiap aturan yang Anda buat.</li>
+                            <li>Isi setiap kolom, termasuk **Conditions** (kondisi) jika diperlukan.</li>
+                        </ol>
+                    </section>
+
+                    <section class="docs-section" id="section-4">
+                        <h2 class="section-heading">4. Studi Kasus Approval: Pembelian Bahan Baku</h2>
+                        <h3 class="mt-4">4.1. Skenario Alur Kerja</h3>
+                        <p>
+                            Kita akan membuat workflow persetujuan untuk Permintaan Pembelian Bahan Baku dengan skenario sebagai berikut:
                         </p>
                         <div class="alert alert-info">
                             <ol>
                                 <li>Staf Gudang RM mengisi dan mengajukan <strong>Material Request</strong>.</li>
                                 <li>Dokumen disetujui oleh <strong>Manajer Gudang</strong>.</li>
-                                <li>Dokumen diteruskan ke <strong>Purchasing</strong>.</li>
-                                <li>Jika nominal pembelian &gt; Rp 5.000.000, dokumen butuh persetujuan dari <strong>Plant Manager</strong>.</li>
-                                <li>Dokumen disetujui oleh <strong>Manajer Purchasing</strong> sebelum diterbitkan <strong>Purchase Order</strong>.</li>
-                                <li>Jika dokumen ditolak di tahap manapun, statusnya berubah menjadi <strong>Rejected</strong> dengan alasan yang wajib diisi.</li>
+                                <li>Jika nominal pembelian > Rp 5.000.000, dokumen butuh persetujuan <strong>Plant Manager</strong>.</li>
+                                <li>Jika nominal <= Rp 5.000.000, langsung disetujui <strong>Manajer Purchasing</strong>.</li>
+                                <li>Dokumen berakhir di persetujuan <strong>Manajer Purchasing</strong> sebelum diubah menjadi <strong>Purchase Order</strong>.</li>
                             </ol>
                         </div>
-
-                        <h3 class="mt-4">4.1. Step 1: Membuat "Pos" Perjalanan Dokumen (Workflow States)</h3>
+                        <h3 class="mt-4">4.2. Implementasi Teknis (Menggunakan Tabel)</h3>
                         <p>
-                            Ini adalah tahapan-tahapan yang akan dilalui dokumen `Material Request`. Lakukan langkah ini untuk semua status yang dibutuhkan: `Draft`, `Submitted`, `Approved by Manager Gudang`, `Approved by Plant Manager`, `Approved by Purchasing`, dan `Rejected`.
+                            Berikut adalah detail `States` dan `Transitions` yang perlu Anda masukkan di ERP Siumang. Kolom yang kosong ditandai dengan `-`.
                         </p>
-
-                        <h3 class="mt-4">4.2. Step 2: Merancang "Otak" Alur Kerja (Workflow)</h3>
-                        <p>
-                            Setelah semua status siap, saatnya menghubungkannya menjadi sebuah alur.
-                        </p>
-                        <ol>
-                            <li>Di <strong>Awesome Bar</strong>, ketik <strong>`Workflow List`</strong> dan klik.</li>
-                            <li>Klik <strong>`Add Workflow`</strong>. Isi detail utamanya:
-                                <ul>
-                                    <li><strong>Workflow Name:</strong> `Workflow Pembelian Bahan Baku`</li>
-                                    <li><strong>Document Type:</strong> `Material Request`</li>
-                                    <li><strong>Is Active:</strong> Centang.</li>
-                                </ul>
-                            </li>
-                            <li>Gulir ke bawah ke bagian <strong>`States`</strong> dan masukkan semua status yang telah kita buat.</li>
-                        </ol>
+                        <h4 class="mt-3">Tabel States:</h4>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>State</th>
+                                    <th>Doc Status</th>
+                                    <th>Only Allow Edit For</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Draft</td>
+                                    <td>0</td>
+                                    <td>Staf Gudang</td>
+                                </tr>
+                                <tr>
+                                    <td>Submitted</td>
+                                    <td>1</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Approved by Manager Gudang</td>
+                                    <td>1</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Approved by Plant Manager</td>
+                                    <td>1</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Approved by Purchasing</td>
+                                    <td>1</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Rejected</td>
+                                    <td>2</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
                         
-                        <h3 class="mt-4">4.3. Step 3: Tentukan "Aturan Perpindahan" (Transition Rules)</h3>
-                        <p>
-                            Ini adalah bagian terpenting, di mana kita membuat aturan cerdas untuk dokumen. Gulir ke bagian <strong>`Transitions`</strong> dan klik <strong>`Add Row`</strong> untuk setiap aturan.
-                        </p>
+                        <h4 class="mt-3">Tabel Transitions:</h4>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>State</th>
+                                    <th>Action</th>
+                                    <th>Next State</th>
+                                    <th>Allowed</th>
+                                    <th>Condition</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Draft</td>
+                                    <td>Submit</td>
+                                    <td>Submitted</td>
+                                    <td>Staf Gudang</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Submitted</td>
+                                    <td>Approve</td>
+                                    <td>Approved by Manager Gudang</td>
+                                    <td>Manajer Gudang</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Submitted</td>
+                                    <td>Reject</td>
+                                    <td>Rejected</td>
+                                    <td>Manajer Gudang</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Approved by Manager Gudang</td>
+                                    <td>Approve</td>
+                                    <td>Approved by Plant Manager</td>
+                                    <td>Plant Manager</td>
+                                    <td>doc.grand_total &gt; 5000000</td>
+                                </tr>
+                                <tr>
+                                    <td>Approved by Manager Gudang</td>
+                                    <td>Approve</td>
+                                    <td>Approved by Purchasing</td>
+                                    <td>Manajer Purchasing</td>
+                                    <td>doc.grand_total &lt;= 5000000</td>
+                                </tr>
+                                <tr>
+                                    <td>Approved by Manager Gudang</td>
+                                    <td>Reject</td>
+                                    <td>Rejected</td>
+                                    <td>Plant Manager, Manajer Purchasing</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Approved by Plant Manager</td>
+                                    <td>Approve</td>
+                                    <td>Approved by Purchasing</td>
+                                    <td>Manajer Purchasing</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Approved by Plant Manager</td>
+                                    <td>Reject</td>
+                                    <td>Rejected</td>
+                                    <td>Manajer Purchasing</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Approved by Purchasing</td>
+                                    <td>Approve</td>
+                                    <td>Finalized</td>
+                                    <td>Manajer Purchasing</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </section>
 
                     <section class="docs-section" id="section-5">
-                        <h2 class="section-heading">5. User Manual: Panduan Lengkap Membuat Workflow Pengajuan Cuti Karyawan</h2>
+                        <h2 class="section-heading">5. Studi Kasus Workflow Approval: Pengajuan Cuti Karyawan</h2>
+                        <h3 class="mt-4">5.1. Skenario Alur Kerja</h3>
                         <p>
-                            Ikuti panduan ini untuk membuat workflow pengajuan cuti dengan skenario berikut:
+                            Kita aplikasikan logika yang sama untuk membuat workflow pengajuan cuti dengan skenario berikut:
                         </p>
                         <div class="alert alert-info">
                             <ol>
                                 <li>Karyawan mengisi dan mengajukan <strong>Form Pengajuan Cuti</strong>.</li>
                                 <li>Dokumen di-review oleh <strong>Staf HRD</strong>.</li>
-                                <li>Dokumen disetujui oleh <strong>Manager Karyawan</strong>.</li>
-                                <li>Dokumen disetujui oleh <strong>Manager HRD</strong>.</li>
-                                <li>Karyawan mendapatkan <strong>persetujuan</strong> atau <strong>penolakan</strong> dari proses tersebut.</li>
+                                <li>Disetujui oleh <strong>Manager Karyawan</strong>.</li>
+                                <li>Disetujui lagi oleh <strong>Manager HRD</strong>.</li>
+                                <li>Karyawan mendapatkan notifikasi <strong>persetujuan</strong> atau <strong>penolakan</strong>.</li>
                             </ol>
                         </div>
-
-                        <h3 class="mt-4">5.1. Step 1: Membuat "Pos" Perjalanan Dokumen (Workflow States)</h3>
+                        <h3 class="mt-4">5.2. Implementasi Teknis (Menggunakan Tabel)</h3>
                         <p>
-                            Ini adalah tahapan-tahapan yang akan dilalui dokumen `Leave Application`. Lakukan langkah ini untuk semua status yang dibutuhkan: `Draft`, `HRD Review`, `Approved by Manager`, `Approved by HRD`, `Approved`, dan `Rejected`.
+                            Berikut adalah detail `States` dan `Transitions` yang perlu Anda masukkan di ERP Siumang. Kolom yang kosong ditandai dengan `-`.
                         </p>
-
-                        <h3 class="mt-4">5.2. Step 2: Merancang "Otak" Alur Kerja (Workflow)</h3>
+                        <h4 class="mt-3">Tabel States:</h4>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>State</th>
+                                    <th>Doc Status</th>
+                                    <th>Only Allow Edit For</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Draft</td>
+                                    <td>0</td>
+                                    <td>Karyawan</td>
+                                </tr>
+                                <tr>
+                                    <td>HRD Review</td>
+                                    <td>1</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Approved by Manager</td>
+                                    <td>1</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Approved by HRD</td>
+                                    <td>1</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Approved</td>
+                                    <td>1</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Rejected</td>
+                                    <td>2</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h4 class="mt-3">Tabel Transitions:</h4>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>State</th>
+                                    <th>Action</th>
+                                    <th>Next State</th>
+                                    <th>Allowed</th>
+                                    <th>Condition</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Draft</td>
+                                    <td>Submit</td>
+                                    <td>HRD Review</td>
+                                    <td>Karyawan</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>HRD Review</td>
+                                    <td>Approve</td>
+                                    <td>Approved by Manager</td>
+                                    <td>Staf HRD</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>HRD Review</td>
+                                    <td>Reject</td>
+                                    <td>Rejected</td>
+                                    <td>Staf HRD</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Approved by Manager</td>
+                                    <td>Approve</td>
+                                    <td>Approved by HRD</td>
+                                    <td>Manager Karyawan</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Approved by Manager</td>
+                                    <td>Reject</td>
+                                    <td>Rejected</td>
+                                    <td>Manager Karyawan</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Approved by HRD</td>
+                                    <td>Approve</td>
+                                    <td>Approved</td>
+                                    <td>Manager HRD</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Approved by HRD</td>
+                                    <td>Reject</td>
+                                    <td>Rejected</td>
+                                    <td>Manager HRD</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    
+                    <section class="docs-section" id="section-6">
+                        <h2 class="section-heading">6. Studi Kasus Workflow Non-Approval</h2>
                         <p>
-                            Setelah semua status siap, saatnya menghubungkannya menjadi sebuah alur.
+                            Tidak semua workflow melibatkan persetujuan. Ada juga workflow yang dirancang untuk mengelola proses sederhana, seperti notifikasi atau pergerakan tugas.
                         </p>
-                        <ol>
-                            <li>Di <strong>Awesome Bar</strong>, ketik <strong>`Workflow List`</strong> dan klik.</li>
-                            <li>Klik <strong>`Add Workflow`</strong>. Isi detail utamanya:
-                                <ul>
-                                    <li><strong>Workflow Name:</strong> `Workflow Pengajuan Cuti`</li>
-                                    <li><strong>Document Type:</strong> `Leave Application`</li>
-                                    <li><strong>Is Active:</strong> Centang.</li>
-                                </ul>
-                            </li>
-                            <li>Gulir ke bawah ke bagian <strong>`States`</strong> dan masukkan semua status yang telah kita buat.</li>
-                        </ol>
-
-                        <h3 class="mt-4">5.3. Step 3: Tentukan "Aturan Perpindahan" (Transition Rules)</h3>
+                        <h3 class="mt-4">6.1. Studi Kasus 1: Diseminasi Informasi</h3>
                         <p>
-                            Ini adalah bagian terpenting, di mana kita membuat aturan cerdas untuk dokumen. Gulir ke bagian <strong>`Transitions`</strong> dan klik <strong>`Add Row`</strong> untuk setiap aturan.
+                            Skenario: Anda ingin memastikan memo kebijakan baru didistribusikan ke semua karyawan di divisi tertentu dan mereka mengonfirmasi telah membacanya.
+                        </p>
+                        <h4 class="mt-3">Tabel States:</h4>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>State</th>
+                                    <th>Doc Status</th>
+                                    <th>Only Allow Edit For</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Draft</td>
+                                    <td>0</td>
+                                    <td>Admin</td>
+                                </tr>
+                                <tr>
+                                    <td>Published</td>
+                                    <td>1</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Acknowledged</td>
+                                    <td>1</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h4 class="mt-3">Tabel Transitions:</h4>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>State</th>
+                                    <th>Action</th>
+                                    <th>Next State</th>
+                                    <th>Allowed</th>
+                                    <th>Condition</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Draft</td>
+                                    <td>Publish</td>
+                                    <td>Published</td>
+                                    <td>Admin</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Published</td>
+                                    <td>Acknowledge</td>
+                                    <td>Acknowledged</td>
+                                    <td>Employee</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3 class="mt-4">6.2. Studi Kasus 2: Validasi Data</h3>
+                        <p>
+                            Skenario: Setiap data pelanggan baru harus diverifikasi kelengkapannya oleh tim QA sebelum bisa digunakan.
+                        </p>
+                        <h4 class="mt-3">Tabel States:</h4>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>State</th>
+                                    <th>Doc Status</th>
+                                    <th>Only Allow Edit For</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Draft</td>
+                                    <td>0</td>
+                                    <td>Sales</td>
+                                </tr>
+                                <tr>
+                                    <td>Pending Validation</td>
+                                    <td>1</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Validated</td>
+                                    <td>1</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Rejected</td>
+                                    <td>2</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h4 class="mt-3">Tabel Transitions:</h4>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>State</th>
+                                    <th>Action</th>
+                                    <th>Next State</th>
+                                    <th>Allowed</th>
+                                    <th>Condition</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Draft</td>
+                                    <td>Submit</td>
+                                    <td>Pending Validation</td>
+                                    <td>Sales</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Pending Validation</td>
+                                    <td>Validate</td>
+                                    <td>Validated</td>
+                                    <td>QA Team</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Pending Validation</td>
+                                    <td>Reject</td>
+                                    <td>Rejected</td>
+                                    <td>QA Team</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3 class="mt-4">6.3. Studi Kasus 3: Manajemen Tugas Proyek</h3>
+                        <p>
+                            Skenario: Mengatur tugas-tugas sederhana dalam sebuah proyek.
+                        </p>
+                        <h4 class="mt-3">Tabel States:</h4>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>State</th>
+                                    <th>Doc Status</th>
+                                    <th>Only Allow Edit For</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>To-Do</td>
+                                    <td>0</td>
+                                    <td>Project Member</td>
+                                </tr>
+                                <tr>
+                                    <td>In Progress</td>
+                                    <td>1</td>
+                                    <td>Project Member</td>
+                                </tr>
+                                <tr>
+                                    <td>Completed</td>
+                                    <td>1</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h4 class="mt-3">Tabel Transitions:</h4>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>State</th>
+                                    <th>Action</th>
+                                    <th>Next State</th>
+                                    <th>Allowed</th>
+                                    <th>Condition</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>To-Do</td>
+                                    <td>Start</td>
+                                    <td>In Progress</td>
+                                    <td>Project Member</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>In Progress</td>
+                                    <td>Complete</td>
+                                    <td>Completed</td>
+                                    <td>Project Member</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    
+                    <section class="docs-section" id="section-7">
+                        <h2 class="section-heading">7. Kesimpulan</h2>
+                        <p>
+                            Fitur Workflow di ERP Siumang adalah alat yang sangat kuat dan fleksibel untuk mengotomatisasi berbagai proses bisnis. Dengan mendefinisikan <strong>States</strong>, <strong>Transitions</strong>, dan <strong>Roles</strong> secara cermat, Anda dapat memastikan setiap alur kerja berjalan dengan efisien, konsisten, dan transparan.
+                        </p>
+                        <p>
+                            Mulai dari proses persetujuan yang kompleks hingga alur kerja non-approval sederhana, Workflow membantu mengurangi kesalahan manual, menghemat waktu, dan meningkatkan akuntabilitas di seluruh tim.
+                        </p>
+                        <p>
+                            Sekarang Anda sudah memiliki panduan lengkap untuk mulai membangun workflow pertama Anda. Jangan ragu untuk berkreasi dan menyesuaikannya dengan kebutuhan unik bisnis Anda. Selamat mencoba!
                         </p>
                     </section>
 					
