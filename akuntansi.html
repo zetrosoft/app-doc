@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id"> 
+<head>
+    <title>Dokumentasi ERP Siumang - Modul Keuangan</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="description" content="Panduan Penggunaan Lengkap untuk Modul Keuangan ERP Siumang">
+    <meta name="author" content="ERP Siumang Team">    
+    <link rel="shortcut icon" href="favicon.ico"> 
+    
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome JS-->
+    <script src="assets/fontawesome/js/all.min.js"></script>
+    
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.2/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="assets/plugins/simplelightbox/simple-lightbox.min.css">
+
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
+
+</head> 
+
+<body class="docs-page">    
+    <header class="header fixed-top">	    
+        <div class="branding docs-branding">
+            <div class="container-fluid position-relative py-2">
+                <div class="docs-logo-wrapper">
+					<button id="docs-sidebar-toggler" class="docs-sidebar-toggler docs-sidebar-visible me-2 d-xl-none" type="button">
+	                    <span></span>
+	                    <span></span>
+	                    <span></span>
+	                </button>
+	                <div class="site-logo">
+                        <a class="navbar-brand" href="index.html">
+                            <img class="logo-icon me-2" src="assets/images/coderdocs-logo.svg" alt="logo">
+                            <span class="logo-text">ERP<span class="text-alt">Siumang</span></span>
+                        </a>
+                    </div>    
+                </div><!--//docs-logo-wrapper-->
+	            <div class="docs-top-utilities d-flex justify-content-end align-items-center">
+	                <div class="top-search-box d-none d-lg-flex">
+		                <form class="search-form">
+				            <input type="text" placeholder="Cari dokumentasi..." name="search" class="form-control search-input">
+				            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+				        </form>
+	                </div>
+	            </div><!--//docs-top-utilities-->
+            </div><!--//container-->
+        </div><!--//branding-->
+    </header><!--//header-->
+    
+    
+    <div class="docs-wrapper">
+	    <div id="docs-sidebar" class="docs-sidebar">
+		    <div class="top-search-box d-lg-none p-3">
+                <form class="search-form">
+		            <input type="text" placeholder="Cari dokumentasi..." name="search" class="form-control search-input">
+		            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+		        </form>
+            </div>
+		    <nav id="docs-nav" class="docs-nav navbar">
+			    <ul class="section-items list-unstyled nav flex-column pb-3">
+				    <li class="nav-item"><a class="nav-link" href="index.html"><span class="theme-icon-holder me-2"><i class="fas fa-home"></i></span>Home</a></li>
+				    <li class="nav-item section-title"><a class="nav-link scrollto active" href="#section-general-accounting"><span class="theme-icon-holder me-2"><i class="fas fa-chart-line"></i></span>Modul Keuangan</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link scrollto collapsed" data-bs-toggle="collapse" href="#submenu-general-accounting" aria-expanded="false" aria-controls="submenu-general-accounting">
+                            Akuntansi Umum
+                        </a>
+                        <ul id="submenu-general-accounting" class="nav flex-column collapse">
+                            <li class="nav-item"><a class="nav-link scrollto" href="#section-general-accounting">Pengantar Akuntansi Umum</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#company-parameters">Pengaturan Perusahaan</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#accounts-settings">Pengaturan Akun</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#coa">Bagan Akun (COA)</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#coa-importer">Import COA</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#fiscal-year">Tahun Fiskal</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#accounting-dimension">Dimensi Akuntansi</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#finance-book">Buku Keuangan</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#accounting-period">Periode Akuntansi</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#payment-term">Syarat Pembayaran</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#banking-masters">Master Perbankan</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#cost-center-masters">Master Pusat Biaya</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#multi-currency">Multi Mata Uang</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#subscription-share-management">Manajemen Langganan & Saham</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scrollto collapsed" data-bs-toggle="collapse" href="#submenu-tax-management" aria-expanded="false" aria-controls="submenu-tax-management">
+                            Manajemen Pajak
+                        </a>
+                        <ul id="submenu-tax-management" class="nav flex-column collapse">
+                            <li class="nav-item"><a class="nav-link scrollto" href="#section-tax-management">Pengantar Manajemen Pajak</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#tax-masters">Master Pajak</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#tax-rules">Aturan Pajak</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scrollto collapsed" data-bs-toggle="collapse" href="#submenu-payables" aria-expanded="false" aria-controls="submenu-payables">
+                            Utang Usaha (Payables)
+                        </a>
+                        <ul id="submenu-payables" class="nav flex-column collapse">
+                            <li class="nav-item"><a class="nav-link scrollto" href="#section-payables">Pengantar Utang Usaha</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#vendor-masters">Master Pemasok</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#purchase-invoice">Faktur Pembelian</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#payments">Pembayaran</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#vendor-aging-report">Laporan Umur Utang Pemasok</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link scrollto collapsed" data-bs-toggle="collapse" href="#submenu-receivables" aria-expanded="false" aria-controls="submenu-receivables">
+                            Piutang Usaha (Receivables)
+                        </a>
+                        <ul id="submenu-receivables" class="nav flex-column collapse">
+                            <li class="nav-item"><a class="nav-link scrollto" href="#section-receivables">Pengantar Piutang Usaha</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#customer-masters">Master Pelanggan</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#sales-invoice">Faktur Penjualan</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#receipts">Penerimaan</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#customer-aging-report">Laporan Umur Piutang Pelanggan</a></li>
+                        </ul>
+                    </li>
+			    </ul>
+		    </nav><!--//docs-nav-->
+	    </div><!--//docs-sidebar-->
+	    <div class="docs-content">
+		    <div class="container">
+                <!-- Konten utama akan dimuat di sini -->
+                <div id="docs-content">
+                    <div class="intro text-justifyß py-5">
+                        <h2 class="section-title">Panduan Modul Akuntansi ERP Siumang</h2>
+                        <p class="mb-4">Selamat datang di modul Akuntansi ERP Siumang! Dokumen ini dirancang untuk menjadi panduan lengkap Anda dalam mengelola seluruh aspek keuangan perusahaan. Konten di bawah ini dimuat secara otomatis untuk memudahkan Anda membaca dokumentasi secara utuh.</p>
+                    </div>
+                </div>
+		    </div><!--//container-->
+	    </div><!--//docs-content-->
+    </div><!--//docs-wrapper-->
+   
+       
+    <!-- Javascript -->          
+    <script src="assets/plugins/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
+    
+    
+    <!-- Page Specific JS -->
+    <script src="assets/plugins/smoothscroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
+    <script src="assets/js/highlight-custom.js"></script> 
+    <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>      
+    <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script> 
+    <script src="assets/js/docs.js"></script> 
+    
+    <!-- Custom scripts and image handling -->
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const contentContainer = document.getElementById('docs-content');
+            
+            // Daftar semua file yang akan dimuat secara otomatis
+            const filesToLoad = [
+                // Akuntansi Umum
+                'akuntansi/general-accounting/intro.html',
+                'akuntansi/general-accounting/accounting-masters/company.html',
+                'akuntansi/general-accounting/accounting-masters/accounts-settings.html',
+                'akuntansi/general-accounting/accounting-masters/coa.html',
+                'akuntansi/general-accounting/accounting-masters/coa-importer.html',
+                'akuntansi/general-accounting/accounting-masters/fiscal-year.html',
+                'akuntansi/general-accounting/accounting-masters/accounting-dimension.html',
+                'akuntansi/general-accounting/accounting-masters/finance-book.html',
+                'akuntansi/general-accounting/accounting-masters/accounting-period.html',
+                'akuntansi/general-accounting/accounting-masters/payment-term.html',
+                'akuntansi/general-accounting/banking-masters/index.html',
+                'akuntansi/general-accounting/cost-center-masters/index.html',
+                'akuntansi/general-accounting/multi-currency/index.html',
+                'akuntansi/general-accounting/subscription-share-management/index.html',
+
+                // Manajemen Pajak
+                'akuntansi/tax-management/intro.html',
+                'akuntansi/tax-management/tax-masters.html',
+                'akuntansi/tax-management/tax-rules.html',
+
+                // Utang Usaha (Payables)
+                'akuntansi/payables/intro.html',
+                'akuntansi/payables/vendor-masters.html',
+                'akuntansi/payables/purchase-invoice.html',
+                'akuntansi/payables/payments.html',
+                'akuntansi/payables/vendor-aging-report.html',
+                
+                // Piutang Usaha (Receivables)
+                'akuntansi/receivables/intro.html',
+                'akuntansi/receivables/customer-masters.html',
+                'akuntansi/receivables/sales-invoice.html',
+                'akuntansi/receivables/receipts.html',
+                'akuntansi/receivables/customer-aging-report.html'
+            ];
+            
+            // Function to load each file and append its content
+            const loadFile = async (filePath) => {
+                try {
+                    const response = await fetch(filePath);
+                    if (response.ok) {
+                        const content = await response.text();
+                        contentContainer.insertAdjacentHTML('beforeend', content);
+                    } else {
+                        console.error(`Gagal memuat file: ${filePath}`);
+                    }
+                } catch (error) {
+                    console.error(`Terjadi kesalahan saat memuat file ${filePath}:`, error);
+                }
+            };
+
+            // Loop melalui semua file dan muat secara berurutan
+            for (const file of filesToLoad) {
+                await loadFile(file);
+            }
+
+            // Setelah semua konten dimuat, aktifkan fungsionalitas tambahan (seperti smoothscroll dan image zoom)
+            // Function to add click event listener to images
+            function addImageClickListener() {
+                const images = document.querySelectorAll('img');
+                images.forEach(img => {
+                    img.style.cursor = 'zoom-in';
+                    img.addEventListener('click', () => {
+                        const modal = document.createElement('div');
+                        modal.style.position = 'fixed';
+                        modal.style.top = '0';
+                        modal.style.left = '0';
+                        modal.style.width = '100%';
+                        modal.style.height = '100%';
+                        modal.style.backgroundColor = 'rgba(0,0,0,0.8)';
+                        modal.style.display = 'flex';
+                        modal.style.justifyContent = 'center';
+                        modal.style.alignItems = 'center';
+                        modal.style.zIndex = '1000';
+                        
+                        const modalImg = document.createElement('img');
+                        modalImg.src = img.src;
+                        modalImg.style.maxWidth = '90%';
+                        modalImg.style.maxHeight = '90%';
+                        
+                        modal.appendChild(modalImg);
+                        document.body.appendChild(modal);
+
+                        modal.addEventListener('click', () => {
+                            document.body.removeChild(modal);
+                        });
+                    });
+                });
+            }
+
+            // Call the image listener function after all content is loaded
+            addImageClickListener();
+            
+            // Re-initialize plugins like Gumshoe for smooth scrolling after content is injected
+            if(window.gumshoe) {
+                gumshoe.destroy();
+            }
+            window.gumshoe = new Gumshoe('docs-nav a');
+        });
+    </script>
+</body>
+</html>

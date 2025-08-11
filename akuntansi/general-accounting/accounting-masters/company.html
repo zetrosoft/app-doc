@@ -1,0 +1,337 @@
+<section class="docs-section" id="company-parameters">
+    <header class="docs-header">
+        <h3 class="docs-heading">Pengaturan Perusahaan (Company Settings)</h3>
+        <section class="docs-intro">
+            <p>Bagian Pengaturan Perusahaan adalah tempat Anda mendefinisikan identitas dan parameter operasional utama perusahaan Anda dalam sistem ERP Siumang. Konfigurasi di sini sangat penting karena memengaruhi bagaimana sistem merepresentasikan entitas bisnis Anda dalam semua transaksi, laporan, dan dokumen resmi.</p>
+            <p>Memastikan semua detail perusahaan diisi dengan akurat akan menjamin integritas data dan kepatuhan terhadap regulasi yang berlaku.</p>
+            <div class="screenshot-container text-center my-4">
+                <img class="img-fluid rounded shadow" src="assets/images/company_settings.png" alt="">
+                <small class="text-muted d-block mt-2">Gambar: Tampilan formulir Pengaturan Perusahaan Baru.</small>
+            </div>
+        </section><!--//docs-intro-->
+    </section>
+    <!-- company tab Detail -->
+    <section class="docs-section" id="company-details">
+        <h4 class="mt-4"><i class="fas fa-info-circle me-4"></i> Detail Perusahaan</h4>
+        <p>Bagian ini mencakup informasi dasar dan wajib yang mendefinisikan perusahaan Anda.</p>
+        <ul class="list-unstyled">
+            <li><strong>Company <span class="text-danger">*</span>:</strong>
+                <p><strong>Fungsi:</strong> Ini adalah nama resmi perusahaan Anda yang akan muncul di semua dokumen, laporan, dan antarmuka sistem. Ini adalah field wajib.</p>
+                <p><strong>Cara Input:</strong> Masukkan nama lengkap perusahaan Anda (misal: "PT Siumang Teknologi Indonesia").</p>
+            </li>
+            <li><strong>Abbr <span class="text-danger">*</span>:</strong>
+                <p><strong>Fungsi:</strong> Singkatan dari nama perusahaan. Digunakan untuk identifikasi singkat dalam sistem, terutama di mana ruang terbatas. Ini juga field wajib.</p>
+                <p><strong>Cara Input:</strong> Masukkan singkatan yang relevan (misal: "STI" untuk PT Siumang Teknologi Indonesia).</p>
+            </li>
+            <li><strong>Default Currency <span class="text-danger">*</span>:</strong>
+                <p><strong>Fungsi:</strong> Mata uang utama yang akan digunakan oleh perusahaan ini untuk semua transaksi keuangan dan pelaporan akuntansi. Ini adalah field wajib.</p>
+                <p><strong>Cara Input:</strong> Pilih mata uang default dari daftar *dropdown* (misal: "IDR - Indonesian Rupiah" atau "USD - US Dollar").</p>
+            </li>
+            <li><strong>Country <span class="text-danger">*</span>:</strong>
+                <p><strong>Fungsi:</strong> Negara tempat perusahaan ini beroperasi. Pengaturan ini memengaruhi format alamat, pajak, dan regulasi lokal yang relevan dalam sistem. Ini adalah field wajib.</p>
+                <p><strong>Cara Input:</strong> Pilih negara dari daftar *dropdown* (misal: "Indonesia").</p>
+            </li>
+            <li><strong>Is Group:</strong>
+                <p><strong>Fungsi:</strong> Jika dicentang, ini menandakan bahwa entitas ini adalah perusahaan induk atau grup perusahaan, bukan entitas operasional tunggal. Ini relevan untuk struktur multi-perusahaan.</p>
+                <p><strong>Cara Input:</strong> Centang kotak ini jika perusahaan Anda adalah entitas grup.</p>
+            </li>
+            <li><strong>Default Holiday List:</strong>
+                <p><strong>Fungsi:</strong> Daftar hari libur default yang akan diterapkan pada perusahaan ini. Ini memengaruhi perhitungan jadwal kerja, tenggat waktu, dan perencanaan sumber daya.</p>
+                <p><strong>Cara Input:</strong> Pilih daftar hari libur yang relevan dari daftar *dropdown* yang telah dikonfigurasi sebelumnya.</p>
+            </li>
+            <li><strong>Use Company NITKU:</strong>
+                <p><strong>Fungsi:</strong> Jika dicentang, perusahaan ini akan diperlakukan tidak memiliki cabang untuk tujuan pelaporan faktur pajak (NITKU - Nomor Identitas Tempat Kegiatan Usaha). Ini sering relevan untuk kepatuhan pajak di yurisdiksi tertentu.</p>
+                <p><strong>Cara Input:</strong> Centang kotak ini jika sesuai dengan kebijakan pelaporan pajak perusahaan Anda.</p>
+            </li>
+        </ul>
+        <!-- </section>
+        <section class="docs-section" id="additional-parameters"> -->
+        <h4 class="mt-4"><i class="fas fa-cogs me-4"></i> Parameter Tambahan</h4>
+        <p>Bagian ini berisi field-field tambahan yang memberikan informasi lebih lanjut tentang perusahaan dan memengaruhi beberapa fungsionalitas sistem.</p>
+        <ul class="list-unstyled">
+            <li><strong>Default Letter Head:</strong>
+                <p><strong>Fungsi:</strong> Kepala surat default yang akan digunakan saat mencetak dokumen resmi perusahaan (misal: faktur, surat penawaran). Ini memastikan branding yang konsisten.</p>
+                <p><strong>Cara Input:</strong> Pilih template kepala surat yang telah dibuat di sistem.</p>
+            </li>
+            <li><strong>Tax ID:</strong>
+                <p><strong>Fungsi:</strong> Nomor Identifikasi Pajak perusahaan (misal: NPWP di Indonesia). Penting untuk tujuan pelaporan pajak dan kepatuhan.</p>
+                <p><strong>Cara Input:</strong> Masukkan nomor identifikasi pajak yang valid.</p>
+            </li>
+            <li><strong>Company's NITKU:</strong>
+                <p><strong>Fungsi:</strong> Nomor Identitas Tempat Kegiatan Usaha perusahaan. Ini adalah identifikasi unik untuk lokasi bisnis, seringkali terkait dengan regulasi pajak atau perizinan.</p>
+                <p><strong>Cara Input:</strong> Masukkan nomor NITKU perusahaan.</p>
+            </li>
+            <li><strong>Domain:</strong>
+                <p><strong>Fungsi:</strong> Domain bisnis utama tempat perusahaan beroperasi (misal: Manufaktur, Retail, Jasa, Pendidikan). Pengaturan ini dapat memengaruhi modul dan fitur yang terlihat dalam sistem.</p>
+                <p><strong>Cara Input:</strong> Pilih domain yang paling sesuai dengan jenis bisnis utama perusahaan Anda dari daftar *dropdown*.</p>
+            </li>
+            <li><strong>Date of Establishment:</strong>
+                <p><strong>Fungsi:</strong> Tanggal pendirian resmi perusahaan. Ini adalah informasi historis penting untuk catatan perusahaan.</p>
+                <p><strong>Cara Input:</strong> Pilih tanggal pendirian perusahaan menggunakan pemilih tanggal.</p>
+            </li>
+            <li><strong>Parent Company:</strong>
+                <p><strong>Fungsi:</strong> Jika perusahaan ini adalah anak perusahaan, field ini digunakan untuk menautkannya ke perusahaan induk. Ini membangun struktur hierarkis untuk pelaporan konsolidasi.</p>
+                <p><strong>Cara Input:</strong> Pilih perusahaan induk dari daftar *dropdown* jika berlaku.</p>
+            </li>
+        </ul>
+        <!-- </section>
+        <section class="docs-section" id="registration-details"> -->
+        <h4 class="mt-4"><i class="fas fa-registered me-4"></i> Detail Registrasi</h4>
+        <p>Bagian ini biasanya menyediakan ruang untuk detail registrasi tambahan yang mungkin diperlukan oleh regulasi lokal atau untuk keperluan internal.</p>
+        <ul class="list-unstyled">
+            <li><strong>Registration Details:</strong>
+                <p><strong>Fungsi:</strong> Field teks bebas untuk memasukkan informasi registrasi tambahan yang tidak tercakup oleh field spesifik lainnya (misal: Nomor Akta Pendirian, informasi perizinan khusus).</p>
+                <p><strong>Cara Input:</strong> Masukkan teks yang relevan di area teks yang disediakan.</p>
+            </li>
+        </ul>
+    </section>
+    <!-- tab account -->
+    <section class="docs-section">
+        <h3 class="mt-4">Tab Accounts (Pengaturan Akuntansi Perusahaan)</h3>
+        <section class="docs-intro">
+            <p>Tab <strong>Accounts</strong> dalam Pengaturan Perusahaan adalah bagian krusial di ERP Siumang yang memungkinkan Anda mengonfigurasi aspek-aspek fundamental akuntansi yang terkait langsung dengan entitas perusahaan Anda. Pengaturan di sini akan memengaruhi bagaimana transaksi keuangan diproses, dibulatkan, dan dilaporkan, serta bagaimana aset tetap dan pembayaran muka dikelola.</p>
+            <p>Memahami setiap bagian dari tab ini akan memastikan bahwa pencatatan keuangan perusahaan Anda akurat, konsisten, dan sesuai dengan standar akuntansi yang berlaku.</p>
+            <!-- <div class="screenshot-container text-center my-4">
+                <img class="img-fluid rounded shadow" src="assets/images/image_caafaa.png" alt="">
+                <small class="text-muted d-block mt-2">Gambar: Tampilan awal Tab Accounts.</small>
+            </div> -->
+        </section><!--//docs-intro-->
+        <!-- </section>
+        <section class="docs-section" id="chart-of-accounts"> -->
+        <h4 class="mt-4"><i class="fas fa-sitemap me-4"></i> Chart of Accounts (Bagan Akun)</h4>
+        <p>Bagian ini menentukan bagaimana Bagan Akun (Chart of Accounts) perusahaan Anda akan dibuat secara otomatis saat perusahaan baru ditambahkan ke sistem.</p>
+
+        <h5>Create Chart Of Accounts Based On:</h5>
+        <p><strong>Fungsi:</strong> Pilihan ini menentukan template atau struktur dasar yang akan digunakan untuk membuat Bagan Akun perusahaan Anda. Bagan Akun adalah daftar semua akun keuangan yang digunakan perusahaan untuk mengklasifikasikan transaksi (misal: Kas, Piutang Usaha, Pendapatan Penjualan, Biaya Gaji).</p>
+        <p><strong>Cara Input:</strong> Pilih dari daftar *dropdown* yang tersedia. Umumnya, Anda akan memilih template yang paling sesuai dengan standar akuntansi atau industri Anda (misal: "Standard", "India", "USA").</p>
+        <!-- <div class="screenshot-container text-center my-4">
+            <img class="img-fluid rounded shadow" src="assets/images/image_caafaa.png" alt="">
+            <small class="text-muted d-block mt-2">Gambar: Pengaturan "Create Chart Of Accounts Based On".</small>
+        </div> -->
+        <!-- </section>
+        <section class="docs-section" id="default-accounts"> -->
+        <h4 class="mt-4"><i class="fas fa-university me-4"></i> Default Accounts (Akun Default)</h4>
+        <p>Bagian ini memungkinkan Anda untuk menetapkan akun-akun akuntansi default yang akan digunakan secara otomatis oleh sistem untuk jenis transaksi tertentu, terutama yang berkaitan dengan pembulatan nilai.</p>
+
+        <h5>Round Off Account:</h5>
+        <p><strong>Fungsi:</strong> Akun ini digunakan untuk mencatat selisih pembulatan (<em>rounding off</em>) yang terjadi dalam transaksi. Misalnya, jika total faktur adalah Rp 100.000,50 dan sistem dibulatkan menjadi Rp 100.001,00, selisih Rp 0,50 akan dicatat ke akun ini.</p>
+        <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda (misal: "Biaya Pembulatan" atau "Pendapatan Pembulatan").</p>
+
+        <h5>Round Off for Opening:</h5>
+        <p><strong>Fungsi:</strong> Mirip dengan "Round Off Account", tetapi akun ini khusus digunakan untuk mencatat selisih pembulatan yang terjadi saat memasukkan saldo awal (<em>opening balances</em>) ke dalam sistem. Ini membantu menyeimbangkan entri saldo awal jika ada selisih kecil.</p>
+        <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda (misal: "Pembulatan Saldo Awal").</p>
+
+        <h5>Round Off Cost Center:</h5>
+        <p><strong>Fungsi:</strong> Pusat biaya (<em>Cost Center</em>) yang akan dikaitkan dengan entri pembulatan. Ini memungkinkan Anda melacak biaya pembulatan pada departemen atau proyek tertentu.</p>
+        <p><strong>Cara Input:</strong> Pilih pusat biaya yang relevan dari daftar yang tersedia.</p>
+        <!-- <div class="screenshot-container text-center my-4">
+            <img class="img-fluid rounded shadow" src="assets/images/image_caafaa.png" alt="">
+            <small class="text-muted d-block mt-2">Gambar: Pengaturan Akun Default.</small>
+        </div> -->
+        <!-- </section>
+        <section class="docs-section" id="deferred-accounting"> -->
+        <h4 class="mt-4"><i class="fas fa-clock me-4"></i> Deferred Accounting (Akuntansi Ditangguhkan)</h4>
+        <p>Bagian ini mengonfigurasi akun-akun yang digunakan untuk mencatat pendapatan atau biaya yang ditangguhkan (<em>deferred revenue/expense</em>). Akuntansi ditangguhkan digunakan untuk mengakui pendapatan atau biaya secara periodik selama masa manfaatnya, meskipun pembayaran sudah diterima atau dilakukan di muka.</p>
+
+        <h5>Write Off Account:</h5>
+        <p><strong>Fungsi:</strong> Akun ini digunakan untuk mencatat jumlah yang dihapus buku (<em>write-off</em>) dari pendapatan atau biaya ditangguhkan. Ini terjadi jika ada bagian dari pendapatan/biaya ditangguhkan yang tidak dapat lagi diakui atau dibebankan.</p>
+        <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda (misal: "Kerugian Penghapusan Pendapatan Ditangguhkan").</p>
+
+        <h5>Unrealized Exchange Gain/Loss Account:</h5>
+        <p><strong>Fungsi:</strong> Akun ini digunakan untuk mencatat laba atau rugi selisih kurs yang belum direalisasi (<em>unrealized</em>) dari transaksi mata uang asing. Ini terjadi ketika ada fluktuasi nilai tukar antara tanggal transaksi dan tanggal pelaporan, tetapi transaksi belum diselesaikan (misal: faktur belum dibayar).</p>
+        <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda (misal: "Laba/Rugi Selisih Kurs Belum Direalisasi").</p>
+
+        <h5>Exchange Gain / Loss Account:</h5>
+        <p><strong>Fungsi:</strong> Akun ini digunakan untuk mencatat laba atau rugi selisih kurs yang sudah direalisasi (<em>realized</em>) dari transaksi mata uang asing. Ini terjadi ketika transaksi mata uang asing diselesaikan, dan ada perbedaan nilai tukar antara tanggal transaksi asli dan tanggal penyelesaian pembayaran.</p>
+        <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda (misal: "Laba/Rugi Selisih Kurs Direalisasi").</p>
+        <div class="screenshot-container text-center my-4">
+            <img class="img-fluid rounded shadow" src="assets/images/company_tabAccount-01.png" alt="">
+            <small class="text-muted d-block mt-2">Gambar: Pengaturan Akuntansi Ditangguhkan.</small>
+        </div>
+        <!-- </section>
+        <section class="docs-section" id="round-off"> -->
+        <h4 class="mt-4"><i class="fas fa-money-bill-wave me-4"></i> Round Off (Pembulatan)</h4>
+        <p>Bagian ini berkaitan dengan pengaturan akun untuk laba atau rugi yang belum direalisasi, diskon pembayaran, dan template syarat pembayaran default.</p>
+        <div class="screenshot-container text-center my-4">
+            <img class="img-fluid rounded shadow" src="assets/images/company_tabAccount-02.png" alt="">
+            <small class="text-muted d-block mt-2">Gambar: Pengaturan Pembulatan.</small>
+        </div>
+
+        <h5>Unrealized Profit / Loss Account:</h5>
+        <p><strong>Fungsi:</strong> Akun ini digunakan untuk mencatat laba atau rugi yang belum direalisasi dari penilaian ulang aset atau kewajiban yang dimiliki perusahaan. Ini sering terjadi pada investasi atau instrumen keuangan yang nilainya berfluktuasi tetapi belum dijual.</p>
+        <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda (misal: "Laba/Rugi Belum Direalisasi").</p>
+
+        <h5>Default Payment Discount Account:</h5>
+        <p><strong>Fungsi:</strong> Akun ini digunakan untuk mencatat diskon yang diberikan atau diterima atas pembayaran lebih awal (misal: diskon 2/10 net 30). Ini adalah akun biaya jika Anda memberikan diskon, atau akun pendapatan jika Anda menerima diskon.</p>
+        <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda (misal: "Diskon Penjualan" atau "Diskon Pembelian").</p>
+
+        <h5>Default Payment Terms Template:</h5>
+        <p><strong>Fungsi:</strong> Template syarat pembayaran default yang akan secara otomatis diterapkan pada transaksi penjualan atau pembelian baru. Ini mencakup detail seperti jangka waktu pembayaran, tanggal jatuh tempo, dan diskon pembayaran awal.</p>
+        <p><strong>Cara Input:</strong> Pilih template syarat pembayaran yang telah Anda buat di sistem.</p>
+
+        <h5>Default Finance Book:</h5>
+        <p><strong>Fungsi:</strong> Buku keuangan default yang akan digunakan untuk mencatat transaksi akuntansi. Ini relevan jika Anda memiliki beberapa buku keuangan untuk tujuan pelaporan yang berbeda.</p>
+        <p><strong>Cara Input:</strong> Pilih buku keuangan default dari daftar yang tersedia.</p>
+        <!-- </section>
+        <section class="docs-section" id="advance-payments"> -->
+        <h4 class="mt-4"><i class="fas fa-money-check-alt me-4"></i> Advance Payments (Pembayaran Muka)</h4>
+        <p>Bagian ini mengonfigurasi bagaimana pembayaran muka (uang muka) akan dicatat dalam sistem, serta bagaimana rekonsiliasi pembayaran muka dilakukan.</p>
+        <div class="screenshot-container text-center my-4">
+            <img class="img-fluid rounded shadow" src="assets/images/company_tabAccount-03.png" alt="">
+            <small class="text-muted d-block mt-2">Gambar: Pengaturan Pembayaran Muka.</small>
+        </div>
+
+        <h5>Book Advance Payments in Separate Party Account:</h5>
+        <p><strong>Fungsi:</strong> Jika dicentang, pembayaran muka yang diterima dari pelanggan atau dibayarkan kepada pemasok akan dicatat dalam akun pihak (<em>Party Account</em>) yang terpisah, bukan langsung ke akun aset atau kewajiban utama. Ini memberikan visibilitas yang lebih jelas terhadap saldo pembayaran muka.</p>
+        <p><strong>Manfaat:</strong>
+            <ol>
+                <li>Pembayaran muka yang diterima akan dicatat di akun <strong>Kewajiban (Liability Account)</strong>, bukan di akun Aset. Ini karena uang muka yang diterima dari pelanggan adalah kewajiban hingga barang/jasa diserahkan.</li>
+                <li>Pembayaran muka yang dibayarkan akan dicatat di akun <strong>Aset (Asset Account)</strong>, bukan di akun Kewajiban. Ini karena uang muka yang dibayarkan kepada pemasok adalah aset hingga barang/jasa diterima.</li>
+            </ol>
+            Ini memastikan pencatatan akuntansi yang lebih akurat sesuai dengan standar akuntansi untuk pembayaran muka.</p>
+        <p><strong>Cara Input:</strong> Centang kotak ini untuk mengaktifkan fitur ini.</p>
+
+        <h5>Reconciliation Takes Effect On:</h5>
+        <p><strong>Fungsi:</strong> Pilihan ini menentukan bagaimana sistem akan merekonsiliasi pembayaran muka dengan faktur yang relevan. Ini penting untuk mengelola piutang dan hutang dengan benar.</p>
+        <p><strong>Cara Input:</strong> Pilih dari daftar *dropdown*:
+            <ul>
+                <li><strong>Oldest Of Invoice Or Advance:</strong> Sistem akan mencoba merekonsiliasi pembayaran muka dengan faktur tertua atau pembayaran muka tertua yang belum dialokasikan.</li>
+                <li>Pilihan lain mungkin tersedia tergantung pada versi sistem Anda, yang mungkin memprioritaskan faktur terbaru atau pembayaran muka terbaru.</li>
+            </ul>
+        </p>
+        <!-- </section>
+        <section class="docs-section" id="exchange-rate-revaluation-settings"> -->
+        <h4 class="mt-4"><i class="fas fa-exchange-alt me-4"></i> Exchange Rate Revaluation Settings (Pengaturan Revaluasi Nilai Tukar)</h4>
+        <p>Bagian ini mengonfigurasi bagaimana sistem akan secara otomatis melakukan revaluasi nilai tukar mata uang asing untuk akun-akun tertentu, seperti akun bank atau akun piutang/hutang dalam mata uang asing. Revaluasi ini diperlukan untuk mencerminkan nilai wajar aset dan kewajiban dalam mata uang dasar perusahaan akibat fluktuasi nilai tukar.</p>
+        <div class="screenshot-container text-center my-4">
+            <img class="img-fluid rounded shadow" src="assets/images/company_tabAccount-05.png" alt="">
+            <small class="text-muted d-block mt-2">Gambar: Pengaturan Revaluasi Nilai Tukar.</small>
+        </div>
+
+        <h5>Auto Create Exchange Rate Revaluation:</h5>
+        <p><strong>Fungsi:</strong> Jika dicentang, sistem akan secara otomatis membuat entri revaluasi nilai tukar pada frekuensi yang ditentukan. Ini mengotomatisasi proses penyesuaian nilai akun mata uang asing.</p>
+        <p><strong>Cara Input:</strong> Centang kotak ini untuk mengaktifkan otomatisasi.</p>
+
+        <h5>Frequency:</h5>
+        <p><strong>Fungsi:</strong> Menentukan seberapa sering revaluasi nilai tukar otomatis akan dilakukan.</p>
+        <p><strong>Cara Input:</strong> Pilih dari daftar *dropdown* (misal: "Daily" - Harian, "Weekly" - Mingguan, "Monthly" - Bulanan).</p>
+
+        <h5>Submit ERR Journals?:</h5>
+        <p><strong>Fungsi:</strong> Jika dicentang, entri jurnal yang dihasilkan dari revaluasi nilai tukar (ERR - Exchange Rate Revaluation) akan secara otomatis disubmit (dikirim) ke buku besar. Jika tidak dicentang, entri akan dibuat dalam status draf dan memerlukan persetujuan manual.</p>
+        <p><strong>Cara Input:</strong> Centang kotak ini jika Anda ingin entri revaluasi langsung diposting.</p>
+        <!-- </section>                  
+        <section class="docs-section" id="budget-detail"> -->
+        <h4 class="mt-4"><i class="fas fa-money-check me-4"></i> Budget Detail (Detail Anggaran)</h4>
+        <p>Bagian ini mengonfigurasi peran yang bertanggung jawab untuk menyetujui anggaran yang melebihi batas yang ditentukan (<em>exception budget approval</em>).</p>
+        <div class="screenshot-container text-center my-4">
+            <img class="img-fluid rounded shadow" src="assets/images/company_tabAccount-06.png" alt="">
+            <small class="text-muted d-block mt-2">Gambar: Pengaturan Detail Anggaran.</small>
+        </div>
+
+        <h5>Exception Budget Approver Role:</h5>
+        <p><strong>Fungsi:</strong> Menentukan peran pengguna yang memiliki wewenang untuk menyetujui anggaran yang melebihi batas yang telah ditetapkan. Ini adalah bagian dari kontrol anggaran dan manajemen pengeluaran.</p>
+        <p><strong>Cara Input:</strong> Pilih peran yang sesuai dari daftar *dropdown* (misal: "Finance Manager", "CEO").</p>
+        <!-- company acconting Fixed asset -->
+        <h4 class="mt-4"><i class="fas fa-building me-4"></i> Fixed Asset Defaults (Default Aset Tetap)</h4>
+        <p>Bagian ini menetapkan akun-akun default dan parameter lain yang digunakan untuk mengelola aset tetap perusahaan, termasuk depresiasi dan disposisi aset.</p>
+        <div class="screenshot-container text-center my-4">
+            <img class="img-fluid rounded shadow" src="assets/images/company_tabAccount-03.png" alt="">
+            <small class="text-muted d-block mt-2">Gambar: Pengaturan Default Aset Tetap.</small>
+        </div>
+
+        <h5>Accumulated Depreciation Account:</h5>
+        <p><strong>Fungsi:</strong> Akun ini digunakan untuk mencatat total akumulasi depresiasi dari semua aset tetap. Ini adalah akun kontra-aset yang mengurangi nilai buku aset.</p>
+        <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda (misal: "Akumulasi Depresiasi").</p>
+
+        <h5>Gain/Loss Account on Asset Disposal:</h5>
+        <p><strong>Fungsi:</strong> Akun ini digunakan untuk mencatat laba atau rugi yang timbul dari penjualan atau penghapusan aset tetap. Jika harga jual lebih tinggi dari nilai buku, akan ada laba; jika lebih rendah, akan ada rugi.</p>
+        <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda (misal: "Laba/Rugi Penjualan Aset").</p>
+
+        <h5>Depreciation Expense Account:</h5>
+        <p><strong>Fungsi:</strong> Akun ini digunakan untuk mencatat biaya depresiasi yang dibebankan secara periodik atas aset tetap. Ini adalah akun biaya yang mencerminkan penurunan nilai aset seiring waktu.</p>
+        <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda (misal: "Biaya Depresiasi").</p>
+
+        <h5>Asset Depreciation Cost Center:</h5>
+        <p><strong>Fungsi:</strong> Pusat biaya yang akan dikaitkan dengan biaya depresiasi aset. Ini memungkinkan Anda melacak biaya depresiasi pada departemen atau proyek tertentu.</p>
+        <p><strong>Cara Input:</strong> Pilih pusat biaya yang relevan dari daftar yang tersedia.</p>
+
+        <h5>Series for Asset Depreciation Entry (Journal Entry):</h5>
+        <p><strong>Fungsi:</strong> Seri penomoran otomatis yang akan digunakan untuk entri jurnal depresiasi aset. Ini memastikan setiap entri depresiasi memiliki nomor unik.</p>
+        <p><strong>Cara Input:</strong> Pilih atau buat seri penomoran yang sesuai (misal: "DEP-").</p>
+
+        <h5>Capital Work In Progress Account:</h5>
+        <p><strong>Fungsi:</strong> Akun ini digunakan untuk mencatat biaya-biaya yang terkait dengan aset yang sedang dibangun atau dikembangkan (<em>Capital Work In Progress - CWIP</em>) sebelum aset tersebut siap digunakan dan didepresiasi.</p>
+        <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda (misal: "Pekerjaan dalam Proses Kapital").</p>
+
+        <h5>Expenses Included In Asset Valuation:</h5>
+        <p><strong>Fungsi:</strong> Field teks bebas untuk mencantumkan jenis-jenis biaya yang harus dimasukkan dalam nilai perolehan aset (misal: biaya instalasi, biaya pengiriman). Ini memastikan nilai aset dicatat dengan benar.</p>
+        <p><strong>Cara Input:</strong> Masukkan daftar jenis biaya yang relevan.</p>
+
+        <h5>Asset Received But Not Billed:</h5>
+        <p><strong>Fungsi:</strong> Akun ini digunakan untuk mencatat nilai aset yang telah diterima secara fisik tetapi faktur pembeliannya belum diterima atau diproses. Ini adalah akun kewajiban sementara.</p>
+        <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda (misal: "Aset Diterima Belum Ditagih").</p>
+    </section>
+    <!-- menu company tab buying selling -->
+    <h3 class="mt-4">Tab Buying and Selling (Pengaturan Pembelian dan Penjualan Perusahaan)</h3>
+    <section class="docs-intro">
+        <p>Tab <strong>Buying and Selling</strong> dalam Pengaturan Perusahaan adalah tempat Anda mengonfigurasi parameter default yang memengaruhi proses pembelian dan penjualan di seluruh sistem ERP Siumang. Pengaturan di sini sangat penting untuk memastikan konsistensi dalam transaksi, mengelola target penjualan, dan menentukan alur penanganan retur.</p>
+        <p>Konfigurasi yang tepat di bagian ini akan membantu mengoptimalkan efisiensi operasional tim pembelian dan penjualan Anda.</p>
+        <div class="screenshot-container text-center my-4">
+            <img class="img-fluid rounded shadow" src="assets/images/company_tabbusel_overview.png" alt="">
+            <small class="text-muted d-block mt-2">Gambar: Tampilan Tab Buying and Selling.</small>
+        </div>
+    </section>
+    <section class="docs-section" id="buying-selling-settings">
+        <h4 class="mt-4"><i class="fas fa-cogs me-2"></i> Buying & Selling Settings (Pengaturan Pembelian & Penjualan)</h4>
+        <p>Bagian ini mencakup field-field utama yang mengatur perilaku default untuk proses pembelian dan penjualan.</p>
+        <ul class="list-unstyled">
+            <li><strong>Default Buying Terms:</strong>
+                <p><strong>Fungsi:</strong> Field ini memungkinkan Anda menetapkan template syarat dan ketentuan pembelian default yang akan secara otomatis diterapkan pada setiap dokumen pembelian baru (misal: Permintaan Pembelian, Pesanan Pembelian). Syarat ini bisa mencakup kondisi pembayaran, pengiriman, atau klausul kontrak lainnya.</p>
+                <p><strong>Cara Input:</strong> Pilih template syarat pembelian yang telah dikonfigurasi sebelumnya di sistem Anda. Template ini akan membantu memastikan konsistensi dalam semua kesepakatan pembelian.</p>
+                <p><strong>Efek pada Sistem:</strong> Mengurangi input manual dan potensi kesalahan. Setiap kali dokumen pembelian dibuat, syarat yang ditetapkan di sini akan terisi otomatis, memastikan kepatuhan terhadap kebijakan pengadaan perusahaan.</p>
+            </li>
+            <li class="mt-3"><strong>Default Selling Terms:</strong>
+                <p><strong>Fungsi:</strong> Mirip dengan syarat pembelian, field ini digunakan untuk menetapkan template syarat dan ketentuan penjualan default yang akan secara otomatis diterapkan pada setiap dokumen penjualan baru (misal: Penawaran, Pesanan Penjualan, Faktur Penjualan). Ini mencakup kondisi pembayaran, garansi, atau ketentuan layanan.</p>
+                <p><strong>Cara Input:</strong> Pilih template syarat penjualan yang telah dikonfigurasi sebelumnya. Ini sangat penting untuk menjaga konsistensi dalam penawaran kepada pelanggan.</p>
+                <p><strong>Efek pada Sistem:</strong> Mempercepat proses penjualan dan memastikan semua penawaran kepada pelanggan konsisten dengan kebijakan penjualan perusahaan. Ini juga membantu dalam kepatuhan hukum terkait penjualan.</p>
+            </li>
+            <li class="mt-3"><strong>Monthly Sales Target:</strong>
+                <p><strong>Fungsi:</strong> Field ini memungkinkan Anda untuk menetapkan target penjualan bulanan secara keseluruhan untuk perusahaan. Meskipun ini adalah target tingkat tinggi, ini dapat digunakan untuk pelaporan dan analisis kinerja penjualan makro.</p>
+                <p><strong>Cara Input:</strong> Masukkan nilai numerik sebagai target penjualan bulanan (misal: "100000000" untuk Rp 100 juta).</p>
+                <p><strong>Efek pada Sistem:</strong> Data ini dapat digunakan dalam modul pelaporan untuk membandingkan penjualan aktual dengan target yang ditetapkan, membantu manajemen dalam mengevaluasi kinerja dan membuat keputusan strategis.</p>
+            </li>
+            <li class="mt-3"><strong>Default Warehouse for Sales Return:</strong>
+                <p><strong>Fungsi:</strong> Gudang default yang akan digunakan untuk menerima barang-barang yang dikembalikan oleh pelanggan (retur penjualan). Ketika pelanggan mengembalikan produk, sistem akan secara otomatis mengarahkan barang tersebut ke gudang ini.</p>
+                <p><strong>Cara Input:</strong> Pilih gudang yang telah dikonfigurasi di sistem Anda yang ditujukan untuk menampung barang retur.</p>
+                <p><strong>Efek pada Sistem:</strong> Memastikan alur kerja retur penjualan yang efisien. Barang retur akan langsung masuk ke lokasi yang benar, memudahkan proses inspeksi, perbaikan, atau pengembalian ke stok yang dapat dijual kembali, serta pembaruan catatan inventaris yang akurat.</p>
+            </li>
+        </ul>
+        <!--  -->
+        <h4 class="mt-4"><i class="fas fa-users-cog me-2"></i> HR & Payroll Settings (Pengaturan HR & Penggajian)</h4>
+        <p>Bagian ini mengonfigurasi parameter penting yang berkaitan dengan manajemen Sumber Daya Manusia (HR) dan proses penggajian (Payroll) dalam perusahaan Anda. Pengaturan di sini memastikan pencatatan yang akurat untuk karyawan dan pembayaran gaji.</p>
+        <div class="screenshot-container text-center my-4">
+            <img class="img-fluid rounded shadow" src="assets/images/company_hr_payroll_settings.png" alt="">
+            <small class="text-muted d-block mt-2">Gambar: Tampilan Tab HR & Payroll.</small>
+        </div>
+        <ul class="list-unstyled">
+            <li><strong>Default Employee Advance Account:</strong>
+                <p><strong>Fungsi:</strong> Akun ini digunakan untuk mencatat pembayaran uang muka atau pinjaman yang diberikan kepada karyawan. Ketika perusahaan memberikan uang muka kepada karyawan, jumlah tersebut akan dicatat ke akun ini sebagai aset perusahaan yang akan ditagih kembali dari karyawan.</p>
+                <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda yang khusus digunakan untuk mencatat uang muka karyawan (misal: "Uang Muka Karyawan" atau "Pinjaman Karyawan"). Akun ini biasanya merupakan bagian dari aset lancar.</p>
+                <p><strong>Efek pada Sistem:</strong> Memastikan pencatatan keuangan yang benar untuk transaksi uang muka karyawan. Ini memungkinkan pelacakan yang akurat terhadap saldo uang muka yang belum dilunasi oleh setiap karyawan, dan memfasilitasi rekonsiliasi saat pemotongan gaji dilakukan.</p>
+            </li>
+        </ul>
+        <!--  -->
+        <h4 class="mt-4"><i class="fas fa-boxes me-2"></i> Stock and Manufacturing Settings (Pengaturan Stok & Manufaktur)</h4>
+        <p>Bagian ini mengonfigurasi parameter penting yang berkaitan dengan pengelolaan stok dan proses manufaktur dalam perusahaan Anda. Pengaturan di sini memastikan efisiensi dalam rantai pasok dan produksi.</p>
+        <div class="screenshot-container text-center my-4">
+            <img class="img-fluid rounded shadow" src="assets/images/company_stock_manufacturing_settings.png" alt="">
+            <small class="text-muted d-block mt-2">Gambar: Tampilan Tab Stock and Manufacturing.</small>
+        </div>
+        <ul class="list-unstyled">
+            <li><strong>Default Operating Cost Account:</strong>
+                <p><strong>Fungsi:</strong> Akun ini digunakan untuk mencatat biaya operasional default yang terkait dengan proses manufaktur atau pengelolaan stok. Biaya ini bisa mencakup biaya tenaga kerja langsung, biaya overhead pabrik, atau biaya lain yang tidak langsung terkait dengan material.</p>
+                <p><strong>Cara Input:</strong> Pilih akun yang sesuai dari Bagan Akun Anda yang khusus digunakan untuk mencatat biaya operasional (misal: "Biaya Produksi", "Biaya Overhead Pabrik", atau "Biaya Operasional Gudang"). Akun ini biasanya merupakan bagian dari biaya pokok penjualan atau biaya operasional.</p>
+                <p><strong>Efek pada Sistem:</strong> Memastikan alokasi biaya yang benar untuk aktivitas produksi dan stok. Ini penting untuk perhitungan biaya produksi yang akurat, penilaian inventaris, dan analisis profitabilitas produk. Pengaturan ini membantu dalam pelacakan dan pelaporan biaya operasional secara efisien.</p>
+            </li>
+        </ul>
+    </section>
