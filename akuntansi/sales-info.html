@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Pembelian ERP Siumang</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+        
+        <header class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900">Panduan Pembelian di ERP Siumang</h1>
+            <p class="text-lg text-slate-600 mt-2">Dua Skenario Proses Pembelian: DP 50% dan Bayar Lunas</p>
+        </header>
+
+        <main>
+            <!-- Bagian 1: Perbedaan Konsep Kunci -->
+            <section id="konsep" class="mb-12">
+                <h2 class="text-2xl font-bold text-slate-900 mb-4">Memahami Konsep Kunci</h2>
+                <p class="text-slate-600 mb-6">Penting untuk memahami perbedaan antara <strong>Purchase Invoice</strong> dan <strong>Payment Request</strong>. Keduanya terkait dengan pembayaran, namun memiliki fungsi yang berbeda dalam siklus bisnis.</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-lg border border-slate-200">
+                        <h3 class="text-xl font-semibold text-sky-700 mb-3">Purchase Invoice (Faktur Pembelian)</h3>
+                        <p class="text-slate-600 mb-4">Ini adalah <strong>tagihan resmi</strong> yang Anda terima dari vendor. Dokumen ini berfungsi sebagai bukti adanya utang yang harus dibayar oleh perusahaan Anda.</p>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-start"><span class="text-sky-500 mr-2">➔</span> Berasal dari <strong>pihak eksternal</strong> (vendor).</li>
+                            <li class="flex items-start"><span class="text-sky-500 mr-2">➔</span> Mencatat <strong>utang dagang</strong> secara akuntansi.</li>
+                            <li class="flex items-start"><span class="text-sky-500 mr-2">➔</span> Merupakan dasar untuk melakukan pembayaran.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg border border-slate-200">
+                        <h3 class="text-xl font-semibold text-teal-700 mb-3">Payment Request (Permintaan Pembayaran)</h3>
+                        <p class="text-slate-600 mb-4">Ini adalah <strong>dokumen internal</strong> yang Anda buat di sistem. Fungsinya sebagai instruksi atau pengingat bagi tim keuangan untuk memproses pembayaran.</p>
+                         <ul class="space-y-2 text-sm">
+                            <li class="flex items-start"><span class="text-teal-500 mr-2">➔</span> Dibuat oleh <strong>pihak internal</strong> (Anda).</li>
+                            <li class="flex items-start"><span class="text-teal-500 mr-2">➔</span> <strong>Bukan transaksi akuntansi</strong>, melainkan alat kontrol.</li>
+                            <li class="flex items-start"><span class="text-teal-500 mr-2">➔</span> Menjadi dasar pembuatan <strong>Payment Entry</strong> (Jurnal Pembayaran).</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <hr class="my-10 border-slate-200" />
+
+            <!-- Bagian 2: Skenario Ganda dalam kolom -->
+            <section id="skenario-ganda" class="mb-12">
+                <h2 class="text-2xl font-bold text-slate-900 mb-4">Dua Skenario Alur Proses Pembelian</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Kolom Skenario 1: Pembayaran DP 50% -->
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-6">Skenario 1: Pembelian dengan DP 50%</h3>
+                        <div class="space-y-6">
+                            <div class="bg-white p-6 rounded-lg border border-slate-200">
+                                <h4 class="text-lg font-semibold text-slate-800 mb-2">1. Buat Purchase Order (PO)</h4>
+                                <p class="text-slate-600">Masuk ke modul <strong>Purchasing</strong>, pilih <strong>Purchase Order</strong>. Isi semua detail barang, kuantitas, dan harga. Pastikan total nilai PO benar, lalu simpan dokumen.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg border border-slate-200">
+                                <h4 class="text-lg font-semibold text-slate-800 mb-2">2. Buat Payment Request (DP 50%)</h4>
+                                <p class="text-slate-600">Dari PO yang sudah disimpan, klik <strong>Create > Payment Request</strong>. Ubah nilai <strong>Grand Total</strong> menjadi 50% dari total PO. Simpan dokumen.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg border border-slate-200">
+                                <h4 class="text-lg font-semibold text-slate-800 mb-2">3. Input Pembayaran DP</h4>
+                                <p class="text-slate-600">Dari Payment Request DP, klik <strong>Create > Payment</strong>. Isi detail pembayaran seperti metode dan referensi bank. Simpan untuk mengubah status PO menjadi 'Partially Paid'.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg border border-slate-200">
+                                <h4 class="text-lg font-semibold text-slate-800 mb-2">4. Buat Purchase Receipt</h4>
+                                <p class="text-slate-600">Setelah barang diterima, kembali ke PO. Klik <strong>Create > Purchase Receipt</strong>. Input kuantitas barang yang diterima sesuai dengan surat jalan, lalu simpan.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg border border-slate-200">
+                                <h4 class="text-lg font-semibold text-slate-800 mb-2">5. Buat Payment Request (Pelunasan)</h4>
+                                <p class="text-slate-600">Kembali lagi ke PO, klik <strong>Create > Payment Request</strong>. Sistem akan otomatis menghitung sisa pembayaran 50%. Simpan dokumen.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg border border-slate-200">
+                                <h4 class="text-lg font-semibold text-slate-800 mb-2">6. Input Pembayaran Pelunasan</h4>
+                                <p class="text-slate-600">Dari Payment Request pelunasan, klik <strong>Create > Payment</strong>. Isi detail pembayaran dan simpan. Status PO akan berubah menjadi 'Completed'.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Kolom Skenario 2: Pembayaran Lunas -->
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-6">Skenario 2: Pembelian dengan Pembayaran Lunas</h3>
+                        <div class="space-y-6">
+                            <div class="bg-white p-6 rounded-lg border border-slate-200">
+                                <h4 class="text-lg font-semibold text-slate-800 mb-2">1. Buat Purchase Order (PO)</h4>
+                                <p class="text-slate-600">Proses dimulai dengan membuat <strong>Purchase Order</strong> di modul <strong>Purchasing</strong>. Isi semua detail barang, kuantitas, dan harga dengan lengkap, lalu simpan.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg border border-slate-200">
+                                <h4 class="text-lg font-semibold text-slate-800 mb-2">2. Buat Payment Request (100%)</h4>
+                                <p class="text-slate-600">Dari PO yang sudah disimpan, klik <strong>Create > Payment Request</strong>. Nilai pembayaran akan otomatis menunjukkan 100% dari total PO. Simpan dokumen.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg border border-slate-200">
+                                <h4 class="text-lg font-semibold text-slate-800 mb-2">3. Input Pembayaran Lunas</h4>
+                                <p class="text-slate-600">Dari Payment Request, klik <strong>Create > Payment</strong>. Isi semua detail pembayaran dan simpan. Status PO akan berubah menjadi 'Paid'.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg border border-slate-200">
+                                <h4 class="text-lg font-semibold text-slate-800 mb-2">4. Buat Purchase Receipt</h4>
+                                <p class="text-slate-600"><strong>PENTING:</strong> Langkah ini dilakukan hanya setelah barang diterima dari vendor. Kembali ke PO, klik <strong>Create > Purchase Receipt</strong>. Input kuantitas barang yang diterima, lalu simpan. Status PO akan menjadi 'Completed'.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg border border-slate-200 opacity-0 pointer-events-none">
+                                <h4 class="text-lg font-semibold text-slate-800 mb-2">&nbsp;</h4>
+                                <p class="text-slate-600">&nbsp;</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg border border-slate-200 opacity-0 pointer-events-none">
+                                <h4 class="text-lg font-semibold text-slate-800 mb-2">&nbsp;</h4>
+                                <p class="text-slate-600">&nbsp;</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="my-10 border-slate-200" />
+            
+            <!-- Bagian 3: Pencatatan Akuntansi -->
+            <section id="akuntansi">
+                <h2 class="text-2xl font-bold text-slate-900 mb-4">Proses Pencatatan Akuntansi</h2>
+                <div class="bg-white p-6 rounded-lg border border-slate-200">
+                    <p class="text-slate-600 mb-4">Seperti yang dijelaskan sebelumnya, dokumen <strong>Payment Request</strong> hanyalah dokumen internal untuk instruksi pembayaran. Catatan akuntansi yang sebenarnya terjadi pada tahap **Payment Entry**.</p>
+                    <p class="text-slate-600">Saat <strong>Payment Entry</strong> dibuat dan disimpan, sistem akan secara otomatis mencatat dua hal utama di laporan keuangan:</p>
+                    <ul class="list-disc list-inside space-y-2 mt-4 text-slate-600">
+                        <li>Saldo **Kas** atau **Bank** Anda berkurang.</li>
+                        <li>Saldo **Utang Dagang** (**Accounts Payable**) Anda berkurang, yang menunjukkan bahwa kewajiban pembayaran telah dipenuhi.</li>
+                    </ul>
+                    <p class="text-slate-600 mt-4">Dengan demikian, setiap transaksi pembayaran akan terlacak dengan baik di laporan akuntansi melalui dokumen <strong>Payment Entry</strong>.</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-12 text-sm text-slate-500">
+            <p>Panduan ERP Siumang &copy; 2025</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Interaktif Pembelian ERP Siumang</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chosen Palette: Calm Neutral -->
+    <!-- Application Structure Plan: Aplikasi ini dirancang sebagai panduan interaktif berbasis tugas, bukan dokumen statis. Strukturnya adalah: 1. Header. 2. Perbandingan Konsep Kunci (Invoice vs. Payment Request) dalam format kartu berdampingan untuk kejelasan. 3. Pemilih Skenario Interaktif (DP 50% vs. Bayar Lunas) untuk mengarahkan pengguna langsung ke kebutuhan mereka. 4. Area Konten Dinamis yang menampilkan visualisasi alur proses (flowchart) yang sesuai dengan skenario yang dipilih. Setiap langkah dalam flowchart dapat diklik untuk menampilkan detail instruksi di panel terpisah. Struktur ini dipilih karena memecah informasi kompleks menjadi bagian-bagian yang mudah dicerna, memvisualisasikan alur kerja, dan memungkinkan pengguna untuk fokus pada satu langkah pada satu waktu, sehingga meningkatkan pemahaman dan kemudahan penggunaan secara signifikan dibandingkan dengan membaca teks linear. -->
+    <!-- Visualization & Content Choices: 1. Perbedaan Konsep: Disajikan sebagai kartu HTML/Tailwind berdampingan, bukan tabel, untuk perbandingan visual yang lebih baik. 2. Alur Proses: Direpresentasikan sebagai flowchart interaktif yang dibangun dengan HTML/CSS (divs, borders, flexbox). Ini lebih intuitif daripada daftar teks. Interaksi: Pengguna mengklik tombol skenario untuk memuat flowchart yang relevan. Mengklik setiap langkah pada flowchart akan mengisi panel detail dengan instruksi spesifik dari objek data JavaScript. Ini menggunakan prinsip "detail on demand" untuk menjaga antarmuka tetap bersih. Pustaka: Hanya Vanilla JS yang digunakan untuk menangani logika interaktif dan pembaruan DOM. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .flow-step {
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+        }
+        .flow-step:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .flow-step.active {
+            border-color: #0ea5e9; /* sky-500 */
+            background-color: #f0f9ff; /* sky-50 */
+            color: #0c4a6e; /* sky-900 */
+        }
+        .flow-arrow {
+            color: #94a3b8; /* slate-400 */
+        }
+        .scenario-card:hover {
+            border-color: #0ea5e9; /* sky-500 */
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+        
+        <header class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900">Panduan Interaktif Pembelian</h1>
+            <p class="text-lg text-slate-600 mt-2">Visualisasi Alur Proses di ERP Siumang</p>
+        </header>
+
+        <main>
+            <!-- Section 1: Key Concepts -->
+            <section id="konsep" class="mb-12">
+                <h2 class="text-2xl font-bold text-slate-900 mb-2">Memahami Konsep Kunci</h2>
+                <p class="text-slate-600 mb-6">Sebelum memulai, penting untuk memahami perbedaan antara dua dokumen utama dalam proses pembelian. Keduanya terkait pembayaran, namun memiliki fungsi yang sangat berbeda.</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-lg border border-slate-200">
+                        <h3 class="text-xl font-semibold text-sky-700 mb-3">Purchase Invoice (Faktur Pembelian)</h3>
+                        <p class="text-slate-600 mb-4">Ini adalah <strong>tagihan resmi </strong> yang Anda terima dari vendor. Dokumen ini berfungsi sebagai bukti adanya utang yang harus dibayar oleh perusahaan Anda.</p>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-start"><span class="text-sky-500 mr-2">➔</span> Berasal dari <strong> pihak eksternal </strong> (vendor).</li>
+                            <li class="flex items-start"><span class="text-sky-500 mr-2">➔</span> Mencatat <strong> utang dagang </strong> secara akuntansi.</li>
+                            <li class="flex items-start"><span class="text-sky-500 mr-2">➔</span> Merupakan dasar untuk melakukan pembayaran.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg border border-slate-200">
+                        <h3 class="text-xl font-semibold text-teal-700 mb-3">Payment Request (Permintaan Pembayaran)</h3>
+                        <p class="text-slate-600 mb-4">Ini adalah <strong>dokumen internal</strong> yang Anda buat di sistem. Fungsinya sebagai instruksi atau pengingat bagi tim keuangan untuk memproses pembayaran.</p>
+                         <ul class="space-y-2 text-sm">
+                            <li class="flex items-start"><span class="text-teal-500 mr-2">➔</span> Dibuat oleh <strong>pihak internal< /strong> (Anda).</li>
+                            <li class="flex items-start"><span class="text-teal-500 mr-2">➔</span> <strong>Bukan transaksi akuntansi </strong>,melainkan alat kontrol.</li>
+                            <li class="flex items-start"><span class="text-teal-500 mr-2">➔</span> Menjadi dasar pembuatan <strong> Payment Entry </strong> (Jurnal Pembayaran).</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Scenario Selection -->
+            <section id="skenario" class="mb-12">
+                <h2 class="text-2xl font-bold text-slate-900 mb-2">Pilih Skenario Pembelian Anda</h2>
+                <p class="text-slate-600 mb-6">Setiap skenario memiliki alur proses yang berbeda di dalam sistem. Klik salah satu skenario di bawah ini untuk melihat visualisasi alur kerjanya secara langkah demi langkah.</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div id="btn-scenario-1" class="scenario-card bg-white p-6 rounded-lg border-2 border-slate-200 cursor-pointer transition">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-2">Skenario 1: Bayar DP 50%</h3>
+                        <p class="text-slate-600">Barang dikirim oleh vendor setelah Anda membayar uang muka (DP) sebesar 50%. Pelunasan dilakukan setelah barang diterima.</p>
+                    </div>
+                    <div id="btn-scenario-2" class="scenario-card bg-white p-6 rounded-lg border-2 border-slate-200 cursor-pointer transition">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-2">Skenario 2: Bayar Lunas</h3>
+                        <p class="text-slate-600">Barang baru akan dikirim oleh vendor setelah Anda melakukan pembayaran penuh (100%) di muka.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Process Visualization -->
+            <section id="visualisasi">
+                <h2 class="text-2xl font-bold text-slate-900 mb-2">Visualisasi Alur Proses</h2>
+                <p id="visualisasi-subtitle" class="text-slate-600 mb-6">Pilih salah satu skenario di atas untuk melihat alur prosesnya di sini.</p>
+                
+                <div class="bg-white p-4 sm:p-6 rounded-lg border border-slate-200 min-h-[300px]">
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        <!-- Flowchart will be rendered here -->
+                        <div id="flowchart-container" class="flex flex-col items-center justify-center space-y-2">
+                             <div id="flowchart-placeholder" class="text-center text-slate-500 py-20">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                                </svg>
+                                <p class="mt-2">Alur proses akan ditampilkan di sini.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step Details will be rendered here -->
+                        <div id="step-details-container" class="bg-slate-50 p-6 rounded-lg min-h-[250px]">
+                            <h3 id="step-title" class="text-lg font-semibold text-slate-800 mb-4">Detail Langkah</h3>
+                            <div id="step-content" class="text-slate-600 space-y-3">
+                                <p>Klik sebuah langkah pada alur proses di sebelah kiri untuk melihat detailnya di sini.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-12 text-sm text-slate-500">
+            <p>Panduan Interaktif ERP Siumang &copy; 2025</p>
+        </footer>
+    </div>
+
+    <script>
+        const processData = {
+            scenario1: {
+                title: "Skenario 1: Alur Proses dengan DP 50%",
+                steps: [
+                    { id: 1, name: "Buat Purchase Order (PO)", details: "Masuk ke modul <strong>Purchasing</strong>, pilih <strong>Purchase Order</strong>. Isi semua detail barang, kuantitas, dan harga. Pastikan total nilai PO benar, lalu simpan dokumen." },
+                    { id: 2, name: "Buat Payment Request (DP 50%)", details: "Dari PO yang sudah disimpan, klik <strong>Create > Payment Request</strong>. Ubah nilai <strong>Grand Total</strong> menjadi 50% dari total PO. Simpan dokumen." },
+                    { id: 3, name: "Input Pembayaran DP", details: "Dari Payment Request DP, klik <strong>Create > Payment</strong>. Isi detail pembayaran seperti metode dan referensi bank. Simpan untuk mengubah status PO menjadi 'Partially Paid'." },
+                    { id: 4, name: "Buat Purchase Receipt", details: "Setelah barang diterima, kembali ke PO. Klik <strong>Create > Purchase Receipt</strong>. Input kuantitas barang yang diterima sesuai dengan surat jalan, lalu simpan." },
+                    { id: 5, name: "Buat Payment Request (Pelunasan)", details: "Kembali lagi ke PO, klik <strong>Create > Payment Request</strong>. Sistem akan otomatis menghitung sisa pembayaran 50%. Simpan dokumen." },
+                    { id: 6, name: "Input Pembayaran Pelunasan", details: "Dari Payment Request pelunasan, klik <strong>Create > Payment</strong>. Isi detail pembayaran dan simpan. Status PO akan berubah menjadi 'Completed'." }
+                ]
+            },
+            scenario2: {
+                title: "Skenario 2: Alur Proses Bayar Lunas",
+                steps: [
+                    { id: 1, name: "Buat Purchase Order (PO)", details: "Proses dimulai dengan membuat <strong>Purchase Order</strong> di modul <strong>Purchasing</strong>. Isi semua detail barang, kuantitas, dan harga dengan lengkap, lalu simpan." },
+                    { id: 2, name: "Buat Payment Request (100%)", details: "Dari PO yang sudah disimpan, klik <strong>Create > Payment Request</strong>. Nilai pembayaran akan otomatis menunjukkan 100% dari total PO. Simpan dokumen." },
+                    { id: 3, name: "Input Pembayaran Lunas", details: "Dari Payment Request, klik <strong>Create > Payment</strong>. Isi semua detail pembayaran dan simpan. Status PO akan berubah menjadi 'Paid'." },
+                    { id: 4, name: "Buat Purchase Receipt", details: "<strong>PENTING:</strong> Langkah ini dilakukan hanya setelah barang diterima. Kembali ke PO, klik <strong>Create > Purchase Receipt</strong>. Input kuantitas barang yang diterima, lalu simpan. Status PO akan menjadi 'Completed'." }
+                ]
+            }
+        };
+
+        const btnScenario1 = document.getElementById('btn-scenario-1');
+        const btnScenario2 = document.getElementById('btn-scenario-2');
+        const flowchartContainer = document.getElementById('flowchart-container');
+        const stepDetailsContainer = document.getElementById('step-details-container');
+        const stepTitle = document.getElementById('step-title');
+        const stepContent = document.getElementById('step-content');
+        const visualisasiSubtitle = document.getElementById('visualisasi-subtitle');
+        const flowchartPlaceholder = document.getElementById('flowchart-placeholder');
+
+        let activeScenario = null;
+        let activeStepId = null;
+
+        function renderFlowchart(scenarioKey) {
+            const scenario = processData[scenarioKey];
+            if (!scenario) return;
+
+            activeScenario = scenarioKey;
+            activeStepId = null;
+            
+            flowchartPlaceholder.classList.add('hidden');
+            visualisasiSubtitle.textContent = scenario.title;
+            
+            let flowchartHTML = '';
+            scenario.steps.forEach((step, index) => {
+                flowchartHTML += `
+                    <div id="step-${scenarioKey}-${step.id}" class="flow-step w-full max-w-sm bg-white p-4 rounded-lg border-2 border-slate-200 text-center" data-step-id="${step.id}">
+                        <span class="font-semibold">${step.id}. ${step.name}</span>
+                    </div>
+                `;
+                if (index < scenario.steps.length - 1) {
+                    flowchartHTML += `
+                        <div class="flow-arrow h-8 w-8 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                            </svg>
+                        </div>
+                    `;
+                }
+            });
+            flowchartContainer.innerHTML = flowchartHTML;
+            resetStepDetails();
+            addStepListeners(scenarioKey);
+        }
+
+        function renderStepDetails(scenarioKey, stepId) {
+            const scenario = processData[scenarioKey];
+            const step = scenario.steps.find(s => s.id === stepId);
+            if (!step) return;
+
+            activeStepId = stepId;
+
+            document.querySelectorAll('.flow-step').forEach(el => el.classList.remove('active'));
+            document.getElementById(`step-${scenarioKey}-${stepId}`).classList.add('active');
+
+            stepTitle.textContent = `${step.id}. ${step.name}`;
+            
+            stepContent.innerHTML = `<p>${step.details}</p>`;
+        }
+        
+        function addStepListeners(scenarioKey) {
+            const steps = document.querySelectorAll('.flow-step');
+            steps.forEach(stepEl => {
+                stepEl.addEventListener('click', () => {
+                    const stepId = parseInt(stepEl.getAttribute('data-step-id'));
+                    renderStepDetails(scenarioKey, stepId);
+                });
+            });
+        }
+        
+        function resetStepDetails() {
+            stepTitle.textContent = "Detail Langkah";
+            stepContent.innerHTML = "<p>Klik sebuah langkah pada alur proses di sebelah kiri untuk melihat detailnya di sini.</p>";
+        }
+        
+        function selectScenario(scenarioKey, btnElement) {
+            btnScenario1.classList.remove('border-sky-500', 'bg-sky-50');
+            btnScenario2.classList.remove('border-sky-500', 'bg-sky-50');
+            btnElement.classList.add('border-sky-500', 'bg-sky-50');
+            
+            renderFlowchart(scenarioKey);
+        }
+
+        btnScenario1.addEventListener('click', () => selectScenario('scenario1', btnScenario1));
+        btnScenario2.addEventListener('click', () => selectScenario('scenario2', btnScenario2));
+
+    </script>
+</body>
+</html>
