@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Pengguna HR & Payroll - Versi Bootstrap 5</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- html2pdf.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmShkL7g/M13U/MABi023B+a2b/yC5j5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Custom CSS for Web View (Bootstrap 5 theme) -->
+    <style id="web-style">
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        .content-wrapper {
+            background-color: #fff;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            border-radius: 0.75rem;
+        }
+        .section-divider {
+            border-top: 1px solid #dee2e6;
+        }
+        .page-container {
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 280px;
+            background-color: #f8f9fa;
+            padding: 2rem;
+            box-shadow: 0.25rem 0 1rem rgba(0, 0, 0, 0.05);
+            position: fixed;
+            height: 100%;
+            overflow-y: auto;
+        }
+        .sidebar .nav-link {
+            font-weight: 500;
+            color: #495057;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease-in-out;
+        }
+        .sidebar .nav-link:hover {
+            color: #fff;
+            background-color: #0d6efd;
+        }
+        .main-content {
+            flex-grow: 1;
+            margin-left: 280px;
+            padding: 2rem;
+        }
+        .card {
+            border-radius: 0.75rem;
+            border: none;
+            box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.05);
+        }
+        .card-header {
+            background-color: #0d6efd;
+            color: white;
+            border-radius: 0.75rem 0.75rem 0 0 !important;
+        }
+        .flowchart-arrow {
+            font-size: 2rem;
+            color: #6c757d;
+        }
+        
+        @media (max-width: 992px) {
+            .page-container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+        }
+
+        /* Styles for PDF Download (Classic Document Style) */
+        .pdf-document-style {
+            font-family: 'Times New Roman', serif !important;
+            background-color: white !important;
+            box-shadow: none !important;
+            border-radius: 0 !important;
+            padding: 2rem !important;
+        }
+        .pdf-document-style h1, .pdf-document-style h2, .pdf-document-style h3, .pdf-document-style h4 {
+            font-family: 'Times New Roman', serif !important;
+            font-weight: bold !important;
+            color: #000 !important;
+        }
+        .pdf-document-style p, .pdf-document-style ul, .pdf-document-style ol {
+            font-family: 'Times New Roman', serif !important;
+            color: #000 !important;
+            line-height: 1.6;
+        }
+        .pdf-document-style .card {
+            border: 1px solid #000 !important;
+            box-shadow: none !important;
+        }
+        .pdf-document-style .card-header {
+            background-color: #f8f9fa !important;
+            color: #000 !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PDF Download Button -->
+    <div class="position-fixed top-0 end-0 p-4" style="z-index: 1050;">
+        <button id="downloadPdfBtn" class="btn btn-primary rounded-pill shadow-lg">
+            Unduh PDF
+        </button>
+    </div>
+
+    <div class="page-container">
+        <!-- Sidebar Menu for Web View -->
+        <div class="sidebar d-none d-lg-block" id="sidebar">
+            <h4 class="fw-bold mb-4 text-muted">Daftar Isi</h4>
+            <nav class="nav flex-column">
+                <a class="nav-link" href="#modul-hr">Modul HR</a>
+                <a class="nav-link ps-4" href="#master-data-setup">Master Data & Setup</a>
+                <a class="nav-link ps-5" href="#pengaturan-awal">Pengaturan Awal</a>
+                <a class="nav-link ps-5" href="#master-data-karyawan">Master Data Karyawan</a>
+                <a class="nav-link ps-5" href="#alur-cuti">Alur Kerja Cuti</a>
+                <a class="nav-link" href="#modul-payroll">Modul Payroll</a>
+                <a class="nav-link ps-4" href="#pengaturan-sistem">Pengaturan Sistem</a>
+                <a class="nav-link ps-4" href="#struktur-gaji">Struktur Gaji</a>
+                <a class="nav-link ps-4" href="#perhitungan-gaji">Perhitungan Gaji</a>
+                <a class="nav-link ps-4" href="#penggajian-pelaporan">Penggajian & Pelaporan</a>
+                <a class="nav-link ps-5" href="#contoh-slip-gaji">Contoh Slip Gaji</a>
+            </nav>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <div class="content-wrapper p-4 p-md-5" id="pdfContent">
+                <div class="text-center mb-5">
+                    <h1 class="h2 fw-bold">Manual Pengguna Modul HR dan Payroll Indonesia</h1>
+                    <p class="text-muted mt-2">
+                        Panduan komprehensif untuk menguasai modul Human Resources (HR) dan Payroll Indonesia pada ERP Siumang.
+                    </p>
+                </div>
+        
+                <h2 id="modul-hr" class="h3 fw-bold mb-4" data-pdf-number="Bagian 1">Modul HR (Human Resources)</h2>
+                <h3 id="master-data-setup" class="h4 fw-bold mb-3" data-pdf-number="Bab 2">Master Data & Pengaturan Awal</h3>
+                <p class="mb-4">Sebelum memasukkan data karyawan, Anda harus terlebih dahulu melakukan pengaturan dasar yang akan menjadi pondasi data di seluruh sistem. Pengaturan ini <strong>sangat penting</strong> karena akan memengaruhi modul lain, seperti penggajian dan alur kerja persetujuan.</p>
+        
+                <h4 id="pengaturan-awal" class="h5 fw-semibold mb-2" data-pdf-number="2.1.">Pengaturan Awal yang Wajib & Penting</h4>
+                <p class="mb-2">Berikut penjelasan detailnya:</p>
+                
+                <div class="card p-3 mb-4">
+                    <h5 class="fw-bold text-primary">Setup Departemen & Jabatan</h5>
+                    <p class="text-sm text-muted mt-1">
+                        Ini adalah struktur organisasi perusahaan Anda. Data ini <strong>sangat penting</strong> untuk laporan analisis (misal, jumlah karyawan per departemen), alur persetujuan (misal, cuti disetujui oleh manajer departemen), dan penentuan gaji (beberapa komponen gaji mungkin berbeda per jabatan). 
+                    </p>
+                    <p class="text-sm fw-semibold mt-2">Cara Input Data:</p>
+                    <ul class="text-xs text-muted list-unstyled">
+                        <li>Navigasi ke Modul HR > Master Data > Departemen. Klik "Tambah". Masukkan nama departemen, lalu simpan.</li>
+                        <li>Navigasi ke Modul HR > Master Data > Jabatan. Klik "Tambah". Masukkan nama jabatan, lalu simpan.</li>
+                    </ul>
+                </div>
+                
+                <div class="card p-3 mb-4">
+                    <h5 class="fw-bold text-primary">Setup Golongan (Employee Grade) & Level Karyawan</h5>
+                    <p class="text-sm text-muted mt-1">
+                        <strong>Golongan</strong> biasanya berdasarkan tingkatan senioritas atau kualifikasi. Ini sering digunakan sebagai dasar untuk menentukan skala gaji. <strong>Level karyawan</strong>, di sisi lain, sangat krusial untuk mengatur hierarki persetujuan. Misalnya, Anda dapat mengatur agar pengajuan cuti dari karyawan dengan "Level 1" harus disetujui oleh atasan dengan "Level 3" atau lebih tinggi.
+                    </p>
+                    <p class="text-sm fw-semibold mt-2">Cara Input Data:</p>
+                    <ul class="text-xs text-muted list-unstyled">
+                        <li>Navigasi ke Modul HR > Master Data > Golongan Karyawan. Klik "Tambah" dan berikan nama, lalu simpan.</li>
+                        <li>Navigasi ke Modul HR > Master Data > Level Karyawan. Klik "Tambah" dan tentukan level numerik atau deskriptif, lalu simpan.</li>
+                    </ul>
+                </div>
+
+                <h3 id="master-data-karyawan" class="h4 fw-bold mb-3" data-pdf-number="Bab 3">Master Data Karyawan (Employee)</h3>
+                <p class="mb-2">Ini adalah inti dari modul HR. Masukkan data karyawan dengan teliti. Data karyawan adalah sumber informasi yang akan mengalir ke semua modul terintegrasi lainnya.</p>
+                <p class="fw-semibold mb-1">Cara Input Data Karyawan Baru:</p>
+                <ol class="list-group list-group-numbered mb-4">
+                    <li class="list-group-item">Navigasi ke Modul HR > Employee.</li>
+                    <li class="list-group-item">Klik "Tambah Employee".</li>
+                    <li class="list-group-item">Isi semua kolom yang diperlukan: informasi pribadi, data pekerjaan, dan pastikan untuk memilih <strong>Jabatan, Departemen, dan Golongan</strong> yang telah Anda buat sebelumnya.</li>
+                    <li class="list-group-item">Untuk <strong>akses aplikasi</strong>, masuk ke tab "User Account". Klik "Create User Account" atau "Link to Existing User". Ini akan membuat akun pengguna yang terkait dengan data karyawan ini, yang memungkinkan karyawan untuk menggunakan aplikasi (misalnya, mengajukan cuti atau melihat slip gaji) dengan ID pengguna unik mereka.</li>
+                </ol>
+                
+                <h3 id="alur-cuti" class="h4 fw-bold mb-3" data-pdf-number="Bab 4">Alur Kerja Cuti & Persetujuan</h3>
+                <p class="mb-4">Proses ini memastikan saldo cuti diperbarui secara otomatis dan memiliki jejak persetujuan yang jelas. Berikut adalah alur kerja utamanya:</p>
+                
+                <div class="row text-center g-3 justify-content-center">
+                    <div class="col-md-3">
+                        <div class="card h-100 p-3">
+                            <i class="fas fa-paper-plane fa-2x text-primary mb-3"></i>
+                            <h5 class="fw-bold">1. Pengajuan</h5>
+                            <p class="small text-muted">Karyawan mengajukan cuti melalui portal self-service.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-1 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-arrow-right flowchart-arrow d-none d-md-block"></i>
+                        <i class="fas fa-arrow-down flowchart-arrow d-md-none"></i>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card h-100 p-3">
+                            <i class="fas fa-user-check fa-2x text-success mb-3"></i>
+                            <h5 class="fw-bold">2. Persetujuan Manajer</h5>
+                            <p class="small text-muted">Notifikasi dikirim ke manajer. Manajer dapat menyetujui atau menolak permohonan.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-1 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-arrow-right flowchart-arrow d-none d-md-block"></i>
+                        <i class="fas fa-arrow-down flowchart-arrow d-md-none"></i>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card h-100 p-3">
+                            <i class="fas fa-check-circle fa-2x text-info mb-3"></i>
+                            <h5 class="fw-bold">3. Finalisasi HR</h5>
+                            <p class="small text-muted">Setelah disetujui, HR melakukan finalisasi. Sistem secara otomatis memperbarui saldo cuti karyawan.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-divider my-5"></div>
+        
+                <h2 id="modul-payroll" class="h3 fw-bold mb-4" data-pdf-number="Bagian 2">Modul Payroll Indonesia</h2>
+                <h3 id="pengaturan-sistem" class="h4 fw-bold mb-3" data-pdf-number="Bab 5">Pengaturan Sistem (Setup)</h3>
+                <p class="mb-2">Pengaturan ini penting untuk memastikan perhitungan gaji sesuai dengan regulasi pemerintah.</p>
+                <ul class="list-group list-group-flush mb-4">
+                    <li class="list-group-item">
+                        <strong>Konfigurasi PPh 21 TER & PTKP:</strong> Navigasi ke menu Payroll Indonesia > Pengaturan PPh 21. Masukkan tabel Tarif Efektif Rata-rata (TER) dan nilai Penghasilan Tidak Kena Pajak (PTKP) sesuai peraturan terbaru. Ini menjadi dasar perhitungan pajak otomatis. <strong>PTKP</strong> adalah jumlah penghasilan yang tidak dikenakan pajak, sedangkan <strong>TER</strong> adalah metode perhitungan pajak baru yang lebih sederhana.
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Pengaturan BPJS Settings:</strong> Buka menu Payroll Indonesia > Pengaturan BPJS. Input persentase iuran yang ditanggung oleh karyawan dan perusahaan untuk BPJS Kesehatan dan BPJS Ketenagakerjaan.
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Pemetaan Akun GL:</strong> Akses menu BPJS Account Mapping. Ini adalah jembatan antara payroll dan modul akuntansi. Setiap jenis iuran (misal, potongan BPJS karyawan) harus dipetakan ke akun yang relevan di buku besar (General Ledger).
+                    </li>
+                </ul>
+        
+                <h3 id="struktur-gaji" class="h4 fw-bold mb-3" data-pdf-number="Bab 6">Pengelolaan Struktur Gaji</h3>
+                <p class="mb-2">Modul ini memungkinkan Anda membuat templat gaji yang fleksibel. Prosesnya terdiri dari tiga langkah utama:</p>
+                <ol class="list-group list-group-numbered mb-4">
+                    <li class="list-group-item">
+                        <strong>Definisi Salary Component:</strong> Buat elemen-elemen dasar gaji seperti "Gaji Pokok", "Tunjangan Jabatan", atau "Potongan Absensi". Anda bisa menentukan apakah komponen tersebut merupakan pemasukan atau potongan.
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Pembuatan Salary Structure:</strong> Gabungkan beberapa komponen yang telah dibuat menjadi satu templat gaji. Contoh: "Struktur Gaji Staf Bulanan" yang berisi Gaji Pokok, Tunjangan Jabatan, dan Potongan BPJS.
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Penetapan Salary Structure Assignment:</strong> Terapkan templat gaji yang sudah jadi ke setiap karyawan.
+                    </li>
+                </ol>
+        
+                <h3 id="perhitungan-gaji" class="h4 fw-bold mb-3" data-pdf-number="Bab 7">Perhitungan Gaji untuk Berbagai Skenario</h3>
+                <p class="mb-2">Sistem dapat mengakomodasi berbagai jenis perhitungan gaji. Berikut adalah contohnya:</p>
+
+                <div class="row g-4 mb-5">
+                    <!-- Contoh Karyawan Bulanan -->
+                    <div class="col-md-6">
+                        <div class="card h-100">
+                            <div class="card-header text-white fw-bold">
+                                Contoh Penggajian: Karyawan Bulanan
+                            </div>
+                            <div class="card-body">
+                                <p class="card-title fw-bold">Budi, Karyawan Staf</p>
+                                <ul class="list-group list-group-flush small">
+                                    <li class="list-group-item"><strong>Gaji Pokok:</strong> Rp 5.000.000</li>
+                                    <li class="list-group-item"><strong>Tunjangan Jabatan:</strong> Rp 500.000</li>
+                                    <li class="list-group-item"><strong>Penghasilan Bruto:</strong> Rp 5.500.000</li>
+                                    <li class="list-group-item"><strong>Potongan BPJS:</strong> Rp 200.000 (dari Gaji Pokok)</li>
+                                    <li class="list-group-item"><strong>Penghasilan Neto:</strong> Rp 5.300.000</li>
+                                    <li class="list-group-item"><strong>PPh 21:</strong> Rp 27.500 (dihitung otomatis)</li>
+                                    <li class="list-group-item bg-light fw-bold"><strong>Gaji Bersih:</strong> Rp 5.272.500</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Contoh Karyawan Borongan -->
+                    <div class="col-md-6">
+                        <div class="card h-100">
+                            <div class="card-header text-white fw-bold">
+                                Contoh Penggajian: Karyawan Borongan
+                            </div>
+                            <div class="card-body">
+                                <p class="card-title fw-bold">Siti, Karyawan Produksi</p>
+                                <ul class="list-group list-group-flush small">
+                                    <li class="list-group-item"><strong>Upah per Unit:</strong> Rp 10.000</li>
+                                    <li class="list-group-item"><strong>Jumlah Produksi:</strong> 500 unit</li>
+                                    <li class="list-group-item"><strong>Total Upah:</strong> Rp 5.000.000</li>
+                                    <li class="list-group-item"><strong>Potongan BPJS:</strong> Rp 200.000</li>
+                                    <li class="list-group-item bg-light fw-bold"><strong>Gaji Bersih:</strong> Rp 4.800.000</li>
+                                </ul>
+                                <p class="mt-2 text-muted fst-italic">Sistem secara otomatis menghitung total upah berdasarkan input jumlah produk.</p>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Contoh Karyawan Cuti Tanpa Bayar -->
+                    <div class="col-md-6">
+                        <div class="card h-100">
+                            <div class="card-header text-white fw-bold">
+                                Contoh Penggajian: Cuti Tanpa Bayar
+                            </div>
+                            <div class="card-body">
+                                <p class="card-title fw-bold">Doni, Cuti 10 hari tanpa bayar</p>
+                                <ul class="list-group list-group-flush small">
+                                    <li class="list-group-item"><strong>Gaji Pokok Bulanan:</strong> Rp 6.000.000</li>
+                                    <li class="list-group-item"><strong>Gaji Harian:</strong> Rp 200.000 (Rp 6jt / 30 hari)</li>
+                                    <li class="list-group-item"><strong>Potongan Cuti:</strong> Rp 2.000.000 (10 hari)</li>
+                                    <li class="list-group-item bg-light fw-bold"><strong>Gaji Bersih:</strong> Rp 4.000.000</li>
+                                </ul>
+                                <p class="mt-2 text-muted fst-italic">Sistem akan memotong gaji harian sesuai jumlah hari cuti tanpa bayar yang diajukan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 id="penggajian-pelaporan" class="h4 fw-bold mb-3" data-pdf-number="Bab 8">Proses Penggajian & Pelaporan</h3>
+                <p class="mb-2">Langkah akhir untuk memastikan karyawan menerima gaji dan semua laporan tersedia.</p>
+                <ul class="list-group list-group-flush mb-4">
+                    <li class="list-group-item">
+                        <strong>Pembuatan Salary Slip:</strong> Sistem secara otomatis menghasilkan slip gaji yang bisa diakses oleh karyawan melalui akun pengguna mereka. Slip ini sudah mencakup semua rincian penghasilan dan potongan.
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Pelaporan Payroll:</strong> Hasilkan laporan yang siap digunakan untuk SPT Masa PPh 21 dan rekapitulasi iuran BPJS, serta laporan gaji internal untuk analisis per departemen.
+                    </li>
+                </ul>
+
+                <h4 id="contoh-slip-gaji" class="h5 fw-semibold mb-2" data-pdf-number="8.1.">Detail Slip Gaji</h4>
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-title fw-bold text-primary">Komponen-komponen Utama pada Salary Slip</p>
+                        <ul class="list-group list-group-flush small">
+                            <li class="list-group-item">
+                                <strong>Penghasilan (Earnings):</strong> Bagian ini merinci semua komponen gaji yang diterima karyawan, seperti Gaji Pokok, Tunjangan Jabatan, Tunjangan Transportasi, Tunjangan Makan, dan bonus.
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Potongan (Deductions):</strong> Bagian ini merinci semua potongan dari gaji, termasuk iuran BPJS Kesehatan dan Ketenagakerjaan, PPh 21, pinjaman, atau potongan akibat ketidakhadiran.
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Take Home Pay (THP):</strong> Ini adalah jumlah akhir yang diterima karyawan setelah semua penghasilan dan potongan dihitung. Formulanya adalah: <strong>Total Penghasilan - Total Potongan</strong>.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+            const pdfContent = document.getElementById('pdfContent');
+            const downloadBtn = document.getElementById('downloadPdfBtn');
+            const sidebar = document.getElementById('sidebar');
+
+            // Add class for classic document styling and hide sidebar
+            pdfContent.classList.add('pdf-document-style');
+            downloadBtn.style.display = 'none';
+            if (sidebar) {
+                sidebar.style.display = 'none';
+            }
+
+            // Dynamically add heading numbers for PDF
+            const headings = document.querySelectorAll('#pdfContent h2, #pdfContent h3, #pdfContent h4');
+            const originalHeadings = {};
+            headings.forEach(heading => {
+                const number = heading.getAttribute('data-pdf-number');
+                if (number) {
+                    originalHeadings[heading.id] = heading.innerHTML; // Store original content
+                    heading.innerHTML = `<strong>${number}</strong> ${heading.innerHTML}`;
+                }
+            });
+
+            const options = {
+                margin: 1,
+                filename: 'Panduan_Pengguna_HR_Payroll.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            // Generate PDF and then revert changes
+            html2pdf().from(pdfContent).set(options).save().then(function() {
+                // Revert styles and show elements again
+                pdfContent.classList.remove('pdf-document-style');
+                downloadBtn.style.display = 'block';
+                if (sidebar) {
+                    sidebar.style.display = 'block';
+                }
+
+                // Revert headings back to original state
+                headings.forEach(heading => {
+                    if (originalHeadings[heading.id]) {
+                        heading.innerHTML = originalHeadings[heading.id];
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
