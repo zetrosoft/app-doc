@@ -1,0 +1,245 @@
+<h2 class="section-title" id="employee">Employee</h2>
+<p>
+    Modul <b>Employee</b> adalah halaman utama untuk mengelola data karyawan di ERP Siumang. Halaman ini dirancang untuk mencatat seluruh informasi karyawan secara terstruktur, mulai dari data pribadi hingga detail pekerjaan. Pengisian formulir ini dengan benar sangat penting karena menjadi dasar data untuk modul HR lainnya.
+</p>
+
+<!-- Gambar Ilustrasi Tab Overview -->
+<div class="d-flex justify-content-center my-4">
+    <img src="assets/images/hrd/overview.png" alt="Formulir Karyawan Baru" class="img-fluid rounded shadow" style="max-height: 500px; cursor: zoom-in;">
+</div>
+<hr class="hr-elegant">
+
+<!-- Tab: Overview -->
+<h4 class="h5">Overview</h4>
+<p>
+    Tab <b>Overview</b> menyediakan ringkasan semua informasi utama karyawan. Ini adalah tempat Anda memulai proses pembuatan data karyawan baru.
+</p>
+<div class="card p-4 my-4">
+    <h5 class="card-title">Informasi Dasar Karyawan</h5>
+    <p class="card-text text-muted">Field-field ini adalah identitas utama karyawan dalam sistem.</p>
+    <ul>
+        <li><b>Series:</b> Nomor seri atau prefiks yang digunakan untuk membuat ID karyawan secara otomatis. Contoh: HR-EMP-.</li>
+        <li><b>First Name:</b> Nama depan karyawan.</li>
+        <li><b>Middle Name:</b> Nama tengah karyawan (opsional).</li>
+        <li><b>Last Name:</b> Nama belakang karyawan (opsional).</li>
+        <li><b>Gender:</b> Jenis kelamin karyawan. Ini digunakan untuk keperluan statistik dan administrasi.</li>
+        <li><b>Date of Birth:</b> Tanggal lahir karyawan.</li>
+        <li><b>Salutation:</b> Sapaan formal (misalnya, Bapak, Ibu, Mr., Ms.).</li>
+        <li><b>Date of Joining:</b> Tanggal pertama kali karyawan bergabung dengan perusahaan. Tanggal ini sangat penting untuk menghitung masa kerja dan hak-hak seperti cuti atau pensiun.</li>
+        <li><b>Status:</b> Status kepegawaian karyawan (misalnya, Aktif, Cuti, Berhenti, On Leave). Menunjukkan kondisi karyawan saat ini di perusahaan.</li>
+    </ul>
+</div>
+
+<div class="card p-4 my-4">
+    <h5 class="card-title">Bagian ERP</h5>
+    <p class="card-text text-muted">Bagian ini menghubungkan data karyawan dengan akun pengguna (user account) di ERP Siumang.</p>
+    <ul>
+        <li><b>User ID:</b> ID pengguna atau nama pengguna (username) yang akan digunakan karyawan untuk login. Jika diatur, sistem akan menjadikan ID ini sebagai default untuk semua formulir HR yang terkait.</li>
+        <li><b>Create User:</b> Tombol yang digunakan untuk membuat akun pengguna secara otomatis dengan User ID yang telah Anda masukkan.</li>
+    </ul>
+</div>
+
+<div class="card p-4 my-4">
+    <h5 class="card-title">Company Details</h5>
+    <p class="card-text text-muted">Informasi terperinci mengenai posisi dan penempatan karyawan di dalam perusahaan.</p>
+    <ul>
+        <li><b>Company:</b> Nama perusahaan tempat karyawan bekerja.</li>
+        <li><b>Designation:</b> Jabatan atau posisi resmi karyawan.</li>
+        <li><b>Department:</b> Departemen atau divisi tempat karyawan ditempatkan.</li>
+        <li><b>Reports to:</b> Nama manajer atau atasan langsung yang menjadi penanggung jawab karyawan.</li>
+        <li><b>Employee Number:</b> Nomor unik yang digunakan untuk identifikasi internal karyawan.</li>
+    </ul>
+</div>
+
+<div class="card p-4 my-4">
+    <h5 class="card-title">Payroll</h5>
+    <p class="card-text text-muted">Bagian ini digunakan untuk menentukan struktur penggajian karyawan dan dihubungkan langsung dengan modul Payroll.</p>
+    <ul>
+        <li><b>Golongan:</b> Menentukan tingkatan atau grade karyawan. Golongan ini biasanya digunakan untuk menentukan skala gaji dan tunjangan yang akan diterima. Pilih golongan yang sesuai dari daftar yang tersedia.</li>
+        <li><b>Branch:</b> Cabang atau lokasi perusahaan tempat karyawan didaftarkan untuk tujuan penggajian.</li>
+    </ul>
+</div>
+<hr class="hr-elegant">
+
+<!-- Tab: Joining -->
+<h4 class="h5">Joining</h4>
+<p>
+    Tab ini berisi detail tambahan yang terkait dengan proses perekrutan dan onboarding.
+</p>
+<ul>
+    <li><b>Previous Company:</b> Nama perusahaan tempat karyawan bekerja sebelumnya.</li>
+    <li><b>Previous Designation:</b> Jabatan sebelumnya di perusahaan lama.</li>
+    <li><b>Previous CTC:</b> Kompensasi atau gaji sebelumnya.</li>
+</ul>
+<hr class="hr-elegant">
+
+<!-- Tab: Address & Contacts -->
+<h4 class="h5">Address & Contacts</h4>
+<p>
+    Tab ini digunakan untuk mencatat informasi kontak dan alamat yang penting untuk keperluan komunikasi dan administrasi.
+</p>
+<!-- Gambar Ilustrasi Tab Address & Contacts -->
+<div class="d-flex justify-content-center my-4">
+    <img src="assets/images/hrd/address-contacts.png" alt="Formulir Alamat dan Kontak" class="img-fluid rounded shadow" style="max-height: 500px; cursor: zoom-in;">
+</div>
+<div class="card p-4 my-4">
+    <h5 class="card-title">Informasi Kontak</h5>
+    <p class="card-text text-muted">Bagian ini mencatat detail komunikasi karyawan.</p>
+    <ul>
+        <li><b>Mobile:</b> Nomor telepon seluler karyawan.</li>
+        <li><b>Personal Email:</b> Alamat email pribadi karyawan.</li>
+        <li><b>Company Email:</b> Alamat email resmi dari perusahaan yang diberikan kepada karyawan.</li>
+        <li><b>Preferred Contact Email:</b> Opsi untuk memilih alamat email mana (pribadi atau perusahaan) yang lebih disukai untuk menerima komunikasi.</li>
+        <li><b>Unsubscribed:</b> Kotak centang untuk menandai bahwa karyawan telah berhenti berlangganan dari komunikasi email tertentu.</li>
+    </ul>
+</div>
+
+<div class="card p-4 my-4">
+    <h5 class="card-title">Alamat</h5>
+    <p class="card-text text-muted">Pencatatan alamat yang lengkap dan akurat.</p>
+    <ul>
+        <li><b>Current Address:</b> Alamat tempat tinggal karyawan saat ini.</li>
+        <li><b>Permanent Address:</b> Alamat tetap atau domisili karyawan.</li>
+        <li><b>Current Address Is:</b> Dropdown untuk memilih apakah alamat saat ini adalah alamat rumah, kantor, atau lainnya.</li>
+        <li><b>Permanent Address Is:</b> Dropdown untuk memilih apakah alamat tetap adalah alamat rumah, kantor, atau lainnya.</li>
+    </ul>
+</div>
+
+<div class="card p-4 my-4">
+    <h5 class="card-title">Kontak Darurat</h5>
+    <p class="card-text text-muted">Data yang sangat penting untuk dihubungi dalam situasi darurat.</p>
+    <ul>
+        <li><b>Emergency Contact Name:</b> Nama lengkap dari kontak darurat yang dapat dihubungi.</li>
+        <li><b>Emergency Phone:</b> Nomor telepon kontak darurat.</li>
+        <li><b>Relation:</b> Hubungan kontak darurat dengan karyawan (misalnya, orang tua, pasangan, saudara).</li>
+    </ul>
+</div>
+<hr class="hr-elegant">
+
+<!-- Tab: Attendance & Leaves -->
+<h4 class="h5">Attendance & Leaves</h4>
+<p>
+    Tab <b>Attendance & Leaves</b> berfungsi untuk mengelola data kehadiran, cuti, dan persetujuan yang terkait dengan karyawan. Pengaturan di sini akan terhubung langsung dengan modul absensi.
+</p>
+<!-- Gambar Ilustrasi Tab Attendance & Leaves -->
+<div class="d-flex justify-content-center my-4">
+    <img src="assets/images/hrd/attendance-leaves.png" alt="Formulir Kehadiran dan Cuti" class="img-fluid rounded shadow" style="max-height: 500px; cursor: zoom-in;">
+</div>
+<div class="card p-4 my-4">
+    <h5 class="card-title">Kehadiran & Jadwal Kerja</h5>
+    <p class="card-text text-muted">Field-field ini mengatur bagaimana absensi dan jadwal kerja karyawan dicatat.</p>
+    <ul>
+        <li><b>Attendance Device ID (Biometric/RF tag ID):</b> ID yang digunakan untuk mengidentifikasi karyawan pada mesin absensi biometrik atau RFID. Pastikan ID ini sesuai dengan yang terdaftar di mesin absensi fisik.</li>
+        <li><b>Holiday List:</b> Daftar hari libur yang berlaku untuk karyawan ini. Sistem akan secara otomatis menganggap hari-hari yang tercantum dalam daftar ini sebagai hari libur kerja.</li>
+        <li><b>Applicable Holiday List:</b> Field yang berisi daftar hari libur yang berlaku untuk karyawan ini berdasarkan lokasi atau kebijakan perusahaan.</li>
+        <li><b>Default Shift:</b> Jadwal kerja harian standar yang ditetapkan untuk karyawan, misalnya "Shift Pagi" atau "Shift Malam".</li>
+    </ul>
+</div>
+
+<div class="card p-4 my-4">
+    <h5 class="card-title">Persetujuan (Approvers)</h5>
+    <p class="card-text text-muted">Bagian ini menentukan siapa saja yang memiliki wewenang untuk menyetujui permintaan karyawan.</p>
+    <ul>
+        <li><b>Expense Approver:</b> Nama atau ID pengguna (user ID) dari atasan yang berwenang untuk menyetujui klaim biaya atau pengeluaran karyawan.</li>
+        <li><b>Leave Approver:</b> Nama atau ID pengguna dari atasan yang berwenang untuk menyetujui pengajuan cuti karyawan.</li>
+        <li><b>Shift Request Approver:</b> Nama atau ID pengguna dari atasan yang berwenang untuk menyetujui permintaan perubahan jadwal kerja atau shift.</li>
+    </ul>
+</div>
+<hr class="hr-elegant">
+
+<!-- Tab: Salary -->
+<h4 class="h5">Salary</h4>
+<p>
+    Tab <b>Salary</b> digunakan untuk menentukan dan mengelola rincian gaji karyawan. Pengisian data di sini akan secara otomatis mempengaruhi perhitungan gaji bulanan.
+</p>
+<!-- Gambar Ilustrasi Tab Salary -->
+<div class="d-flex justify-content-center my-4">
+    <img src="assets/images/hrd/salary.png" alt="Formulir Gaji Karyawan" class="img-fluid rounded shadow" style="max-height: 500px; cursor: zoom-in;">
+</div>
+<div class="card p-4 my-4">
+    <h5 class="card-title">Detail Gaji</h5>
+    <p class="card-text text-muted">Informasi ini menjadi dasar untuk perhitungan gaji di modul Payroll.</p>
+    <ul>
+        <li><b>Cost to Company (CTC):</b> Total biaya yang dikeluarkan perusahaan untuk karyawan, termasuk gaji pokok, tunjangan, dan kontribusi lainnya. Nilai ini menjadi acuan utama untuk menentukan komponen gaji lainnya.</li>
+        <li><b>Salary Currency:</b> Mata uang yang digunakan untuk pembayaran gaji (misalnya, IDR untuk Rupiah Indonesia). Nilai ini diatur secara default berdasarkan konfigurasi perusahaan.</li>
+        <li><b>Salary Mode:</b> Metode pembayaran gaji, misalnya "Per Bulan" atau "Per Jam". Pilihan ini menentukan bagaimana gaji akan dihitung berdasarkan periode waktu.</li>
+        <li><b>Payroll Cost Center:</b> Pusat biaya (cost center) tempat biaya gaji karyawan ini akan dialokasikan. Data ini sangat penting untuk pelaporan keuangan dan analisis biaya per departemen atau proyek.</li>
+    </ul>
+</div>
+<hr class="hr-elegant">
+
+<!-- Tab: Personal Details -->
+<h4 class="h5">Personal Details</h4>
+<p>
+    Tab ini menyimpan data pribadi karyawan yang bersifat rahasia dan penting.
+</p>
+<ul>
+    <li><b>Date of Birth:</b> Tanggal lahir.</li>
+    <li><b>Place of Birth:</b> Tempat lahir.</li>
+    <li><b>Nationality:</b> Kewarganegaraan.</li>
+    <li><b>Religion:</b> Agama.</li>
+    <li><b>ID Number (KTP/Passport):</b> Nomor identitas resmi.</li>
+</ul>
+<hr class="hr-elegant">
+
+<!-- Tab: Profile -->
+<h4 class="h5">Profile</h4>
+<p>
+    Bagian ini adalah tempat untuk mengunggah dan melihat foto profil karyawan, serta deskripsi singkat tentang dirinya.
+</p>
+<hr class="hr-elegant">
+
+<!-- Tab: Employee Exit -->
+<h4 class="h5">Employee Exit</h4>
+<p>
+    Tab ini khusus digunakan untuk mencatat detail ketika seorang karyawan keluar dari perusahaan, seperti tanggal berhenti kerja, alasan, dan lain-lain.
+</p>
+<hr class="hr-elegant">
+
+<!-- Tab: Connections -->
+<h4 class="h5">Connections</h4>
+<p>
+    Tab <b>Connections</b> digunakan untuk mencatat berbagai informasi tambahan yang menghubungkan karyawan dengan data penting lainnya, seperti data pajak, BPJS, dan lampiran dokumen.
+</p>
+<!-- Gambar Ilustrasi Tab Connections -->
+<div class="d-flex justify-content-center my-4">
+    <img src="assets/images/hrd/connections.png" alt="Formulir Koneksi Karyawan" class="img-fluid rounded shadow" style="max-height: 500px; cursor: zoom-in;">
+</div>
+<div class="card p-4 my-4">
+    <h5 class="card-title">Informasi Pajak dan Tipe Karyawan</h5>
+    <p class="card-text text-muted">Field ini berfungsi untuk mengatur perhitungan pajak penghasilan karyawan.</p>
+    <ul>
+        <li><b>Status Pajak:</b> Kategori status pernikahan dan tanggungan yang menentukan besaran Penghasilan Tidak Kena Pajak (PTKP). Contoh: TK0 (Tidak Kawin, 0 Tanggungan).</li>
+        <li><b>Override Tax Method:</b> Metode perhitungan pajak yang berlaku untuk karyawan. Misalnya, "TER" untuk Tarif Efektif Rata-rata.</li>
+        <li><b>Tipe Karyawan:</b> Jenis hubungan kerja karyawan, seperti "Tetap", "Kontrak", atau "Outsourcing". Tipe ini memengaruhi perhitungan hak dan kewajiban lainnya.</li>
+    </ul>
+</div>
+
+<div class="card p-4 my-4">
+    <h5 class="card-title">Identifiers & Attachments</h5>
+    <p class="card-text text-muted">Bagian ini digunakan untuk mengunggah salinan dokumen penting.</p>
+    <ul>
+        <li><b>Upload NPWP:</b> Mengunggah salinan kartu Nomor Pokok Wajib Pajak (NPWP) karyawan.</li>
+        <li><b>Upload KTP:</b> Mengunggah salinan Kartu Tanda Penduduk (KTP) karyawan.</li>
+    </ul>
+</div>
+
+<div class="card p-4 my-4">
+    <h5 class="card-title">BPJS Enrollment</h5>
+    <p class="card-text text-muted">Informasi pendaftaran karyawan di Badan Penyelenggara Jaminan Sosial.</p>
+    <ul>
+        <li><b>BPJS Kesehatan ID:</b> Nomor identitas peserta BPJS Kesehatan.</li>
+        <li><b>KTP:</b> Nomor KTP karyawan.</li>
+        <li><b>Jabatan:</b> Jabatan karyawan.</li>
+        <li><b>BPJS Ketenagakerjaan ID:</b> Nomor identitas peserta BPJS Ketenagakerjaan.</li>
+        <li><b>NPWP:</b> Nomor Pokok Wajib Pajak (NPWP) karyawan.</li>
+        <li><b>Penghasilan Final:</b> Penghasilan yang dikenakan pajak final.</li>
+        <li><b>Ikut BPJS Ketenagakerjaan / Kesehatan:</b> Opsi centang untuk mengaktifkan keikutsertaan karyawan pada program BPJS terkait.</li>
+    </ul>
+</div>
+
+<h4 class="h5 mt-5">Kesimpulan</h4>
+<p>
+    Modul <b>Employee</b> pada ERP Siumang adalah pusat data master untuk seluruh informasi karyawan. Setiap tab, mulai dari <b>Overview</b> hingga <b>Connections</b>, dirancang untuk memastikan data karyawan lengkap, akurat, dan terintegrasi dengan modul-modul lain seperti <b>Payroll</b>, <b>Attendance</b>, dan <b>Akuntansi</b>. Dengan pengisian yang benar, modul ini menjadi fondasi yang kuat untuk manajemen sumber daya manusia yang efisien, mulai dari rekrutmen hingga proses keluar (exit).
+</p>
+<hr class="hr-elegant hr-calligraphy" style="border-top: 5px solid #FF5722;">

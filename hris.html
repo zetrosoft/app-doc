@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id"> 
+<head>
+    <title>Dokumentasi ERP Siumang - Modul HR & Payroll</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="description" content="Panduan Penggunaan Lengkap untuk Modul HR & Payroll ERP Siumang">
+    <meta name="author" content="ERP Siumang Team">    
+    <link rel="shortcut icon" href="favicon.ico"> 
+    
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"></script>
+    
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.2/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.2/simple-lightbox.min.css">
+
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docs-template/3.1.5/assets/css/theme-1.css">
+
+    <style>
+        .docs-page .docs-nav .nav-link.active, .docs-page .docs-nav .nav-link.active:hover {
+            color: #fff;
+            background-color: #007bff; /* Warna biru untuk item aktif */
+        }
+        .docs-page .docs-nav .nav-link:hover {
+            color: #007bff; /* Warna biru untuk hover */
+        }
+        .intro {
+            background-color: #f8f9fa;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .hr-elegant {
+            border: 0;
+            border-top: 2px solid #007bff;
+            margin: 3rem auto;
+            display: block;
+            width: 100%;
+        }
+        .container.px-lg-5 {
+            padding-left: 3rem !important;
+            padding-right: 3rem !important;
+        }
+        .docs-content {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            background-color: #fff;
+        }
+    </style>
+
+</head> 
+
+<body class="docs-page">    
+    <header class="header fixed-top">	    
+        <div class="branding docs-branding">
+            <div class="container-fluid position-relative py-2">
+                <div class="docs-logo-wrapper">
+					<button id="docs-sidebar-toggler" class="docs-sidebar-toggler docs-sidebar-visible me-2 d-xl-none" type="button">
+	                    <span></span>
+	                    <span></span>
+	                    <span></span>
+	                </button>
+	                <div class="site-logo">
+                        <a class="navbar-brand" href="index.html">
+                            <img class="logo-icon me-2" src="https://placehold.co/40x40/007bff/ffffff?text=E" alt="logo">
+                            <span class="logo-text">ERP<span class="text-alt">Siumang</span></span>
+                        </a>
+                    </div>    
+                </div><!--//docs-logo-wrapper-->
+	            <div class="docs-top-utilities d-flex justify-content-end align-items-center">
+	                <div class="top-search-box d-none d-lg-flex">
+		                <form class="search-form">
+				            <input type="text" placeholder="Cari dokumentasi..." name="search" class="form-control search-input">
+				            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+				        </form>
+	                </div>
+	            </div><!--//docs-top-utilities-->
+            </div><!--//container-->
+        </div><!--//branding-->
+    </header><!--//header-->
+    
+    
+    <div class="docs-wrapper">
+	    <div id="docs-sidebar" class="docs-sidebar">
+		    <div class="top-search-box d-lg-none p-3">
+                <form class="search-form">
+		            <input type="text" placeholder="Cari dokumentasi..." name="search" class="form-control search-input">
+		            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+		        </form>
+            </div>
+		    <nav id="docs-nav" class="docs-nav navbar">
+			    <ul class="section-items list-unstyled nav flex-column pb-3">
+				    <li class="nav-item section-title">
+                        <a class="nav-link scrollto active" href="#section-home">
+                            <span class="theme-icon-holder me-2"><i class="fas fa-home"></i></span>Beranda
+                        </a>
+                    </li>
+				    
+                    <!-- Master Data -->
+                    <li class="nav-item section-title mt-3">
+                        <a class="nav-link scrollto collapsed" data-bs-toggle="collapse" href="#submenu-master-data" aria-expanded="false" aria-controls="submenu-master-data">
+                            <span class="theme-icon-holder me-2"><i class="fas fa-database"></i></span>Master Data
+                        </a>
+                        <ul id="submenu-master-data" class="nav flex-column collapse show">
+                            <li class="nav-item"><a class="nav-link scrollto" href="#employee">Employee</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#jabatan">Jabatan</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#golongan">Golongan</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Pengaturan Pajak -->
+                    <li class="nav-item section-title mt-3">
+                        <a class="nav-link scrollto collapsed" data-bs-toggle="collapse" href="#submenu-pajak" aria-expanded="false" aria-controls="submenu-pajak">
+                            <span class="theme-icon-holder me-2"><i class="fas fa-file-invoice-dollar"></i></span>Pengaturan Pajak
+                        </a>
+                        <ul id="submenu-pajak" class="nav flex-column collapse">
+                            <li class="nav-item"><a class="nav-link scrollto" href="#pph-21">Pengaturan PPh 21</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#pph-21-ter-table">PPh 21 TER Table</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#bpjs">Pengaturan BPJS</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#hr">HR (General Settings)</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Struktur Gaji -->
+                    <li class="nav-item section-title mt-3">
+                        <a class="nav-link scrollto collapsed" data-bs-toggle="collapse" href="#submenu-gaji" aria-expanded="false" aria-controls="submenu-gaji">
+                            <span class="theme-icon-holder me-2"><i class="fas fa-money-bill-wave"></i></span>Struktur Gaji
+                        </a>
+                        <ul id="submenu-gaji" class="nav flex-column collapse">
+                            <li class="nav-item"><a class="nav-link scrollto" href="#salary-component">Salary Component</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#salary-structure">Salary Structure</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#salary-structure-assignment">Salary Structure Assignment</a></li>
+                        </ul>
+                    </li>
+			    </ul>
+		    </nav><!--//docs-nav-->
+	    </div><!--//docs-sidebar-->
+	    <div class="docs-content">
+		    <div class="container px-lg-5">
+                <!-- Konten utama akan dimuat di sini -->
+                <div id="docs-content">
+                    <div class="intro text-justifyß py-5" id="section-home">
+                        <h2 class="section-title">Panduan Modul HR & Payroll ERP Siumang</h2>
+                        <p class="mb-4">
+                            Selamat datang di panduan komprehensif untuk modul Human Resources (HR) dan Payroll ERP Siumang. Dokumen ini dirancang untuk memandu Anda langkah demi langkah dalam mengelola data karyawan, mengatur penggajian, dan memastikan kepatuhan terhadap peraturan yang berlaku di Indonesia.
+                        </p>
+                        <p class="mb-0">
+                            Navigasi melalui menu di sisi kiri untuk menemukan informasi detail tentang setiap fitur dan fungsionalitas.
+                        </p>
+                    </div>
+                </div>
+		    </div><!--//container-->
+	    </div><!--//docs-content-->
+    </div><!--//docs-wrapper-->
+   
+    <!-- Javascript -->          
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>  
+    
+    <!-- Page Specific JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll-polyfill/0.4.4/smoothscroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/docs-template/3.1.5/assets/js/highlight-custom.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.2/simple-lightbox.min.js"></script>      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gumshoe/5.1.2/gumshoe.polyfills.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/docs-template/3.1.5/assets/js/docs.js"></script> 
+    
+    <!-- Custom scripts and content loading -->
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const contentContainer = document.getElementById('docs-content');
+            
+            // Daftar semua file yang akan dimuat secara otomatis
+            const filesToLoad = [
+                // Master Data
+                'hris/master-data/employee.html',
+                'hris/master-data/jabatan.html',
+                'hris/master-data/golongan.html',
+                
+                // Pengaturan Pajak
+                'hris/pengaturan-pajak/pph-21.html',
+                'hris/pengaturan-pajak/pph-21-ter-table.html',
+                'hris/pengaturan-pajak/bpjs.html',
+                'hris/pengaturan-pajak/hr.html',
+                
+                // Struktur Gaji
+                'hris/struktur-gaji/salary-component.html',
+                'hris/struktur-gaji/salary-structure.html',
+                'hris/struktur-gaji/salary-structure-assignment.html'
+            ];
+            
+            // Function to load each file and append its content
+            const loadFile = async (filePath) => {
+                try {
+                    const response = await fetch(filePath);
+                    if (response.ok) {
+                        const content = await response.text();
+                        contentContainer.insertAdjacentHTML('beforeend', content + '<hr class="hr-elegant">');
+                    } else {
+                        console.error(`Gagal memuat file: ${filePath}`);
+                    }
+                } catch (error) {
+                    console.error(`Terjadi kesalahan saat memuat file ${filePath}:`, error);
+                }
+            };
+
+            // Loop melalui semua file dan muat secara berurutan
+            for (const file of filesToLoad) {
+                await loadFile(file);
+            }
+
+            // Setelah semua konten dimuat, aktifkan fungsionalitas tambahan (seperti smoothscroll dan image zoom)
+            function addImageClickListener() {
+                const images = document.querySelectorAll('img');
+                images.forEach(img => {
+                    img.style.cursor = 'zoom-in';
+                    img.addEventListener('click', () => {
+                        const modal = document.createElement('div');
+                        modal.style.position = 'fixed';
+                        modal.style.top = '0';
+                        modal.style.left = '0';
+                        modal.style.width = '100%';
+                        modal.style.height = '100%';
+                        modal.style.backgroundColor = 'rgba(0,0,0,0.8)';
+                        modal.style.display = 'flex';
+                        modal.style.justifyContent = 'center';
+                        modal.style.alignItems = 'center';
+                        modal.style.zIndex = '1000';
+                        
+                        const modalImg = document.createElement('img');
+                        modalImg.src = img.src;
+                        modalImg.style.maxWidth = '90%';
+                        modalImg.style.maxHeight = '90%';
+                        
+                        modal.appendChild(modalImg);
+                        document.body.appendChild(modal);
+
+                        modal.addEventListener('click', () => {
+                            document.body.removeChild(modal);
+                        });
+                    });
+                });
+            }
+
+            addImageClickListener();
+            
+            if(window.gumshoe) {
+                gumshoe.destroy();
+            }
+            window.gumshoe = new Gumshoe('docs-nav a');
+        });
+    </script>
+</body>
+</html>
