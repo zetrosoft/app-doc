@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <meta name="description" content="Panduan Penggunaan Lengkap untuk Modul HR & Payroll ERP Siumang">
+    <meta name="description" content="Panduan Penggunaan Lengkap untuk Modul Keuangan ERP Siumang">
     <meta name="author" content="ERP Siumang Team">    
     <link rel="shortcut icon" href="favicon.ico"> 
     
@@ -15,30 +15,16 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
     
     <!-- FontAwesome JS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"></script>
+    <script src="assets/fontawesome/js/all.min.js"></script>
     
     <!-- Plugins CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.2/styles/atom-one-dark.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.2/simple-lightbox.min.css">
+    <link rel="stylesheet" href="assets/plugins/simplelightbox/simple-lightbox.min.css">
 
     <!-- Theme CSS -->  
-    <link id="theme-style" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docs-template/3.1.5/assets/css/theme-1.css">
+        <link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
 
     <style>
-        .docs-page .docs-nav .nav-link.active, .docs-page .docs-nav .nav-link.active:hover {
-            color: #fff;
-            background-color: #007bff; /* Warna biru untuk item aktif */
-        }
-        .docs-page .docs-nav .nav-link:hover {
-            color: #007bff; /* Warna biru untuk hover */
-        }
-        .intro {
-            background-color: #f8f9fa;
-            border-radius: 1rem;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
         .hr-elegant {
             border: 0;
             border-top: 2px solid #007bff;
@@ -46,17 +32,12 @@
             display: block;
             width: 100%;
         }
-        .container.px-lg-5 {
-            padding-left: 3rem !important;
-            padding-right: 3rem !important;
-        }
-        .docs-content {
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-            border-radius: 1rem;
-            padding: 2rem;
-            background-color: #fff;
-        }
+            .site-logo .logo-icon {
+                width: 32px;
+                height: 32px;
+            }
     </style>
+        
 
 </head> 
 
@@ -72,7 +53,7 @@
 	                </button>
 	                <div class="site-logo">
                         <a class="navbar-brand" href="index.html">
-                            <img class="logo-icon me-2" src="https://placehold.co/40x40/007bff/ffffff?text=E" alt="logo">
+                            <img class="logo-icon me-2" src="assets/images/logo-siumang@0.1x.png" alt="logo">
                             <span class="logo-text">ERP<span class="text-alt">Siumang</span></span>
                         </a>
                     </div>    
@@ -100,11 +81,7 @@
             </div>
 		    <nav id="docs-nav" class="docs-nav navbar">
 			    <ul class="section-items list-unstyled nav flex-column pb-3">
-				    <li class="nav-item section-title">
-                        <a class="nav-link scrollto active" href="#section-home">
-                            <span class="theme-icon-holder me-2"><i class="fas fa-home"></i></span>Beranda
-                        </a>
-                    </li>
+				    <li class="nav-item"><a class="nav-link" href="index.html"><span class="theme-icon-holder me-2"><i class="fas fa-home"></i></span>Home</a></li>
 				    
                     <!-- Master Data -->
                     <li class="nav-item section-title mt-3">
@@ -146,7 +123,7 @@
 		    </nav><!--//docs-nav-->
 	    </div><!--//docs-sidebar-->
 	    <div class="docs-content">
-		    <div class="container px-lg-5">
+		    <div class="container">
                 <!-- Konten utama akan dimuat di sini -->
                 <div id="docs-content">
                     <div class="intro text-justifyß py-5" id="section-home">
@@ -164,18 +141,19 @@
     </div><!--//docs-wrapper-->
    
     <!-- Javascript -->          
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>  
+    <script src="assets/plugins/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
+    
     
     <!-- Page Specific JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll-polyfill/0.4.4/smoothscroll.min.js"></script>
+    <script src="assets/plugins/smoothscroll.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/docs-template/3.1.5/assets/js/highlight-custom.js"></script> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.2/simple-lightbox.min.js"></script>      
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gumshoe/5.1.2/gumshoe.polyfills.min.js"></script> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/docs-template/3.1.5/assets/js/docs.js"></script> 
+    <script src="assets/js/highlight-custom.js"></script> 
+    <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>      
+    <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script> 
+    <script src="assets/js/docs.js"></script> 
     
-    <!-- Custom scripts and content loading -->
+    <!-- Custom scripts and image handling -->
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const contentContainer = document.getElementById('docs-content');
@@ -220,6 +198,7 @@
             }
 
             // Setelah semua konten dimuat, aktifkan fungsionalitas tambahan (seperti smoothscroll dan image zoom)
+            // Function to add click event listener to images
             function addImageClickListener() {
                 const images = document.querySelectorAll('img');
                 images.forEach(img => {
@@ -252,8 +231,10 @@
                 });
             }
 
+            // Call the image listener function after all content is loaded
             addImageClickListener();
             
+            // Re-initialize plugins like Gumshoe for smooth scrolling after content is injected
             if(window.gumshoe) {
                 gumshoe.destroy();
             }
